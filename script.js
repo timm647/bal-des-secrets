@@ -15,9 +15,9 @@ const tickets = [
         type: 'hidden-ending',
         title: 'Épreuve I — Au bord des phrases',
         q: `
-          <p class="instruction">Un mot est dissimulé dans ce texte. Il ne faut pas chercher au milieu : certains secrets se cachent au bord des phrases.</p>
+          <p class="instruction">Pour trouver certains indices, il faut savoir regarder. Les détails racontent parfois plus que le reste.</p>
           <div class="cipher-text ending-cipher">
-            <p>Il y a des objets qu’on garde plus longtemps qu’on ne l’avoue vraiment.</p>
+            <p>Il y a des objets qu’on garde plus longtemps que prévu, parfois toujours.</p>
             <p>On les croit parfois inutiles, jusqu’au moment où ils comptent encore.</p>
             <p>Certains souvenirs reviennent surtout quand tombe la nuit.</p>
             <p>Ce qui rassure le plus ne fait pas toujours beaucoup de bruit doucement.</p>
@@ -27,9 +27,15 @@ const tickets = [
             <p>Mais quand elles restent, c’est souvent qu’elles protègent un secret.</p>
             <p>Et parfois, ce qui paraît enfantin devient simplement essentiel.</p>
           </div>
-          <p><strong>Quel mot se cache au bout des phrases ?</strong></p>
+          <p><strong>Quel est ce mot ?</strong></p>
         `,
         answers: ['tendresse'],
+        hints: [
+          'Les phrases ne sont pas seulement là pour être lues dans leur ensemble.',
+          'Certaines réponses se trouvent là où une phrase s’arrête.',
+          'Observe les mots qui arrivent juste avant chaque point.',
+          'Prends la première lettre de chaque mot placé juste avant un point.'
+        ],
         success: 'Le premier mot est trouvé. Ici, tout commence par la tendresse.'
       },
       {
@@ -46,8 +52,15 @@ const tickets = [
               <img src="assets/lin.jpg" alt="Tissu de lin" />
             </figure>
           </div>
+          <p><strong>Quel mot se cache derrière ce rébus ?</strong></p>
         `,
         answers: ['calin', 'câlin'],
+        hints: [
+          'Les deux images ne doivent pas être lues comme de simples objets.',
+          'La première image représente surtout un symbole inscrit sur la carte.',
+          'La seconde image montre une matière que l’on retrouve dans certains vêtements, comme des chemises ou des pantalons.',
+          'Assemble le son de la lettre de la carte avec le nom de la matière.'
+        ],
         success: 'Oui. Un câlin ne dit rien, mais il peut rassurer beaucoup.'
       },
       {
@@ -63,6 +76,12 @@ const tickets = [
           <p><strong>Que suis-je ?</strong></p>
         `,
         answers: ['reconfort', 'réconfort'],
+        hints: [
+          'La réponse ne peut pas se voir ni se toucher.',
+          'Elle se ressent plus qu’elle ne se possède.',
+          'Elle est proche du calme, de l’apaisement et de la sécurité.',
+          'On la cherche souvent quand on a besoin d’aller mieux.'
+        ],
         success: 'Exact. Le réconfort peut parfois tenir dans très peu de choses.'
       },
       {
@@ -77,20 +96,33 @@ const tickets = [
           <p><strong>Quel mot décrit ce lien ?</strong></p>
         `,
         answers: ['attachement'],
+        hints: [
+          'La réponse n’est pas un objet.',
+          'Elle peut exister entre une personne et un objet.',
+          'Elle peut aussi exister entre deux personnes.',
+          'Elle décrit un lien émotionnel que l’on crée avec quelque chose ou quelqu’un.'
+        ],
         success: 'Oui. Certains objets restent parce qu’on s’y attache.'
       },
       {
         type: 'final',
         title: 'Épreuve V — Le vrai nom du refuge',
         q: `
-          <p>Je fais partie de la famille des peluches, mais mon nom est plus tendre.</p>
-          <p>On peut me trouver enfantin quand on me regarde de loin.</p>
-          <p>Pourtant, pour la bonne personne, je peux contenir des nuits, des peurs calmées, des habitudes, parfois une odeur, parfois toute une période.</p>
-          <p>On peut grandir et continuer à me garder sans vouloir l’expliquer.</p>
-          <p>Je ne suis pas seulement un objet doux. Je suis une place que l’on donne à cet objet.</p>
-          <p><strong>Qui suis-je ?</strong></p>
+          <p>Certaines personnes l’oublient.</p>
+          <p>D’autres le retrouvent des années plus tard.</p>
+          <p>Il ne possède aucune valeur particulière.</p>
+          <p>Pourtant peu accepteraient qu’on le jette sans leur demander.</p>
+          <p>Il accompagne souvent les premiers rêves.</p>
+          <p>Et parfois même quelques rêves d’adulte.</p>
+          <p><strong>Qui est-il ?</strong></p>
         `,
         answers: ['doudou'],
+        hints: [
+          'La réponse est un objet.',
+          'Beaucoup en ont possédé un durant l’enfance.',
+          'Certains le conservent même en grandissant.',
+          'Il est souvent associé au sommeil, à la douceur et au réconfort.'
+        ],
         success: 'Tu as trouvé le vrai nom du Refuge Doré.'
       }
     ],
@@ -124,12 +156,18 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, completed: [] };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [] };
 }
 
 function loadState() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(defaultState()));
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(defaultState()));
+    state.unlocked = state.unlocked || [];
+    state.lastUnlockMonth = state.lastUnlockMonth || null;
+    state.answers = state.answers || {};
+    state.hints = state.hints || {};
+    state.completed = state.completed || [];
+    return state;
   } catch {
     return defaultState();
   }
@@ -227,9 +265,14 @@ function renderRoom(ticket) {
   ticket.riddles.forEach((r, index) => {
     const isUnlocked = index === 0 || solved.includes(index - 1);
     const isSolved = solved.includes(index);
+    const hintsShown = getHintCount(ticket.id, index);
+    const maxHints = (r.hints || []).length;
+    const hintsHtml = isUnlocked && !isSolved && maxHints ? renderHints(ticket.id, index, r.hints, hintsShown) : '';
+
     html += `<div class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
       <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      ${hintsHtml}
       ${isUnlocked && !isSolved ? `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — ${r.success || 'bien joué.'}</p>` : ''}
     </div>`;
@@ -245,6 +288,38 @@ function renderRoom(ticket) {
 
   room.innerHTML = html;
 }
+
+function getHintCount(ticketId, index) {
+  const state = loadState();
+  return ((state.hints || {})[ticketId] || {})[index] || 0;
+}
+
+function renderHints(ticketId, index, hints, count) {
+  const visibleHints = hints.slice(0, count).map((hint, i) => `
+    <div class="hint-item"><span>Indice ${i + 1}</span><p>${hint}</p></div>
+  `).join('');
+
+  const button = count < hints.length
+    ? `<button class="hint-button" onclick="revealHint(${ticketId}, ${index})">${count === 0 ? 'Demander un indice' : 'Demander un indice supplémentaire'}</button>`
+    : `<p class="hint-max">Tous les indices de cette épreuve ont été révélés.</p>`;
+
+  return `<div class="hint-panel">
+    ${visibleHints}
+    ${button}
+  </div>`;
+}
+
+window.revealHint = function(ticketId, index) {
+  const ticket = tickets.find(t => t.id === ticketId);
+  if (!ticket) return;
+  const state = loadState();
+  state.hints[ticketId] = state.hints[ticketId] || {};
+  const current = state.hints[ticketId][index] || 0;
+  const max = (ticket.riddles[index].hints || []).length;
+  if (current < max) state.hints[ticketId][index] = current + 1;
+  saveState(state);
+  renderRoom(ticket);
+};
 
 window.checkAnswer = function(ticketId, index) {
   const ticket = tickets.find(t => t.id === ticketId);
@@ -301,6 +376,7 @@ function roman(num) {
 function resetTicket(ticketId) {
   const state = loadState();
   state.answers[ticketId] = [];
+  if (state.hints) state.hints[ticketId] = {};
   state.completed = state.completed.filter(id => id !== ticketId);
   state.unlocked = state.unlocked.filter(id => id !== ticketId);
   saveState(state);
