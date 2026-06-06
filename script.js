@@ -433,3 +433,27 @@ function setupAdmin() {
 }
 
 setupAdmin();
+
+
+/* V8 — Décor bal masqué : confettis dorés subtils, sans toucher aux fonctions */
+(function setupGoldenConfetti() {
+  if (document.querySelector('.confetti-layer')) return;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const layer = document.createElement('div');
+  layer.className = 'confetti-layer';
+  layer.setAttribute('aria-hidden', 'true');
+
+  const count = prefersReducedMotion ? 18 : 46;
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('span');
+    piece.style.setProperty('--x', `${Math.random() * 100}%`);
+    piece.style.setProperty('--delay', `${Math.random() * -18}s`);
+    piece.style.setProperty('--duration', `${14 + Math.random() * 16}s`);
+    piece.style.setProperty('--size', `${3 + Math.random() * 5}px`);
+    piece.style.setProperty('--drift', `${-35 + Math.random() * 70}px`);
+    piece.style.setProperty('--opacity', `${0.22 + Math.random() * 0.48}`);
+    layer.appendChild(piece);
+  }
+
+  document.body.prepend(layer);
+})();
