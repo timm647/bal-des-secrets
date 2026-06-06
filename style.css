@@ -367,3 +367,41 @@ body.admin-enabled section.admin-only.view.active { display: block; }
   cursor: pointer;
   color: rgba(217,180,95,.9);
 }
+
+/* V6 — rébus avec vraies images et suppression des coups de pouce */
+.image-rebus {
+  align-items: stretch;
+  justify-content: center;
+}
+.rebus-image-card {
+  width: min(280px, 40vw);
+  min-height: 210px;
+  margin: 0;
+  border: 1px solid rgba(217,180,95,.42);
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+  box-shadow: inset 0 0 34px rgba(217,180,95,.05), 0 16px 45px rgba(0,0,0,.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rebus-image-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  display: block;
+}
+.rebus-image-card:first-child img {
+  object-fit: contain;
+  background: #050505;
+  padding: 8px;
+}
+.ending-cipher p {
+  margin: 0 0 10px;
+}
+.room-step details { display: none !important; }
+@media (max-width: 700px) {
+  .rebus-image-card { width: min(320px, 82vw); }
+}
