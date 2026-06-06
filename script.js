@@ -5,7 +5,7 @@ const tickets = [
     "title": "Le Refuge Doré",
     "gift": "Doudou",
     "teaser": "Un mystère doux, discret, pensé pour les choses que tu gardes près de toi sans toujours l’expliquer.",
-    "intro": "<p>Certains trésors ne brillent pas.</p><p>Ils restent là. Ils rassurent. Et parfois, ils accompagnent une vie plus longtemps qu’on ne l’avoue.</p>",
+    "intro": "<p>Certains trésors ne brillent pas.</p><p>Ils ne sont pas faits pour impressionner, ni pour être utiles à tout prix.</p><p>Ils restent là. Ils rassurent. Et parfois, ils accompagnent une vie plus longtemps qu’on ne l’avoue.</p>",
     "riddles": [
       {
         "type": "hidden-ending",
@@ -20,7 +20,7 @@ const tickets = [
           "Observe les mots qui arrivent juste avant chaque point.",
           "Prends la première lettre de chaque mot placé juste avant un point."
         ],
-        "success": "Le premier mot est trouvé."
+        "success": "Le premier mot est trouvé. Ici, tout commence par la tendresse."
       },
       {
         "type": "rebus",
@@ -33,15 +33,15 @@ const tickets = [
         "hints": [
           "Les deux images ne doivent pas être lues comme de simples objets.",
           "La première image représente surtout un symbole inscrit sur la carte.",
-          "La seconde image montre une matière que l’on retrouve dans certains vêtements.",
+          "La seconde image montre une matière que l’on retrouve dans certains vêtements, comme des chemises ou des pantalons.",
           "Assemble le son de la lettre de la carte avec le nom de la matière."
         ],
-        "success": "Oui. Un câlin peut rassurer beaucoup."
+        "success": "Oui. Un câlin ne dit rien, mais il peut rassurer beaucoup."
       },
       {
         "type": "concept",
         "title": "Épreuve III — Ce que l’on cherche",
-        "q": "<p>Je ne suis ni une personne, ni un lieu.</p><p>Pourtant, beaucoup me cherchent.</p><p>Certains me trouvent dans une présence.</p><p>D’autres dans une habitude.</p><p>D’autres encore dans quelque chose qu’ils gardent depuis longtemps.</p><p><strong>Que suis-je ?</strong></p>",
+        "q": "<p>Je ne suis ni une personne, ni un lieu.</p><p>Pourtant, beaucoup me cherchent.</p><p>Certains me trouvent dans une présence.</p><p>D’autres dans une habitude.</p><p>D’autres encore dans quelque chose qu’ils gardent depuis longtemps.</p><p>On peut avoir besoin de moi après une mauvaise nouvelle, un moment difficile, ou simplement lorsqu’on a envie de quelque chose qui fait du bien.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
           "reconfort",
           "réconfort"
@@ -49,10 +49,10 @@ const tickets = [
         "hints": [
           "La réponse ne peut pas se voir ni se toucher.",
           "Elle se ressent plus qu’elle ne se possède.",
-          "Elle est proche du calme et de l’apaisement.",
+          "Elle est proche du calme, de l’apaisement et de la sécurité.",
           "On la cherche souvent quand on a besoin d’aller mieux."
         ],
-        "success": "Exact."
+        "success": "Exact. Le réconfort peut parfois tenir dans très peu de choses."
       },
       {
         "type": "personal",
@@ -65,9 +65,9 @@ const tickets = [
           "La réponse n’est pas un objet.",
           "Elle peut exister entre une personne et un objet.",
           "Elle peut aussi exister entre deux personnes.",
-          "Elle décrit un lien émotionnel."
+          "Elle décrit un lien émotionnel que l’on crée avec quelque chose ou quelqu’un."
         ],
-        "success": "Oui."
+        "success": "Oui. Certains objets restent parce qu’on s’y attache."
       },
       {
         "type": "final",
@@ -85,7 +85,7 @@ const tickets = [
         "success": "Tu as trouvé le vrai nom du Refuge Doré."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Refuge Doré cachait un doudou.</h3><p>Un petit refuge à garder près de toi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p></div>",
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Refuge Doré cachait un doudou.</h3><p>Pas seulement une peluche : un petit refuge à garder près de toi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p></div>",
     "memory": "Le Refuge Doré — un souvenir doux, gardé pour toi."
   },
   {
@@ -93,85 +93,85 @@ const tickets = [
     "code": "ROSE-NOIRE",
     "title": "La Rose Noire",
     "gift": "Fleurs",
-    "teaser": "Un message silencieux, fait pour dire quelque chose sans utiliser les phrases habituelles.",
-    "intro": "<p>Cette porte cherche une façon de transmettre une attention sans écrire de grande déclaration.</p>",
+    "teaser": "Une porte faite pour comprendre comment un message peut exister sans être écrit clairement.",
+    "intro": "<p>Cette porte ne commence pas par le cadeau. Elle commence par une idée : certaines attentions parlent sans utiliser beaucoup de mots.</p>",
     "riddles": [
       {
         "type": "deduction",
-        "title": "Épreuve I — Le bon messager",
-        "q": "<p>Quatre messagers veulent porter une attention jusqu’à toi.</p><ul><li>Le papier garde les mots, mais demande qu’on les lise.</li><li>Le parfum laisse une trace, mais disparaît trop vite.</li><li>La lumière révèle, mais ne reste pas entre les mains.</li><li>Le végétal peut être offert, gardé un moment, puis devenir souvenir.</li></ul><p><strong>Quel messager correspond à cette porte ?</strong></p>",
+        "title": "Épreuve I — Les quatre messagers",
+        "q": "<p>Quatre messagers veulent porter une attention jusqu’à toi.</p><ul><li>Le papier garde les mots, mais demande qu’on le lise.</li><li>Le parfum laisse une trace, mais disparaît trop vite.</li><li>La lumière révèle, mais ne reste pas entre les mains.</li><li>Le végétal ne parle pas, mais peut transmettre quelque chose par sa présence.</li></ul><p>Cette porte cherche le messager qui peut être offert, gardé un moment, puis devenir souvenir.</p><p><strong>Quel messager choisis-tu ?</strong></p>",
         "answers": [
           "vegetal",
           "végétal"
         ],
         "hints": [
           "Ce n’est pas un objet fabriqué.",
-          "Il peut vivre puis faner.",
+          "Il peut vivre, changer, puis faner.",
           "On peut l’offrir sans écrire une phrase.",
           "La réponse désigne ce qui pousse."
         ],
-        "success": "Le messager vivant est trouvé."
+        "success": "Tu as choisi le messager vivant."
       },
       {
         "type": "caesar",
-        "title": "Épreuve II — Le mot décalé",
-        "q": "<p class=\"instruction\">Chaque lettre a été avancée de 3 places.</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot retrouves-tu ?</strong></p>",
+        "title": "Épreuve II — Les lettres trop avancées",
+        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
         "answers": [
           "attention"
         ],
         "hints": [
-          "C’est un code de César.",
-          "Il faut reculer les lettres.",
-          "D devient A.",
-          "Le mot désigne le soin mis dans un geste."
+          "Le mot n’est pas mélangé : chaque lettre a subi le même déplacement.",
+          "Un homme associé à une couronne de laurier a donné son nom à ce type de code.",
+          "Pour revenir au bon mot, il faut aller dans le sens inverse.",
+          "Recule chaque lettre de trois positions."
         ],
-        "success": "Oui, l’attention compte plus que le prix."
+        "success": "Oui : l’attention est retrouvée."
       },
       {
         "type": "logic",
-        "title": "Épreuve III — Le geste invisible",
-        "q": "<p>Un objet donné au hasard ne raconte pas grand-chose.</p><p>Le même objet choisi pour toi peut soudain prendre du sens.</p><p>Ce n’est pas l’objet qui change, mais ce qu’il contient derrière le geste.</p><p><strong>Quel mot désigne ce qu’on veut faire passer ?</strong></p>",
+        "title": "Épreuve III — Pourquoi ce geste ?",
+        "q": "<p>Deux gestes peuvent se ressembler de l’extérieur.</p><p>Pourtant, l’un peut être fait au hasard, l’autre parce qu’il a été pensé pour toi.</p><p>Ce n’est pas ce qu’on tient dans la main qui change.</p><p>C’est la raison silencieuse derrière le geste.</p><p><strong>Quel mot désigne cette raison ?</strong></p>",
         "answers": [
           "intention"
         ],
         "hints": [
-          "Ce mot n’est pas visible.",
-          "Il existe avant le geste.",
-          "Il répond à la question “pourquoi ?”.",
+          "Ce mot ne désigne pas un objet.",
+          "Il répond à la question : “pourquoi ?”.",
+          "Il existe avant même que le geste soit fait.",
           "Il commence par INT."
         ],
-        "success": "Exact."
+        "success": "Oui : l’intention donne du sens au geste."
       },
       {
         "type": "morse",
-        "title": "Épreuve IV — Le ruban codé",
-        "q": "<p class=\"instruction\">Décode ce morse.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce n’est pas le cadeau. C’est ce qui peut l’accompagner.</p><p><strong>Quel mot apparaît ?</strong></p>",
+        "title": "Épreuve IV — Points et traits",
+        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot entends-tu derrière ces signes ?</strong></p>",
         "answers": [
           "ruban"
         ],
         "hints": [
-          "Cinq groupes, cinq lettres.",
-          "Le code utilise points et tirets.",
-          ".-. donne R.",
-          "On peut l’attacher autour d’un bouquet."
+          "Ce message n’utilise pas des lettres ordinaires.",
+          "Il fonctionne avec des points et des traits.",
+          "Ce système servait à transmettre des messages à distance.",
+          "Déchiffre le code Morse."
         ],
-        "success": "Oui, le ruban accompagne sans être le message principal."
+        "success": "Oui : un ruban peut accompagner le message sans être le message."
       },
       {
         "type": "final",
-        "title": "Épreuve V — Ce qui parle sans phrase",
-        "q": "<p>Tu as trouvé un messager vivant, une attention, une intention et un ruban.</p><p>Il reste à nommer ce qui peut porter tout cela à la fois.</p><p>On les offre rarement pour leur utilité.</p><p>On les offre parce qu’elles disent quelque chose.</p><p><strong>Que sont-elles ?</strong></p>",
+        "title": "Épreuve V — Le message sans phrase",
+        "q": "<p>Tu as retrouvé un messager vivant, une attention, une intention et un ruban.</p><p>Il reste à nommer ce qui peut porter tout cela à la fois.</p><p>On ne l’offre pas pour son utilité.</p><p>On l’offre parce qu’il y a quelque chose à dire sans forcément le prononcer.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
           "fleurs",
           "fleur"
         ],
         "hints": [
           "La réponse désigne un cadeau vivant.",
-          "Elles ne restent pas éternellement.",
-          "On peut les offrir en bouquet.",
-          "Le mot commence par F."
+          "Il peut être accompagné d’un ruban.",
+          "Il peut faner, mais le geste reste.",
+          "On peut l’offrir en bouquet."
         ],
-        "success": "Tu as trouvé la Rose Noire."
+        "success": "Tu as trouvé le secret de la Rose Noire."
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
@@ -181,27 +181,27 @@ const tickets = [
     "id": 3,
     "code": "10-AVRIL",
     "title": "Le Parc des Premiers Secrets",
-    "gift": "Journée avec toi",
-    "teaser": "Un souvenir, un endroit, et le début discret d’une histoire à deux.",
-    "intro": "<p>Cette porte commence par un jour et un lieu, mais elle ne s’arrête pas au passé.</p>",
+    "gift": "Date avec toi",
+    "teaser": "Un souvenir, un endroit, puis une nouvelle journée à créer ensemble.",
+    "intro": "<p>Cette porte commence dans le passé, mais elle ne s’y enferme pas. Elle utilise un souvenir pour ouvrir un nouveau moment à deux.</p>",
     "riddles": [
       {
         "type": "memory",
-        "title": "Épreuve I — Deux nombres",
-        "q": "<p class=\"instruction\">Deux nombres ont été laissés sans explication.</p><div class=\"date-fragments\"><span>10</span><span>04</span></div><p>Ils ne demandent pas seulement d’être lus comme une date.</p><p>Ils demandent de retrouver ce qu’ils protègent : un souvenir très court, mais important.</p><p><strong>Quel souvenir se cache derrière eux ?</strong></p>",
+        "title": "Épreuve I — Deux nombres gardés",
+        "q": "<p>Deux nombres ont été laissés comme une trace :</p><div class=\"date-fragments\"><span>10</span><span>04</span></div><p>Ce ne sont pas eux qui sont importants.</p><p>Ils protègent un souvenir très court, mais impossible à remplacer.</p><p><strong>Quel souvenir se cache derrière cette date ?</strong></p>",
         "answers": [
-          "premier baiser",
-          "premier bisou",
+          "premierbisou",
+          "premierbaiser",
           "bisou",
           "baiser"
         ],
         "hints": [
           "La réponse n’est pas “10 avril”.",
-          "Les deux nombres sont la clé, pas le trésor.",
-          "Le souvenir a duré seulement quelques secondes.",
-          "C’est arrivé entre nous pour la première fois ce jour-là."
+          "Les nombres donnent le jour, mais pas le souvenir.",
+          "Ce souvenir a duré seulement quelques secondes.",
+          "C’est la première fois que nos lèvres se sont rejointes."
         ],
-        "success": "Oui, la date protégeait le premier baiser."
+        "success": "Oui : le 10 avril protégeait notre premier bisou."
       },
       {
         "type": "place",
@@ -209,858 +209,908 @@ const tickets = [
         "q": "<p>Ce n’était pas une maison.</p><p>Ce n’était pas une rue.</p><p>C’était un endroit assez grand pour marcher et assez calme pour s’arrêter.</p><p>Ce jour-là, il est devenu le témoin discret d’un commencement.</p><p><strong>Quel lieu était-ce ?</strong></p>",
         "answers": [
           "parcdisle",
+          "parcdisles",
+          "parcd isle",
           "parc d isle",
           "parc d'isle",
+          "parcde lisle",
           "parc de lisle",
           "parc de l isle",
-          "parc isle"
+          "parcisle"
         ],
         "hints": [
-          "Ce lieu n’était pas important pour tout le monde.",
-          "On pouvait y marcher sans destination précise.",
+          "Ce lieu n’était pas important pour tout le monde, seulement pour nous.",
+          "On pouvait y marcher sans chercher une destination précise.",
           "Son nom évoque presque quelque chose entouré d’eau.",
           "Il se trouve à Saint-Quentin."
         ],
-        "success": "Le lieu est retrouvé."
+        "success": "Tu as retrouvé le lieu."
       },
       {
-        "type": "chronology",
-        "title": "Épreuve III — Après coup",
-        "q": "<p>Un moment peut sembler simple quand il arrive.</p><p>Puis, plus tard, on comprend qu’on l’a gardé quelque part.</p><p>Il n’a pas besoin d’être long pour compter.</p><p><strong>Quel mot donne un nom à ce qui reste ?</strong></p>",
+        "type": "emotion",
+        "title": "Épreuve III — Ce qui reste après",
+        "q": "<p>Un instant peut passer vite.</p><p>Puis il revient plus tard, sans prévenir.</p><p>Il peut être raconté, gardé, ou simplement ressenti en silence.</p><p>Ce n’est plus le moment lui-même, mais ce qu’il laisse derrière lui.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "souvenir"
         ],
         "hints": [
-          "Ce n’est pas le lieu.",
-          "Il existe après le moment.",
-          "On peut le raconter plus tard.",
-          "Le mot commence par S."
+          "Ce mot naît après l’événement.",
+          "Il peut rester même quand le lieu change.",
+          "On peut le raconter ou le garder pour soi.",
+          "Il commence par S."
         ],
-        "success": "Oui."
+        "success": "Oui : un souvenir."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Ce qu’on prépare",
-        "q": "<p>Si un souvenir a déjà existé, on peut choisir d’en créer un autre.</p><p>Cette porte ne prépare pas un objet.</p><p>Elle prépare du temps à vivre ensemble.</p><p><strong>Quel mot peut désigner ce moment prévu ?</strong></p>",
+        "type": "promise",
+        "title": "Épreuve IV — Ce qui n’est pas encore arrivé",
+        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot désigne quelque chose que l’on prépare sans l’avoir encore vécu.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
         "answers": [
-          "sortie",
-          "rendezvous",
-          "rendez-vous",
-          "date"
+          "projet",
+          "promesse"
         ],
         "hints": [
-          "La réponse n’est pas matérielle.",
-          "Elle demande de se voir.",
-          "Elle peut être organisée.",
-          "On peut appeler ça une sortie ou un rendez-vous."
+          "La réponse n’est pas un souvenir.",
+          "Elle concerne quelque chose à venir.",
+          "Elle peut se préparer à l’avance.",
+          "On peut parler d’un projet ou d’une promesse."
         ],
-        "success": "Exact."
+        "success": "Oui : quelque chose à préparer."
       },
       {
         "type": "final",
         "title": "Épreuve V — Le temps offert",
-        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé et l’idée d’un nouveau moment.</p><p>Cette porte cache du temps pour marcher, rire, parler, manger, découvrir, se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache du temps pour marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "journee avec toi",
-          "journée avec toi",
-          "journee a deux",
-          "journée à deux",
-          "date avec toi"
+          "date",
+          "rendezvous",
+          "rendez-vous"
         ],
         "hints": [
-          "Ce n’est pas un objet.",
-          "Cela dure plusieurs heures.",
-          "Cela se vit ensemble.",
-          "C’est une journée préparée pour nous."
+          "La réponse n’est pas matérielle.",
+          "Elle se vit à deux.",
+          "Elle peut durer plusieurs heures.",
+          "On pourrait aussi appeler ça un rendez-vous."
         ],
-        "success": "Tu as trouvé : une journée à deux."
+        "success": "Tu as trouvé : une date, un moment rien qu’à nous."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Cette porte cachait une journée avec moi.</h3><p>Un cadeau à vivre ensemble, pour créer un nouveau souvenir.</p></div>",
-    "memory": "Le Parc des Premiers Secrets — du 10 avril vers une journée à deux."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Parc des Premiers Secrets cachait une date avec moi.</h3><p>Une journée préparée pour nous, pour créer un nouveau souvenir à partir du premier.</p></div>",
+    "memory": "Le Parc des Premiers Secrets — du premier bisou vers une nouvelle date."
   },
   {
     "id": 4,
     "code": "AUBE-ROYALE",
     "title": "L’Aube Royale",
     "gift": "Petit-déjeuner",
-    "teaser": "Une porte construite autour de réveil, lumière, plateau et gourmandise, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte qui commence avant que la journée ne décide vraiment de commencer.",
+    "intro": "<p>Cette porte parle du début d’une journée, mais elle ne doit pas donner le cadeau trop vite.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : R… ?</strong></p>",
+        "type": "binary",
+        "title": "Épreuve I — Les lumières allumées",
+        "q": "<p>Une suite de 0 et de 1 a été laissée dans l’obscurité.</p><div class=\"cipher-text\"><strong>01010010 01000101 01010110 01000101 01001001 01001100</strong></div><p>Elle nomme le moment où la journée te reprend doucement.</p><p><strong>Quel mot se cache ici ?</strong></p>",
         "answers": [
+          "reveil",
           "réveil"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
+          "Ce n’est pas un calcul.",
+          "Chaque groupe représente une lettre.",
+          "C’est un codage informatique très simple.",
+          "Traduis le binaire en texte."
+        ],
+        "success": "Le réveil est trouvé."
+      },
+      {
+        "type": "order",
+        "title": "Épreuve II — Remettre le matin en ordre",
+        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
+        "answers": [
+          "rituel"
+        ],
+        "hints": [
+          "Ce n’est pas un objet.",
+          "C’est une répétition rassurante.",
+          "On peut en avoir un le matin.",
           "Le mot commence par R."
         ],
-        "success": "Premier fragment trouvé : réveil."
-      },
-      {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">L _ _ _</div>",
-        "answers": [
-          "lumière"
-        ],
-        "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par L."
-        ],
-        "success": "Deuxième fragment trouvé : lumière."
-      },
-      {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
-        "answers": [
-          "plateau"
-        ],
-        "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par P."
-        ],
-        "success": "Troisième fragment trouvé : plateau."
+        "success": "Oui : un rituel."
       },
       {
         "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "title": "Épreuve III — Ce qui précède",
+        "q": "<p>Je ne nourris personne.</p><p>Pourtant, je prépare le moment où l’on peut prendre le temps.</p><p>Je peux être une table, un plateau, une tasse posée au bon endroit.</p><p>Je ne suis pas le repas, mais j’annonce qu’il arrive.</p><p><strong>Que suis-je ?</strong></p>",
+        "answers": [
+          "installation",
+          "preparation",
+          "préparation"
+        ],
+        "hints": [
+          "Ce n’est pas la nourriture.",
+          "C’est ce qui rend le moment prêt.",
+          "On peut le faire avant que tu arrives.",
+          "Le mot peut être “préparation”."
+        ],
+        "success": "La préparation est trouvée."
+      },
+      {
+        "type": "taste",
+        "title": "Épreuve IV — Le petit plaisir",
+        "q": "<p>Ce mot n’est pas obligatoire pour vivre.</p><p>Mais il rend un moment plus agréable.</p><p>Il peut être sucré, salé, chaud, froid, choisi pour toi.</p><p>Il transforme un simple début de journée en attention.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "gourmandise"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par G."
+          "Ce mot parle de plaisir.",
+          "Il est souvent lié à ce qu’on mange.",
+          "Ce n’est pas nécessaire, mais ça fait du bien.",
+          "Il commence par G."
         ],
-        "success": "Dernier fragment trouvé : gourmandise."
+        "success": "Oui : la gourmandise."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : réveil, lumière, plateau, gourmandise.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Le matin servi",
+        "q": "<p>Tu as retrouvé le réveil, le rituel, la préparation et la gourmandise.</p><p>Il reste à nommer le moment complet que cette porte prépare.</p><p>Ce n’est pas juste de la nourriture.</p><p>C’est un début de journée pensé pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "petit-déjeuner"
+          "petitdejeuner",
+          "petitdéjeuner",
+          "petit dej",
+          "petitdej"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : petit-déjeuner."
+          "La réponse est un moment du matin.",
+          "Il peut se préparer sur un plateau.",
+          "Il arrive avant que la journée commence vraiment.",
+          "On l’appelle souvent “petit dej”."
         ],
-        "success": "Tu as trouvé : petit-déjeuner."
+        "success": "Tu as trouvé l’Aube Royale."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>L’Aube Royale cachait Petit-déjeuner.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "L’Aube Royale — une porte terminée autour de Petit-déjeuner."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée doucement.</p></div>",
+    "memory": "L’Aube Royale — un matin préparé pour toi."
   },
   {
     "id": 5,
     "code": "JOKER-18",
     "title": "Le Joker",
     "gift": "Une envie à réaliser",
-    "teaser": "Une porte construite autour de carte libre, choix, souhait et une fois, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte qui ne promet pas un objet précis, mais une liberté à utiliser au bon moment.",
+    "intro": "<p>Cette porte doit être comprise avant d’être utilisée. Elle cache une possibilité, pas un objet.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : C… ?</strong></p>",
+        "type": "elimination",
+        "title": "Épreuve I — La carte qui ne ressemble pas aux autres",
+        "q": "<p>Dans un jeu, certaines cartes suivent une famille.</p><p>Cœur, carreau, trèfle, pique : elles ont une place prévue.</p><p>Mais une carte peut exister à côté des règles, comme une exception.</p><p><strong>Quel mot désigne ce rôle d’exception, sans nommer la porte ?</strong></p>",
         "answers": [
-          "carte libre"
+          "exception"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par C."
+          "La réponse n’est pas une couleur.",
+          "Elle désigne ce qui ne suit pas exactement la règle.",
+          "On dit parfois “c’est l’exception”.",
+          "Le mot commence par E."
         ],
-        "success": "Premier fragment trouvé : carte libre."
+        "success": "Oui : cette porte commence par une exception."
       },
       {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">C _ _ _</div>",
+        "type": "choice",
+        "title": "Épreuve II — La décision",
+        "q": "<p>Cette porte ne choisit pas à ta place.</p><p>Elle attend que tu décides ce qui te ferait plaisir.</p><p>Le mot cherché désigne le fait de sélectionner une possibilité parmi plusieurs.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "choix"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par C."
+          "La réponse n’est pas un objet.",
+          "Elle dépend de toi.",
+          "Il peut y en avoir plusieurs, mais tu en gardes un.",
+          "Le mot commence par CH."
         ],
-        "success": "Deuxième fragment trouvé : choix."
+        "success": "Oui : le choix t’appartient."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "wish",
+        "title": "Épreuve III — Ce qui peut être petit ou grand",
+        "q": "<p>Je peux être raisonnable ou un peu capricieux.</p><p>Je peux tenir dans une sortie, un objet, un moment, une attention.</p><p>Je ne suis pas encore réalisé.</p><p>Mais je peux le devenir si quelqu’un accepte de me suivre.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
-          "souhait"
+          "souhait",
+          "envie"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par S."
+          "La réponse peut être petite ou grande.",
+          "Elle existe avant d’être réalisée.",
+          "Elle vient de toi.",
+          "On peut aussi dire “envie”."
         ],
-        "success": "Troisième fragment trouvé : souhait."
+        "success": "Oui : un souhait."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "type": "limit",
+        "title": "Épreuve IV — Une seule utilisation",
+        "q": "<p>Si cette possibilité revenait tous les jours, elle perdrait sa valeur.</p><p>Elle compte parce qu’elle demande un moment choisi.</p><p>Elle n’est pas faite pour remplacer toutes les autres surprises.</p><p><strong>Combien de fois peut-elle être utilisée ?</strong></p>",
         "answers": [
-          "une fois"
+          "unefois",
+          "1fois",
+          "une seule fois",
+          "1"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par U."
+          "La réponse est une limite.",
+          "Elle empêche que le pouvoir devienne banal.",
+          "Ce n’est pas “toujours”.",
+          "C’est l’inverse de plusieurs fois."
         ],
-        "success": "Dernier fragment trouvé : une fois."
+        "success": "Oui : une seule fois."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : carte libre, choix, souhait, une fois.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — La carte à jouer",
+        "q": "<p>Tu as trouvé l’exception, le choix, le souhait et la limite.</p><p>Cette porte te donne une possibilité simple :</p><p>quand tu voudras vraiment quelque chose, tu pourras jouer cette carte.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "envie à réaliser"
+          "enviearealiser",
+          "envie à réaliser",
+          "enviearealisee",
+          "souhaitarealiser",
+          "souhait à réaliser"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : envie à réaliser."
+          "Ce n’est pas un objet précis.",
+          "C’est quelque chose que tu choisiras.",
+          "Il sera utilisable une seule fois.",
+          "C’est une envie que je réaliserai pour toi."
         ],
-        "success": "Tu as trouvé : envie à réaliser."
+        "success": "Tu as trouvé le vrai pouvoir du Joker."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait Une envie à réaliser.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Joker — une porte terminée autour de Une envie à réaliser."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu la joueras quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
+    "memory": "Le Joker — une envie que tu pourras choisir toi-même."
   },
   {
     "id": 6,
     "code": "APRÈS-MINUIT",
     "title": "Après Minuit",
     "gift": "Pyjama / lingerie",
-    "teaser": "Une porte construite autour de douceur, texture, intimité et confort, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte douce, intime et élégante, pensée pour la nuit sans tout révéler trop vite.",
+    "intro": "<p>Cette porte avance dans une ambiance de nuit, de confort et de confiance.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : D… ?</strong></p>",
+        "type": "observation",
+        "title": "Épreuve I — Quand le jour se retire",
+        "q": "<p>Je ne suis pas le titre de cette porte.</p><p>Je suis ce qui arrive quand le bruit retombe, quand la lumière baisse, quand le monde paraît plus calme.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "nuit"
+        ],
+        "hints": [
+          "La réponse est un moment.",
+          "Elle vient après le soir.",
+          "On y associe souvent le silence et le sommeil.",
+          "Le mot commence par N."
+        ],
+        "success": "La nuit ouvre la porte."
+      },
+      {
+        "type": "texture",
+        "title": "Épreuve II — Ce qui se ressent",
+        "q": "<p>Ce mot ne désigne pas le vêtement.</p><p>Il désigne la sensation que l’on cherche quand quelque chose touche la peau sans gêner.</p><p>Il peut exister dans un tissu, dans une voix, dans un geste.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "douceur"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par D."
+          "La réponse n’est pas une matière précise.",
+          "Elle se ressent plus qu’elle ne se voit.",
+          "Elle peut être physique ou émotionnelle.",
+          "Elle commence par D."
         ],
-        "success": "Premier fragment trouvé : douceur."
-      },
-      {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">T _ _ _</div>",
-        "answers": [
-          "texture"
-        ],
-        "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par T."
-        ],
-        "success": "Deuxième fragment trouvé : texture."
-      },
-      {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
-        "answers": [
-          "intimité"
-        ],
-        "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par I."
-        ],
-        "success": "Troisième fragment trouvé : intimité."
+        "success": "Oui : la douceur."
       },
       {
         "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "title": "Épreuve III — Ce qui met à l’aise",
+        "q": "<p>Un bel objet peut être inconfortable.</p><p>Un objet simple peut devenir précieux s’il te laisse respirer, bouger, dormir, te sentir bien.</p><p>Ce mot désigne cette sensation d’être à l’aise.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "confort"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par C."
+          "Ce n’est pas le style.",
+          "Il peut compter autant que l’apparence.",
+          "On le cherche souvent pour dormir.",
+          "Le mot commence par C."
         ],
-        "success": "Dernier fragment trouvé : confort."
+        "success": "Oui : le confort."
+      },
+      {
+        "type": "trust",
+        "title": "Épreuve IV — Ce qui ne se montre pas à tout le monde",
+        "q": "<p>Cette porte ne parle pas seulement d’apparence.</p><p>Elle parle d’un espace où l’on peut être soi, sans regard extérieur.</p><p>Un espace de confiance, de proximité, et de pudeur choisie.</p><p><strong>Quel mot résume cela ?</strong></p>",
+        "answers": [
+          "intimite",
+          "intimité"
+        ],
+        "hints": [
+          "La réponse n’est pas un objet.",
+          "Elle demande de la confiance.",
+          "Elle ne se partage pas avec tout le monde.",
+          "Le mot commence par INT."
+        ],
+        "success": "Oui : l’intimité."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : douceur, texture, intimité, confort.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — La surprise de nuit",
+        "q": "<p>Tu as trouvé la nuit, la douceur, le confort et l’intimité.</p><p>Cette porte cache quelque chose à porter, pensé pour toi, pour les moments calmes ou plus précieux.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "pyjama / lingerie"
+          "pyjama",
+          "lingerie",
+          "pyjama lingerie",
+          "pyjamaetlingerie",
+          "pyjama lingerie"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : pyjama / lingerie."
+          "C’est quelque chose à porter.",
+          "C’est lié aux moments plus calmes ou à la nuit.",
+          "Cela peut être confortable, élégant ou intime.",
+          "La réponse peut être “pyjama” ou “lingerie”."
         ],
-        "success": "Tu as trouvé : pyjama / lingerie."
+        "success": "Tu as trouvé Après Minuit."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait Pyjama / lingerie.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Après Minuit — une porte terminée autour de Pyjama / lingerie."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait un pyjama / de la lingerie.</h3><p>Un cadeau pensé pour toi, entre confort, douceur et élégance.</p></div>",
+    "memory": "Après Minuit — une surprise à porter, pensée pour tes moments à toi."
   },
   {
     "id": 7,
     "code": "CHAPITRE-XII",
     "title": "Chapitre XII",
     "gift": "Livre au choix",
-    "teaser": "Une porte construite autour de imagination, auteur, mot et histoire, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte pour ouvrir une histoire qui ne sera pas imposée, mais choisie par toi.",
+    "intro": "<p>Cette porte parle d’histoires, mais elle ne donne pas le livre avant la dernière page.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : I… ?</strong></p>",
+        "type": "morse",
+        "title": "Épreuve I — Signes courts et longs",
+        "q": "<p>Un mot a été écrit sans lettres :</p><div class=\"cipher-text\"><strong>.. -- .- --. .. -. .- - .. --- -.</strong></div><p>Il désigne ce qui permet à une histoire d’exister avant même d’être lue.</p><p><strong>Quel mot se cache ici ?</strong></p>",
         "answers": [
           "imagination"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par I."
+          "Ce ne sont pas des chiffres.",
+          "Le message utilise seulement deux types de signes.",
+          "Ce système sert à coder des lettres avec points et traits.",
+          "Déchiffre le Morse."
         ],
-        "success": "Premier fragment trouvé : imagination."
-      },
-      {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">A _ _ _</div>",
-        "answers": [
-          "auteur"
-        ],
-        "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par A."
-        ],
-        "success": "Deuxième fragment trouvé : auteur."
-      },
-      {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
-        "answers": [
-          "mot"
-        ],
-        "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par M."
-        ],
-        "success": "Troisième fragment trouvé : mot."
+        "success": "L’imagination est trouvée."
       },
       {
         "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "title": "Épreuve II — Celui qui construit sans marteau",
+        "q": "<p>Il peut créer des lieux où il n’est jamais allé.</p><p>Il peut faire parler des personnes qui n’existent pas.</p><p>Il peut déclencher des émotions avec seulement des phrases.</p><p><strong>Qui est-il ?</strong></p>",
         "answers": [
-          "histoire"
+          "auteur",
+          "ecrivain",
+          "écrivain"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par H."
+          "La réponse désigne une personne.",
+          "Elle crée avec des mots.",
+          "Elle peut inventer des personnages.",
+          "On trouve souvent son nom sur une couverture."
         ],
-        "success": "Dernier fragment trouvé : histoire."
+        "success": "Oui : l’auteur."
+      },
+      {
+        "type": "sequence",
+        "title": "Épreuve III — Du plus grand au plus petit",
+        "q": "<p>Remets cette idée dans le bon sens :</p><div class=\"logic-grid\"><span>histoire</span><span>chapitre</span><span>page</span><span>ligne</span></div><p>Le mot cherché est l’étape qui se lit d’un seul regard, mais qui appartient à une page.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "ligne"
+        ],
+        "hints": [
+          "On descend vers quelque chose de plus petit.",
+          "Ce n’est pas toute la page.",
+          "C’est plus petit qu’un paragraphe.",
+          "On lit parfois entre elles."
+        ],
+        "success": "Oui : une ligne."
+      },
+      {
+        "type": "choice",
+        "title": "Épreuve IV — Ce qui t’appartient",
+        "q": "<p>Une histoire peut être offerte.</p><p>Mais celle-ci aura quelque chose de différent : elle ne sera pas décidée sans toi.</p><p>Ce mot désigne ce que tu devras faire avant que le cadeau existe vraiment.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "choix"
+        ],
+        "hints": [
+          "La réponse dépend de toi.",
+          "Il peut y avoir plusieurs possibilités.",
+          "Ce n’est pas le cadeau, mais la manière de le rendre tien.",
+          "Le mot commence par CH."
+        ],
+        "success": "Oui : le choix."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : imagination, auteur, mot, histoire.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — La première page",
+        "q": "<p>Tu as trouvé l’imagination, l’auteur, la ligne et le choix.</p><p>Il reste à nommer l’objet qui peut contenir tout cela.</p><p>Cette fois, l’histoire ne sera pas choisie à ta place.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
           "livre"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : livre."
+          "C’est un objet.",
+          "Il contient des pages.",
+          "Tu pourras le choisir toi-même.",
+          "Le mot commence par L."
         ],
-        "success": "Tu as trouvé : livre."
+        "success": "Tu as trouvé Chapitre XII."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Chapitre XII cachait Livre au choix.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Chapitre XII — une porte terminée autour de Livre au choix."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Chapitre XII cachait un livre au choix.</h3><p>Une histoire que tu pourras choisir toi-même, parce que celle-ci sera la tienne.</p></div>",
+    "memory": "Chapitre XII — une histoire que tu choisiras toi-même."
   },
   {
     "id": 8,
     "code": "FESTIN-DORÉ",
     "title": "Le Festin Doré",
     "gift": "Pack nourriture",
-    "teaser": "Une porte construite autour de goût, envie, panier et pâtes carbo, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte gourmande, faite de petites envies choisies pour toi.",
+    "intro": "<p>Cette porte ne parle pas d’un grand repas. Elle parle plutôt de petits plaisirs rassemblés.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : G… ?</strong></p>",
+        "type": "senses",
+        "title": "Épreuve I — Le premier sens",
+        "q": "<p>Je peux changer ton humeur avec presque rien.</p><p>Je peux être sucré, salé, doux, fort, réconfortant.</p><p>Je ne suis pas un aliment, mais ce que l’aliment laisse sur la langue.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
-          "goût"
+          "gout",
+          "goût",
+          "saveur"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par G."
+          "Ce n’est pas un objet.",
+          "On le découvre en mangeant.",
+          "Il peut être sucré ou salé.",
+          "On peut dire “goût” ou “saveur”."
         ],
-        "success": "Premier fragment trouvé : goût."
+        "success": "Le goût est trouvé."
       },
       {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">E _ _ _</div>",
+        "type": "personal",
+        "title": "Épreuve II — Le plat repère",
+        "q": "<p>Un indice personnel se cache dans cette porte.</p><p>Il ne donne pas le cadeau final, mais il rappelle une envie que tu aimes bien.</p><p>Ce plat mélange des pâtes, une sauce crémeuse et une envie simple.</p><p><strong>Quel plat est-ce ?</strong></p>",
         "answers": [
-          "envie"
+          "patescarbo",
+          "pâtescarbo",
+          "pates carbonara",
+          "pâtes carbonara",
+          "carbonara"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par E."
+          "C’est un plat.",
+          "Il contient des pâtes.",
+          "Son nom est souvent raccourci.",
+          "Tu as déjà dit aimer les pâtes carbo."
         ],
-        "success": "Deuxième fragment trouvé : envie."
+        "success": "Oui : les pâtes carbo."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "sorting",
+        "title": "Épreuve III — Rassembler sans cuisiner",
+        "q": "<p>Ce n’est pas un plat unique.</p><p>C’est plutôt une manière de réunir plusieurs petites choses au même endroit.</p><p>On peut y mettre du sucré, du salé, du simple, du réconfortant.</p><p><strong>Quel mot désigne ce rassemblement ?</strong></p>",
         "answers": [
-          "panier"
+          "assortiment",
+          "selection",
+          "sélection"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par P."
+          "La réponse désigne plusieurs choses ensemble.",
+          "Ce n’est pas forcément cuisiné.",
+          "On y choisit ce qui va bien ensemble.",
+          "On peut dire “sélection”."
         ],
-        "success": "Troisième fragment trouvé : panier."
+        "success": "Oui : une sélection."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "type": "real",
+        "title": "Épreuve IV — Dans le vrai monde",
+        "q": "<p>Cette porte pourra sortir du site.</p><p>Le jour venu, un indice pourra se cacher directement parmi ce qui se mange.</p><p>Si tu vois une étiquette étrange, un mot sous un paquet, ou un détail doré, ne l’ignore pas.</p><p><strong>Quel mot décrit cette recherche ?</strong></p>",
         "answers": [
-          "pâtes carbo"
+          "fouille",
+          "recherche"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par P."
+          "La réponse n’est pas un aliment.",
+          "C’est une action.",
+          "Elle consiste à regarder attentivement.",
+          "On peut fouiller un panier."
         ],
-        "success": "Dernier fragment trouvé : pâtes carbo."
+        "success": "Oui : il faudra peut-être fouiller."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : goût, envie, panier, pâtes carbo.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Les petites envies réunies",
+        "q": "<p>Tu as trouvé le goût, les pâtes carbo, la sélection et la fouille.</p><p>Cette porte cache plusieurs petites choses choisies pour toi, à manger ou à grignoter.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "pack nourriture"
+          "packnourriture",
+          "pack de nourriture",
+          "paniergourmand",
+          "panier gourmand",
+          "pack gourmand"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : pack nourriture."
+          "Ce n’est pas un seul aliment.",
+          "Il réunit plusieurs envies.",
+          "On peut le présenter dans un panier.",
+          "C’est un pack/panier de nourriture."
         ],
-        "success": "Tu as trouvé : pack nourriture."
+        "success": "Tu as trouvé le Festin Doré."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Festin Doré cachait Pack nourriture.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Festin Doré — une porte terminée autour de Pack nourriture."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Festin Doré cachait un pack nourriture.</h3><p>Un petit panier rempli de choses que tu aimes, préparé pour tes envies.</p></div>",
+    "memory": "Le Festin Doré — un panier de petites envies pour toi."
   },
   {
     "id": 9,
     "code": "FIL-DORÉ",
     "title": "Le Fil Doré",
     "gift": "Tee-shirts",
-    "teaser": "Une porte construite autour de style, coton, taille et ambiance, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte à porter, pensée pour ton style sans dévoiler trop vite le cadeau.",
+    "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : S… ?</strong></p>",
-        "answers": [
-          "style"
-        ],
-        "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par S."
-        ],
-        "success": "Premier fragment trouvé : style."
-      },
-      {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">C _ _ _</div>",
+        "type": "material",
+        "title": "Épreuve I — La base douce",
+        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
           "coton"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par C."
+          "La réponse est une matière.",
+          "On la retrouve dans beaucoup de vêtements.",
+          "Elle est souvent douce et simple.",
+          "Le mot commence par C."
         ],
-        "success": "Deuxième fragment trouvé : coton."
+        "success": "Le coton est trouvé."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "shape",
+        "title": "Épreuve II — Ce qui tombe juste",
+        "q": "<p>Deux vêtements peuvent être faits de la même matière.</p><p>Pourtant l’un peut aller parfaitement, l’autre non.</p><p>Ce mot parle de la manière dont quelque chose se pose sur toi.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "coupe"
+        ],
+        "hints": [
+          "Ce n’est pas la couleur.",
+          "Ce n’est pas la matière.",
+          "Cela change la forme portée.",
+          "On parle de la coupe d’un vêtement."
+        ],
+        "success": "Oui : la coupe."
+      },
+      {
+        "type": "choice",
+        "title": "Épreuve III — L’accord",
+        "q": "<p>Il ne suffit pas qu’un vêtement existe.</p><p>Il faut qu’il te corresponde.</p><p>Ce mot peut parler d’une ambiance, d’une couleur, d’une façon de s’habiller.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "style"
+        ],
+        "hints": [
+          "La réponse n’est pas un objet.",
+          "Elle parle de ce qui te correspond.",
+          "Elle peut être personnel.",
+          "Le mot commence par ST."
+        ],
+        "success": "Oui : le style."
+      },
+      {
+        "type": "code",
+        "title": "Épreuve IV — Trois lettres courantes",
+        "q": "<p>Un vêtement peut parfois se résumer à une courte indication.</p><div class=\"choice-line\"><span>S</span><span>M</span><span>L</span><span>XL</span></div><p>Ce n’est pas le cadeau. C’est ce qu’il faut connaître pour qu’il tombe bien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "taille"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par T."
+          "Ce n’est pas une couleur.",
+          "Cela aide à choisir le bon vêtement.",
+          "S, M et L sont des exemples.",
+          "Le mot commence par T."
         ],
-        "success": "Troisième fragment trouvé : taille."
-      },
-      {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
-        "answers": [
-          "ambiance"
-        ],
-        "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par A."
-        ],
-        "success": "Dernier fragment trouvé : ambiance."
+        "success": "Oui : la taille."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : style, coton, taille, ambiance.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Ce que tu porteras",
+        "q": "<p>Tu as trouvé le coton, la coupe, le style et la taille.</p><p>Cette porte cache quelque chose à porter, simple mais choisi pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "tee-shirt"
+          "teeshirt",
+          "tee shirt",
+          "tshirt",
+          "t shirt",
+          "tee-shirts",
+          "t-shirts"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : tee-shirt."
+          "C’est un vêtement.",
+          "Il peut être en coton.",
+          "Il se choisit avec une taille.",
+          "Le mot commence souvent par T."
         ],
-        "success": "Tu as trouvé : tee-shirt."
+        "success": "Tu as trouvé le Fil Doré."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait Tee-shirts.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Fil Doré — une porte terminée autour de Tee-shirts."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements choisis pour toi, pour ton style et ton confort.</p></div>",
+    "memory": "Le Fil Doré — des tee-shirts pensés pour toi."
   },
   {
     "id": 10,
     "code": "PETIT-MONDE",
     "title": "Le Petit Monde",
     "gift": "Figurines",
-    "teaser": "Une porte construite autour de miniature, personnage, collection et univers, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "Une porte miniature, construite autour de petits personnages et d’univers à collectionner.",
+    "intro": "<p>Cette porte parle de choses petites par la taille, mais pas forcément petites par l’attachement.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : M… ?</strong></p>",
+        "type": "scale",
+        "title": "Épreuve I — Changer d’échelle",
+        "q": "<p>Je ne suis pas moins important parce que je suis petit.</p><p>Je reprends une forme plus grande, mais réduite.</p><p>Je peux tenir dans une main tout en représentant un univers.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "miniature"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par M."
+          "La réponse parle de taille.",
+          "Elle désigne une version réduite.",
+          "Elle peut représenter quelque chose de plus grand.",
+          "Le mot commence par MINI."
         ],
-        "success": "Premier fragment trouvé : miniature."
+        "success": "La miniature est trouvée."
       },
       {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">P _ _ _</div>",
+        "type": "identity",
+        "title": "Épreuve II — Celui qui habite l’univers",
+        "q": "<p>Dans une histoire, il peut avoir une apparence, un caractère, un rôle.</p><p>Il n’est pas forcément réel, mais on peut s’y attacher.</p><p><strong>Quel mot désigne cet être d’histoire ?</strong></p>",
         "answers": [
           "personnage"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par P."
+          "La réponse n’est pas un objet.",
+          "On peut le trouver dans des films, livres ou univers.",
+          "Il peut être représenté en petit.",
+          "Le mot commence par P."
         ],
-        "success": "Deuxième fragment trouvé : personnage."
+        "success": "Oui : un personnage."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "collection",
+        "title": "Épreuve III — Quand un seul ne suffit pas",
+        "q": "<p>Un objet peut exister seul.</p><p>Mais parfois, ce qui devient amusant, c’est d’en avoir plusieurs qui se répondent.</p><p>Chaque nouveau morceau complète l’ensemble.</p><p><strong>Quel mot désigne cet ensemble ?</strong></p>",
         "answers": [
           "collection"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par C."
+          "La réponse parle de plusieurs objets.",
+          "Elle grandit avec le temps.",
+          "Chaque élément peut être différent.",
+          "Le mot commence par C."
         ],
-        "success": "Troisième fragment trouvé : collection."
+        "success": "Oui : une collection."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "type": "theme",
+        "title": "Épreuve IV — Le monde autour",
+        "q": "<p>Sommeil, yoga, animaux, personnages, couleurs…</p><p>Ce mot désigne l’idée commune qui rassemble plusieurs éléments.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "univers"
+          "theme",
+          "thème"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par U."
+          "Ce n’est pas un objet.",
+          "Il rassemble plusieurs éléments sous une même idée.",
+          "Il peut changer d’une série à l’autre.",
+          "Le mot commence par TH."
         ],
-        "success": "Dernier fragment trouvé : univers."
+        "success": "Oui : le thème."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : miniature, personnage, collection, univers.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Les petits habitants",
+        "q": "<p>Tu as trouvé miniature, personnage, collection et thème.</p><p>Cette porte cache de petits objets qui représentent des univers ou des personnages.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "figurines"
+          "figurines",
+          "figurine"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : figurines."
+          "La réponse désigne de petits objets.",
+          "Ils peuvent former une collection.",
+          "Ils représentent souvent des personnages.",
+          "Le mot commence par F."
         ],
-        "success": "Tu as trouvé : figurines."
+        "success": "Tu as trouvé le Petit Monde."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait Figurines.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Petit Monde — une porte terminée autour de Figurines."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son univers.</p></div>",
+    "memory": "Le Petit Monde — de petites figurines choisies pour toi."
   },
   {
     "id": 11,
     "code": "JARDIN-SECRET",
     "title": "Le Jardin Secret",
-    "gift": "Cadeau secret",
-    "teaser": "Une porte construite autour de secret, confiance, désir et respect, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "gift": "Cadeau intime",
+    "teaser": "Une porte plus discrète, pensée autour de confiance, pudeur et complicité.",
+    "intro": "<p>Cette porte reste élégante. Elle ne cherche pas à tout dire trop vite : elle avance par confiance.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : S… ?</strong></p>",
-        "answers": [
-          "secret"
-        ],
-        "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
-          "Le mot commence par S."
-        ],
-        "success": "Premier fragment trouvé : secret."
-      },
-      {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">C _ _ _</div>",
+        "type": "trust",
+        "title": "Épreuve I — La condition",
+        "q": "<p>Sans moi, cette porte n’aurait pas sa place.</p><p>Je ne suis pas un objet.</p><p>Je permets de recevoir une surprise sans malaise, parce qu’elle vient de quelqu’un en qui tu peux croire.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "confiance"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par C."
+          "La réponse n’est pas matérielle.",
+          "Elle se construit avec le temps.",
+          "Elle rend possible les surprises plus personnelles.",
+          "Le mot commence par CONF."
         ],
-        "success": "Deuxième fragment trouvé : confiance."
+        "success": "Oui : la confiance."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "boundary",
+        "title": "Épreuve II — Ce qui t’appartient",
+        "q": "<p>Tout ne se partage pas avec tout le monde.</p><p>Certains espaces, certaines pensées, certains moments restent à toi.</p><p>Ce mot désigne ce qui est personnel et protégé.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "désir"
+          "intimite",
+          "intimité"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par D."
+          "La réponse n’est pas un objet.",
+          "Elle parle de quelque chose de personnel.",
+          "Elle demande du respect.",
+          "Le mot commence par INT."
         ],
-        "success": "Troisième fragment trouvé : désir."
+        "success": "Oui : l’intimité."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "type": "discretion",
+        "title": "Épreuve III — Le voile",
+        "q": "<p>Ce mot ne cache pas par honte.</p><p>Il cache parce que certaines choses gagnent à rester délicates.</p><p>Il évite d’être trop direct, trop visible, trop brutal.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "respect"
+          "pudeur"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par R."
+          "La réponse est liée à la délicatesse.",
+          "Elle protège ce qui est intime.",
+          "Elle évite d’en dire trop.",
+          "Le mot commence par P."
         ],
-        "success": "Dernier fragment trouvé : respect."
+        "success": "Oui : la pudeur."
+      },
+      {
+        "type": "complicity",
+        "title": "Épreuve IV — À deux seulement",
+        "q": "<p>Ce mot existe quand un geste ou une blague n’a pas besoin d’être expliqué aux autres.</p><p>Il appartient à deux personnes qui se comprennent.</p><p>Il rend certaines choses plus simples, parce qu’il y a déjà un lien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "complicite",
+          "complicité"
+        ],
+        "hints": [
+          "Ce mot parle d’un lien.",
+          "Il peut exister dans un couple.",
+          "Il permet de se comprendre avec peu de mots.",
+          "Le mot commence par COMP."
+        ],
+        "success": "Oui : la complicité."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : secret, confiance, désir, respect.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Le cadeau discret",
+        "q": "<p>Tu as trouvé confiance, intimité, pudeur et complicité.</p><p>Cette porte cache un cadeau plus personnel que les autres.</p><p>Il n’est pas fait pour être expliqué à tout le monde.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "cadeau intime"
+          "cadeauintime",
+          "cadeau intime",
+          "sextoy",
+          "jouet intime"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : cadeau intime."
+          "La réponse n’est pas un cadeau public.",
+          "Il appartient au domaine intime.",
+          "Il demande confiance et pudeur.",
+          "On peut l’appeler un cadeau intime."
         ],
-        "success": "Tu as trouvé : cadeau intime."
+        "success": "Tu as trouvé le Jardin Secret."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait Cadeau secret.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Jardin Secret — une porte terminée autour de Cadeau secret."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau discret, pensé avec confiance et respect, seulement pour toi.</p></div>",
+    "memory": "Le Jardin Secret — une porte intime, pensée avec respect."
   },
   {
     "id": 12,
     "code": "DERNIER-MASQUE",
     "title": "Le Dernier Masque",
     "gift": "Cadeau final",
-    "teaser": "Une porte construite autour de souvenir, archives, doudou et possibilité, sans révéler trop vite son secret.",
-    "intro": "<p>Cette porte avance par étapes. Chaque réponse te rapproche du secret, mais aucune ne doit le donner trop tôt.</p>",
+    "teaser": "La dernière porte n’est pas encore figée : elle pourra rassembler les souvenirs de l’année.",
+    "intro": "<p>Cette porte restera volontairement en construction. Elle pourra devenir le final de toute l’aventure.</p>",
     "riddles": [
       {
-        "type": "code",
-        "title": "Épreuve I — Premier fragment",
-        "q": "<p>Le premier fragment n’est pas le cadeau.</p><p>Il donne seulement l’ambiance de cette porte.</p><p><strong>Quel mot correspond à cette idée : S… ?</strong></p>",
+        "type": "archive",
+        "title": "Épreuve I — Ce qui reste",
+        "q": "<p>Quand une année avance, certains moments disparaissent.</p><p>D’autres restent grâce aux traces qu’on garde : photos, mots, tickets, petits objets.</p><p><strong>Quel mot désigne ce que l’on garde du passé ?</strong></p>",
         "answers": [
           "souvenir"
         ],
         "hints": [
-          "La réponse est un mot d’ambiance.",
-          "Elle ne désigne pas le cadeau final.",
-          "Elle ouvre la logique de la porte.",
+          "La réponse n’est pas un objet précis.",
+          "Elle peut être gardée dans une boîte ou dans la tête.",
+          "Elle parle du passé.",
           "Le mot commence par S."
         ],
-        "success": "Premier fragment trouvé : souvenir."
+        "success": "Premier fragment trouvé."
       },
       {
-        "type": "logic",
-        "title": "Épreuve II — Deuxième fragment",
-        "q": "<p>Ce fragment complète le premier sans le répéter.</p><p>Il ajoute une nouvelle idée à la porte.</p><p><strong>Quel mot cherches-tu ?</strong></p><div class=\"sealed-note\">A _ _ _</div>",
+        "type": "collection",
+        "title": "Épreuve II — Rassembler",
+        "q": "<p>Un souvenir seul peut compter.</p><p>Mais plusieurs souvenirs réunis racontent une histoire plus grande.</p><p><strong>Quel mot désigne l’action de les mettre ensemble ?</strong></p>",
         "answers": [
-          "archives"
+          "rassembler",
+          "collectionner"
         ],
         "hints": [
-          "Ce mot ne répète pas la première réponse.",
-          "Il appartient au même univers que la porte.",
-          "Il aide à comprendre le chemin vers le cadeau.",
-          "Il commence par A."
+          "C’est une action.",
+          "Elle transforme plusieurs morceaux en ensemble.",
+          "On peut le faire avec des photos ou des petits mots.",
+          "Le mot peut être “rassembler”."
         ],
-        "success": "Deuxième fragment trouvé : archives."
+        "success": "Deuxième fragment trouvé."
       },
       {
-        "type": "observation",
-        "title": "Épreuve III — L’objet intermédiaire",
-        "q": "<p>La porte se précise, mais pas encore jusqu’au cadeau.</p><p>Ce mot sert d’étape entre l’idée et la révélation.</p><p><strong>Quel mot manque ?</strong></p>",
+        "type": "real",
+        "title": "Épreuve III — Hors du site",
+        "q": "<p>Un jour, cette porte pourra te demander de chercher ailleurs que dans l’écran.</p><p>Pas maintenant forcément.</p><p>Mais certains secrets sont plus beaux quand ils existent vraiment.</p><p><strong>Quel mot désigne ce qui existe hors du site ?</strong></p>",
         "answers": [
-          "doudou"
+          "reel",
+          "réel",
+          "realite",
+          "réalité"
         ],
         "hints": [
-          "La réponse sert de pont.",
-          "Ce n’est pas le cadeau final.",
-          "Elle peut être concrète ou liée à l’histoire.",
-          "Elle commence par D."
+          "La réponse s’oppose au virtuel.",
+          "Elle peut se toucher.",
+          "Elle peut être cachée chez toi.",
+          "Le mot commence par R."
         ],
-        "success": "Troisième fragment trouvé : doudou."
+        "success": "Troisième fragment trouvé."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve IV — Le dernier indice",
-        "q": "<p>Ce dernier fragment donne presque la direction finale.</p><p>Mais il ne donne pas encore le nom du cadeau.</p><p><strong>Quel mot complète la progression ?</strong></p>",
+        "type": "patience",
+        "title": "Épreuve IV — Attendre le bon moment",
+        "q": "<p>Toutes les portes ne doivent pas être terminées trop tôt.</p><p>Certaines gagnent du sens parce qu’on les laisse mûrir.</p><p><strong>Quel mot faut-il parfois accepter ?</strong></p>",
         "answers": [
-          "possibilité"
+          "patience"
         ],
         "hints": [
-          "La réponse est proche de la révélation.",
-          "Elle doit rester différente du cadeau final.",
-          "Elle donne le sens de la porte.",
-          "Elle commence par P."
+          "Ce mot parle du temps.",
+          "Il demande de ne pas tout avoir immédiatement.",
+          "Il peut rendre une surprise meilleure.",
+          "Le mot commence par P."
         ],
-        "success": "Dernier fragment trouvé : possibilité."
+        "success": "Oui : patience."
       },
       {
         "type": "final",
-        "title": "Épreuve V — La révélation",
-        "q": "<p>Tu as trouvé : souvenir, archives, doudou, possibilité.</p><p>Ces fragments pointent tous vers le même secret.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Porte à compléter",
+        "q": "<p>Cette dernière porte n’a pas encore son cadeau définitif.</p><p>Elle sera gardée pour la fin, quand l’année aura laissé assez de traces.</p><p><strong>Quel mot résume ce rôle ?</strong></p>",
         "answers": [
-          "cadeau final"
+          "final",
+          "conclusion"
         ],
         "hints": [
-          "La réponse est maintenant le cadeau.",
-          "Les quatre fragments précédents doivent y mener.",
-          "C’est la révélation de cette porte.",
-          "La réponse attendue est : cadeau final."
+          "La réponse parle de la fin.",
+          "Elle ne donne pas encore le cadeau.",
+          "Elle ferme une histoire.",
+          "On peut dire “final”."
         ],
-        "success": "Tu as trouvé : cadeau final."
+        "success": "Le Dernier Masque restera prêt pour la suite."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Dernier Masque cachait Cadeau final.</h3><p>Un cadeau pensé pour toi, révélé étape par étape.</p></div>",
-    "memory": "Le Dernier Masque — une porte terminée autour de Cadeau final."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Dernier Masque reste à compléter.</h3><p>Cette porte pourra devenir le coffre final des souvenirs, ou une surprise encore meilleure quand elle apparaîtra.</p></div>",
+    "memory": "Le Dernier Masque — une porte gardée pour la fin."
   }
 ];
 
@@ -1073,7 +1123,8 @@ function normalize(value) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[’'`´]/g, '')
-    .replace(/[-\s]+/g, '');
+    .replace(/[\s\-_/\.]+/g, '')
+    .replace(/[^A-Z0-9À-ÖØ-Ý]/g, '');
 }
 
 function defaultState() {
@@ -1334,18 +1385,36 @@ function ensureAdminPanel() {
       <button id="resetAllProgressBtn">Tout réinitialiser</button>
     </div>
     <div class="admin-door-grid">
-      ${tickets.map(t => `<button onclick="adminUnlockDoor(${t.id})">Ouvrir ${t.id}</button>`).join('')}
+      ${tickets.map(t => `<button onclick="adminUnlockDoor(${t.id})">Porte ${t.id}</button>`).join('')}
     </div>`;
   document.body.appendChild(panel);
   document.getElementById('unlockAllDoorsBtn')?.addEventListener('click', () => {
-    const state = loadState(); state.unlocked = tickets.map(t => t.id); state.lastUnlockMonth = null; saveState(state); renderMemories(); alert('Toutes les portes sont débloquées pour test.');
+    const state = loadState();
+    state.unlocked = tickets.map(t => t.id);
+    state.lastUnlockMonth = null;
+    saveState(state);
+    renderMemories();
+    alert('Toutes les portes sont débloquées pour test.');
   });
   document.getElementById('lockAllDoorsBtn')?.addEventListener('click', () => {
-    const state = loadState(); state.unlocked = []; state.lastUnlockMonth = null; saveState(state); renderMemories(); showView('code'); alert('Toutes les portes sont verrouillées.');
+    const state = loadState();
+    state.unlocked = [];
+    state.lastUnlockMonth = null;
+    saveState(state);
+    renderMemories();
+    showView('code');
+    alert('Toutes les portes sont verrouillées.');
   });
-  document.getElementById('resetAllProgressBtn')?.addEventListener('click', () => { localStorage.removeItem(STORAGE_KEY); location.reload(); });
+  document.getElementById('resetAllProgressBtn')?.addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  });
 }
-window.adminUnlockDoor = function(ticketId) { unlockForTest(ticketId); const ticket = tickets.find(t => t.id === ticketId); if (ticket) { renderRoom(ticket); showView('room'); } };
+window.adminUnlockDoor = function(ticketId) {
+  unlockForTest(ticketId);
+  const ticket = tickets.find(t => t.id === ticketId);
+  if (ticket) { renderRoom(ticket); showView('room'); }
+};
 
 function setupAdmin() {
   const params = new URLSearchParams(window.location.search);
