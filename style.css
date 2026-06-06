@@ -561,22 +561,81 @@ footer {
 }
 
 
-/* V12 — portes complètes et admin dynamique */
-.word-grid, .date-card {
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px;
-  margin:20px auto; padding:20px; border-radius:22px;
-  border:1px solid rgba(217,180,95,.25); background:rgba(0,0,0,.22);
+/* V13 — mécaniques variées et admin complet */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
 }
-.word-grid span, .date-card span {
-  display:inline-block; padding:10px 14px; border-radius:14px;
-  background:rgba(217,180,95,.07); border:1px solid rgba(217,180,95,.22);
-  color:var(--gold-soft); letter-spacing:.04em;
+.evidence-grid > div {
+  padding: 14px;
+  border: 1px solid rgba(217,180,95,.22);
+  border-radius: 16px;
+  background: rgba(255,255,255,.035);
 }
-.date-card span { font-size:clamp(2rem, 7vw, 4rem); min-width:120px; text-align:center; }
-.memory-progress { display:block; margin-top:8px; color:rgba(241,216,144,.76); }
-.dynamic-admin { margin-top:28px; }
-.admin-room-grid {
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-top:14px;
+
+.testimony {
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(217,180,95,.22);
+  background: rgba(0,0,0,.18);
 }
-.admin-room-grid button { border-radius:14px; text-align:left; }
-.acrostic strong { color:var(--gold-soft); font-weight:700; }
+.testimony p { margin: 8px 0; }
+
+.code-line {
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(217,180,95,.28);
+  background: rgba(0,0,0,.28);
+  color: var(--gold-soft);
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  letter-spacing: .12em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.code-line.binary {
+  font-size: clamp(.95rem, 3vw, 1.35rem);
+  letter-spacing: .08em;
+}
+
+.word-chips, .sequence-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+.word-chips span, .sequence-list span {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(217,180,95,.35);
+  background: rgba(217,180,95,.06);
+  color: rgba(248,241,223,.88);
+}
+
+.date-puzzle {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+.date-puzzle span {
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(217,180,95,.25);
+  background: rgba(255,255,255,.035);
+  color: var(--gold-soft);
+}
+
+.admin-door-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.admin-door-grid button {
+  border-radius: 16px;
+  text-align: left;
+}
