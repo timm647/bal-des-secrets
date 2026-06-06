@@ -193,6 +193,9 @@ function showView(id) {
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
   if (id === 'memories') renderMemories();
+
+  // Esthétique : les confettis légers ne sont visibles que sur l'accueil.
+  if (typeof updateDecorForView === 'function') updateDecorForView(id);
 }
 
 document.querySelectorAll('[data-view]').forEach(btn => {
@@ -436,7 +439,7 @@ function setupAdmin() {
 setupAdmin();
 
 
-/* V10 — Décor esthétique sans confettis permanents */
+/* V11 — Décor bal masqué contrôlé */
 function setupMasqueradeDecor() {
   if (!document.querySelector('.masquerade-watermark')) {
     const mask = document.createElement('div');
@@ -444,6 +447,29 @@ function setupMasqueradeDecor() {
     mask.setAttribute('aria-hidden', 'true');
     document.body.appendChild(mask);
   }
+
+  if (!document.querySelector('.home-confetti-layer')) {
+    const layer = document.createElement('div');
+    layer.className = 'home-confetti-layer';
+    layer.setAttribute('aria-hidden', 'true');
+
+    for (let i = 0; i < 34; i++) {
+      const piece = document.createElement('span');
+      piece.style.setProperty('--x', `${Math.random() * 100}%`);
+      piece.style.setProperty('--delay', `${Math.random() * 9}s`);
+      piece.style.setProperty('--duration', `${7 + Math.random() * 8}s`);
+      piece.style.setProperty('--size', `${4 + Math.random() * 7}px`);
+      piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 80}px`);
+      piece.style.setProperty('--rot', `${Math.random() * 360}deg`);
+      layer.appendChild(piece);
+    }
+
+    document.body.appendChild(layer);
+  }
+}
+
+function updateDecorForView(id) {
+  document.body.classList.toggle('home-confetti', id === 'home');
 }
 
 function triggerGoldBurst() {
@@ -451,7 +477,7 @@ function triggerGoldBurst() {
   burst.className = 'gold-burst';
   burst.setAttribute('aria-hidden', 'true');
 
-  for (let i = 0; i < 34; i++) {
+  for (let i = 0; i < 30; i++) {
     const piece = document.createElement('span');
     piece.style.setProperty('--x', `${Math.random() * 100}%`);
     piece.style.setProperty('--delay', `${Math.random() * 120}ms`);
@@ -465,3 +491,4 @@ function triggerGoldBurst() {
 }
 
 setupMasqueradeDecor();
+updateDecorForView(document.querySelector('.view.active')?.id || 'home');

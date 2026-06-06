@@ -451,13 +451,13 @@ body.admin-enabled section.admin-only.view.active { display: block; }
 }
 
 
-/* V10 — esthétique bal masqué, sans paillettes permanentes */
+/* V11 — esthétique bal masqué contrôlée */
 body {
   position: relative;
   overflow-x: hidden;
 }
 
-/* Lueurs dorées fixes et très lentes, pas des confettis */
+/* Lueurs dorées fixes : ambiance, pas confettis */
 body::after {
   content: "";
   position: fixed;
@@ -465,14 +465,14 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(circle at 14% 18%, rgba(217,180,95,.14), transparent 140px),
-    radial-gradient(circle at 86% 14%, rgba(217,180,95,.10), transparent 160px),
-    radial-gradient(circle at 50% 90%, rgba(8,19,55,.25), transparent 260px);
+    radial-gradient(circle at 12% 18%, rgba(217,180,95,.13), transparent 145px),
+    radial-gradient(circle at 82% 12%, rgba(241,216,144,.09), transparent 170px),
+    radial-gradient(circle at 55% 90%, rgba(8,19,55,.30), transparent 280px);
   animation: softGoldBreath 14s ease-in-out infinite;
 }
 
 @keyframes softGoldBreath {
-  0%, 100% { opacity: .72; transform: translateY(0); }
+  0%, 100% { opacity: .65; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-8px); }
 }
 
@@ -483,44 +483,81 @@ footer {
   z-index: 2;
 }
 
-/* Masque vénitien dessiné en CSS, en filigrane derrière le site */
+/* Masque vénitien discret, dessiné en CSS */
 .masquerade-watermark {
   position: fixed;
   left: 50%;
-  top: 140px;
-  width: min(560px, 82vw);
-  height: min(250px, 38vw);
+  top: 118px;
+  width: min(620px, 86vw);
+  height: min(270px, 40vw);
   transform: translateX(-50%);
   pointer-events: none;
   z-index: 0;
-  opacity: .075;
-  filter: drop-shadow(0 0 34px rgba(217,180,95,.45));
+  opacity: .085;
+  filter: drop-shadow(0 0 38px rgba(217,180,95,.42));
 }
 
 .masquerade-watermark::before,
 .masquerade-watermark::after {
   content: "";
   position: absolute;
-  top: 20%;
+  top: 18%;
   width: 47%;
-  height: 68%;
-  border: 2px solid rgba(241,216,144,.75);
+  height: 70%;
+  border: 2px solid rgba(241,216,144,.72);
   background:
-    radial-gradient(ellipse at 50% 50%, transparent 0 20%, rgba(217,180,95,.26) 21% 29%, transparent 30%),
-    radial-gradient(circle at 24% 35%, rgba(241,216,144,.45), transparent 7%),
-    linear-gradient(135deg, rgba(217,180,95,.28), rgba(8,19,55,.18));
+    radial-gradient(ellipse at 50% 52%, transparent 0 19%, rgba(217,180,95,.23) 20% 28%, transparent 29%),
+    radial-gradient(circle at 25% 34%, rgba(241,216,144,.42), transparent 7%),
+    radial-gradient(circle at 78% 68%, rgba(217,180,95,.25), transparent 8%),
+    linear-gradient(135deg, rgba(217,180,95,.24), rgba(8,19,55,.20));
 }
 
 .masquerade-watermark::before {
   left: 3%;
-  border-radius: 70% 38% 62% 46%;
+  border-radius: 72% 38% 62% 46%;
   transform: rotate(-8deg);
 }
 
 .masquerade-watermark::after {
   right: 3%;
-  border-radius: 38% 70% 46% 62%;
+  border-radius: 38% 72% 46% 62%;
   transform: rotate(8deg);
+}
+
+/* Confettis légers uniquement sur l'accueil */
+.home-confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+body.home-confetti .home-confetti-layer {
+  opacity: .75;
+  visibility: visible;
+}
+
+.home-confetti-layer span {
+  position: absolute;
+  left: var(--x);
+  top: -24px;
+  width: var(--size);
+  height: calc(var(--size) * 1.55);
+  border-radius: 2px;
+  background: linear-gradient(135deg, rgba(255,244,180,.95), rgba(217,180,95,.82), rgba(125,88,28,.78));
+  box-shadow: 0 0 8px rgba(217,180,95,.35);
+  transform: rotate(var(--rot));
+  animation: homeGoldFall var(--duration) linear var(--delay) infinite;
+}
+
+@keyframes homeGoldFall {
+  0% { transform: translate3d(0, -28px, 0) rotate(var(--rot)); opacity: 0; }
+  10% { opacity: .9; }
+  100% { transform: translate3d(var(--drift), 110vh, 0) rotate(calc(var(--rot) + 260deg)); opacity: 0; }
 }
 
 /* Petite explosion dorée seulement quand une réponse est validée */
@@ -554,8 +591,13 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   body::after,
+  .home-confetti-layer span,
   .gold-burst span {
     animation: none !important;
   }
-  .gold-burst { display: none !important; }
+
+  .home-confetti-layer,
+  .gold-burst {
+    display: none !important;
+  }
 }
