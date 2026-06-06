@@ -4,85 +4,124 @@ const tickets = [
     code: 'REFUGE-DORÉ',
     title: 'Le Refuge Doré',
     gift: 'Doudou',
-    memoryTitle: 'Le Refuge Doré',
-    memoryText: 'Un premier secret consacré à la douceur, au réconfort et aux petits refuges que l’on garde près du cœur.',
-    teaser: 'Un mystère doux, discret, fait pour les moments où le monde devient trop bruyant.',
-    intro: [
-      'Certains trésors ne brillent pas.',
-      'Certains ne servent presque à rien.',
-      'Pourtant, ils savent rester près de nous quand les journées deviennent trop lourdes.'
-    ],
-    challenges: [
+    teaser: 'Un mystère doux, discret, pensé pour les moments où le monde devient trop bruyant.',
+    intro: `
+      <p>Certains trésors ne brillent pas.</p>
+      <p>Certains ne servent à rien, et pourtant ils restent près de nous pendant des années.</p>
+      <p>Pour ouvrir ce refuge, observe, écoute, relie les indices… et ne fais pas trop confiance aux apparences.</p>
+    `,
+    riddles: [
       {
-        type: 'hiddenText',
-        title: 'Épreuve 1 — Les lettres dorées',
-        prompt: 'Un premier mot est caché dans ce texte. Observe les lettres qui brillent plus que les autres.',
-        body: [
-          'Dans les mauvais jours, certaines présences changent tout.',
-          'On ne les remarque pas toujours au premier regard.',
-          'Un simple objet peut parfois porter plus qu’une valeur.',
-          'Comme un petit morceau de calme au milieu du bruit.',
-          'Et même quand on grandit, certaines choses restent importantes.',
-          'Une tendresse discrète peut traverser les années.',
-          'Rien n’oblige un souvenir à être immense pour compter.'
-        ],
-        goldLetters: ['D', 'O', 'U', 'C', 'E', 'U', 'R'],
-        answer: ['douceur'],
-        hint: 'Regarde le début de chaque phrase. Les initiales ne sont pas choisies au hasard.',
-        success: 'Exact. Le premier indice est la douceur.'
+        type: 'acrostic',
+        title: 'Épreuve I — Les débuts comptent',
+        q: `
+          <p class="instruction">Un mot se cache ici. Ce ne sont pas les lettres dorées qui parlent, mais les débuts.</p>
+          <div class="cipher-text">
+            <p><strong>D</strong>ans les soirs un peu lourds, certaines choses savent rester près de nous.</p>
+            <p><strong>O</strong>n croit parfois qu’elles sont inutiles, jusqu’au jour où elles rassurent.</p>
+            <p><strong>U</strong>ne présence silencieuse peut parfois faire plus qu’un long discours.</p>
+            <p><strong>C</strong>e qui paraît enfantin peut cacher beaucoup de tendresse.</p>
+            <p><strong>E</strong>t même quand on grandit, certains liens ne disparaissent pas vraiment.</p>
+            <p><strong>U</strong>n petit objet peut garder plus de souvenirs qu’il n’en a l’air.</p>
+            <p><strong>R</strong>ien n’oblige à tout expliquer quand quelque chose fait simplement du bien.</p>
+          </div>
+        `,
+        answers: ['douceur'],
+        hint: 'Regarde le début de chaque ligne. Pas besoin de chercher dans tout le texte.',
+        success: 'Bien vu. Le Refuge Doré commence par quelque chose de simple : la douceur.'
       },
       {
         type: 'rebus',
-        title: 'Épreuve 2 — Le rébus',
-        prompt: 'Lis ce rébus à voix haute. Ne regarde pas l’objet : écoute surtout le son.',
-        answer: ['calin', 'câlin'],
-        hint: 'La première partie se prononce comme une lettre. La seconde ressemble au nom d’une plante : le lin.',
-        success: 'Bien joué. Un câlin ne coûte rien, mais il peut tout changer.'
+        title: 'Épreuve II — À lire à voix haute',
+        q: `
+          <p class="instruction">Le mot suivant n’est pas écrit directement. Lis ce rébus comme tu le dirais à voix haute.</p>
+          <div class="rebus-card">
+            <div class="rebus-part">
+              <span class="rebus-big">K</span>
+              <small>prononcé comme une syllabe</small>
+            </div>
+            <span class="rebus-plus">+</span>
+            <div class="rebus-part">
+              <span class="rebus-big">LIN</span>
+              <small>la matière</small>
+            </div>
+          </div>
+        `,
+        answers: ['calin', 'câlin'],
+        hint: 'K se lit “ca”. Ajoute le deuxième morceau.',
+        success: 'Exact. Un câlin ne coûte rien, mais il peut changer une soirée.'
       },
       {
-        type: 'visualRiddle',
-        title: 'Épreuve 3 — La matière du secret',
-        prompt: 'La silhouette commence à se dévoiler, mais pas assez pour tout comprendre.',
-        question: 'Je suis doux au toucher, souvent associé au confort, et on aime me garder contre soi. Quel mot me décrit le mieux ?',
-        answer: ['moelleux', 'doux', 'douceur'],
-        hint: 'On utilise souvent ce mot pour parler d’un coussin, d’une couverture ou d’une peluche.',
-        success: 'La forme devient un peu plus claire.'
+        type: 'veil',
+        title: 'Épreuve III — L’objet se rapproche',
+        q: `
+          <p>Elle en a eu depuis qu’elle est petite.</p>
+          <p>Tu lui en as déjà offert une récemment.</p>
+          <p>Ce n’est pas un vêtement, ce n’est pas un bijou, ce n’est pas un simple souvenir.</p>
+          <p>Quel genre d’objet commence à se dessiner derrière le voile ?</p>
+          <div class="veil-box">
+            <div class="soft-shape">?</div>
+            <p class="veil-caption">Le voile se lèvera quand le bon mot sera donné.</p>
+          </div>
+        `,
+        answers: ['peluche'],
+        hint: 'Pense à quelque chose de doux, qu’on peut garder près de soi, et qu’elle connaît déjà très bien.',
+        success: 'Oui. Le mystère prend forme : on se rapproche d’une peluche.',
+        solvedVisual: `
+          <div class="veil-box revealed">
+            <div class="soft-shape">🐼</div>
+            <p class="veil-caption">Une silhouette douce apparaît… mais ce n’est pas encore le dernier mot.</p>
+          </div>
+        `
       },
       {
-        type: 'question',
-        title: 'Épreuve 4 — Ce qu’on garde',
-        prompt: 'Beaucoup disent qu’ils n’en ont plus besoin. Pourtant, certains objets restent cachés dans une chambre, une armoire ou au bord d’un lit pendant des années.',
-        question: 'Pourquoi garde-t-on ce genre de chose ?',
-        answer: ['souvenir', 'nostalgie', 'attachement'],
-        hint: 'Ce n’est pas pour son utilité. C’est pour ce qu’il rappelle.',
-        success: 'Oui. Certains objets valent surtout par les souvenirs qu’ils portent.'
+        type: 'personal',
+        title: 'Épreuve IV — La silhouette noire et blanche',
+        q: `
+          <p>Il est doux, noir et blanc.</p>
+          <p>Il a l’air calme, mais celui-ci pourrait bien courir.</p>
+          <p>Ce n’est pas encore le nom du cadeau final, seulement l’apparence de celui qui l’annonce.</p>
+          <p>Quel animal se cache derrière cette piste ?</p>
+        `,
+        answers: ['panda'],
+        hint: 'Noir, blanc, doux… et tu sais déjà que celui-ci peut être une peluche.',
+        success: 'Exact. Le gardien du Refuge Doré prend la forme d’un panda.'
       },
       {
         type: 'final',
-        title: 'Épreuve 5 — Le nom du trésor',
-        prompt: 'Premier ami de nombreuses enfances. Compagnon silencieux. Gardien de secrets, de nuits, de larmes et de sourires.',
-        question: 'Quel est le trésor caché dans le Refuge Doré ?',
-        answer: ['doudou'],
-        hint: 'Ce n’est pas juste une peluche. C’est le mot plus tendre, celui qu’on garde parfois toute une vie.',
-        success: 'Tu as trouvé le nom du trésor.'
+        title: 'Épreuve V — Le vrai nom du refuge',
+        q: `
+          <p>Une peluche peut être jolie.</p>
+          <p>Un panda peut être mignon.</p>
+          <p>Mais quand on l’attache à des souvenirs, quand il rassure, quand il reste près de nous longtemps… il porte un nom plus tendre.</p>
+          <p>Quel est ce nom ?</p>
+        `,
+        answers: ['doudou'],
+        hint: 'Ce n’est pas seulement une peluche. C’est le mot qu’on utilise quand elle devient vraiment importante.',
+        success: 'Tu as trouvé le vrai nom du Refuge Doré.'
       }
     ],
-    reveal: {
-      title: 'Le Refuge Doré est découvert',
-      text: 'Ce mystère te mène vers un doudou. Parce qu’il n’y a pas d’âge pour avoir besoin d’un refuge, et parce qu’un simple câlin peut parfois valoir plus qu’un long discours.'
-    }
+    reveal: `
+      <div class="reveal-card">
+        <div class="stamp">DÉCOUVERT</div>
+        <h3>Le Refuge Doré cachait un doudou.</h3>
+        <p>Parce qu’il n’y a pas d’âge pour avoir besoin de douceur.</p>
+        <p>Et parce que certains refuges tiennent simplement dans les bras.</p>
+      </div>
+    `,
+    memory: 'Le Refuge Doré — un souvenir doux, noir et blanc, gardé pour les jours où un simple câlin vaut plus qu’un long discours.'
   },
-  { id: 2, code: 'ROSE-NOIRE', title: 'La Rose Noire', gift: 'Fleurs', teaser: 'Un message qui ne se dit pas seulement avec des mots.', challenges: [] },
-  { id: 3, code: '10-AVRIL', title: 'Le Parc des Premiers Secrets', gift: 'Journée avec toi', teaser: 'Un lieu, une date, et quelque chose qui a commencé.', challenges: [] },
-  { id: 4, code: 'AUBE-ROYALE', title: 'L’Aube Royale', gift: 'Petit-déjeuner', teaser: 'Un cadeau qui commence avant que la journée ne décide vraiment de commencer.', challenges: [] },
-  { id: 5, code: 'JOKER-18', title: 'Le Joker', gift: 'Une envie à réaliser', teaser: 'Un pouvoir à utiliser au bon moment.', challenges: [] },
-  { id: 6, code: 'APRÈS-MINUIT', title: 'Après Minuit', gift: 'Pyjama / lingerie', teaser: 'Une salle élégante, intime, et gardée sous silence.', challenges: [] },
-  { id: 7, code: 'CHAPITRE-XII', title: 'Chapitre XII', gift: 'Livre au choix', teaser: 'Certaines histoires attendent encore d’être choisies.', challenges: [] },
-  { id: 8, code: 'FESTIN-DORÉ', title: 'Le Festin Doré', gift: 'Pack nourriture', teaser: 'Un panier pour les envies, les goûts, et les petits bonheurs.', challenges: [] },
-  { id: 9, code: 'FIL-DORÉ', title: 'Le Fil Doré', gift: 'Tee-shirts', teaser: 'Quelque chose à porter, mais surtout quelque chose qui reste.', challenges: [] },
-  { id: 10, code: 'PETIT-MONDE', title: 'Le Petit Monde', gift: 'Figurines', teaser: 'Un univers miniature, mais pas sans personnalité.', challenges: [] },
-  { id: 11, code: 'JARDIN-SECRET', title: 'Le Jardin Secret', gift: 'Cadeau secret', teaser: 'Certains cadeaux ne se racontent pas sur la première page.', challenges: [] },
-  { id: 12, code: 'DERNIER-MASQUE', title: 'Le Dernier Masque', gift: 'Cadeau final', teaser: 'Le dernier ticket ne ferme pas l’histoire. Il la rassemble.', challenges: [] }
+  { id: 2, code: 'ROSE-NOIRE', title: 'La Rose Noire', gift: 'Fleurs', teaser: 'Un message qui ne se dit pas seulement avec des mots.', riddles: [] },
+  { id: 3, code: '10-AVRIL', title: 'Le Parc des Premiers Secrets', gift: 'Journée avec toi', teaser: 'Un lieu, une date, et quelque chose qui a commencé.', riddles: [] },
+  { id: 4, code: 'AUBE-ROYALE', title: 'L’Aube Royale', gift: 'Petit-déjeuner', teaser: 'Un cadeau qui commence avant que la journée ne décide vraiment de commencer.', riddles: [] },
+  { id: 5, code: 'JOKER-18', title: 'Le Joker', gift: 'Une envie à réaliser', teaser: 'Un pouvoir à utiliser au bon moment.', riddles: [] },
+  { id: 6, code: 'APRÈS-MINUIT', title: 'Après Minuit', gift: 'Pyjama / lingerie', teaser: 'Une salle élégante, intime, et gardée sous silence.', riddles: [] },
+  { id: 7, code: 'CHAPITRE-XII', title: 'Chapitre XII', gift: 'Livre au choix', teaser: 'Certaines histoires attendent encore d’être choisies.', riddles: [] },
+  { id: 8, code: 'FESTIN-DORÉ', title: 'Le Festin Doré', gift: 'Pack nourriture', teaser: 'Un panier pour les envies, les goûts, et les petits bonheurs.', riddles: [] },
+  { id: 9, code: 'FIL-DORÉ', title: 'Le Fil Doré', gift: 'Tee-shirts', teaser: 'Quelque chose à porter, mais surtout quelque chose qui reste.', riddles: [] },
+  { id: 10, code: 'PETIT-MONDE', title: 'Le Petit Monde', gift: 'Figurines', teaser: 'Un univers miniature, mais pas sans personnalité.', riddles: [] },
+  { id: 11, code: 'JARDIN-SECRET', title: 'Le Jardin Secret', gift: 'Cadeau secret', teaser: 'Certains cadeaux ne se racontent pas sur la première page.', riddles: [] },
+  { id: 12, code: 'DERNIER-MASQUE', title: 'Le Dernier Masque', gift: 'Cadeau final', teaser: 'Le dernier ticket ne ferme pas l’histoire. Il la rassemble.', riddles: [] }
 ];
 
 const STORAGE_KEY = 'bal_des_secrets_state_v2';
@@ -92,7 +131,7 @@ function normalize(value) {
 }
 
 function loadState() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"unlocked":[],"lastUnlockMonth":null,"answers":{},"completed":{},"openedAt":{}}');
+  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"unlocked":[],"lastUnlockMonth":null,"answers":{},"completed":[]}');
 }
 
 function saveState(state) {
@@ -102,10 +141,6 @@ function saveState(state) {
 function currentMonthKey() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-}
-
-function todayKey() {
-  return new Date().toLocaleDateString('fr-FR');
 }
 
 function daysUntilNextMonth() {
@@ -118,7 +153,6 @@ function showView(id) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if (id === 'memories') renderMemories();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 document.querySelectorAll('[data-view]').forEach(btn => {
@@ -142,7 +176,6 @@ function unlockTicket(ticket) {
   if (!alreadyUnlocked) {
     state.unlocked.push(ticket.id);
     state.lastUnlockMonth = thisMonth;
-    state.openedAt[ticket.id] = todayKey();
     saveState(state);
   }
 
@@ -175,148 +208,59 @@ function renderRoom(ticket) {
   const state = loadState();
   const room = document.getElementById('room');
   const solved = state.answers[ticket.id] || [];
-  const completed = Boolean(state.completed[ticket.id]);
+  const completed = solved.length >= (ticket.riddles || []).length && ticket.riddles?.length;
 
-  let html = `<div class="room-head">
-    <p class="eyebrow">Porte déverrouillée</p>
-    <h2>${ticket.title}</h2>
-    <p class="lead small-lead">${ticket.teaser}</p>
-  </div>`;
+  let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
 
   if (ticket.intro) {
-    html += `<div class="intro-scroll">${ticket.intro.map(line => `<p>${line}</p>`).join('')}</div>`;
+    html += `<div class="room-intro">${ticket.intro}</div>`;
   }
 
-  if (!ticket.challenges || !ticket.challenges.length) {
-    html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
+  if (!ticket.riddles || !ticket.riddles.length) {
+    html += `<blockquote>Cette salle est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
     room.innerHTML = html;
     return;
   }
 
-  html += `<div class="mystery-visual clarity-${Math.min(solved.length, 5)}">${teddySvg()}</div>`;
-
-  ticket.challenges.forEach((challenge, index) => {
+  ticket.riddles.forEach((r, index) => {
     const isUnlocked = index === 0 || solved.includes(index - 1);
     const isSolved = solved.includes(index);
-    html += renderChallenge(ticket, challenge, index, isUnlocked, isSolved);
+    html += `<div class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
+      <h3>${r.title || `Épreuve ${index + 1}`}</h3>
+      <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      ${isSolved && r.solvedVisual ? r.solvedVisual : ''}
+      ${isUnlocked && !isSolved ? `<details><summary>Indice</summary><p>${r.hint}</p></details><div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}
+      ${isSolved ? `<p class="message success">✓ Résolue — ${r.success || 'bien joué.'}</p>` : ''}
+    </div>`;
   });
 
   if (completed) {
-    html += renderReveal(ticket);
+    if (!state.completed.includes(ticket.id)) {
+      state.completed.push(ticket.id);
+      saveState(state);
+    }
+    html += ticket.reveal || `<blockquote>Révélation : ce mystère te mène vers ton cadeau — ${ticket.gift}.</blockquote>`;
   }
 
   room.innerHTML = html;
 }
 
-function renderChallenge(ticket, challenge, index, isUnlocked, isSolved) {
-  const lockedText = 'Cette épreuve est encore verrouillée.';
-  let content = '';
-
-  if (!isUnlocked) {
-    content = `<p>${lockedText}</p>`;
-  } else {
-    content += `<p>${challenge.prompt}</p>`;
-    if (challenge.type === 'hiddenText') content += hiddenTextHtml(challenge);
-    if (challenge.type === 'rebus') content += rebusHtml();
-    if (challenge.type === 'visualRiddle') content += `<div class="mini-note">La silhouette au-dessus deviendra plus nette à chaque réussite.</div><p>${challenge.question}</p>`;
-    if (challenge.type === 'question' || challenge.type === 'final') content += `<p class="question-line">${challenge.question}</p>`;
-
-    if (!isSolved) {
-      content += `<details><summary>Indice</summary><p>${challenge.hint}</p></details>`;
-      content += `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse" autocomplete="off"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
-    } else {
-      content += `<p class="message success">✓ ${challenge.success}</p>`;
-    }
-  }
-
-  return `<div class="room-step ${isUnlocked ? 'unlocked-step' : 'locked'} ${isSolved ? 'solved-step' : ''}">
-    <h3>${challenge.title}</h3>
-    ${content}
-  </div>`;
-}
-
-function hiddenTextHtml(challenge) {
-  return `<div class="hidden-letter-text">
-    ${challenge.body.map((line, i) => {
-      const first = challenge.goldLetters[i] || line.charAt(0);
-      return `<p><span class="gold-letter">${first}</span>${line.slice(1)}</p>`;
-    }).join('')}
-  </div>`;
-}
-
-function rebusHtml() {
-  return `<div class="rebus-card" aria-label="Rébus K plus lin">
-    <div class="rebus-piece big-letter">K</div>
-    <div class="rebus-plus">+</div>
-    <div class="rebus-piece plant">
-      <svg viewBox="0 0 160 130" role="img" aria-label="plante de lin">
-        <path d="M82 112 C78 82 76 50 79 18" />
-        <path d="M80 62 C57 52 44 37 35 20" />
-        <path d="M82 72 C105 56 119 38 129 19" />
-        <circle cx="35" cy="20" r="12" />
-        <circle cx="129" cy="19" r="12" />
-        <circle cx="79" cy="18" r="12" />
-        <text x="80" y="126" text-anchor="middle">lin</text>
-      </svg>
-    </div>
-  </div>`;
-}
-
-function teddySvg() {
-  return `<svg viewBox="0 0 260 260" class="teddy" role="img" aria-label="silhouette mystérieuse">
-    <defs>
-      <radialGradient id="fur" cx="50%" cy="35%" r="70%">
-        <stop offset="0" stop-color="#f4d48a" />
-        <stop offset="1" stop-color="#9b6f2d" />
-      </radialGradient>
-    </defs>
-    <circle cx="84" cy="69" r="34" />
-    <circle cx="176" cy="69" r="34" />
-    <circle cx="130" cy="100" r="63" />
-    <ellipse cx="130" cy="177" rx="78" ry="62" />
-    <ellipse cx="58" cy="157" rx="30" ry="52" transform="rotate(-25 58 157)" />
-    <ellipse cx="202" cy="157" rx="30" ry="52" transform="rotate(25 202 157)" />
-    <ellipse cx="92" cy="222" rx="35" ry="24" />
-    <ellipse cx="168" cy="222" rx="35" ry="24" />
-    <circle cx="108" cy="93" r="7" class="dark" />
-    <circle cx="152" cy="93" r="7" class="dark" />
-    <ellipse cx="130" cy="121" rx="28" ry="21" class="muzzle" />
-    <circle cx="130" cy="115" r="7" class="dark" />
-    <path d="M130 123 C122 132 115 132 109 126" class="mouth" />
-    <path d="M130 123 C138 132 145 132 151 126" class="mouth" />
-  </svg>`;
-}
-
-function renderReveal(ticket) {
-  return `<div class="reveal-card">
-    <div class="stamp">DÉCOUVERT</div>
-    <h3>${ticket.reveal.title}</h3>
-    <div class="final-teddy">${teddySvg()}</div>
-    <p>${ticket.reveal.text}</p>
-    <p class="memory-added">Souvenir ajouté au carnet.</p>
-  </div>`;
-}
-
 window.checkAnswer = function(ticketId, index) {
   const ticket = tickets.find(t => t.id === ticketId);
   const input = document.getElementById(`answer-${index}`);
-  const challenge = ticket.challenges[index];
   const state = loadState();
   state.answers[ticketId] = state.answers[ticketId] || [];
+  const validAnswers = ticket.riddles[index].answers || [ticket.riddles[index].a];
 
-  const accepted = challenge.answer.map(normalize);
-  if (accepted.includes(normalize(input.value))) {
+  if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
     if (!state.answers[ticketId].includes(index)) state.answers[ticketId].push(index);
-    if (state.answers[ticketId].length >= ticket.challenges.length) {
-      state.completed[ticketId] = todayKey();
-    }
     saveState(state);
     renderRoom(ticket);
   } else {
     input.value = '';
     input.placeholder = 'Ce n’est pas encore ça...';
     input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 450);
+    setTimeout(() => input.classList.remove('shake'), 350);
   }
 };
 
@@ -325,21 +269,14 @@ function renderMemories() {
   const list = document.getElementById('memoryList');
   list.innerHTML = tickets.map(t => {
     const open = state.unlocked.includes(t.id);
-    const done = Boolean(state.completed[t.id]);
-    return `<div class="memory-item ${done ? 'done-memory' : ''}">
-      <div><strong>${open ? (done ? '✦' : '✓') : '🔒'} ${open ? t.title : 'Porte inconnue'}</strong><br>
-      <span class="${open ? '' : 'locked-text'}">${open ? (done ? t.memoryText || t.teaser : 'Mystère ouvert, mais pas encore terminé.') : 'Un ticket d’or attend encore son heure.'}</span>
-      ${open ? `<br><small>${done ? 'Découvert le ' + state.completed[t.id] : 'Ouvert le ' + (state.openedAt[t.id] || '—')}</small>` : ''}</div>
+    const done = state.completed.includes(t.id);
+    return `<div class="memory-item ${done ? 'completed' : ''}">
+      <div><strong>${open ? '✓' : '🔒'} ${open ? t.title : 'Porte inconnue'}</strong><br><span class="${open ? '' : 'locked-text'}">${open ? (done && t.memory ? t.memory : t.teaser) : 'Aucun souvenir débloqué pour le moment.'}</span></div>
       ${open ? `<button onclick="renderRoom(tickets.find(x => x.id === ${t.id})); showView('room')">Ouvrir</button>` : ''}
     </div>`;
   }).join('');
 }
 
-function roman(num) {
-  return ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][num] || num;
-}
-
-// Pratique pour tes tests : ouvre la console du navigateur et tape resetBalSecrets()
 window.resetBalSecrets = function() {
   localStorage.removeItem(STORAGE_KEY);
   location.reload();
