@@ -1,0 +1,152 @@
+:root {
+  --black: #070607;
+  --black-soft: #121018;
+  --gold: #d9b45f;
+  --gold-soft: #f1d890;
+  --royal: #081337;
+  --text: #f8f1df;
+  --muted: #c7bfae;
+  --danger: #ffb3b3;
+  --success: #c9f5d0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(217,180,95,.18), transparent 24%),
+    radial-gradient(circle at 80% 20%, rgba(8,19,55,.9), transparent 34%),
+    linear-gradient(135deg, #020202, var(--black), #090815 70%, #020202);
+}
+
+.gold-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(217,180,95,.35) 1px, transparent 1.5px);
+  background-size: 52px 52px;
+  opacity: .16;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 18px clamp(18px, 4vw, 52px);
+  background: rgba(3,3,5,.78);
+  border-bottom: 1px solid rgba(217,180,95,.35);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  color: var(--gold-soft);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .9rem;
+}
+
+nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+button {
+  cursor: pointer;
+  border: 1px solid rgba(217,180,95,.45);
+  color: var(--text);
+  background: rgba(255,255,255,.03);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-family: inherit;
+}
+button:hover { border-color: var(--gold-soft); transform: translateY(-1px); }
+
+main {
+  width: min(980px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 58px 0 38px;
+}
+
+.view { display: none; }
+.view.active { display: block; animation: appear .45s ease; }
+
+@keyframes appear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero, .card {
+  border: 1px solid rgba(217,180,95,.35);
+  border-radius: 28px;
+  padding: clamp(28px, 6vw, 64px);
+  background: linear-gradient(145deg, rgba(18,16,24,.88), rgba(5,5,8,.82));
+  box-shadow: 0 30px 90px rgba(0,0,0,.45), inset 0 0 80px rgba(217,180,95,.05);
+}
+
+.hero { text-align: center; min-height: 58vh; display: flex; flex-direction: column; justify-content: center; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .22em; font-size: .8rem; }
+h1 { font-size: clamp(3rem, 9vw, 6.5rem); margin: 10px 0; color: var(--gold-soft); font-weight: 400; }
+h2 { font-size: clamp(2.1rem, 5vw, 3.6rem); margin: 8px 0 22px; color: var(--gold-soft); font-weight: 400; }
+.lead { font-size: 1.35rem; color: var(--gold-soft); }
+p, li { line-height: 1.75; color: var(--muted); font-size: 1.05rem; }
+
+.actions { margin-top: 26px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.primary { background: linear-gradient(135deg, #9b742d, #e3c36e, #8d6827); color: #171005; border: none; font-weight: 700; }
+.secondary { background: rgba(255,255,255,.05); }
+
+.rules-list { padding-left: 22px; }
+blockquote {
+  margin: 30px 0 0;
+  padding: 22px;
+  border-left: 3px solid var(--gold);
+  color: var(--gold-soft);
+  background: rgba(217,180,95,.06);
+  font-size: 1.2rem;
+}
+
+.code-box { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+input {
+  flex: 1 1 280px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(217,180,95,.45);
+  background: rgba(0,0,0,.35);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+.message { min-height: 28px; }
+.message.error { color: var(--danger); }
+.message.success { color: var(--success); }
+
+.room-step {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid rgba(217,180,95,.25);
+  border-radius: 18px;
+  background: rgba(255,255,255,.035);
+}
+.room-step.locked { opacity: .45; }
+.answer-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+.memory-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 18px;
+  border: 1px solid rgba(217,180,95,.22);
+  background: rgba(255,255,255,.035);
+}
+.locked-text { color: #7f786c; }
+
+footer { text-align: center; color: rgba(248,241,223,.45); padding: 30px; }
+
+@media (max-width: 700px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  nav { justify-content: flex-start; }
+  button { padding: 9px 12px; }
+}

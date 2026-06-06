@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Bal des Secrets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="gold-noise"></div>
+  <header class="topbar">
+    <div class="brand">Le Bal des Secrets</div>
+    <nav>
+      <button data-view="home">Accueil</button>
+      <button data-view="rules">Règles</button>
+      <button data-view="code">Entrer un code</button>
+      <button data-view="memories">Souvenirs</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="view active hero">
+      <p class="eyebrow">Invitation privée</p>
+      <h1>Bienvenue Julie</h1>
+      <p class="lead">Si tu lis ces lignes, c’est que tu as trouvé la première clé.</p>
+      <p>Les tickets que tu as reçus ne sont pas de simples tickets. Chacun d’eux ouvre une porte. Derrière chaque porte se cache un mystère. Derrière chaque mystère se cache un cadeau.</p>
+      <div class="actions">
+        <button class="primary" data-view="rules">Lire les règles du Bal</button>
+        <button class="secondary" data-view="code">Entrer un code</button>
+      </div>
+    </section>
+
+    <section id="rules" class="view card">
+      <p class="eyebrow">Protocole</p>
+      <h2>Les règles du Bal</h2>
+      <ul class="rules-list">
+        <li>Tu possèdes douze tickets d’or.</li>
+        <li>Chaque ticket contient un code unique.</li>
+        <li>Un seul ticket peut être activé par mois.</li>
+        <li>Chaque salle contient plusieurs énigmes.</li>
+        <li>Chaque énigme te rapproche de son cadeau.</li>
+        <li>Certains indices seront ici. D’autres t’attendront peut-être ailleurs.</li>
+        <li>Les salles déjà ouvertes resteront accessibles.</li>
+      </ul>
+      <blockquote>Je ne voulais pas simplement t’offrir des cadeaux. Je voulais t’offrir une année de découvertes.</blockquote>
+    </section>
+
+    <section id="code" class="view card">
+      <p class="eyebrow">Porte scellée</p>
+      <h2>Entrer un code</h2>
+      <p>Inscris ici le code gravé sur ton ticket d’or.</p>
+      <div class="code-box">
+        <input id="codeInput" type="text" placeholder="Exemple : REFUGE-DORÉ" autocomplete="off" />
+        <button class="primary" id="unlockBtn">Déverrouiller</button>
+      </div>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section id="room" class="view card room"></section>
+
+    <section id="memories" class="view card">
+      <p class="eyebrow">Archives</p>
+      <h2>Souvenirs débloqués</h2>
+      <div id="memoryList" class="memory-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Créé pour Julie — 18 ans</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
