@@ -192,11 +192,6 @@ function showView(id) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
-
-  // Décor conditionnel : les confettis d'ambiance ne restent visibles que sur l'accueil.
-  document.body.classList.remove('view-home', 'view-rules', 'view-code', 'view-room', 'view-memories', 'view-admin');
-  document.body.classList.add(`view-${id}`);
-
   if (id === 'memories') renderMemories();
 }
 
@@ -404,54 +399,6 @@ window.resetRefugeDore = function() {
   location.reload();
 };
 
-
-function setupMasqueradeDecor() {
-  if (!document.querySelector('.masquerade-watermark')) {
-    const mask = document.createElement('div');
-    mask.className = 'masquerade-watermark';
-    mask.setAttribute('aria-hidden', 'true');
-    mask.innerHTML = '<span class="mask-eye left"></span><span class="mask-eye right"></span><span class="mask-bridge"></span>';
-    document.body.appendChild(mask);
-  }
-
-  if (!document.querySelector('.confetti-layer')) {
-    const layer = document.createElement('div');
-    layer.className = 'confetti-layer';
-    layer.setAttribute('aria-hidden', 'true');
-
-    for (let i = 0; i < 34; i += 1) {
-      const piece = document.createElement('span');
-      piece.style.setProperty('--x', `${Math.random() * 100}%`);
-      piece.style.setProperty('--delay', `${Math.random() * 7}s`);
-      piece.style.setProperty('--duration', `${7 + Math.random() * 7}s`);
-      piece.style.setProperty('--size', `${4 + Math.random() * 6}px`);
-      piece.style.setProperty('--rotate', `${Math.random() * 360}deg`);
-      layer.appendChild(piece);
-    }
-
-    document.body.appendChild(layer);
-  }
-
-  document.body.classList.add('view-home');
-}
-
-function triggerGoldBurst() {
-  const burst = document.createElement('div');
-  burst.className = 'gold-burst';
-  burst.setAttribute('aria-hidden', 'true');
-
-  for (let i = 0; i < 22; i += 1) {
-    const piece = document.createElement('span');
-    piece.style.setProperty('--angle', `${(360 / 22) * i}deg`);
-    piece.style.setProperty('--distance', `${70 + Math.random() * 90}px`);
-    piece.style.setProperty('--size', `${4 + Math.random() * 7}px`);
-    burst.appendChild(piece);
-  }
-
-  document.body.appendChild(burst);
-  setTimeout(() => burst.remove(), 950);
-}
-
 function setupAdmin() {
   const params = new URLSearchParams(window.location.search);
   const enabled = params.get('admin') === '1';
@@ -486,5 +433,35 @@ function setupAdmin() {
   });
 }
 
-setupMasqueradeDecor();
 setupAdmin();
+
+
+/* V10 — Décor esthétique sans confettis permanents */
+function setupMasqueradeDecor() {
+  if (!document.querySelector('.masquerade-watermark')) {
+    const mask = document.createElement('div');
+    mask.className = 'masquerade-watermark';
+    mask.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(mask);
+  }
+}
+
+function triggerGoldBurst() {
+  const burst = document.createElement('div');
+  burst.className = 'gold-burst';
+  burst.setAttribute('aria-hidden', 'true');
+
+  for (let i = 0; i < 34; i++) {
+    const piece = document.createElement('span');
+    piece.style.setProperty('--x', `${Math.random() * 100}%`);
+    piece.style.setProperty('--delay', `${Math.random() * 120}ms`);
+    piece.style.setProperty('--rot', `${Math.random() * 360}deg`);
+    piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 90}px`);
+    burst.appendChild(piece);
+  }
+
+  document.body.appendChild(burst);
+  setTimeout(() => burst.remove(), 1100);
+}
+
+setupMasqueradeDecor();

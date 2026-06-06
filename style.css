@@ -450,166 +450,112 @@ body.admin-enabled section.admin-only.view.active { display: block; }
   font-style: italic;
 }
 
-/* V8.1 — ambiance bal masqué maîtrisée (sans toucher aux fonctions) */
+
+/* V10 — esthétique bal masqué, sans paillettes permanentes */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Lueurs dorées fixes et très lentes, pas des confettis */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(217,180,95,.14), transparent 140px),
+    radial-gradient(circle at 86% 14%, rgba(217,180,95,.10), transparent 160px),
+    radial-gradient(circle at 50% 90%, rgba(8,19,55,.25), transparent 260px);
+  animation: softGoldBreath 14s ease-in-out infinite;
+}
+
+@keyframes softGoldBreath {
+  0%, 100% { opacity: .72; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-8px); }
+}
+
+.topbar,
 main,
 footer {
   position: relative;
   z-index: 2;
 }
 
-.topbar {
-  position: sticky;
-  z-index: 20;
-}
-
+/* Masque vénitien dessiné en CSS, en filigrane derrière le site */
 .masquerade-watermark {
   position: fixed;
   left: 50%;
-  top: 135px;
-  width: min(620px, 82vw);
-  aspect-ratio: 2.55 / 1;
+  top: 140px;
+  width: min(560px, 82vw);
+  height: min(250px, 38vw);
   transform: translateX(-50%);
   pointer-events: none;
   z-index: 0;
   opacity: .075;
-  filter: drop-shadow(0 0 24px rgba(217,180,95,.22));
+  filter: drop-shadow(0 0 34px rgba(217,180,95,.45));
 }
 
 .masquerade-watermark::before,
 .masquerade-watermark::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border: 2px solid rgba(241,216,144,.72);
+  top: 20%;
+  width: 47%;
+  height: 68%;
+  border: 2px solid rgba(241,216,144,.75);
   background:
-    radial-gradient(circle at 35% 52%, transparent 0 9%, rgba(217,180,95,.36) 9.5% 10.5%, transparent 11%),
-    radial-gradient(circle at 65% 52%, transparent 0 9%, rgba(217,180,95,.36) 9.5% 10.5%, transparent 11%),
-    radial-gradient(circle at 50% 58%, rgba(217,180,95,.18), transparent 22%),
-    linear-gradient(135deg, rgba(217,180,95,.32), rgba(8,19,55,.14), rgba(217,180,95,.25));
-  clip-path: polygon(3% 48%, 12% 22%, 30% 8%, 44% 22%, 50% 16%, 56% 22%, 70% 8%, 88% 22%, 97% 48%, 88% 76%, 66% 66%, 50% 82%, 34% 66%, 12% 76%);
-  border-radius: 50% 50% 44% 44%;
+    radial-gradient(ellipse at 50% 50%, transparent 0 20%, rgba(217,180,95,.26) 21% 29%, transparent 30%),
+    radial-gradient(circle at 24% 35%, rgba(241,216,144,.45), transparent 7%),
+    linear-gradient(135deg, rgba(217,180,95,.28), rgba(8,19,55,.18));
+}
+
+.masquerade-watermark::before {
+  left: 3%;
+  border-radius: 70% 38% 62% 46%;
+  transform: rotate(-8deg);
 }
 
 .masquerade-watermark::after {
-  inset: 18% 16% 10%;
-  opacity: .55;
-  filter: blur(.2px);
-  transform: scale(.88);
-  background:
-    radial-gradient(circle at 24% 18%, rgba(241,216,144,.45), transparent 12%),
-    radial-gradient(circle at 76% 18%, rgba(241,216,144,.45), transparent 12%),
-    repeating-radial-gradient(circle at 50% 50%, rgba(217,180,95,.18) 0 2px, transparent 2px 12px);
+  right: 3%;
+  border-radius: 38% 70% 46% 62%;
+  transform: rotate(8deg);
 }
 
-.mask-eye {
-  position: absolute;
-  top: 42%;
-  width: 19%;
-  height: 19%;
-  z-index: 2;
-  border-radius: 50%;
-  background: rgba(0,0,0,.78);
-  box-shadow: 0 0 0 2px rgba(241,216,144,.46), inset 0 0 18px rgba(217,180,95,.15);
-}
-
-.mask-eye.left { left: 25%; transform: rotate(-10deg); }
-.mask-eye.right { right: 25%; transform: rotate(10deg); }
-
-.mask-bridge {
-  position: absolute;
-  left: 48%;
-  top: 42%;
-  width: 4%;
-  height: 34%;
-  z-index: 2;
-  border-radius: 0 0 60% 60%;
-  background: linear-gradient(to bottom, rgba(241,216,144,.45), rgba(217,180,95,.08));
-}
-
-.confetti-layer {
+/* Petite explosion dorée seulement quand une réponse est validée */
+.gold-burst {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
   overflow: hidden;
-  display: none;
-}
-
-body.view-home .confetti-layer {
-  display: block;
-}
-
-.confetti-layer span {
-  position: absolute;
-  left: var(--x);
-  top: -28px;
-  width: var(--size);
-  height: calc(var(--size) * 1.75);
-  border-radius: 2px;
-  background: linear-gradient(135deg, rgba(255,242,166,.95), rgba(217,180,95,.7), rgba(123,88,28,.9));
-  box-shadow: 0 0 12px rgba(217,180,95,.38);
-  opacity: .76;
-  transform: rotate(var(--rotate));
-  animation: confettiFall var(--duration) linear infinite;
-  animation-delay: var(--delay);
-}
-
-@keyframes confettiFall {
-  0% { transform: translate3d(0, -30px, 0) rotate(var(--rotate)); opacity: 0; }
-  12% { opacity: .78; }
-  100% { transform: translate3d(34px, calc(100vh + 60px), 0) rotate(calc(var(--rotate) + 280deg)); opacity: 0; }
-}
-
-.gold-burst {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-  z-index: 30;
+  z-index: 999;
 }
 
 .gold-burst span {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,245,184,.98), rgba(217,180,95,.74) 55%, rgba(217,180,95,0) 72%);
-  box-shadow: 0 0 18px rgba(217,180,95,.75);
-  animation: burstFly .9s ease-out forwards;
-  transform: rotate(var(--angle));
+  left: var(--x);
+  top: 42%;
+  width: 7px;
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, rgba(255,244,180,.98), rgba(217,180,95,.85), rgba(125,88,28,.95));
+  box-shadow: 0 0 10px rgba(217,180,95,.55);
+  transform: rotate(var(--rot));
+  opacity: 0;
+  animation: burstFall .95s ease-out var(--delay) forwards;
 }
 
-@keyframes burstFly {
-  0% { transform: rotate(var(--angle)) translate(0) scale(.3); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: rotate(var(--angle)) translate(var(--distance)) scale(0); opacity: 0; }
-}
-
-.hero,
-.card {
-  position: relative;
-  z-index: 2;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border-radius: 22px;
-  pointer-events: none;
-  border: 1px solid rgba(241,216,144,.16);
-  box-shadow: inset 0 0 60px rgba(217,180,95,.035);
+@keyframes burstFall {
+  0% { opacity: 0; transform: translateY(-25px) translateX(0) rotate(var(--rot)) scale(.8); }
+  12% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(120px) translateX(var(--drift)) rotate(calc(var(--rot) + 160deg)) scale(.55); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .confetti-layer span,
-  .gold-burst span,
-  body::after {
+  body::after,
+  .gold-burst span {
     animation: none !important;
   }
-  .confetti-layer { display: none !important; }
+  .gold-burst { display: none !important; }
 }
