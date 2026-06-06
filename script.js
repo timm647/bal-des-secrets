@@ -115,15 +115,15 @@ const tickets = [
       {
         "type": "caesar",
         "title": "Épreuve II — Les lettres trop avancées",
-        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
+        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé, comme si elles avaient été poussées un peu trop loin :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
         "answers": [
           "attention"
         ],
         "hints": [
-          "Le mot n’est pas mélangé : chaque lettre a subi le même déplacement.",
-          "Un homme associé à une couronne de laurier a donné son nom à ce type de code.",
-          "Pour revenir au bon mot, il faut aller dans le sens inverse.",
-          "Recule chaque lettre de trois positions."
+          "Le mot n’est pas mélangé : les lettres ont toutes subi la même transformation.",
+          "Ce type de décalage porte le nom d’un homme associé à Rome et à la couronne de laurier.",
+          "Le message a avancé trop loin : il faut revenir en arrière.",
+          "Chaque lettre a avancé de trois positions. Fais donc le chemin inverse."
         ],
         "success": "Oui : l’attention est retrouvée."
       },
@@ -145,15 +145,15 @@ const tickets = [
       {
         "type": "morse",
         "title": "Épreuve IV — Points et traits",
-        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot entends-tu derrière ces signes ?</strong></p>",
+        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot se cache derrière ces signes ?</strong></p>",
         "answers": [
           "ruban"
         ],
         "hints": [
           "Ce message n’utilise pas des lettres ordinaires.",
-          "Il fonctionne avec des points et des traits.",
+          "Il alterne seulement deux signes : des courts et des longs.",
           "Ce système servait à transmettre des messages à distance.",
-          "Déchiffre le code Morse."
+          "Les points et les traits forment un alphabet : remplace chaque groupe par sa lettre."
         ],
         "success": "Oui : un ruban peut accompagner le message sans être le message."
       },
@@ -244,14 +244,14 @@ const tickets = [
       {
         "type": "promise",
         "title": "Épreuve IV — Ce qui n’est pas encore arrivé",
-        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot désigne quelque chose que l’on prépare sans l’avoir encore vécu.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
+        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot ne désigne pas une date précise, mais l’idée de quelque chose que l’on prépare avant de le vivre.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
         "answers": [
           "projet",
           "promesse"
         ],
         "hints": [
           "La réponse n’est pas un souvenir.",
-          "Elle concerne quelque chose à venir.",
+          "Elle concerne quelque chose qui n’est pas encore arrivé.",
           "Elle peut se préparer à l’avance.",
           "On peut parler d’un projet ou d’une promesse."
         ],
@@ -260,11 +260,12 @@ const tickets = [
       {
         "type": "final",
         "title": "Épreuve V — Le temps offert",
-        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache du temps pour marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache un moment à deux : marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
           "date",
           "rendezvous",
-          "rendez-vous"
+          "rendez-vous",
+          "rendez vous"
         ],
         "hints": [
           "La réponse n’est pas matérielle.",
@@ -305,34 +306,37 @@ const tickets = [
       {
         "type": "order",
         "title": "Épreuve II — Remettre le matin en ordre",
-        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
+        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie du matin.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
         "answers": [
-          "rituel"
+          "rituel",
+          "routine"
         ],
         "hints": [
           "Ce n’est pas un objet.",
           "C’est une répétition rassurante.",
           "On peut en avoir un le matin.",
-          "Le mot commence par R."
+          "On peut dire “rituel” ou “routine”."
         ],
-        "success": "Oui : un rituel."
+        "success": "Oui : un rituel, une routine douce du matin."
       },
       {
         "type": "deduction",
         "title": "Épreuve III — Ce qui précède",
-        "q": "<p>Je ne nourris personne.</p><p>Pourtant, je prépare le moment où l’on peut prendre le temps.</p><p>Je peux être une table, un plateau, une tasse posée au bon endroit.</p><p>Je ne suis pas le repas, mais j’annonce qu’il arrive.</p><p><strong>Que suis-je ?</strong></p>",
+        "q": "<p>Je ne suis pas le repas.</p><p>Je ne suis pas non plus la personne qui le sert.</p><p>Pourtant, sans moi, le moment arrive moins facilement.</p><p>Je commence souvent avant que tu sois là : il faut penser, organiser, disposer, rendre prêt.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
-          "installation",
           "preparation",
-          "préparation"
+          "préparation",
+          "installation",
+          "mise en place",
+          "miseenplace"
         ],
         "hints": [
-          "Ce n’est pas la nourriture.",
-          "C’est ce qui rend le moment prêt.",
-          "On peut le faire avant que tu arrives.",
-          "Le mot peut être “préparation”."
+          "Ce n’est pas un objet.",
+          "C’est une action.",
+          "Elle a lieu avant le moment attendu.",
+          "Elle consiste à rendre quelque chose prêt."
         ],
-        "success": "La préparation est trouvée."
+        "success": "Oui : la préparation rend le moment possible."
       },
       {
         "type": "taste",
@@ -380,16 +384,16 @@ const tickets = [
     "intro": "<p>Cette porte doit être comprise avant d’être utilisée. Elle cache une possibilité, pas un objet.</p>",
     "riddles": [
       {
-        "type": "elimination",
-        "title": "Épreuve I — La carte qui ne ressemble pas aux autres",
-        "q": "<p>Dans un jeu, certaines cartes suivent une famille.</p><p>Cœur, carreau, trèfle, pique : elles ont une place prévue.</p><p>Mais une carte peut exister à côté des règles, comme une exception.</p><p><strong>Quel mot désigne ce rôle d’exception, sans nommer la porte ?</strong></p>",
+        "type": "deduction",
+        "title": "Épreuve I — Le cas à part",
+        "q": "<p>Dans une suite bien rangée, presque tout suit la même règle.</p><p>Tout semble prévu, classé, attendu.</p><p>Mais parfois, un élément existe à côté du reste : il ne détruit pas la règle, il montre seulement qu’elle n’explique pas tout.</p><p><strong>Quel mot désigne ce cas à part ?</strong></p>",
         "answers": [
           "exception"
         ],
         "hints": [
-          "La réponse n’est pas une couleur.",
-          "Elle désigne ce qui ne suit pas exactement la règle.",
-          "On dit parfois “c’est l’exception”.",
+          "La réponse n’est pas un objet.",
+          "Elle désigne quelque chose qui ne rentre pas complètement dans la règle générale.",
+          "On l’utilise quand un cas particulier échappe à ce qui était prévu.",
           "Le mot commence par E."
         ],
         "success": "Oui : cette porte commence par une exception."
@@ -410,20 +414,20 @@ const tickets = [
         "success": "Oui : le choix t’appartient."
       },
       {
-        "type": "wish",
-        "title": "Épreuve III — Ce qui peut être petit ou grand",
-        "q": "<p>Je peux être raisonnable ou un peu capricieux.</p><p>Je peux tenir dans une sortie, un objet, un moment, une attention.</p><p>Je ne suis pas encore réalisé.</p><p>Mais je peux le devenir si quelqu’un accepte de me suivre.</p><p><strong>Que suis-je ?</strong></p>",
+        "type": "permission",
+        "title": "Épreuve III — L’autorisation",
+        "q": "<p>Il ne suffit pas d’avoir une idée ou une envie.</p><p>Pour que cette porte fonctionne, il faut aussi que quelque chose t’ouvre le droit de la formuler vraiment.</p><p>Ce mot désigne le fait d’avoir le droit de faire ou de demander quelque chose.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "souhait",
-          "envie"
+          "permission",
+          "autorisation"
         ],
         "hints": [
-          "La réponse peut être petite ou grande.",
-          "Elle existe avant d’être réalisée.",
-          "Elle vient de toi.",
-          "On peut aussi dire “envie”."
+          "La réponse n’est pas l’envie elle-même.",
+          "Elle rend possible une demande.",
+          "On peut la donner à quelqu’un.",
+          "On peut dire “permission” ou “autorisation”."
         ],
-        "success": "Oui : un souhait."
+        "success": "Oui : cette porte te donne une permission spéciale."
       },
       {
         "type": "limit",
@@ -445,25 +449,28 @@ const tickets = [
       },
       {
         "type": "final",
-        "title": "Épreuve V — La carte à jouer",
-        "q": "<p>Tu as trouvé l’exception, le choix, le souhait et la limite.</p><p>Cette porte te donne une possibilité simple :</p><p>quand tu voudras vraiment quelque chose, tu pourras jouer cette carte.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — Ce que tu pourras demander",
+        "q": "<p>Tu as trouvé l’exception, le choix, la permission et la limite.</p><p>Cette porte ne cache pas un objet précis.</p><p>Elle cache quelque chose que tu choisiras toi-même, une seule fois, quand tu voudras vraiment que je le réalise pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
+          "envie",
+          "souhait",
+          "voeu",
+          "vœu",
           "enviearealiser",
           "envie à réaliser",
-          "enviearealisee",
           "souhaitarealiser",
           "souhait à réaliser"
         ],
         "hints": [
           "Ce n’est pas un objet précis.",
-          "C’est quelque chose que tu choisiras.",
-          "Il sera utilisable une seule fois.",
-          "C’est une envie que je réaliserai pour toi."
+          "La réponse vient de toi.",
+          "Elle peut être petite ou grande, raisonnable ou un peu capricieuse.",
+          "C’est une envie ou un souhait que je réaliserai pour toi."
         ],
         "success": "Tu as trouvé le vrai pouvoir du Joker."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu la joueras quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu pourras l’utiliser une seule fois, quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
     "memory": "Le Joker — une envie que tu pourras choisir toi-même."
   },
   {
@@ -569,15 +576,15 @@ const tickets = [
       {
         "type": "morse",
         "title": "Épreuve I — Signes courts et longs",
-        "q": "<p>Un mot a été écrit sans lettres :</p><div class=\"cipher-text\"><strong>.. -- .- --. .. -. .- - .. --- -.</strong></div><p>Il désigne ce qui permet à une histoire d’exister avant même d’être lue.</p><p><strong>Quel mot se cache ici ?</strong></p>",
+        "q": "<p>Un mot a été écrit sans lettres ordinaires :</p><div class=\"cipher-text\"><strong>.. -- .- --. .. -. .- - .. --- -.</strong></div><p>Il désigne ce qui permet à une histoire d’exister avant même d’être lue.</p><p><strong>Quel mot se cache ici ?</strong></p>",
         "answers": [
           "imagination"
         ],
         "hints": [
           "Ce ne sont pas des chiffres.",
           "Le message utilise seulement deux types de signes.",
-          "Ce système sert à coder des lettres avec points et traits.",
-          "Déchiffre le Morse."
+          "Ces signes peuvent remplacer les lettres d’un alphabet.",
+          "Les points et les traits forment un code : remplace chaque groupe par sa lettre."
         ],
         "success": "L’imagination est trouvée."
       },
@@ -758,7 +765,7 @@ const tickets = [
       {
         "type": "material",
         "title": "Épreuve I — La base douce",
-        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
+        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce qu’elle est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
           "coton"
         ],
@@ -795,7 +802,7 @@ const tickets = [
         "hints": [
           "La réponse n’est pas un objet.",
           "Elle parle de ce qui te correspond.",
-          "Elle peut être personnel.",
+          "Elle peut être personnelle.",
           "Le mot commence par ST."
         ],
         "success": "Oui : le style."
