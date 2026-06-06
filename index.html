@@ -15,6 +15,7 @@
       <button data-view="rules">Règles</button>
       <button data-view="code">Entrer un code</button>
       <button data-view="memories">Souvenirs</button>
+      <button id="adminNav" class="admin-only" data-view="admin">Admin</button>
     </nav>
   </header>
 
@@ -62,6 +63,19 @@
       <p class="eyebrow">Archives</p>
       <h2>Souvenirs débloqués</h2>
       <div id="memoryList" class="memory-list"></div>
+    </section>
+
+    <section id="admin" class="view card admin-only">
+      <p class="eyebrow">Mode test</p>
+      <h2>Admin</h2>
+      <p>Ce panneau sert uniquement à tester le site avant de le donner à Julie.</p>
+      <div class="admin-grid">
+        <button class="primary" id="resetRefugeBtn">Réinitialiser Le Refuge Doré</button>
+        <button id="resetAllBtn">Tout réinitialiser</button>
+        <button id="unlockRefugeBtn">Débloquer Le Refuge Doré</button>
+        <button id="resetMonthBtn">Autoriser un nouveau ticket ce mois-ci</button>
+      </div>
+      <p class="admin-note">Pour afficher ce panneau, ajoute <strong>?admin=1</strong> à la fin de l’adresse du site.</p>
     </section>
   </main>
 
