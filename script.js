@@ -11,142 +11,126 @@ const tickets = [
       <p>Ils restent là. Ils rassurent. Et parfois, ils accompagnent une vie plus longtemps qu’on ne l’avoue.</p>
     `,
     riddles: [
-      {
-        type: 'hidden-ending',
-        title: 'Épreuve I — Au bord des phrases',
-        q: `
-          <p class="instruction">Pour trouver certains indices, il faut savoir regarder. Les détails racontent parfois plus que le reste.</p>
-          <div class="cipher-text ending-cipher">
-            <p>Il y a des objets qu’on garde plus longtemps que prévu, parfois toujours.</p>
-            <p>On les croit parfois inutiles, jusqu’au moment où ils comptent encore.</p>
-            <p>Certains souvenirs reviennent surtout quand tombe la nuit.</p>
-            <p>Ce qui rassure le plus ne fait pas toujours beaucoup de bruit doucement.</p>
-            <p>Une simple présence peut parfois faire plus qu’un discours et rassure.</p>
-            <p>Les choses les plus petites peuvent porter un morceau d’enfance.</p>
-            <p>On ne sait pas toujours expliquer pourquoi elles deviennent un souvenir.</p>
-            <p>Mais quand elles restent, c’est souvent qu’elles protègent un secret.</p>
-            <p>Et parfois, ce qui paraît enfantin devient simplement essentiel.</p>
-          </div>
-          <p><strong>Quel est ce mot ?</strong></p>
-        `,
-        answers: ['tendresse'],
-        hints: [
-          'Les phrases ne sont pas seulement là pour être lues dans leur ensemble.',
-          'Certaines réponses se trouvent là où une phrase s’arrête.',
-          'Observe les mots qui arrivent juste avant chaque point.',
-          'Prends la première lettre de chaque mot placé juste avant un point.'
-        ],
-        success: 'Le premier mot est trouvé. Ici, tout commence par la tendresse.'
-      },
-      {
-        type: 'rebus',
-        title: 'Épreuve II — Le rébus du silence',
-        q: `
-          <p class="instruction">Deux images. Un seul mot à entendre.</p>
-          <div class="rebus-card image-rebus">
-            <figure class="rebus-image-card">
-              <img src="assets/roi-k.jpg" alt="Carte roi K" />
-            </figure>
-            <span class="rebus-plus">+</span>
-            <figure class="rebus-image-card">
-              <img src="assets/lin.jpg" alt="Tissu de lin" />
-            </figure>
-          </div>
-          <p><strong>Quel mot se cache derrière ce rébus ?</strong></p>
-        `,
-        answers: ['calin', 'câlin'],
-        hints: [
-          'Les deux images ne doivent pas être lues comme de simples objets.',
-          'La première image représente surtout un symbole inscrit sur la carte.',
-          'La seconde image montre une matière que l’on retrouve dans certains vêtements, comme des chemises ou des pantalons.',
-          'Assemble le son de la lettre de la carte avec le nom de la matière.'
-        ],
-        success: 'Oui. Un câlin ne dit rien, mais il peut rassurer beaucoup.'
-      },
-      {
-        type: 'concept',
-        title: 'Épreuve III — Ce que l’on cherche',
-        q: `
-          <p>Je ne suis ni une personne, ni un lieu.</p>
-          <p>Pourtant, beaucoup me cherchent.</p>
-          <p>Certains me trouvent dans une présence.</p>
-          <p>D’autres dans une habitude.</p>
-          <p>D’autres encore dans quelque chose qu’ils gardent depuis longtemps.</p>
-          <p>On peut avoir besoin de moi après une mauvaise nouvelle, un moment difficile, ou simplement lorsqu’on a envie de quelque chose qui fait du bien.</p>
-          <p><strong>Que suis-je ?</strong></p>
-        `,
-        answers: ['reconfort', 'réconfort'],
-        hints: [
-          'La réponse ne peut pas se voir ni se toucher.',
-          'Elle se ressent plus qu’elle ne se possède.',
-          'Elle est proche du calme, de l’apaisement et de la sécurité.',
-          'On la cherche souvent quand on a besoin d’aller mieux.'
-        ],
-        success: 'Exact. Le réconfort peut parfois tenir dans très peu de choses.'
-      },
-      {
-        type: 'personal',
-        title: 'Épreuve IV — Ce qui reste',
-        q: `
-          <p>Un objet peut rester dans une chambre pendant des années.</p>
-          <p>Pour quelqu’un d’autre, il ne vaut presque rien.</p>
-          <p>Pour la personne qui le garde, il peut rappeler une époque, une présence, une habitude ou un moment.</p>
-          <p>Ce n’est donc pas seulement l’objet qui compte.</p>
-          <p>C’est le lien invisible qui s’est créé avec lui.</p>
-          <p><strong>Quel mot décrit ce lien ?</strong></p>
-        `,
-        answers: ['attachement'],
-        hints: [
-          'La réponse n’est pas un objet.',
-          'Elle peut exister entre une personne et un objet.',
-          'Elle peut aussi exister entre deux personnes.',
-          'Elle décrit un lien émotionnel que l’on crée avec quelque chose ou quelqu’un.'
-        ],
-        success: 'Oui. Certains objets restent parce qu’on s’y attache.'
-      },
-      {
-        type: 'final',
-        title: 'Épreuve V — Le vrai nom du refuge',
-        q: `
-          <p>Certaines personnes l’oublient.</p>
-          <p>D’autres le retrouvent des années plus tard.</p>
-          <p>Il ne possède aucune valeur particulière.</p>
-          <p>Pourtant peu accepteraient qu’on le jette sans leur demander.</p>
-          <p>Il accompagne souvent les premiers rêves.</p>
-          <p>Et parfois même quelques rêves d’adulte.</p>
-          <p><strong>Qui est-il ?</strong></p>
-        `,
-        answers: ['doudou'],
-        hints: [
-          'La réponse est un objet.',
-          'Beaucoup en ont possédé un durant l’enfance.',
-          'Certains le conservent même en grandissant.',
-          'Il est souvent associé au sommeil, à la douceur et au réconfort.'
-        ],
-        success: 'Tu as trouvé le vrai nom du Refuge Doré.'
-      }
+      { title: 'Épreuve I — Au bord des phrases', q: `<p class="instruction">Pour trouver certains indices, il faut savoir regarder. Les détails racontent parfois plus que le reste.</p><div class="cipher-text ending-cipher"><p>Il y a des objets qu’on garde plus longtemps que prévu, parfois toujours.</p><p>On les croit parfois inutiles, jusqu’au moment où ils comptent encore.</p><p>Certains souvenirs reviennent surtout quand tombe la nuit.</p><p>Ce qui rassure le plus ne fait pas toujours beaucoup de bruit doucement.</p><p>Une simple présence peut parfois faire plus qu’un discours et rassure.</p><p>Les choses les plus petites peuvent porter un morceau d’enfance.</p><p>On ne sait pas toujours expliquer pourquoi elles deviennent un souvenir.</p><p>Mais quand elles restent, c’est souvent qu’elles protègent un secret.</p><p>Et parfois, ce qui paraît enfantin devient simplement essentiel.</p></div><p><strong>Quel est ce mot ?</strong></p>`, answers: ['tendresse'], hints: ['Les phrases ne sont pas seulement là pour être lues dans leur ensemble.','Certaines réponses se trouvent là où une phrase s’arrête.','Observe les mots qui arrivent juste avant chaque point.','Prends la première lettre de chaque mot placé juste avant un point.'], success: 'Le premier mot est trouvé. Ici, tout commence par la tendresse.' },
+      { title: 'Épreuve II — Le rébus du silence', q: `<p class="instruction">Deux images. Un seul mot à entendre.</p><div class="rebus-card image-rebus"><figure class="rebus-image-card"><img src="assets/roi-k.jpg" alt="Carte roi K" /></figure><span class="rebus-plus">+</span><figure class="rebus-image-card"><img src="assets/lin.jpg" alt="Tissu de lin" /></figure></div><p><strong>Quel mot se cache derrière ce rébus ?</strong></p>`, answers: ['calin', 'câlin'], hints: ['Les deux images ne doivent pas être lues comme de simples objets.','La première image représente surtout un symbole inscrit sur la carte.','La seconde image montre une matière que l’on retrouve dans certains vêtements, comme des chemises ou des pantalons.','Assemble le son de la lettre de la carte avec le nom de la matière.'], success: 'Oui. Un câlin ne dit rien, mais il peut rassurer beaucoup.' },
+      { title: 'Épreuve III — Ce que l’on cherche', q: `<p>Je ne suis ni une personne, ni un lieu.</p><p>Pourtant, beaucoup me cherchent.</p><p>Certains me trouvent dans une présence.</p><p>D’autres dans une habitude.</p><p>D’autres encore dans quelque chose qu’ils gardent depuis longtemps.</p><p>On peut avoir besoin de moi après une mauvaise nouvelle, un moment difficile, ou simplement lorsqu’on a envie de quelque chose qui fait du bien.</p><p><strong>Que suis-je ?</strong></p>`, answers: ['reconfort', 'réconfort'], hints: ['La réponse ne peut pas se voir ni se toucher.','Elle se ressent plus qu’elle ne se possède.','Elle est proche du calme, de l’apaisement et de la sécurité.','On la cherche souvent quand on a besoin d’aller mieux.'], success: 'Exact. Le réconfort peut parfois tenir dans très peu de choses.' },
+      { title: 'Épreuve IV — Ce qui reste', q: `<p>Un objet peut rester dans une chambre pendant des années.</p><p>Pour quelqu’un d’autre, il ne vaut presque rien.</p><p>Pour la personne qui le garde, il peut rappeler une époque, une présence, une habitude ou un moment.</p><p>Ce n’est donc pas seulement l’objet qui compte.</p><p>C’est le lien invisible qui s’est créé avec lui.</p><p><strong>Quel mot décrit ce lien ?</strong></p>`, answers: ['attachement'], hints: ['La réponse n’est pas un objet.','Elle peut exister entre une personne et un objet.','Elle peut aussi exister entre deux personnes.','Elle décrit un lien émotionnel que l’on crée avec quelque chose ou quelqu’un.'], success: 'Oui. Certains objets restent parce qu’on s’y attache.' },
+      { title: 'Épreuve V — Le vrai nom du refuge', q: `<p>Certaines personnes l’oublient.</p><p>D’autres le retrouvent des années plus tard.</p><p>Il ne possède aucune valeur particulière.</p><p>Pourtant peu accepteraient qu’on le jette sans leur demander.</p><p>Il accompagne souvent les premiers rêves.</p><p>Et parfois même quelques rêves d’adulte.</p><p><strong>Qui est-il ?</strong></p>`, answers: ['doudou'], hints: ['La réponse est un objet.','Beaucoup en ont possédé un durant l’enfance.','Certains le conservent même en grandissant.','Il est souvent associé au sommeil, à la douceur et au réconfort.'], success: 'Tu as trouvé le vrai nom du Refuge Doré.' }
     ],
-    reveal: `
-      <div class="reveal-card">
-        <div class="stamp">DÉCOUVERT</div>
-        <h3>Le Refuge Doré cachait un doudou.</h3>
-        <p>Pas seulement une peluche.</p>
-        <p>Un petit refuge à garder près de soi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p>
-      </div>
-    `,
+    reveal: `<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Refuge Doré cachait un doudou.</h3><p>Pas seulement une peluche.</p><p>Un petit refuge à garder près de soi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p></div>`,
     memory: 'Le Refuge Doré — un souvenir doux, gardé pour rappeler que certains refuges tiennent simplement dans les bras.'
   },
-  { id: 2, code: 'ROSE-NOIRE', title: 'La Rose Noire', gift: 'Fleurs', teaser: 'Un message qui ne se dit pas seulement avec des mots.', riddles: [] },
-  { id: 3, code: '10-AVRIL', title: 'Le Parc des Premiers Secrets', gift: 'Journée avec toi', teaser: 'Un lieu, une date, et quelque chose qui a commencé.', riddles: [] },
-  { id: 4, code: 'AUBE-ROYALE', title: 'L’Aube Royale', gift: 'Petit-déjeuner', teaser: 'Un cadeau qui commence avant que la journée ne décide vraiment de commencer.', riddles: [] },
-  { id: 5, code: 'JOKER-18', title: 'Le Joker', gift: 'Une envie à réaliser', teaser: 'Un pouvoir à utiliser au bon moment.', riddles: [] },
-  { id: 6, code: 'APRÈS-MINUIT', title: 'Après Minuit', gift: 'Pyjama / lingerie', teaser: 'Une salle élégante, intime, et gardée sous silence.', riddles: [] },
-  { id: 7, code: 'CHAPITRE-XII', title: 'Chapitre XII', gift: 'Livre au choix', teaser: 'Certaines histoires attendent encore d’être choisies.', riddles: [] },
-  { id: 8, code: 'FESTIN-DORÉ', title: 'Le Festin Doré', gift: 'Pack nourriture', teaser: 'Un panier pour les envies, les goûts, et les petits bonheurs.', riddles: [] },
-  { id: 9, code: 'FIL-DORÉ', title: 'Le Fil Doré', gift: 'Tee-shirts', teaser: 'Quelque chose à porter, mais surtout quelque chose qui reste.', riddles: [] },
-  { id: 10, code: 'PETIT-MONDE', title: 'Le Petit Monde', gift: 'Figurines', teaser: 'Un univers miniature, mais pas sans personnalité.', riddles: [] },
-  { id: 11, code: 'JARDIN-SECRET', title: 'Le Jardin Secret', gift: 'Cadeau secret', teaser: 'Certains cadeaux ne se racontent pas sur la première page.', riddles: [] },
-  { id: 12, code: 'DERNIER-MASQUE', title: 'Le Dernier Masque', gift: 'Cadeau final', teaser: 'Le dernier ticket ne ferme pas l’histoire. Il la rassemble.', riddles: [] }
+  {
+    id: 2, code: 'ROSE-NOIRE', title: 'La Rose Noire', gift: 'Fleurs', teaser: 'Un message qui ne se dit pas seulement avec des mots.',
+    intro: `<p>Dans cette porte, les couleurs parlent autant que les phrases.</p><p>Chaque pétale peut devenir une lettre, chaque silence peut devenir un message.</p>`,
+    riddles: [
+      { title:'Épreuve I — Les initiales fanées', q:`<p class="instruction">Lis ces lignes comme une invitation discrète.</p><div class="cipher-text acrostic"><p><strong>F</strong>ace aux mots que l’on n’ose pas toujours dire, certains cadeaux parlent à notre place.</p><p><strong>L</strong>eur beauté dure parfois peu, mais leur intention reste plus longtemps.</p><p><strong>E</strong>lles peuvent décorer une chambre, une table, ou simplement une journée.</p><p><strong>U</strong>n simple bouquet peut parfois dire plus qu’un grand discours.</p><p><strong>R</strong>este à trouver ce que ces lignes dessinent.</p></div><p><strong>Quel mot apparaît ?</strong></p>`, answers:['fleur','fleurs'], hints:['Le texte cache quelque chose dans sa structure.','Le début des lignes est plus important que leur fin.','Regarde la première lettre de chaque phrase.','Le mot trouvé désigne quelque chose qui peut composer un bouquet.'], success:'La première trace mène vers les fleurs.' },
+      { title:'Épreuve II — Le langage discret', q:`<p>Je peux dire merci sans utiliser la voix.</p><p>Je peux dire pardon sans écrire de lettre.</p><p>Je peux dire je pense à toi sans prononcer ton prénom.</p><p>Je suis fragile, mais mon message peut rester longtemps.</p><p><strong>Que suis-je ?</strong></p>`, answers:['bouquet'], hints:['La réponse n’est pas une seule phrase.','Elle peut contenir plusieurs couleurs.','On l’offre souvent pour transmettre une attention.','Il est composé de plusieurs fleurs réunies.'], success:'Oui. Un bouquet peut devenir une phrase silencieuse.' },
+      { title:'Épreuve III — Noir sur rose', q:`<p class="instruction">Deux couleurs peuvent suffire à créer une ambiance.</p><div class="word-grid"><span>ROSE</span><span>+</span><span>NOIR</span></div><p>La première est tendre. La seconde garde le mystère.</p><p>Ensemble, elles donnent à cette porte son nom.</p><p><strong>Quel mot désigne la couleur liée au cadeau ?</strong></p>`, answers:['rose'], hints:['La réponse est une couleur.','Elle est aussi le nom d’une fleur.','Elle fait partie du code de cette porte.','Elle est souvent associée à la douceur.'], success:'Le rose reste la couleur cachée derrière le noir.' },
+      { title:'Épreuve IV — Le ruban', q:`<p>Je ne suis pas la fleur.</p><p>Je ne suis pas le vase.</p><p>Pourtant je peux tenir le secret ensemble.</p><p>On me noue souvent autour de ce que l’on offre.</p><p><strong>Qui suis-je ?</strong></p>`, answers:['ruban'], hints:['La réponse est un petit élément décoratif.','On peut le faire tenir autour d’un cadeau.','Il peut être doré, noir ou rose.','On peut le nouer.'], success:'Le ruban ferme le message avant qu’il soit offert.' },
+      { title:'Épreuve V — Ce qui fleurit', q:`<p>Je peux apparaître pour un anniversaire.</p><p>Je peux rendre une pièce plus vivante.</p><p>Je ne dure pas toujours longtemps.</p><p>Mais on se souvient souvent de la personne qui m’a offert.</p><p><strong>Que vais-je t’offrir ?</strong></p>`, answers:['fleurs','des fleurs'], hints:['Le cadeau peut faner.','Il peut être composé de plusieurs couleurs.','On le met parfois dans un vase.','La réponse est déjà apparue au début de cette porte.'], success:'La Rose Noire a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Un cadeau simple, mais capable de rendre une journée plus belle sans faire de bruit.</p></div>`, memory:'La Rose Noire — un message offert avec des fleurs plutôt qu’avec de longues phrases.'
+  },
+  {
+    id: 3, code:'10-AVRIL', title:'Le Parc des Premiers Secrets', gift:'Journée avec toi', teaser:'Un lieu, une date, et quelque chose qui a commencé.',
+    intro:`<p>Cette porte ne commence pas par un objet.</p><p>Elle commence par un souvenir, un endroit, et une date qui a laissé une trace.</p>`,
+    riddles:[
+      { title:'Épreuve I — La date', q:`<p class="instruction">Un code peut être une clé, mais aussi un souvenir.</p><div class="date-card"><span>10</span><span>04</span></div><p>Ce jour-là n’était pas juste une date sur un calendrier.</p><p><strong>Quelle date complète se cache ici ?</strong></p>`, answers:['10 avril','dix avril','10/04'], hints:['Le code de cette porte donne déjà une partie de la réponse.','Le deuxième nombre correspond à un mois.','04 correspond au mois d’avril.','Écris la date comme on la dirait à voix haute.'], success:'La date est retrouvée.' },
+      { title:'Épreuve II — Le lieu', q:`<p>Je ne suis pas une maison.</p><p>Je ne suis pas une rue.</p><p>On peut s’y promener, s’y poser, et laisser un souvenir prendre sa place.</p><p>À Saint-Quentin, ce lieu porte un nom qui ressemble presque à une île.</p><p><strong>Quel est ce lieu ?</strong></p>`, answers:['parc d isle','parc d’île','parc d ile','parc d’île saint quentin'], hints:['La réponse est un lieu extérieur.','Elle est liée à Saint-Quentin.','Son nom contient le mot “parc”.','Son nom est le Parc d’Isle.'], success:'Le lieu du souvenir est retrouvé.' },
+      { title:'Épreuve III — Les coordonnées du cœur', q:`<p class="instruction">Rébus de souvenir :</p><div class="word-grid"><span>PARC</span><span>+</span><span>10 AVRIL</span><span>+</span><span>TOI & MOI</span></div><p>Quand un lieu, une date et deux personnes se rencontrent, il reste souvent un moment précis.</p><p><strong>Quel moment ce souvenir désigne-t-il ?</strong></p>`, answers:['premier bisou','bisou','notre premier bisou','premier baiser'], hints:['Ce n’est pas seulement une promenade.','Ce souvenir concerne vous deux.','C’est un moment du début de votre histoire.','La réponse parle d’un bisou.'], success:'Le premier bisou est identifié.' },
+      { title:'Épreuve IV — Une journée en filigrane', q:`<p>Je peux commencer sans prévenir.</p><p>Je peux contenir plusieurs lieux.</p><p>Je peux faire rire, marcher, manger, parler, se souvenir.</p><p>Je ne tiens pas dans un paquet, mais elle peut être offerte.</p><p><strong>Que suis-je ?</strong></p>`, answers:['journee','journée','date','sortie'], hints:['La réponse n’est pas un objet.','Elle peut durer plusieurs heures.','Elle peut être organisée pour deux personnes.','On pourrait appeler ça une journée ensemble.'], success:'Le cadeau commence à se dessiner.' },
+      { title:'Épreuve V — La promesse', q:`<p>Ce cadeau ne se range pas dans une armoire.</p><p>Il ne se pose pas sur une étagère.</p><p>Il se vit.</p><p>Il se raconte après.</p><p>Et il existe surtout parce qu’on le partage.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['journee avec toi','journée avec toi','une journée avec toi','date avec toi','journee ensemble','journée ensemble'], hints:['Le cadeau implique du temps.','Il est fait pour vous deux.','Il peut contenir plusieurs surprises dans la même journée.','La réponse ressemble à “une journée avec toi”.'], success:'Le Parc des Premiers Secrets a livré son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Cette porte cachait une journée avec moi.</h3><p>Pas seulement une sortie : une journée pensée pour nous deux, avec des endroits, des moments et des souvenirs à créer.</p></div>`, memory:'Le Parc des Premiers Secrets — la promesse d’une journée à deux, née autour d’un souvenir du 10 avril.'
+  },
+  {
+    id: 4, code:'AUBE-ROYALE', title:'L’Aube Royale', gift:'Petit-déjeuner', teaser:'Un cadeau qui commence avant que la journée ne décide vraiment de commencer.',
+    intro:`<p>Cette porte s’ouvre doucement, comme une lumière qui entre dans une chambre.</p><p>Ici, le cadeau ne commence pas le soir : il commence au réveil.</p>`,
+    riddles:[
+      { title:'Épreuve I — Avant midi', q:`<p>Je ne suis ni la nuit, ni l’après-midi.</p><p>Je suis le moment où tout recommence.</p><p>On m’associe au réveil, à la lumière douce, et aux premiers gestes de la journée.</p><p><strong>Que suis-je ?</strong></p>`, answers:['matin','le matin'], hints:['La réponse est un moment de la journée.','Elle vient après la nuit.','Elle commence souvent avec un réveil.','C’est le matin.'], success:'L’aube se rapproche.' },
+      { title:'Épreuve II — Le repas caché', q:`<p class="instruction">Décode le message en lisant seulement les mots qui parlent du matin.</p><div class="cipher-text"><p>nuit — réveil — chaise — tartine — lune — café — miroir — jus — manteau — croissant</p></div><p>Ces mots forment une idée commune.</p><p><strong>Quel repas désignent-ils ?</strong></p>`, answers:['petit dejeuner','petit-déjeuner','petit dej','petit déj'], hints:['Ne garde pas tous les mots.','Certains mots appartiennent clairement au réveil.','Réveil, tartine, café, jus et croissant vont ensemble.','Ils désignent le premier repas de la journée.'], success:'Le repas du matin est trouvé.' },
+      { title:'Épreuve III — À préparer', q:`<p>Je peux être simple ou travaillé.</p><p>Je peux être sucré, salé, chaud ou froid.</p><p>Ce qui compte n’est pas seulement ce qu’il y a dans l’assiette.</p><p>C’est aussi le fait que quelqu’un l’ait préparé pour toi.</p><p><strong>Que suis-je ?</strong></p>`, answers:['petit dejeuner','petit-déjeuner','petit dej','petit déj'], hints:['La réponse est quelque chose qu’on peut préparer.','Elle peut être servie à la maison.','Elle arrive au début de la journée.','C’est le même repas que l’épreuve précédente.'], success:'Le cadeau prend forme.' },
+      { title:'Épreuve IV — Le service royal', q:`<p>Je ne suis pas un restaurant.</p><p>Je ne suis pas une commande.</p><p>Mais pendant un moment, tu n’auras rien à faire.</p><p>Quelqu’un s’occupera du début de ta journée.</p><p><strong>Quelle action décrit le mieux ce cadeau ?</strong></p>`, answers:['preparer','préparer','te preparer','te préparer'], hints:['La réponse est un verbe.','Elle implique que quelqu’un fasse quelque chose pour toi.','Ce verbe peut s’appliquer à un repas.','On va te le préparer.'], success:'Oui. Cette porte parle d’un geste préparé pour toi.' },
+      { title:'Épreuve V — Révélation du matin', q:`<p>Quand tu viendras à la maison, cette surprise pourra apparaître avant que la journée commence vraiment.</p><p>Elle ne demandera pas une grande occasion.</p><p>Juste un matin, une table, et l’envie de te faire plaisir.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['petit dejeuner','petit-déjeuner','petit dej','petit déj','un petit dejeuner','un petit-déjeuner'], hints:['Le cadeau se vit au réveil.','Il se mange.','Il sera préparé pour toi.','C’est un petit-déjeuner.'], success:'L’Aube Royale a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner préparé pour toi.</h3><p>Un matin où tu n’auras rien à faire, à part profiter.</p></div>`, memory:'L’Aube Royale — un matin préparé pour elle, simplement pour commencer la journée avec douceur.'
+  },
+  {
+    id:5, code:'JOKER-18', title:'Le Joker', gift:'Une envie à réaliser', teaser:'Un pouvoir à utiliser au bon moment.',
+    intro:`<p>Certaines cartes ne donnent pas un cadeau précis.</p><p>Elles donnent un pouvoir : celui de choisir.</p>`,
+    riddles:[
+      { title:'Épreuve I — La carte hors-jeu', q:`<p>Je ne suis ni cœur, ni pique, ni carreau, ni trèfle.</p><p>Je peux entrer dans le jeu quand les règles deviennent trop simples.</p><p>On me garde souvent pour le bon moment.</p><p><strong>Quelle carte suis-je ?</strong></p>`, answers:['joker'], hints:['La réponse est une carte.','Elle n’appartient pas vraiment aux familles classiques.','Elle peut remplacer ou surprendre.','C’est le nom de cette porte.'], success:'La carte est posée.' },
+      { title:'Épreuve II — Le blanc à remplir', q:`<p class="instruction">Complète la phrase.</p><div class="cipher-text"><p>Ce ticket ne promet pas un objet. Il promet : “Quand tu voudras ________, je le ferai.”</p></div><p><strong>Quel mot manque ?</strong></p>`, answers:['quelque chose','un truc','une envie'], hints:['Ce n’est pas forcément un cadeau matériel.','La réponse est volontairement large.','Elle représente ce qu’elle pourra demander.','Le mot attendu peut être “une envie”.'], success:'Le Joker commence à montrer son vrai pouvoir.' },
+      { title:'Épreuve III — Le souhait', q:`<p>Je peux être petit ou grand.</p><p>Je peux être raisonnable ou un peu capricieux.</p><p>Je peux changer selon le jour, l’humeur ou l’envie.</p><p>Je n’existe vraiment que lorsqu’on me formule.</p><p><strong>Que suis-je ?</strong></p>`, answers:['souhait','envie'], hints:['La réponse peut être demandée.','Elle dépend de la personne qui la formule.','Elle peut commencer par “j’aimerais...”.','C’est un souhait ou une envie.'], success:'Le souhait est trouvé.' },
+      { title:'Épreuve IV — Une seule fois', q:`<p>Je peux être utilisé librement.</p><p>Mais si je pouvais être joué tous les jours, je perdrais sa valeur.</p><p>Mon intérêt vient aussi du fait qu’il faut choisir le bon moment.</p><p><strong>Combien de fois ce pouvoir doit-il être utilisé ?</strong></p>`, answers:['une fois','1 fois','une seule fois'], hints:['La réponse est une quantité.','Ce n’est pas illimité.','Il faut choisir le bon moment.','Il est utilisable une seule fois.'], success:'Un Joker se joue rarement deux fois.' },
+      { title:'Épreuve V — Le pouvoir', q:`<p>À la fin, ce cadeau ne dit pas exactement ce que tu vas recevoir.</p><p>Il te laisse décider.</p><p>Une sortie, une attention, un objet, un moment, une envie...</p><p>Le vrai cadeau, c’est que la demande viendra de toi.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['une envie a realiser','une envie à réaliser','envie a realiser','envie à réaliser','joker'], hints:['Ce cadeau n’est pas fixé à l’avance.','Elle pourra choisir ce qu’elle veut demander.','Il s’agit d’une envie.','Cette envie sera réalisée.'], success:'Le Joker a révélé son pouvoir.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte à jouer une seule fois, au moment où elle en aura vraiment envie.</p></div>`, memory:'Le Joker — une carte spéciale qui transforme une envie en promesse.'
+  },
+  {
+    id:6, code:'APRÈS-MINUIT', title:'Après Minuit', gift:'Pyjama / lingerie', teaser:'Une porte élégante, intime, et gardée sous silence.',
+    intro:`<p>Cette porte ne cherche pas à être bruyante.</p><p>Elle avance dans le velours, la nuit, la confiance et les détails que l’on garde pour soi.</p>`,
+    riddles:[
+      { title:'Épreuve I — L’heure discrète', q:`<p>Je viens après le dernier chiffre du jour.</p><p>La maison devient plus calme.</p><p>Les lumières baissent.</p><p>Certains secrets préfèrent commencer à ce moment-là.</p><p><strong>Quel moment suis-je ?</strong></p>`, answers:['minuit','apres minuit','après minuit'], hints:['La réponse est liée à l’heure.','Elle marque le passage d’un jour à l’autre.','Elle est dans le code de la porte.','C’est minuit, ou après minuit.'], success:'La porte s’ouvre dans la nuit.' },
+      { title:'Épreuve II — Matière invisible', q:`<p>On me reconnaît parfois sans me voir.</p><p>Je peux être doux, léger, satiné, confortable.</p><p>Je ne suis pas le vêtement, mais ce qui le rend agréable à porter.</p><p><strong>Que suis-je ?</strong></p>`, answers:['matiere','matière','tissu'], hints:['La réponse n’est pas un objet complet.','Elle compose des vêtements.','Elle peut être douce ou légère.','C’est une matière ou un tissu.'], success:'La matière compte autant que la forme.' },
+      { title:'Épreuve III — Le vêtement du soir', q:`<p>Je ne suis pas fait pour sortir dans la rue.</p><p>Je vis surtout entre la chambre, le soir et le matin.</p><p>Je peut être simple, doux, joli, confortable.</p><p><strong>Que suis-je ?</strong></p>`, answers:['pyjama','un pyjama'], hints:['La réponse est un vêtement.','Il est lié au sommeil.','On le porte souvent le soir.','C’est un pyjama.'], success:'Une partie du cadeau apparaît.' },
+      { title:'Épreuve IV — Le détail intime', q:`<p>Je peux être beau sans être montré à tout le monde.</p><p>Je peut être choisi avec soin.</p><p>Je parle plus de confiance que de regard extérieur.</p><p><strong>Quel univers est évoqué ?</strong></p>`, answers:['lingerie','intime','intimite','intimité'], hints:['La réponse n’est pas forcément visible publiquement.','Elle concerne les vêtements proches de soi.','Elle est liée à l’intimité.','Le mot peut être “lingerie”.'], success:'La porte reste élégante, mais plus précise.' },
+      { title:'Épreuve V — Le cadeau de nuit', q:`<p>Cette surprise appartient au monde du soir.</p><p>Elle peut être douce, jolie, confortable ou plus élégante.</p><p>Elle n’est pas faite pour impressionner tout le monde.</p><p>Elle est faite pour toi.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['pyjama lingerie','pyjama et lingerie','un pyjama','lingerie','pyjama'], hints:['Le cadeau se porte.','Il est lié au soir ou à la chambre.','Il peut avoir deux possibilités.','La réponse est pyjama / lingerie.'], success:'Après Minuit a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Après Minuit cachait un cadeau à porter.</h3><p>Un pyjama, de la lingerie, ou une surprise dans cet univers : quelque chose de choisi pour elle, avec soin.</p></div>`, memory:'Après Minuit — une porte douce et intime, entre confort, élégance et confiance.'
+  },
+  {
+    id:7, code:'CHAPITRE-XII', title:'Chapitre XII', gift:'Livre au choix', teaser:'Certaines histoires attendent encore d’être choisies.',
+    intro:`<p>Cette porte ressemble moins à une salle qu’à une bibliothèque.</p><p>Ici, le cadeau n’est pas une histoire imposée : c’est une histoire à choisir.</p>`,
+    riddles:[
+      { title:'Épreuve I — Le faux sommaire', q:`<p class="instruction">Observe les titres. Le premier mot de chaque ligne compte.</p><div class="cipher-text"><p><strong>L</strong>à où commencent les histoires</p><p><strong>I</strong>l suffit parfois d’une page</p><p><strong>V</strong>ers un monde inventé</p><p><strong>R</strong>ien n’empêche de choisir</p><p><strong>E</strong>ncore un chapitre</p></div><p><strong>Quel mot apparaît ?</strong></p>`, answers:['livre'], hints:['La réponse est cachée dans la structure.','Regarde le début des lignes.','Les premières lettres forment un mot.','Ce mot désigne l’objet central de cette porte.'], success:'Le livre entre dans l’histoire.' },
+      { title:'Épreuve II — Celui qui écrit', q:`<p>Je peux inventer des mondes sans les visiter.</p><p>Je peux créer des personnages qui n’existent pas.</p><p>On voit souvent mon nom sur la couverture.</p><p><strong>Qui suis-je ?</strong></p>`, answers:['auteur','autrice','ecrivain','écrivain'], hints:['La réponse est une personne.','Elle est liée aux livres.','Son nom apparaît souvent près du titre.','C’est l’auteur ou l’autrice.'], success:'Une histoire a toujours une origine.' },
+      { title:'Épreuve III — La page manquante', q:`<p class="instruction">Complète la suite logique.</p><div class="word-grid"><span>Couverture</span><span>→</span><span>Chapitre</span><span>→</span><span>?</span></div><p>On la tourne pour continuer.</p><p><strong>Quel mot manque ?</strong></p>`, answers:['page','une page'], hints:['La réponse est une partie d’un livre.','On peut la tourner.','Elle peut contenir un passage.','C’est une page.'], success:'La page est retrouvée.' },
+      { title:'Épreuve IV — La liberté', q:`<p>Si je décidais à ta place, ce cadeau perdrait une partie de son sens.</p><p>Le plus important n’est pas seulement le livre.</p><p>C’est que ce soit celui que tu veux vraiment.</p><p><strong>Quel verbe décrit ce pouvoir ?</strong></p>`, answers:['choisir','choix'], hints:['La réponse est un verbe ou un nom.','Elle implique que la décision vienne d’elle.','Ce n’est pas imposé.','Elle pourra choisir.'], success:'Le choix fait partie du cadeau.' },
+      { title:'Épreuve V — Le vrai cadeau', q:`<p>Ce cadeau ne porte pas encore de titre.</p><p>Il n’a pas encore d’auteur.</p><p>Il n’a même pas encore de couverture.</p><p>Parce que ce n’est pas moi qui déciderai lequel.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['livre au choix','un livre au choix','livre','un livre'], hints:['C’est un objet à lire.','Elle pourra choisir lequel.','Il peut venir d’une librairie.','C’est un livre au choix.'], success:'Chapitre XII a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Chapitre XII cachait un livre au choix.</h3><p>Une histoire qu’elle choisira elle-même, parce que certains cadeaux commencent au moment où l’on décide de la première page.</p></div>`, memory:'Chapitre XII — une histoire encore inconnue, à choisir et à ouvrir.'
+  },
+  {
+    id:8, code:'FESTIN-DORÉ', title:'Le Festin Doré', gift:'Pack nourriture', teaser:'Un panier pour les envies, les goûts, et les petits bonheurs.',
+    intro:`<p>Cette porte ne promet pas un grand banquet.</p><p>Elle promet mieux : des petites choses choisies parce qu’elles lui plaisent.</p>`,
+    riddles:[
+      { title:'Épreuve I — Le goût préféré', q:`<p>Je suis souvent simple.</p><p>Je peux être crémeux, salé, réconfortant.</p><p>Avec des pâtes, je deviens un classique que tu aimes particulièrement.</p><p><strong>Quel plat est évoqué ?</strong></p>`, answers:['pates carbo','pâtes carbo','carbonara','pates carbonara','pâtes carbonara'], hints:['La réponse est un plat.','Il contient des pâtes.','Tu m’as dit que c’était son plat préféré.','On l’appelle souvent pâtes carbo.'], success:'Le goût principal est trouvé.' },
+      { title:'Épreuve II — Le contenant', q:`<p>Je ne suis pas le cadeau seul.</p><p>Je suis ce qui rassemble plusieurs petites choses.</p><p>On peut me remplir avec ce qu’une personne aime manger.</p><p><strong>Que suis-je ?</strong></p>`, answers:['panier','bocal','pack'], hints:['La réponse sert à regrouper.','On peut y mettre plusieurs produits.','Ce n’est pas forcément un vrai panier en osier.','On pourrait appeler ça un panier ou un pack.'], success:'Le cadeau sera composé.' },
+      { title:'Épreuve III — Inventaire caché', q:`<p class="instruction">Parmi ces mots, garde seulement ceux qui se mangent.</p><div class="cipher-text"><p>ruban — chocolat — ticket — bonbon — masque — biscuit — clé — chips</p></div><p><strong>Quel mot résume ce groupe ?</strong></p>`, answers:['nourriture','gourmandise','gourmandises'], hints:['Tous les mots ne comptent pas.','Il faut trier ce qui se mange.','Les mots gardés sont des petites choses à manger.','Le groupe désigne de la nourriture ou des gourmandises.'], success:'Le tri mène vers les gourmandises.' },
+      { title:'Épreuve IV — Choisi pour elle', q:`<p>Je ne suis pas choisi au hasard.</p><p>Chaque élément doit rappeler un goût, une envie, une habitude ou un petit plaisir.</p><p>Plus il est personnel, plus il fonctionne.</p><p><strong>Quel mot décrit cette attention ?</strong></p>`, answers:['personnalise','personnalisé','attention'], hints:['La réponse parle de quelque chose adapté à elle.','Ce n’est pas un panier générique.','Il sera pensé selon ses goûts.','On peut dire qu’il est personnalisé.'], success:'Le panier sera pensé pour elle.' },
+      { title:'Épreuve V — Le cadeau gourmand', q:`<p>Ce cadeau ne sera pas une seule chose.</p><p>Il sera composé de plusieurs petites envies.</p><p>Des choses à grignoter, à aimer, à retrouver.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['pack nourriture','panier gourmand','pack gourmand','panier de nourriture'], hints:['Il contient plusieurs choses.','Il tourne autour de ce qu’elle aime manger.','On peut l’appeler un panier gourmand.','C’est le pack nourriture.'], success:'Le Festin Doré a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Festin Doré cachait un pack de nourriture.</h3><p>Un panier rempli de petites choses choisies pour elle, pas pour n’importe qui.</p></div>`, memory:'Le Festin Doré — un panier de goûts, d’envies et de petits plaisirs.'
+  },
+  {
+    id:9, code:'FIL-DORÉ', title:'Le Fil Doré', gift:'Tee-shirts', teaser:'Quelque chose à porter, mais surtout quelque chose qui reste.',
+    intro:`<p>Cette porte commence avec une idée simple : un fil peut devenir un vêtement.</p><p>Et un vêtement peut devenir un souvenir que l’on porte.</p>`,
+    riddles:[
+      { title:'Épreuve I — Le début du tissu', q:`<p>Je suis fin.</p><p>Je peux être cousu, tissé, noué.</p><p>Seul, je semble fragile.</p><p>À plusieurs, je peux former quelque chose à porter.</p><p><strong>Que suis-je ?</strong></p>`, answers:['fil','un fil'], hints:['La réponse est très petite.','Elle peut servir en couture.','Elle est dans le nom de la porte.','C’est un fil.'], success:'Le premier fil est trouvé.' },
+      { title:'Épreuve II — La matière du quotidien', q:`<p>On me retrouve dans beaucoup de vêtements.</p><p>Je peux être doux, simple, agréable.</p><p>Je viens d’une fibre connue.</p><p>Je rime presque avec quelque chose de léger.</p><p><strong>Quelle matière suis-je ?</strong></p>`, answers:['coton','du coton'], hints:['La réponse est une matière.','On la trouve souvent dans les tee-shirts.','Elle commence par C.','C’est le coton.'], success:'La matière est trouvée.' },
+      { title:'Épreuve III — À porter', q:`<p>Je peux dire quelque chose sans parler.</p><p>Je peux être uni, imprimé, drôle, simple ou stylé.</p><p>On me choisit souvent selon ce qu’on aime.</p><p><strong>Que suis-je ?</strong></p>`, answers:['vetement','vêtement','habit'], hints:['La réponse est une catégorie.','On la porte.','Elle peut contenir des tee-shirts.','C’est un vêtement.'], success:'Le cadeau appartient au monde des vêtements.' },
+      { title:'Épreuve IV — Le haut', q:`<p>Je ne suis ni un pantalon, ni une robe.</p><p>Je se porte plutôt en haut.</p><p>Je peux être large, court, long, imprimé ou simple.</p><p><strong>Quel type de vêtement suis-je ?</strong></p>`, answers:['tee shirt','tee-shirt','t shirt','t-shirt'], hints:['La réponse est un vêtement du haut.','Il peut être imprimé.','On l’écrit souvent avec un tiret.','C’est un tee-shirt.'], success:'Le cadeau se précise.' },
+      { title:'Épreuve V — Le cadeau à porter', q:`<p>Ce cadeau pourra se mettre dans une armoire.</p><p>Mais son but n’est pas seulement de remplir une armoire.</p><p>Il pourra être porté, gardé, utilisé.</p><p>Et peut-être rappeler la personne qui l’a offert.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['tee shirts','tee-shirts','t shirts','t-shirts','des tee shirts','des tee-shirts'], hints:['Il y en aura peut-être plusieurs.','C’est un vêtement du haut.','La réponse vient de l’épreuve précédente.','Ce sont des tee-shirts.'], success:'Le Fil Doré a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements à porter, mais choisis avec l’idée qu’ils puissent rester dans son quotidien.</p></div>`, memory:'Le Fil Doré — des tee-shirts choisis pour être portés, gardés et associés à un souvenir.'
+  },
+  {
+    id:10, code:'PETIT-MONDE', title:'Le Petit Monde', gift:'Figurines', teaser:'Un univers miniature, mais pas sans personnalité.',
+    intro:`<p>Cette porte est petite seulement en apparence.</p><p>Certains mondes tiennent dans la paume d’une main.</p>`,
+    riddles:[
+      { title:'Épreuve I — Réduction', q:`<p>Je suis plus petit que ce que je représente.</p><p>Je peux ressembler à un personnage, un animal, une créature ou un univers.</p><p>Je tiens parfois sur une étagère.</p><p><strong>Que suis-je ?</strong></p>`, answers:['miniature'], hints:['La réponse parle d’échelle.','Elle désigne une version plus petite.','On peut la collectionner.','C’est une miniature.'], success:'Le monde devient plus petit.' },
+      { title:'Épreuve II — Série', q:`<p>Un seul peut suffire.</p><p>Mais souvent, quand on commence, on a envie d’en avoir plusieurs.</p><p>Ils peuvent appartenir à une même famille, un même thème, une même série.</p><p><strong>Quel mot décrit cet ensemble ?</strong></p>`, answers:['collection'], hints:['La réponse est un ensemble.','Elle se construit avec plusieurs objets.','On peut compléter une série.','C’est une collection.'], success:'La collection apparaît.' },
+      { title:'Épreuve III — Personnage caché', q:`<p>Je peux avoir une expression, une pose, un style.</p><p>Je ne bouge pas vraiment.</p><p>Pourtant je semble avoir une personnalité.</p><p><strong>Que suis-je ?</strong></p>`, answers:['personnage'], hints:['La réponse peut être représentée par une figurine.','Elle peut avoir un thème.','Elle peut sembler “vivante” sans l’être.','C’est un personnage.'], success:'Le petit monde possède ses habitants.' },
+      { title:'Épreuve IV — Le thème', q:`<p>Sommeil, animaux, rêve, yoga, gourmandise...</p><p>Un même objet peut changer complètement d’ambiance selon cette idée.</p><p>Elle donne une famille au personnage.</p><p><strong>Quel mot cherche-t-on ?</strong></p>`, answers:['theme','thème'], hints:['La réponse classe les objets.','Elle peut être “sommeil” ou “yoga”.','Elle donne une ambiance commune.','C’est un thème.'], success:'Le thème donne une identité au petit monde.' },
+      { title:'Épreuve V — Le cadeau miniature', q:`<p>Petite, décorative, parfois mignonne, parfois drôle.</p><p>Elle appartient souvent à une série.</p><p>On peut la poser, la garder, la collectionner.</p><p><strong>Quel est le cadeau ?</strong></p>`, answers:['figurine','figurines','des figurines'], hints:['C’est un petit objet.','Il peut représenter un personnage.','On peut le collectionner.','La réponse est figurines.'], success:'Le Petit Monde a révélé son cadeau.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son thème et son univers.</p></div>`, memory:'Le Petit Monde — un univers miniature, composé de petits personnages à garder.'
+  },
+  {
+    id:11, code:'JARDIN-SECRET', title:'Le Jardin Secret', gift:'Cadeau intime', teaser:'Certains cadeaux ne se racontent pas sur la première page.',
+    intro:`<p>Cette porte reste volontairement discrète.</p><p>Elle ne cherche pas à tout dire. Elle avance avec confiance, élégance et pudeur.</p>`,
+    riddles:[
+      { title:'Épreuve I — Ce qui ne se montre pas', q:`<p>Je peux exister sans être raconté à tout le monde.</p><p>Je peux être gardé entre deux personnes.</p><p>Plus on me respecte, plus j’ai de valeur.</p><p><strong>Que suis-je ?</strong></p>`, answers:['secret','un secret'], hints:['La réponse peut se garder.','Elle n’est pas faite pour tout le monde.','Elle est dans le nom de la porte.','C’est un secret.'], success:'Le jardin garde son entrée.' },
+      { title:'Épreuve II — La clé invisible', q:`<p>Je ne suis pas un objet.</p><p>Mais sans moi, certaines portes ne devraient pas s’ouvrir.</p><p>Je repose sur le respect, l’écoute et le fait de se sentir bien.</p><p><strong>Que suis-je ?</strong></p>`, answers:['confiance','la confiance'], hints:['La réponse n’est pas matérielle.','Elle se construit avec le temps.','Elle est importante dans une relation.','C’est la confiance.'], success:'La confiance est la vraie clé.' },
+      { title:'Épreuve III — Le mot discret', q:`<p>Je suis proche, mais pas forcément visible.</p><p>Je concerne ce que l’on garde pour soi ou pour quelqu’un de très proche.</p><p>Je demande de la délicatesse.</p><p><strong>Quel mot suis-je ?</strong></p>`, answers:['intimite','intimité','intime'], hints:['La réponse parle de proximité.','Elle n’est pas publique.','Elle est liée à la pudeur.','Le mot est intimité.'], success:'Le jardin devient plus intime.' },
+      { title:'Épreuve IV — Le désir', q:`<p>Je peux naître d’une envie.</p><p>Je peut être doux, joueur, timide ou assumé.</p><p>Je doit toujours rester respecté.</p><p><strong>Quel mot désigne cette envie ?</strong></p>`, answers:['desir','désir','envie'], hints:['La réponse parle d’une envie.','Elle peut être intime.','Elle doit toujours respecter l’autre.','Le mot peut être désir.'], success:'Le mot est trouvé, sans avoir besoin d’en dire trop.' },
+      { title:'Épreuve V — Le cadeau caché', q:`<p>Ce cadeau appartient au jardin secret.</p><p>Il n’a pas besoin d’être annoncé fort.</p><p>Il est choisi avec confiance, pudeur et complicité.</p><p><strong>Quel type de cadeau est-ce ?</strong></p>`, answers:['cadeau intime','sextoy','jouet intime','un cadeau intime'], hints:['La réponse n’est pas un cadeau public.','Elle appartient à l’intimité.','On peut l’appeler un cadeau intime.','Le mot exact peut rester entre vous.'], success:'Le Jardin Secret a révélé son univers.' }
+    ], reveal:`<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau choisi avec confiance, délicatesse et complicité.</p></div>`, memory:'Le Jardin Secret — une porte intime, gardée avec confiance et pudeur.'
+  },
+  { id:12, code:'DERNIER-MASQUE', title:'Le Dernier Masque', gift:'Cadeau final', teaser:'Le dernier ticket ne ferme pas l’histoire. Il la rassemble.', intro:`<p>Cette porte est volontairement laissée incomplète.</p><p>Elle servira de conclusion au Bal des Secrets, lorsque le dernier cadeau sera décidé.</p>`, riddles:[], reveal:'', memory:'Le Dernier Masque — la conclusion future du Bal des Secrets.' }
 ];
 
 const STORAGE_KEY = 'bal_des_secrets_state_v4';
@@ -154,341 +138,83 @@ const STORAGE_KEY = 'bal_des_secrets_state_v4';
 function normalize(value) {
   return String(value || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’']/g, '').replace(/\s+/g, ' ');
 }
-
-function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [] };
-}
-
+function defaultState() { return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [] }; }
 function loadState() {
   try {
     const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(defaultState()));
-    state.unlocked = state.unlocked || [];
-    state.lastUnlockMonth = state.lastUnlockMonth || null;
-    state.answers = state.answers || {};
-    state.hints = state.hints || {};
-    state.completed = state.completed || [];
+    state.unlocked = state.unlocked || []; state.lastUnlockMonth = state.lastUnlockMonth || null; state.answers = state.answers || {}; state.hints = state.hints || {}; state.completed = state.completed || [];
     return state;
-  } catch {
-    return defaultState();
-  }
+  } catch { return defaultState(); }
 }
-
-function saveState(state) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function currentMonthKey() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-}
-
-function daysUntilNextMonth() {
-  const now = new Date();
-  const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-  return Math.ceil((next - now) / (1000 * 60 * 60 * 24));
-}
-
-function showView(id) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  const target = document.getElementById(id);
-  if (target) target.classList.add('active');
-  if (id === 'memories') renderMemories();
-
-  // Esthétique : les confettis légers ne sont visibles que sur l'accueil.
-  if (typeof updateDecorForView === 'function') updateDecorForView(id);
-}
-
-document.querySelectorAll('[data-view]').forEach(btn => {
-  btn.addEventListener('click', () => showView(btn.dataset.view));
-});
-
-function findTicket(code) {
-  return tickets.find(t => normalize(t.code) === normalize(code));
-}
-
+function saveState(state) { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function currentMonthKey() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; }
+function daysUntilNextMonth() { const now = new Date(); const next = new Date(now.getFullYear(), now.getMonth() + 1, 1); return Math.ceil((next - now) / (1000 * 60 * 60 * 24)); }
+function showView(id) { document.querySelectorAll('.view').forEach(v => v.classList.remove('active')); const target = document.getElementById(id); if (target) target.classList.add('active'); if (id === 'memories') renderMemories(); }
+document.querySelectorAll('[data-view]').forEach(btn => { btn.addEventListener('click', () => showView(btn.dataset.view)); });
+function findTicket(code) { return tickets.find(t => normalize(t.code) === normalize(code)); }
 function unlockTicket(ticket) {
-  const state = loadState();
-  const alreadyUnlocked = state.unlocked.includes(ticket.id);
-  const thisMonth = currentMonthKey();
-
-  if (!alreadyUnlocked && state.lastUnlockMonth === thisMonth) {
-    setMessage(`Cette porte est encore scellée. Tu as déjà ouvert un ticket ce mois-ci. Prochain mystère dans environ ${daysUntilNextMonth()} jour(s).`, 'error');
-    return;
-  }
-
-  if (!alreadyUnlocked) {
-    state.unlocked.push(ticket.id);
-    state.lastUnlockMonth = thisMonth;
-    saveState(state);
-  }
-
-  setMessage('Porte déverrouillée.', 'success');
-  renderRoom(ticket);
-  showView('room');
+  const state = loadState(); const alreadyUnlocked = state.unlocked.includes(ticket.id); const thisMonth = currentMonthKey();
+  if (!alreadyUnlocked && state.lastUnlockMonth === thisMonth) { setMessage(`Cette porte est encore scellée. Tu as déjà ouvert un ticket ce mois-ci. Prochain mystère dans environ ${daysUntilNextMonth()} jour(s).`, 'error'); return; }
+  if (!alreadyUnlocked) { state.unlocked.push(ticket.id); state.lastUnlockMonth = thisMonth; saveState(state); }
+  setMessage('Porte déverrouillée.', 'success'); renderRoom(ticket); showView('room');
 }
-
-function setMessage(text, type) {
-  const el = document.getElementById('message');
-  el.textContent = text;
-  el.className = `message ${type || ''}`;
-}
-
-const unlockBtn = document.getElementById('unlockBtn');
-const codeInput = document.getElementById('codeInput');
-
-unlockBtn.addEventListener('click', () => {
-  const ticket = findTicket(codeInput.value);
-  if (!ticket) {
-    setMessage('Code inconnu. Vérifie les lettres, les accents ou les tirets.', 'error');
-    return;
-  }
-  unlockTicket(ticket);
-});
-
-codeInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') unlockBtn.click();
-});
-
+function setMessage(text, type) { const el = document.getElementById('message'); if (!el) return; el.textContent = text; el.className = `message ${type || ''}`; }
+const unlockBtn = document.getElementById('unlockBtn'); const codeInput = document.getElementById('codeInput');
+unlockBtn?.addEventListener('click', () => { const ticket = findTicket(codeInput.value); if (!ticket) { setMessage('Code inconnu. Vérifie les lettres, les accents ou les tirets.', 'error'); return; } unlockTicket(ticket); });
+codeInput?.addEventListener('keydown', e => { if (e.key === 'Enter') unlockBtn.click(); });
 function renderRoom(ticket) {
-  const state = loadState();
-  const room = document.getElementById('room');
-  const solved = state.answers[ticket.id] || [];
-  const total = (ticket.riddles || []).length;
-  const completed = total && solved.length >= total;
-
-  let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
-  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}</div>`;
-
-  if (!total) {
-    html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
-    room.innerHTML = html;
-    return;
-  }
-
+  const state = loadState(); const room = document.getElementById('room'); const solved = state.answers[ticket.id] || []; const total = (ticket.riddles || []).length; const completed = total && solved.length >= total;
+  let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`; if (ticket.intro) html += `<div class="room-intro">${ticket.intro}</div>`;
+  if (!total) { html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`; room.innerHTML = html; return; }
   ticket.riddles.forEach((r, index) => {
-    const isUnlocked = index === 0 || solved.includes(index - 1);
-    const isSolved = solved.includes(index);
-    const hintsShown = getHintCount(ticket.id, index);
-    const maxHints = (r.hints || []).length;
-    const hintsHtml = isUnlocked && !isSolved && maxHints ? renderHints(ticket.id, index, r.hints, hintsShown) : '';
-
-    html += `<div class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
-      <h3>${r.title || `Épreuve ${index + 1}`}</h3>
-      <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
-      ${hintsHtml}
-      ${isUnlocked && !isSolved ? `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}
-      ${isSolved ? `<p class="message success">✓ Résolue — ${r.success || 'bien joué.'}</p>` : ''}
-    </div>`;
+    const isUnlocked = index === 0 || solved.includes(index - 1); const isSolved = solved.includes(index); const hintsShown = getHintCount(ticket.id, index); const maxHints = (r.hints || []).length; const hintsHtml = isUnlocked && !isSolved && maxHints ? renderHints(ticket.id, index, r.hints, hintsShown) : '';
+    html += `<div class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}"><h3>${r.title || `Épreuve ${index + 1}`}</h3><div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>${hintsHtml}${isUnlocked && !isSolved ? `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}${isSolved ? `<p class="message success">✓ Résolue — ${r.success || 'bien joué.'}</p>` : ''}</div>`;
   });
-
-  if (completed) {
-    if (!state.completed.includes(ticket.id)) {
-      state.completed.push(ticket.id);
-      saveState(state);
-    }
-    html += ticket.reveal || `<blockquote>Révélation : ce mystère te mène vers ton cadeau — ${ticket.gift}.</blockquote>`;
-  }
-
+  if (completed) { if (!state.completed.includes(ticket.id)) { state.completed.push(ticket.id); saveState(state); } html += ticket.reveal || `<blockquote>Révélation : ce mystère te mène vers ton cadeau — ${ticket.gift}.</blockquote>`; }
   room.innerHTML = html;
 }
-
-function getHintCount(ticketId, index) {
-  const state = loadState();
-  return ((state.hints || {})[ticketId] || {})[index] || 0;
-}
-
+function getHintCount(ticketId, index) { const state = loadState(); return ((state.hints || {})[ticketId] || {})[index] || 0; }
 function renderHints(ticketId, index, hints, count) {
-  const visibleHints = hints.slice(0, count).map((hint, i) => `
-    <div class="hint-item"><span>Indice ${i + 1}</span><p>${hint}</p></div>
-  `).join('');
-
-  const button = count < hints.length
-    ? `<button class="hint-button" onclick="revealHint(${ticketId}, ${index})">${count === 0 ? 'Demander un indice' : 'Demander un indice supplémentaire'}</button>`
-    : `<p class="hint-max">Tous les indices de cette épreuve ont été révélés.</p>`;
-
-  return `<div class="hint-panel">
-    ${visibleHints}
-    ${button}
-  </div>`;
+  const visibleHints = hints.slice(0, count).map((hint, i) => `<div class="hint-item"><span>Indice ${i + 1}</span><p>${hint}</p></div>`).join('');
+  const button = count < hints.length ? `<button class="hint-button" onclick="revealHint(${ticketId}, ${index})">${count === 0 ? 'Demander un indice' : 'Demander un indice supplémentaire'}</button>` : `<p class="hint-max">Tous les indices de cette épreuve ont été révélés.</p>`;
+  return `<div class="hint-panel">${visibleHints}${button}</div>`;
 }
-
-window.revealHint = function(ticketId, index) {
-  const ticket = tickets.find(t => t.id === ticketId);
-  if (!ticket) return;
-  const state = loadState();
-  state.hints[ticketId] = state.hints[ticketId] || {};
-  const current = state.hints[ticketId][index] || 0;
-  const max = (ticket.riddles[index].hints || []).length;
-  if (current < max) state.hints[ticketId][index] = current + 1;
-  saveState(state);
-  renderRoom(ticket);
-};
-
+window.revealHint = function(ticketId, index) { const ticket = tickets.find(t => t.id === ticketId); if (!ticket) return; const state = loadState(); state.hints[ticketId] = state.hints[ticketId] || {}; const current = state.hints[ticketId][index] || 0; const max = (ticket.riddles[index].hints || []).length; if (current < max) state.hints[ticketId][index] = current + 1; saveState(state); renderRoom(ticket); };
 window.checkAnswer = function(ticketId, index) {
-  const ticket = tickets.find(t => t.id === ticketId);
-  const input = document.getElementById(`answer-${index}`);
-  const state = loadState();
-  state.answers[ticketId] = state.answers[ticketId] || [];
-  const validAnswers = ticket.riddles[index].answers || [];
-
-  if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
-    if (!state.answers[ticketId].includes(index)) state.answers[ticketId].push(index);
-    saveState(state);
-    renderRoom(ticket);
-    triggerGoldBurst();
-    window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' });
-  } else {
-    input.value = '';
-    input.placeholder = 'Ce n’est pas encore ça...';
-    input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 350);
-  }
+  const ticket = tickets.find(t => t.id === ticketId); const input = document.getElementById(`answer-${index}`); const state = loadState(); state.answers[ticketId] = state.answers[ticketId] || []; const validAnswers = ticket.riddles[index].answers || [];
+  if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) { if (!state.answers[ticketId].includes(index)) state.answers[ticketId].push(index); saveState(state); renderRoom(ticket); triggerGoldBurst(); window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' }); }
+  else { input.value = ''; input.placeholder = 'Ce n’est pas encore ça...'; input.classList.add('shake'); setTimeout(() => input.classList.remove('shake'), 350); }
 };
-
 function renderMemories() {
-  const state = loadState();
-  const list = document.getElementById('memoryList');
-  list.innerHTML = tickets.map(t => {
-    const open = state.unlocked.includes(t.id);
-    const done = state.completed.includes(t.id);
-    const solvedCount = (state.answers[t.id] || []).length;
-    const total = (t.riddles || []).length;
-    const progress = open && total ? `${solvedCount}/${total} épreuve(s) résolue(s)` : '';
-    return `<div class="memory-item ${done ? 'completed' : ''}">
-      <div>
-        <strong>${open ? '✓' : '🔒'} ${open ? t.title : 'Porte inconnue'}</strong><br>
-        <span class="${open ? '' : 'locked-text'}">${open ? (done && t.memory ? t.memory : t.teaser) : 'Aucun souvenir débloqué pour le moment.'}</span>
-        ${open && progress ? `<small class="memory-progress">${progress}</small>` : ''}
-      </div>
-      ${open ? `<button onclick="openTicketFromMemory(${t.id})">${done ? 'Revoir' : 'Continuer'}</button>` : ''}
-    </div>`;
-  }).join('');
+  const state = loadState(); const list = document.getElementById('memoryList');
+  list.innerHTML = tickets.map(t => { const open = state.unlocked.includes(t.id); const done = state.completed.includes(t.id); const solvedCount = (state.answers[t.id] || []).length; const total = (t.riddles || []).length; const progress = open && total ? `${solvedCount}/${total} épreuve(s) résolue(s)` : '';
+    return `<div class="memory-item ${done ? 'completed' : ''}"><div><strong>${open ? '✓' : '🔒'} ${open ? t.title : 'Porte inconnue'}</strong><br><span class="${open ? '' : 'locked-text'}">${open ? (done && t.memory ? t.memory : t.teaser) : 'Aucun souvenir débloqué pour le moment.'}</span>${open && progress ? `<small class="memory-progress">${progress}</small>` : ''}</div>${open ? `<button onclick="openTicketFromMemory(${t.id})">${done ? 'Revoir' : 'Continuer'}</button>` : ''}</div>`; }).join('');
 }
-
-window.openTicketFromMemory = function(ticketId) {
-  const ticket = tickets.find(t => t.id === ticketId);
-  if (!ticket) return;
-  renderRoom(ticket);
-  showView('room');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-function roman(num) {
-  return ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][num] || num;
+window.openTicketFromMemory = function(ticketId) { const ticket = tickets.find(t => t.id === ticketId); if (!ticket) return; renderRoom(ticket); showView('room'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+function roman(num) { return ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][num] || num; }
+function resetTicket(ticketId) { const state = loadState(); state.answers[ticketId] = []; if (state.hints) state.hints[ticketId] = {}; state.completed = state.completed.filter(id => id !== ticketId); state.unlocked = state.unlocked.filter(id => id !== ticketId); saveState(state); }
+function unlockForTest(ticketId) { const state = loadState(); if (!state.unlocked.includes(ticketId)) state.unlocked.push(ticketId); saveState(state); }
+function unlockAllRoomsForTest() { const state = loadState(); tickets.forEach(t => { if (!state.unlocked.includes(t.id)) state.unlocked.push(t.id); }); saveState(state); }
+window.resetBalSecrets = function() { localStorage.removeItem(STORAGE_KEY); location.reload(); };
+window.resetRefugeDore = function() { resetTicket(1); location.reload(); };
+function buildAdminPanel() {
+  const existing = document.getElementById('dynamicAdminPanel'); if (existing) existing.remove();
+  const panel = document.createElement('section'); panel.id = 'dynamicAdminPanel'; panel.className = 'view card admin-only dynamic-admin';
+  panel.innerHTML = `<p class="eyebrow">Mode test</p><h2>Admin</h2><p class="admin-note">Ces boutons servent uniquement à tester sur ton appareil. Ils ne modifient pas le téléphone de Julie.</p><div class="admin-grid"><button id="adminUnlockAll">Débloquer toutes les portes</button><button id="adminResetAll">Tout réinitialiser</button><button id="adminResetMonth">Réinitialiser le blocage du mois</button></div><h3>Débloquer une porte précise</h3><div class="admin-room-grid">${tickets.map(t => `<button onclick="adminUnlockRoom(${t.id})">${t.title}</button>`).join('')}</div>`;
+  document.querySelector('main')?.appendChild(panel);
+  const nav = document.querySelector('nav'); if (nav && !document.querySelector('[data-view="dynamicAdminPanel"]')) { const b = document.createElement('button'); b.dataset.view = 'dynamicAdminPanel'; b.textContent = 'Admin'; b.addEventListener('click', () => showView('dynamicAdminPanel')); nav.appendChild(b); }
+  document.getElementById('adminUnlockAll')?.addEventListener('click', () => { unlockAllRoomsForTest(); alert('Toutes les portes sont débloquées pour test.'); renderMemories(); showView('memories'); });
+  document.getElementById('adminResetAll')?.addEventListener('click', () => { localStorage.removeItem(STORAGE_KEY); alert('Toute la progression a été réinitialisée.'); location.reload(); });
+  document.getElementById('adminResetMonth')?.addEventListener('click', () => { const state = loadState(); state.lastUnlockMonth = null; saveState(state); alert('Le blocage mensuel est réinitialisé.'); });
 }
-
-function resetTicket(ticketId) {
-  const state = loadState();
-  state.answers[ticketId] = [];
-  if (state.hints) state.hints[ticketId] = {};
-  state.completed = state.completed.filter(id => id !== ticketId);
-  state.unlocked = state.unlocked.filter(id => id !== ticketId);
-  saveState(state);
-}
-
-function unlockForTest(ticketId) {
-  const state = loadState();
-  if (!state.unlocked.includes(ticketId)) state.unlocked.push(ticketId);
-  saveState(state);
-}
-
-window.resetBalSecrets = function() {
-  localStorage.removeItem(STORAGE_KEY);
-  location.reload();
-};
-
-window.resetRefugeDore = function() {
-  resetTicket(1);
-  location.reload();
-};
-
+window.adminUnlockRoom = function(ticketId) { unlockForTest(ticketId); const ticket = tickets.find(t => t.id === ticketId); if (ticket) { renderRoom(ticket); showView('room'); } };
 function setupAdmin() {
-  const params = new URLSearchParams(window.location.search);
-  const enabled = params.get('admin') === '1';
-  if (!enabled) return;
-  document.body.classList.add('admin-enabled');
-
-  document.getElementById('resetRefugeBtn')?.addEventListener('click', () => {
-    resetTicket(1);
-    alert('Le Refuge Doré a été réinitialisé.');
-    renderMemories();
-    showView('code');
-  });
-
-  document.getElementById('resetAllBtn')?.addEventListener('click', () => {
-    localStorage.removeItem(STORAGE_KEY);
-    alert('Toute la progression a été réinitialisée.');
-    location.reload();
-  });
-
-  document.getElementById('unlockRefugeBtn')?.addEventListener('click', () => {
-    unlockForTest(1);
-    alert('Le Refuge Doré est débloqué pour test.');
-    renderRoom(tickets[0]);
-    showView('room');
-  });
-
-  document.getElementById('resetMonthBtn')?.addEventListener('click', () => {
-    const state = loadState();
-    state.lastUnlockMonth = null;
-    saveState(state);
-    alert('Tu peux tester un nouveau code ce mois-ci.');
-  });
+  const params = new URLSearchParams(window.location.search); const enabled = params.get('admin') === '1'; if (!enabled) return; document.body.classList.add('admin-enabled'); buildAdminPanel();
+  document.getElementById('resetRefugeBtn')?.addEventListener('click', () => { resetTicket(1); alert('Le Refuge Doré a été réinitialisé.'); renderMemories(); showView('code'); });
+  document.getElementById('resetAllBtn')?.addEventListener('click', () => { localStorage.removeItem(STORAGE_KEY); alert('Toute la progression a été réinitialisée.'); location.reload(); });
+  document.getElementById('unlockRefugeBtn')?.addEventListener('click', () => { unlockForTest(1); alert('Le Refuge Doré est débloqué pour test.'); renderRoom(tickets[0]); showView('room'); });
+  document.getElementById('resetMonthBtn')?.addEventListener('click', () => { const state = loadState(); state.lastUnlockMonth = null; saveState(state); alert('Tu peux tester un nouveau code ce mois-ci.'); });
 }
-
-setupAdmin();
-
-
-/* V11 — Décor bal masqué contrôlé */
-function setupMasqueradeDecor() {
-  if (!document.querySelector('.masquerade-watermark')) {
-    const mask = document.createElement('div');
-    mask.className = 'masquerade-watermark';
-    mask.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(mask);
-  }
-
-  if (!document.querySelector('.home-confetti-layer')) {
-    const layer = document.createElement('div');
-    layer.className = 'home-confetti-layer';
-    layer.setAttribute('aria-hidden', 'true');
-
-    for (let i = 0; i < 34; i++) {
-      const piece = document.createElement('span');
-      piece.style.setProperty('--x', `${Math.random() * 100}%`);
-      piece.style.setProperty('--delay', `${Math.random() * 9}s`);
-      piece.style.setProperty('--duration', `${7 + Math.random() * 8}s`);
-      piece.style.setProperty('--size', `${4 + Math.random() * 7}px`);
-      piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 80}px`);
-      piece.style.setProperty('--rot', `${Math.random() * 360}deg`);
-      layer.appendChild(piece);
-    }
-
-    document.body.appendChild(layer);
-  }
-}
-
-function updateDecorForView(id) {
-  document.body.classList.toggle('home-confetti', id === 'home');
-}
-
-function triggerGoldBurst() {
-  const burst = document.createElement('div');
-  burst.className = 'gold-burst';
-  burst.setAttribute('aria-hidden', 'true');
-
-  for (let i = 0; i < 30; i++) {
-    const piece = document.createElement('span');
-    piece.style.setProperty('--x', `${Math.random() * 100}%`);
-    piece.style.setProperty('--delay', `${Math.random() * 120}ms`);
-    piece.style.setProperty('--rot', `${Math.random() * 360}deg`);
-    piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 90}px`);
-    burst.appendChild(piece);
-  }
-
-  document.body.appendChild(burst);
-  setTimeout(() => burst.remove(), 1100);
-}
-
-setupMasqueradeDecor();
-updateDecorForView(document.querySelector('.view.active')?.id || 'home');
+function setupMasqueradeDecor() { if (!document.querySelector('.masquerade-watermark')) { const mask = document.createElement('div'); mask.className = 'masquerade-watermark'; mask.setAttribute('aria-hidden', 'true'); document.body.appendChild(mask); } }
+function triggerGoldBurst() { const burst = document.createElement('div'); burst.className = 'gold-burst'; burst.setAttribute('aria-hidden', 'true'); for (let i = 0; i < 34; i++) { const piece = document.createElement('span'); piece.style.setProperty('--x', `${Math.random() * 100}%`); piece.style.setProperty('--delay', `${Math.random() * 120}ms`); piece.style.setProperty('--rot', `${Math.random() * 360}deg`); piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 90}px`); burst.appendChild(piece); } document.body.appendChild(burst); setTimeout(() => burst.remove(), 1100); }
+setupAdmin(); setupMasqueradeDecor();
