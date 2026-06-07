@@ -1275,7 +1275,7 @@ function renderRoom(ticket) {
   const completed = total && solved.length >= total;
 
   let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
-  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button onclick="toggleAmbience('${ticket.theme || ''}')">Activer / couper l’ambiance sonore</button><span>Ambiance : ${ticket.title}</span></div></div>`;
+  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button id="ambienceBtn" onclick="toggleAmbience('${ticket.theme || ''}')">Activer l’ambiance sonore</button><span class="theme-chip">Ambiance visuelle : ${ticket.title}</span></div></div>`;
 
   if (!total) {
     html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
@@ -1431,13 +1431,21 @@ function renderBoosters(lastCards = []) {
   const box = document.getElementById('boosterArea');
   if (!box) return;
   const canOpen = Number(state.boosters || 0) > 0;
+  const adminTools = document.body.classList.contains('admin-enabled') ? `
+    <div class="booster-admin-tools">
+      <strong>Admin boosters</strong>
+      <button onclick="adminAddBooster()">Ajouter 1 booster</button>
+      <button onclick="adminAddBoosters(5)">Ajouter 5 boosters</button>
+      <button onclick="adminRepairBoosters()">Réparer boosters manquants</button>
+    </div>` : '';
   box.innerHTML = `
     <div class="booster-summary">
       <p class="lead">Paquets disponibles : <strong>${state.boosters || 0}</strong></p>
       <p>Chaque porte terminée ajoute un booster. Un booster contient trois cartes-souvenirs temporaires, à remplacer plus tard par vos vraies photos.</p>
       <button class="primary" ${canOpen ? '' : 'disabled'} onclick="openBooster()">Ouvrir un booster</button>
     </div>
-    <div class="booster-pack ${canOpen ? 'ready' : ''}"><span>🎁</span><strong>Booster souvenir</strong></div>
+    ${adminTools}
+    <div class="booster-pack ${canOpen ? 'ready' : ''}" ${canOpen ? 'onclick="openBooster()"' : ''}><span>🎁</span><strong>Booster souvenir</strong><small>${canOpen ? 'Clique pour l’ouvrir' : 'Aucun booster disponible'}</small></div>
     <div class="booster-results">${lastCards.map(card => cardHtml(card)).join('')}</div>`;
   updateBoosterBadge();
 }
@@ -1490,26 +1498,55 @@ let ambienceOsc = null;
 let ambienceGain = null;
 let currentAmbience = null;
 
-window.toggleAmbience = function(theme) {
-  if (currentAmbience === theme && ambienceCtx) { stopAmbience(); return; }
+window.toggleAmbience = async function(theme) {
+  const btn = document.getElementById('ambienceBtn');
+  if (currentAmbience === theme && ambienceCtx) {
+    stopAmbience();
+    if (btn) btn.textContent = 'Activer l’ambiance sonore';
+    return;
+  }
   stopAmbience();
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
+    if (!AudioContext) {
+      if (btn) btn.textContent = 'Son non compatible';
+      return;
+    }
     ambienceCtx = new AudioContext();
+    if (ambienceCtx.state === 'suspended') await ambienceCtx.resume();
+
     ambienceOsc = ambienceCtx.createOscillator();
+    const lfo = ambienceCtx.createOscillator();
+    const lfoGain = ambienceCtx.createGain();
     ambienceGain = ambienceCtx.createGain();
-    ambienceOsc.type = 'sine';
+    const filter = ambienceCtx.createBiquadFilter();
+
+    ambienceOsc.type = theme === 'joker' || theme === 'masque' ? 'triangle' : 'sine';
     ambienceOsc.frequency.value = (ROOM_THEMES[theme]?.tone || 180);
-    ambienceGain.gain.value = 0.025;
-    ambienceOsc.connect(ambienceGain);
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.22;
+    lfoGain.gain.value = 9;
+    lfo.connect(lfoGain);
+    lfoGain.connect(ambienceOsc.frequency);
+
+    filter.type = 'lowpass';
+    filter.frequency.value = 900;
+    ambienceGain.gain.value = 0.065;
+
+    ambienceOsc.connect(filter);
+    filter.connect(ambienceGain);
     ambienceGain.connect(ambienceCtx.destination);
     ambienceOsc.start();
+    lfo.start();
+    ambienceOsc._lfo = lfo;
     currentAmbience = theme;
-  } catch (e) {}
+    if (btn) btn.textContent = 'Couper l’ambiance sonore';
+  } catch (e) {
+    if (btn) btn.textContent = 'Son bloqué par le navigateur';
+  }
 };
-
 function stopAmbience() {
+  try { if (ambienceOsc && ambienceOsc._lfo) ambienceOsc._lfo.stop(); } catch(e) {}
   try { if (ambienceOsc) ambienceOsc.stop(); } catch(e) {}
   try { if (ambienceCtx) ambienceCtx.close(); } catch(e) {}
   ambienceCtx = null; ambienceOsc = null; ambienceGain = null; currentAmbience = null;
@@ -1541,6 +1578,33 @@ window.resetRefugeDore = function() {
 };
 
 
+window.adminAddBooster = function() {
+  const state = loadState();
+  state.boosters = Number(state.boosters || 0) + 1;
+  saveState(state);
+  updateBoosterBadge();
+  renderBoosters();
+};
+
+window.adminAddBoosters = function(count) {
+  const state = loadState();
+  state.boosters = Number(state.boosters || 0) + Number(count || 1);
+  saveState(state);
+  updateBoosterBadge();
+  renderBoosters();
+};
+
+window.adminRepairBoosters = function() {
+  const state = loadState();
+  const completed = (state.completed || []).length;
+  const alreadyOpened = (state.openedBoosters || []).length;
+  const shouldHaveAvailable = Math.max(0, completed - alreadyOpened);
+  if (Number(state.boosters || 0) < shouldHaveAvailable) state.boosters = shouldHaveAvailable;
+  saveState(state);
+  updateBoosterBadge();
+  renderBoosters();
+};
+
 function ensureAdminPanel() {
   if (document.getElementById('dynamicAdminPanel')) return;
   const panel = document.createElement('section');
@@ -1553,6 +1617,8 @@ function ensureAdminPanel() {
       <button id="lockAllDoorsBtn">Verrouiller toutes les portes</button>
       <button id="resetAllProgressBtn">Tout réinitialiser</button>
       <button id="addBoosterBtn">+1 booster</button>
+      <button id="addFiveBoostersBtn">+5 boosters</button>
+      <button id="repairBoostersBtn">Réparer boosters</button>
     </div>
     <div class="admin-door-grid">
       ${tickets.map(t => `<button onclick="adminUnlockDoor(${t.id})">Porte ${t.id}</button>`).join('')}
@@ -1579,13 +1645,9 @@ function ensureAdminPanel() {
     localStorage.removeItem(STORAGE_KEY);
     location.reload();
   });
-  document.getElementById('addBoosterBtn')?.addEventListener('click', () => {
-    const state = loadState();
-    state.boosters = Number(state.boosters || 0) + 1;
-    saveState(state);
-    updateBoosterBadge();
-    alert('Un booster a été ajouté.');
-  });
+  document.getElementById('addBoosterBtn')?.addEventListener('click', () => { adminAddBooster(); alert('Un booster a été ajouté.'); });
+  document.getElementById('addFiveBoostersBtn')?.addEventListener('click', () => { adminAddBoosters(5); alert('Cinq boosters ont été ajoutés.'); });
+  document.getElementById('repairBoostersBtn')?.addEventListener('click', () => { adminRepairBoosters(); alert('Boosters réparés selon les portes terminées.'); });
 }
 window.adminUnlockDoor = function(ticketId) {
   unlockForTest(ticketId);

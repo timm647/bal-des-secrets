@@ -626,3 +626,82 @@ footer {
 .admin-floating-grid, .admin-door-grid { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
 .admin-floating button { padding: 8px 10px; font-size: .85rem; }
 button:disabled { opacity: .45; cursor: not-allowed; }
+
+/* V18 — corrections UX intro / boosters / ambiances */
+.hero .lead {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#codeInput::placeholder {
+  color: rgba(248,241,223,.48);
+}
+
+.theme-chip {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(217,180,95,.25);
+  background: rgba(255,255,255,.035);
+}
+
+body[class*="theme-"] .card,
+body[class*="theme-"] .room-step,
+body[class*="theme-"] .room-intro {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 30px 90px rgba(0,0,0,.48), inset 0 0 90px color-mix(in srgb, var(--gold) 9%, transparent);
+}
+
+body[class*="theme-"] .eyebrow,
+body[class*="theme-"] h2,
+body[class*="theme-"] .hint-item span,
+body[class*="theme-"] .room-tools span {
+  color: var(--gold-soft);
+}
+
+body[class*="theme-"] button:hover {
+  border-color: var(--gold-soft);
+}
+
+body.theme-rose .gold-noise { opacity: .09; }
+body.theme-parc .gold-noise { opacity: .10; }
+body.theme-aube .gold-noise { opacity: .12; }
+body.theme-joker .gold-noise { opacity: .08; }
+body.theme-minuit .gold-noise { opacity: .06; }
+
+.booster-admin-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 18px;
+  padding: 14px;
+  border: 1px dashed rgba(217,180,95,.45);
+  border-radius: 18px;
+  background: rgba(217,180,95,.055);
+}
+
+.booster-admin-tools strong {
+  color: var(--gold-soft);
+  margin-right: 4px;
+}
+
+.booster-pack small {
+  display: block;
+  margin-top: 8px;
+  color: rgba(248,241,223,.58);
+}
+
+.booster-pack.ready:hover {
+  transform: translateY(-3px) scale(1.015);
+  border-color: var(--gold-soft);
+}
+
+.admin-floating-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 700px) {
+  .admin-floating-grid { grid-template-columns: 1fr; }
+}

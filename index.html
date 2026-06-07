@@ -23,19 +23,20 @@
 
   <main>
     <section id="home" class="view active hero">
-      <p class="eyebrow">L’enveloppe peut être ouverte</p>
+      <p class="eyebrow">Le moment est venu</p>
       <h1>Le Bal des Secrets</h1>
-      <p class="lead">Si tu es arrivée jusqu’ici, c’est que le moment est venu de reprendre les tickets d’or.</p>
-      <p>Garde-les près de toi. Chacun d’eux est une clé, mais aucune porte ne s’ouvre par hasard. Certaines réponses seront sur ce site, d’autres se cacheront peut-être dans des détails, des souvenirs ou des endroits préparés pour toi.</p>
-      <p>Quand tu seras prête, choisis un ticket, entre son code, et laisse le Bal commencer.</p>
+      <p class="lead">Si tu es arrivée jusqu’ici, alors tu peux maintenant ouvrir l’enveloppe.</p>
+      <p>À l’intérieur, tu trouveras des tickets d’or. Garde-les près de toi : chacun d’eux est une clé, mais aucune porte ne s’ouvre par hasard.</p>
+      <p>Choisis un ticket, lis son code, puis entre-le ici lorsque tu veux commencer une nouvelle porte du Bal.</p>
+      <p>Parfois, les réponses seront sur ce site. Parfois, elles attendront dans un détail, un souvenir, ou quelque chose préparé pour toi.</p>
       <div class="actions">
-        <button class="primary" data-view="rules">Lire le protocole</button>
+        <button class="primary" data-view="rules">Lire les règles du Bal</button>
         <button class="secondary" data-view="code">Entrer un code</button>
       </div>
     </section>
 
     <section id="rules" class="view card">
-      <p class="eyebrow">Protocole</p>
+      <p class="eyebrow">Règles du Bal</p>
       <h2>Les règles du Bal</h2>
       <ul class="rules-list">
         <li>Tu possèdes douze tickets d’or.</li>
@@ -54,7 +55,7 @@
       <h2>Entrer un code</h2>
       <p>Inscris ici le code gravé sur ton ticket d’or.</p>
       <div class="code-box">
-        <input id="codeInput" type="text" placeholder="Exemple : REFUGE-DORÉ" autocomplete="off" />
+        <input id="codeInput" type="text" placeholder="Code du ticket d’or" autocomplete="off" />
         <button class="primary" id="unlockBtn">Déverrouiller</button>
       </div>
       <p id="message" class="message"></p>
