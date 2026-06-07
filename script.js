@@ -86,7 +86,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Refuge Doré cachait un doudou.</h3><p>Pas seulement une peluche : un petit refuge à garder près de toi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p></div>",
-    "memory": "Le Refuge Doré — un souvenir doux, gardé pour toi."
+    "memory": "Le Refuge Doré — un souvenir doux, gardé pour toi.",
+    "theme": "refuge"
   },
   {
     "id": 2,
@@ -115,15 +116,15 @@ const tickets = [
       {
         "type": "caesar",
         "title": "Épreuve II — Les lettres trop avancées",
-        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé, comme si elles avaient été poussées un peu trop loin :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
+        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
         "answers": [
           "attention"
         ],
         "hints": [
-          "Le mot n’est pas mélangé : les lettres ont toutes subi la même transformation.",
-          "Ce type de décalage porte le nom d’un homme associé à Rome et à la couronne de laurier.",
-          "Le message a avancé trop loin : il faut revenir en arrière.",
-          "Chaque lettre a avancé de trois positions. Fais donc le chemin inverse."
+          "Le mot n’est pas mélangé : toutes les lettres ont bougé de la même manière.",
+          "Pense à un ancien chef romain souvent associé à une couronne de laurier.",
+          "Les lettres semblent être parties trop loin dans l’alphabet.",
+          "Pour retrouver le mot, recule chaque lettre de trois positions."
         ],
         "success": "Oui : l’attention est retrouvée."
       },
@@ -145,15 +146,15 @@ const tickets = [
       {
         "type": "morse",
         "title": "Épreuve IV — Points et traits",
-        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot se cache derrière ces signes ?</strong></p>",
+        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot entends-tu derrière ces signes ?</strong></p>",
         "answers": [
           "ruban"
         ],
         "hints": [
-          "Ce message n’utilise pas des lettres ordinaires.",
-          "Il alterne seulement deux signes : des courts et des longs.",
+          "Ce message n’utilise presque rien : seulement deux signes différents.",
+          "Ces signes peuvent se lire comme des battements courts et longs.",
           "Ce système servait à transmettre des messages à distance.",
-          "Les points et les traits forment un alphabet : remplace chaque groupe par sa lettre."
+          "C’est du Morse : traduis les points et les traits en lettres."
         ],
         "success": "Oui : un ruban peut accompagner le message sans être le message."
       },
@@ -175,7 +176,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
-    "memory": "La Rose Noire — un message vivant, pensé pour toi."
+    "memory": "La Rose Noire — un message vivant, pensé pour toi.",
+    "theme": "rose"
   },
   {
     "id": 3,
@@ -244,14 +246,14 @@ const tickets = [
       {
         "type": "promise",
         "title": "Épreuve IV — Ce qui n’est pas encore arrivé",
-        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot ne désigne pas une date précise, mais l’idée de quelque chose que l’on prépare avant de le vivre.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
+        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot désigne quelque chose que l’on prépare sans l’avoir encore vécu.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
         "answers": [
           "projet",
           "promesse"
         ],
         "hints": [
           "La réponse n’est pas un souvenir.",
-          "Elle concerne quelque chose qui n’est pas encore arrivé.",
+          "Elle concerne quelque chose à venir.",
           "Elle peut se préparer à l’avance.",
           "On peut parler d’un projet ou d’une promesse."
         ],
@@ -260,12 +262,11 @@ const tickets = [
       {
         "type": "final",
         "title": "Épreuve V — Le temps offert",
-        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache un moment à deux : marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache du temps pour marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
           "date",
           "rendezvous",
-          "rendez-vous",
-          "rendez vous"
+          "rendez-vous"
         ],
         "hints": [
           "La réponse n’est pas matérielle.",
@@ -277,7 +278,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Parc des Premiers Secrets cachait une date avec moi.</h3><p>Une journée préparée pour nous, pour créer un nouveau souvenir à partir du premier.</p></div>",
-    "memory": "Le Parc des Premiers Secrets — du premier bisou vers une nouvelle date."
+    "memory": "Le Parc des Premiers Secrets — du premier bisou vers une nouvelle date.",
+    "theme": "parc"
   },
   {
     "id": 4,
@@ -306,7 +308,7 @@ const tickets = [
       {
         "type": "order",
         "title": "Épreuve II — Remettre le matin en ordre",
-        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie du matin.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
+        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
         "answers": [
           "rituel",
           "routine"
@@ -315,26 +317,26 @@ const tickets = [
           "Ce n’est pas un objet.",
           "C’est une répétition rassurante.",
           "On peut en avoir un le matin.",
-          "On peut dire “rituel” ou “routine”."
+          "Le mot commence par R."
         ],
-        "success": "Oui : un rituel, une routine douce du matin."
+        "success": "Oui : un rituel, ou une routine douce du matin."
       },
       {
         "type": "deduction",
         "title": "Épreuve III — Ce qui précède",
-        "q": "<p>Je ne suis pas le repas.</p><p>Je ne suis pas non plus la personne qui le sert.</p><p>Pourtant, sans moi, le moment arrive moins facilement.</p><p>Je commence souvent avant que tu sois là : il faut penser, organiser, disposer, rendre prêt.</p><p><strong>Que suis-je ?</strong></p>",
+        "q": "<p>Je ne suis pas le repas.</p><p>Je ne suis pas non plus la personne qui le sert.</p><p>Pourtant, sans moi, le moment arrive moins naturellement.</p><p>Je commence souvent avant que tu sois là : choisir, disposer, prévoir, rendre les choses prêtes.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
           "preparation",
           "préparation",
-          "installation",
           "mise en place",
-          "miseenplace"
+          "miseenplace",
+          "installation"
         ],
         "hints": [
           "Ce n’est pas un objet.",
-          "C’est une action.",
-          "Elle a lieu avant le moment attendu.",
-          "Elle consiste à rendre quelque chose prêt."
+          "C’est une action faite avant le moment attendu.",
+          "Elle consiste à rendre quelque chose prêt.",
+          "On peut dire : une préparation."
         ],
         "success": "Oui : la préparation rend le moment possible."
       },
@@ -373,7 +375,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée doucement.</p></div>",
-    "memory": "L’Aube Royale — un matin préparé pour toi."
+    "memory": "L’Aube Royale — un matin préparé pour toi.",
+    "theme": "aube"
   },
   {
     "id": 5,
@@ -384,19 +387,19 @@ const tickets = [
     "intro": "<p>Cette porte doit être comprise avant d’être utilisée. Elle cache une possibilité, pas un objet.</p>",
     "riddles": [
       {
-        "type": "deduction",
+        "type": "concept",
         "title": "Épreuve I — Le cas à part",
-        "q": "<p>Dans une suite bien rangée, presque tout suit la même règle.</p><p>Tout semble prévu, classé, attendu.</p><p>Mais parfois, un élément existe à côté du reste : il ne détruit pas la règle, il montre seulement qu’elle n’explique pas tout.</p><p><strong>Quel mot désigne ce cas à part ?</strong></p>",
+        "q": "<p>Dans une règle, tout semble prévu.</p><p>La plupart des choses suivent le même chemin, sans surprise.</p><p>Mais parfois, un cas existe à côté : il n’annule pas la règle, il la rend simplement moins ordinaire.</p><p>Cette porte commence par cette idée de cas rare, différent, presque impossible à classer.</p><p><strong>Quel mot désigne ce cas à part ?</strong></p>",
         "answers": [
           "exception"
         ],
         "hints": [
           "La réponse n’est pas un objet.",
-          "Elle désigne quelque chose qui ne rentre pas complètement dans la règle générale.",
-          "On l’utilise quand un cas particulier échappe à ce qui était prévu.",
-          "Le mot commence par E."
+          "Elle désigne ce qui ne rentre pas complètement dans la règle générale.",
+          "C’est un cas particulier.",
+          "Le mot commence par EX."
         ],
-        "success": "Oui : cette porte commence par une exception."
+        "success": "Oui : une exception ouvre cette porte."
       },
       {
         "type": "choice",
@@ -414,20 +417,19 @@ const tickets = [
         "success": "Oui : le choix t’appartient."
       },
       {
-        "type": "permission",
-        "title": "Épreuve III — L’autorisation",
-        "q": "<p>Il ne suffit pas d’avoir une idée ou une envie.</p><p>Pour que cette porte fonctionne, il faut aussi que quelque chose t’ouvre le droit de la formuler vraiment.</p><p>Ce mot désigne le fait d’avoir le droit de faire ou de demander quelque chose.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "type": "value",
+        "title": "Épreuve III — Ce qui compte parce que c’est rare",
+        "q": "<p>Si quelque chose arrive tous les jours, on finit parfois par moins le remarquer.</p><p>Mais quand cela n’arrive qu’une seule fois, ou presque jamais, l’attention change.</p><p>Ce mot décrit ce qui n’a pas de double exact, ce qui ne se répète pas simplement.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "permission",
-          "autorisation"
+          "unique"
         ],
         "hints": [
-          "La réponse n’est pas l’envie elle-même.",
-          "Elle rend possible une demande.",
-          "On peut la donner à quelqu’un.",
-          "On peut dire “permission” ou “autorisation”."
+          "La réponse n’est pas un objet.",
+          "Elle parle de rareté.",
+          "Elle veut dire : pas comme les autres, pas répété.",
+          "Le mot commence par U."
         ],
-        "success": "Oui : cette porte te donne une permission spéciale."
+        "success": "Oui : ce pouvoir compte parce qu’il est unique."
       },
       {
         "type": "limit",
@@ -450,7 +452,7 @@ const tickets = [
       {
         "type": "final",
         "title": "Épreuve V — Ce que tu pourras demander",
-        "q": "<p>Tu as trouvé l’exception, le choix, la permission et la limite.</p><p>Cette porte ne cache pas un objet précis.</p><p>Elle cache quelque chose que tu choisiras toi-même, une seule fois, quand tu voudras vraiment que je le réalise pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "q": "<p>Tu as trouvé l’exception, le choix, ce qui est unique, puis la limite d’une seule utilisation.</p><p>Cette porte ne cache pas un objet déjà choisi.</p><p>Elle cache une possibilité : le jour où tu voudras vraiment quelque chose, tu pourras me le demander.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
           "envie",
           "souhait",
@@ -463,15 +465,16 @@ const tickets = [
         ],
         "hints": [
           "Ce n’est pas un objet précis.",
-          "La réponse vient de toi.",
-          "Elle peut être petite ou grande, raisonnable ou un peu capricieuse.",
-          "C’est une envie ou un souhait que je réaliserai pour toi."
+          "C’est quelque chose qui viendra de toi.",
+          "Cela pourra être petit, grand, raisonnable ou un peu capricieux.",
+          "Tu peux répondre simplement : envie ou souhait."
         ],
-        "success": "Tu as trouvé le vrai pouvoir du Joker."
+        "success": "Tu as trouvé : une envie que tu pourras choisir."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu pourras l’utiliser une seule fois, quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
-    "memory": "Le Joker — une envie que tu pourras choisir toi-même."
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu la joueras une seule fois, quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
+    "memory": "Le Joker — une envie que tu pourras choisir toi-même.",
+    "theme": "joker"
   },
   {
     "id": 6,
@@ -563,7 +566,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait un pyjama / de la lingerie.</h3><p>Un cadeau pensé pour toi, entre confort, douceur et élégance.</p></div>",
-    "memory": "Après Minuit — une surprise à porter, pensée pour tes moments à toi."
+    "memory": "Après Minuit — une surprise à porter, pensée pour tes moments à toi.",
+    "theme": "minuit"
   },
   {
     "id": 7,
@@ -576,15 +580,15 @@ const tickets = [
       {
         "type": "morse",
         "title": "Épreuve I — Signes courts et longs",
-        "q": "<p>Un mot a été écrit sans lettres ordinaires :</p><div class=\"cipher-text\"><strong>.. -- .- --. .. -. .- - .. --- -.</strong></div><p>Il désigne ce qui permet à une histoire d’exister avant même d’être lue.</p><p><strong>Quel mot se cache ici ?</strong></p>",
+        "q": "<p>Un mot a été écrit sans lettres :</p><div class=\"cipher-text\"><strong>.. -- .- --. .. -. .- - .. --- -.</strong></div><p>Il désigne ce qui permet à une histoire d’exister avant même d’être lue.</p><p><strong>Quel mot se cache ici ?</strong></p>",
         "answers": [
           "imagination"
         ],
         "hints": [
           "Ce ne sont pas des chiffres.",
           "Le message utilise seulement deux types de signes.",
-          "Ces signes peuvent remplacer les lettres d’un alphabet.",
-          "Les points et les traits forment un code : remplace chaque groupe par sa lettre."
+          "Ce système sert à coder des lettres avec points et traits.",
+          "Déchiffre le Morse."
         ],
         "success": "L’imagination est trouvée."
       },
@@ -652,7 +656,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Chapitre XII cachait un livre au choix.</h3><p>Une histoire que tu pourras choisir toi-même, parce que celle-ci sera la tienne.</p></div>",
-    "memory": "Chapitre XII — une histoire que tu choisiras toi-même."
+    "memory": "Chapitre XII — une histoire que tu choisiras toi-même.",
+    "theme": "chapitre"
   },
   {
     "id": 8,
@@ -752,7 +757,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Festin Doré cachait un pack nourriture.</h3><p>Un petit panier rempli de choses que tu aimes, préparé pour tes envies.</p></div>",
-    "memory": "Le Festin Doré — un panier de petites envies pour toi."
+    "memory": "Le Festin Doré — un panier de petites envies pour toi.",
+    "theme": "festin"
   },
   {
     "id": 9,
@@ -765,7 +771,7 @@ const tickets = [
       {
         "type": "material",
         "title": "Épreuve I — La base douce",
-        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce qu’elle est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
+        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
         "answers": [
           "coton"
         ],
@@ -802,7 +808,7 @@ const tickets = [
         "hints": [
           "La réponse n’est pas un objet.",
           "Elle parle de ce qui te correspond.",
-          "Elle peut être personnelle.",
+          "Elle peut être personnel.",
           "Le mot commence par ST."
         ],
         "success": "Oui : le style."
@@ -844,7 +850,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements choisis pour toi, pour ton style et ton confort.</p></div>",
-    "memory": "Le Fil Doré — des tee-shirts pensés pour toi."
+    "memory": "Le Fil Doré — des tee-shirts pensés pour toi.",
+    "theme": "fil"
   },
   {
     "id": 10,
@@ -933,7 +940,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son univers.</p></div>",
-    "memory": "Le Petit Monde — de petites figurines choisies pour toi."
+    "memory": "Le Petit Monde — de petites figurines choisies pour toi.",
+    "theme": "monde"
   },
   {
     "id": 11,
@@ -1025,7 +1033,8 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau discret, pensé avec confiance et respect, seulement pour toi.</p></div>",
-    "memory": "Le Jardin Secret — une porte intime, pensée avec respect."
+    "memory": "Le Jardin Secret — une porte intime, pensée avec respect.",
+    "theme": "jardin"
   },
   {
     "id": 12,
@@ -1117,9 +1126,33 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Dernier Masque reste à compléter.</h3><p>Cette porte pourra devenir le coffre final des souvenirs, ou une surprise encore meilleure quand elle apparaîtra.</p></div>",
-    "memory": "Le Dernier Masque — une porte gardée pour la fin."
+    "memory": "Le Dernier Masque — une porte gardée pour la fin.",
+    "theme": "masque"
   }
 ];
+
+
+const COLLECTION_CARDS = [
+  { id: 'parc-isle', title: "Parc d’Isle", rarity: 'rare', emoji: '🌿', text: "Là où un souvenir a commencé." },
+  { id: 'cinema', title: 'Cinéma', rarity: 'commune', emoji: '🎬', text: "Une sortie simple qui peut devenir un souvenir." },
+  { id: 'premier-bisou', title: 'Premier bisou', rarity: 'legendaire', emoji: '💫', text: "Certaines dates prennent plus de place que prévu." },
+  { id: 'bocal', title: 'Bocal réconfort', rarity: 'rare', emoji: '🫙', text: "Quelques mots peuvent attendre le bon moment." },
+  { id: 'bal', title: 'Bal des Secrets', rarity: 'epique', emoji: '🎭', text: "Un monde créé juste pour toi." },
+  { id: 'petitdej', title: 'Matin préparé', rarity: 'commune', emoji: '☕', text: "Un début de journée pensé doucement." },
+  { id: 'rose', title: 'Message vivant', rarity: 'rare', emoji: '🌹', text: "Dire quelque chose sans forcément le prononcer." },
+  { id: 'doudou', title: 'Refuge doux', rarity: 'epique', emoji: '🧸', text: "Les refuges ne sont pas toujours des lieux." },
+  { id: 'ticket-or', title: 'Ticket d’or', rarity: 'commune', emoji: '🎟️', text: "Une clé qui attend son mois." },
+  { id: 'souvenir-flou', title: 'Photo à remplacer', rarity: 'commune', emoji: '📷', text: "Emplacement temporaire pour une future photo." },
+  { id: 'sortie', title: 'Sortie surprise', rarity: 'commune', emoji: '🗺️', text: "Un moment qui n’existe pas encore." },
+  { id: 'nous', title: 'Nous deux', rarity: 'legendaire', emoji: '❤️', text: "Une carte rare, à remplacer par une vraie photo." }
+];
+
+const ROOM_THEMES = {
+  refuge: { label: 'Refuge Doré', tone: 220 }, rose: { label: 'Rose Noire', tone: 196 }, parc: { label: 'Parc des Premiers Secrets', tone: 174 },
+  aube: { label: 'Aube Royale', tone: 262 }, joker: { label: 'Le Joker', tone: 146 }, minuit: { label: 'Après Minuit', tone: 116 },
+  chapitre: { label: 'Chapitre XII', tone: 185 }, festin: { label: 'Festin Doré', tone: 246 }, fil: { label: 'Fil Doré', tone: 208 },
+  monde: { label: 'Petit Monde', tone: 164 }, jardin: { label: 'Jardin Secret', tone: 132 }, masque: { label: 'Dernier Masque', tone: 98 }
+};
 
 const STORAGE_KEY = 'bal_des_secrets_state_v4';
 
@@ -1135,7 +1168,7 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [] };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, collection: [], openedBoosters: [] };
 }
 
 function loadState() {
@@ -1146,6 +1179,9 @@ function loadState() {
     state.answers = state.answers || {};
     state.hints = state.hints || {};
     state.completed = state.completed || [];
+    state.boosters = Number(state.boosters || 0);
+    state.collection = state.collection || [];
+    state.openedBoosters = state.openedBoosters || [];
     return state;
   } catch {
     return defaultState();
@@ -1171,7 +1207,12 @@ function showView(id) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
+  if (id !== 'room') clearRoomTheme();
   if (id === 'memories') renderMemories();
+  if (id === 'boosters') renderBoosters();
+  if (id === 'collection') renderCollection();
+  if (id === 'chronicles') renderChronicles();
+  updateBoosterBadge();
 }
 
 document.querySelectorAll('[data-view]').forEach(btn => {
@@ -1226,6 +1267,7 @@ codeInput.addEventListener('keydown', e => {
 });
 
 function renderRoom(ticket) {
+  applyRoomTheme(ticket);
   const state = loadState();
   const room = document.getElementById('room');
   const solved = state.answers[ticket.id] || [];
@@ -1233,7 +1275,7 @@ function renderRoom(ticket) {
   const completed = total && solved.length >= total;
 
   let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
-  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}</div>`;
+  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button onclick="toggleAmbience('${ticket.theme || ''}')">Activer / couper l’ambiance sonore</button><span>Ambiance : ${ticket.title}</span></div></div>`;
 
   if (!total) {
     html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
@@ -1260,7 +1302,9 @@ function renderRoom(ticket) {
   if (completed) {
     if (!state.completed.includes(ticket.id)) {
       state.completed.push(ticket.id);
+      state.boosters = Number(state.boosters || 0) + 1;
       saveState(state);
+      updateBoosterBadge();
     }
     html += ticket.reveal || `<blockquote>Révélation : ce mystère te mène vers ton cadeau — ${ticket.gift}.</blockquote>`;
   }
@@ -1353,6 +1397,124 @@ function roman(num) {
   return ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][num] || num;
 }
 
+
+function updateBoosterBadge() {
+  const state = loadState();
+  const badge = document.getElementById('boosterCount');
+  if (badge) badge.textContent = state.boosters ? ` (${state.boosters})` : '';
+}
+
+function rarityLabel(rarity) {
+  return { commune: 'Commune', rare: 'Rare', epique: 'Épique', legendaire: 'Légendaire' }[rarity] || rarity;
+}
+
+function getNextCards(count = 3) {
+  const state = loadState();
+  const owned = new Set(state.collection || []);
+  const available = COLLECTION_CARDS.filter(card => !owned.has(card.id));
+  const source = available.length ? available : COLLECTION_CARDS;
+  const start = (state.openedBoosters || []).length * count;
+  return Array.from({ length: count }, (_, i) => source[(start + i) % source.length]);
+}
+
+function cardHtml(card, locked = false) {
+  return `<article class="collection-card rarity-${card.rarity} ${locked ? 'locked-card' : ''}">
+    <div class="card-art">${locked ? '🔒' : card.emoji}</div>
+    <div class="card-rarity">${locked ? 'Inconnue' : rarityLabel(card.rarity)}</div>
+    <h3>${locked ? 'Carte non découverte' : card.title}</h3>
+    <p>${locked ? 'Cette carte attend encore dans un futur booster.' : card.text}</p>
+  </article>`;
+}
+
+function renderBoosters(lastCards = []) {
+  const state = loadState();
+  const box = document.getElementById('boosterArea');
+  if (!box) return;
+  const canOpen = Number(state.boosters || 0) > 0;
+  box.innerHTML = `
+    <div class="booster-summary">
+      <p class="lead">Paquets disponibles : <strong>${state.boosters || 0}</strong></p>
+      <p>Chaque porte terminée ajoute un booster. Un booster contient trois cartes-souvenirs temporaires, à remplacer plus tard par vos vraies photos.</p>
+      <button class="primary" ${canOpen ? '' : 'disabled'} onclick="openBooster()">Ouvrir un booster</button>
+    </div>
+    <div class="booster-pack ${canOpen ? 'ready' : ''}"><span>🎁</span><strong>Booster souvenir</strong></div>
+    <div class="booster-results">${lastCards.map(card => cardHtml(card)).join('')}</div>`;
+  updateBoosterBadge();
+}
+
+window.openBooster = function() {
+  const state = loadState();
+  if (!state.boosters) return;
+  const cards = getNextCards(3);
+  state.boosters -= 1;
+  state.openedBoosters.push(Date.now());
+  cards.forEach(card => { if (!state.collection.includes(card.id)) state.collection.push(card.id); });
+  saveState(state);
+  renderBoosters(cards);
+  renderCollection();
+  triggerGoldBurst();
+};
+
+function renderCollection() {
+  const state = loadState();
+  const grid = document.getElementById('collectionGrid');
+  const stats = document.getElementById('collectionStats');
+  if (!grid) return;
+  const owned = new Set(state.collection || []);
+  if (stats) stats.innerHTML = `<strong>${owned.size}</strong> / ${COLLECTION_CARDS.length} cartes découvertes`;
+  grid.innerHTML = COLLECTION_CARDS.map(card => owned.has(card.id) ? cardHtml(card) : cardHtml(card, true)).join('');
+  updateBoosterBadge();
+}
+
+function renderChronicles() {
+  const el = document.getElementById('chroniclesList');
+  if (!el) return;
+  el.innerHTML = `
+    <article class="chronicle"><h3>Le commencement</h3><p>Certains souvenirs commencent doucement, puis prennent plus de place qu’on ne l’imaginait.</p></article>
+    <article class="chronicle"><h3>Les tickets d’or</h3><p>Tu n’avais pas seulement une enveloppe entre les mains. Tu avais une année entière de petites portes à ouvrir.</p></article>
+    <article class="chronicle"><h3>Les mots réconfortants</h3><p>Parfois, les réponses ne se trouvent pas dans une énigme, mais dans un endroit préparé pour te faire du bien.</p></article>`;
+}
+
+function clearRoomTheme() {
+  document.body.className = document.body.className.split(' ').filter(c => !c.startsWith('theme-')).join(' ');
+  stopAmbience();
+}
+
+function applyRoomTheme(ticket) {
+  document.body.className = document.body.className.split(' ').filter(c => !c.startsWith('theme-')).join(' ');
+  if (ticket && ticket.theme) document.body.classList.add(`theme-${ticket.theme}`);
+}
+
+let ambienceCtx = null;
+let ambienceOsc = null;
+let ambienceGain = null;
+let currentAmbience = null;
+
+window.toggleAmbience = function(theme) {
+  if (currentAmbience === theme && ambienceCtx) { stopAmbience(); return; }
+  stopAmbience();
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    ambienceCtx = new AudioContext();
+    ambienceOsc = ambienceCtx.createOscillator();
+    ambienceGain = ambienceCtx.createGain();
+    ambienceOsc.type = 'sine';
+    ambienceOsc.frequency.value = (ROOM_THEMES[theme]?.tone || 180);
+    ambienceGain.gain.value = 0.025;
+    ambienceOsc.connect(ambienceGain);
+    ambienceGain.connect(ambienceCtx.destination);
+    ambienceOsc.start();
+    currentAmbience = theme;
+  } catch (e) {}
+};
+
+function stopAmbience() {
+  try { if (ambienceOsc) ambienceOsc.stop(); } catch(e) {}
+  try { if (ambienceCtx) ambienceCtx.close(); } catch(e) {}
+  ambienceCtx = null; ambienceOsc = null; ambienceGain = null; currentAmbience = null;
+}
+
 function resetTicket(ticketId) {
   const state = loadState();
   state.answers[ticketId] = [];
@@ -1390,6 +1552,7 @@ function ensureAdminPanel() {
       <button id="unlockAllDoorsBtn">Débloquer toutes les portes</button>
       <button id="lockAllDoorsBtn">Verrouiller toutes les portes</button>
       <button id="resetAllProgressBtn">Tout réinitialiser</button>
+      <button id="addBoosterBtn">+1 booster</button>
     </div>
     <div class="admin-door-grid">
       ${tickets.map(t => `<button onclick="adminUnlockDoor(${t.id})">Porte ${t.id}</button>`).join('')}
@@ -1415,6 +1578,13 @@ function ensureAdminPanel() {
   document.getElementById('resetAllProgressBtn')?.addEventListener('click', () => {
     localStorage.removeItem(STORAGE_KEY);
     location.reload();
+  });
+  document.getElementById('addBoosterBtn')?.addEventListener('click', () => {
+    const state = loadState();
+    state.boosters = Number(state.boosters || 0) + 1;
+    saveState(state);
+    updateBoosterBadge();
+    alert('Un booster a été ajouté.');
   });
 }
 window.adminUnlockDoor = function(ticketId) {
@@ -1490,3 +1660,4 @@ function triggerGoldBurst() {
 }
 
 setupMasqueradeDecor();
+updateBoosterBadge();
