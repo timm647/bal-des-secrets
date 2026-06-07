@@ -1318,7 +1318,7 @@ function renderRoom(ticket) {
   const completed = total && solved.length >= total;
 
   let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
-  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button id="ambienceBtn" onclick="toggleAmbience('${ticket.theme || ''}')">Jouer une note d’ambiance</button><span class="theme-chip">Ambiance visuelle : ${ticket.title}</span></div></div>`;
+  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="booster-reminder"><strong>Récompenses du Bal :</strong> chaque énigme résolue t’offre un mini booster. En terminant cette porte, tu débloques aussi un grand booster de 3 cartes.</div><div class="room-tools"><button id="ambienceBtn" onclick="toggleAmbience('${ticket.theme || ''}')">Jouer une note d’ambiance</button><span class="theme-chip">Ambiance visuelle : ${ticket.title}</span></div></div>`;
 
   if (!total) {
     html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
@@ -1395,19 +1395,22 @@ window.checkAnswer = function(ticketId, index) {
 
   if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
+    let earnedMessages = [];
     if (!wasAlreadySolved) {
       state.answers[ticketId].push(index);
       const isFinalRiddle = index === (ticket.riddles.length - 1);
+      state.miniBoosters = Number(state.miniBoosters || 0) + 1;
+      earnedMessages.push('Mini booster gagné ! Il t’attend dans l’onglet Boosters.');
       if (isFinalRiddle) {
         state.boosters = Number(state.boosters || 0) + 1;
-      } else {
-        state.miniBoosters = Number(state.miniBoosters || 0) + 1;
+        earnedMessages.push('Grand booster gagné ! 3 cartes t’attendent dans l’onglet Boosters.');
       }
     }
     saveState(state);
     renderRoom(ticket);
     updateBoosterBadge();
     triggerGoldBurst();
+    if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'));
     window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' });
   } else {
     input.value = '';
@@ -1416,6 +1419,22 @@ window.checkAnswer = function(ticketId, index) {
     setTimeout(() => input.classList.remove('shake'), 350);
   }
 };
+
+function showBoosterToast(message) {
+  let toast = document.getElementById('boosterToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'boosterToast';
+    toast.className = 'booster-toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span>✦</span><p>${message}</p>`;
+  toast.classList.remove('show');
+  void toast.offsetWidth;
+  toast.classList.add('show');
+  clearTimeout(window.__boosterToastTimer);
+  window.__boosterToastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
+}
 
 function renderMemories() {
   const state = loadState();
@@ -1507,7 +1526,7 @@ function renderBoosters(lastCards = [], lastType = '') {
   box.innerHTML = `
     <div class="booster-summary">
       <p class="lead">Mini boosters : <strong>${state.miniBoosters || 0}</strong> · Grands boosters : <strong>${state.boosters || 0}</strong></p>
-      <p>Chaque énigme résolue donne un mini booster d’une carte. La dernière énigme d’une porte donne un grand booster de trois cartes. Une carte gratuite peut aussi être récupérée une fois par jour.</p>
+      <p>Chaque énigme résolue donne un mini booster d’une carte. Quand une porte est terminée, un grand booster de trois cartes est aussi ajouté. Une carte gratuite peut aussi être récupérée une fois par jour.</p>
       ${rarityRatesHtml()}
     </div>
     ${adminTools}

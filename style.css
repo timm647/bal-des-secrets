@@ -828,3 +828,64 @@ body.theme-minuit .gold-noise { opacity: .06; }
   border: 1px solid rgba(217,180,95,.22);
   background: radial-gradient(circle at 50% 0%, rgba(217,180,95,.12), transparent 45%), rgba(0,0,0,.16);
 }
+
+
+/* V20 — notifications boosters */
+.booster-reminder {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(217,180,95,.28);
+  background: rgba(217,180,95,.07);
+  color: rgba(248,241,223,.84);
+  line-height: 1.55;
+}
+.booster-reminder strong { color: var(--gold-soft); }
+
+.booster-toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2000;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(217,180,95,.55);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,230,150,.22), transparent 45%),
+    linear-gradient(145deg, rgba(18,16,24,.96), rgba(5,5,8,.94));
+  box-shadow: 0 22px 70px rgba(0,0,0,.48), 0 0 30px rgba(217,180,95,.12);
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(18px) scale(.96);
+  pointer-events: none;
+}
+.booster-toast.show {
+  animation: boosterToastIn .38s ease forwards, boosterToastOut .38s ease 3.15s forwards;
+}
+.booster-toast span {
+  color: var(--gold-soft);
+  font-size: 1.55rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(217,180,95,.6));
+}
+.booster-toast p {
+  margin: 0;
+  color: rgba(248,241,223,.92);
+  line-height: 1.45;
+}
+@keyframes boosterToastIn {
+  from { opacity: 0; transform: translateY(18px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes boosterToastOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(14px) scale(.98); }
+}
+
+@media (max-width: 650px) {
+  .booster-toast { left: 16px; right: 16px; bottom: 16px; }
+}
