@@ -9,7 +9,11 @@
 <body>
   <div class="gold-noise"></div>
   <header class="topbar">
-    <div class="brand">Le Bal des Secrets</div>
+    <div class="topbar-left">
+      <div class="brand">Le Bal des Secrets</div>
+      <button class="final-room-shortcut" data-view="finalRoom">🔒 Dernière Salle</button>
+      <button class="save-shortcut" data-view="save" title="Sauvegarde">💾</button>
+    </div>
     <nav class="main-nav">
       <button data-view="home">Accueil</button>
       <button data-view="rules">Règles</button>
@@ -23,13 +27,12 @@
         </div>
       </div>
       <div class="nav-group">
-        <button type="button" class="nav-parent">Progression</button>
+        <button type="button" class="nav-parent">Badges</button>
         <div class="nav-submenu">
-          <button data-view="progression">Vue globale</button>
+          <button data-view="progression">Badges</button>
           <button data-view="journal">Journal</button>
         </div>
       </div>
-      <button data-view="finalRoom">Dernière Salle</button>
       <button data-view="chronicles">Notre Histoire</button>
     </nav>
   </header>
@@ -100,21 +103,28 @@
     </section>
 
     <section id="progression" class="view card">
-      <p class="eyebrow">Tableau de bord</p>
-      <h2>Progression du Bal</h2>
+      <p class="eyebrow">Objectifs du Bal</p>
+      <h2>Badges du Bal</h2>
       <div id="progressionBoard"></div>
       <p class="progress-help">Les badges verrouillés indiquent maintenant clairement leur objectif. Ils se débloquent automatiquement quand l’objectif est atteint.</p>
       <div id="badgeWall" class="badge-wall"></div>
-      <div class="save-tools">
-        <button class="secondary" onclick="exportProgress()">Exporter ma progression</button>
-        <label class="import-label">Importer une progression<input type="file" accept="application/json" onchange="importProgress(event)"></label>
-      </div>
+
     </section>
 
     <section id="journal" class="view card">
       <p class="eyebrow">Journal du Bal</p>
       <h2>Historique des épreuves</h2>
       <div id="journalList" class="journal-list"></div>
+    </section>
+
+    <section id="save" class="view card">
+      <p class="eyebrow">Sauvegarde</p>
+      <h2>Sauvegarde du Bal</h2>
+      <p>Tu peux exporter ta progression pour la conserver, ou l’importer sur un autre appareil.</p>
+      <div class="save-tools save-page-tools">
+        <button class="primary" onclick="exportProgress()">Exporter ma progression</button>
+        <label class="import-label">Importer une progression<input type="file" accept="application/json" onchange="importProgress(event)"></label>
+      </div>
     </section>
 
     <section id="finalRoom" class="view card">

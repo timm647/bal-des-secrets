@@ -1550,3 +1550,91 @@ nav button { box-shadow: inset 0 0 16px rgba(217,180,95,.035); }
 .secret-logo { display: none; }
 .secret-logo.visible-for-view { display: grid; }
 .pack-opening-modal { position: relative; overflow: hidden; }
+
+/* V25.1 — menu gauche, sauvegarde séparée et sous-menus au-dessus */
+.topbar {
+  z-index: 5000 !important;
+  align-items: center;
+}
+.topbar-left {
+  position: relative;
+  z-index: 5002;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.main-nav {
+  position: relative;
+  z-index: 5001;
+}
+.nav-group,
+.nav-submenu {
+  z-index: 6000 !important;
+}
+.nav-submenu {
+  pointer-events: auto;
+  overflow: visible;
+}
+.final-room-shortcut {
+  border-color: rgba(241,216,144,.64);
+  color: var(--gold-soft);
+  background:
+    radial-gradient(circle at 25% 20%, rgba(241,216,144,.18), transparent 34%),
+    linear-gradient(135deg, rgba(58,34,82,.46), rgba(8,19,55,.34));
+  box-shadow: 0 0 24px rgba(217,180,95,.10), inset 0 0 22px rgba(217,180,95,.05);
+}
+.final-room-shortcut:hover {
+  box-shadow: 0 0 32px rgba(217,180,95,.22), inset 0 0 24px rgba(217,180,95,.08);
+}
+.save-shortcut {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border-color: rgba(217,180,95,.55);
+  background: rgba(255,255,255,.045);
+  font-size: 1.12rem;
+  box-shadow: inset 0 0 18px rgba(217,180,95,.045);
+}
+.save-page-tools {
+  border-top: 0;
+  padding-top: 0;
+  justify-content: flex-start;
+}
+@media (max-width: 760px) {
+  .topbar-left {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+  }
+  .brand { align-self: center; }
+  .final-room-shortcut {
+    white-space: nowrap;
+    padding: 9px 11px;
+    font-size: .86rem;
+  }
+  .save-shortcut {
+    width: 39px;
+    height: 39px;
+  }
+  .nav-submenu {
+    z-index: 6000 !important;
+  }
+}
+@media (max-width: 430px) {
+  .topbar-left {
+    grid-template-columns: 1fr auto;
+  }
+  .final-room-shortcut {
+    grid-column: 1 / 2;
+    justify-self: start;
+    max-width: 100%;
+  }
+  .save-shortcut {
+    grid-column: 2 / 3;
+  }
+}
