@@ -1402,3 +1402,17 @@ nav button { box-shadow: inset 0 0 16px rgba(217,180,95,.035); }
   .pack-opening-modal { padding: 20px 14px; }
   .inline-opening-animation { grid-template-columns: 1fr; max-width: 320px; }
 }
+
+/* V24.1 — correction accueil visible partout */
+.view:not(.active) {
+  display: none !important;
+}
+
+.view.active.hero {
+  display: flex !important;
+}
+
+.view.active.card,
+.view.active.room {
+  display: block !important;
+}
