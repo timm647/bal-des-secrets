@@ -705,3 +705,126 @@ body.theme-minuit .gold-noise { opacity: .06; }
 @media (max-width: 700px) {
   .admin-floating-grid { grid-template-columns: 1fr; }
 }
+
+
+/* V19 — boosters plus vivants, doublons, nouveaux tirages */
+.booster-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.booster-pack {
+  position: relative;
+  overflow: hidden;
+}
+
+.booster-pack.ready::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 90deg, transparent, rgba(255,230,150,.24), transparent, rgba(217,180,95,.18), transparent);
+  animation: packShimmer 3.2s linear infinite;
+}
+
+.booster-pack > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes packShimmer {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.opening-animation .collection-card {
+  opacity: 0;
+  transform: translateY(24px) scale(.86) rotateY(70deg);
+  animation: cardReveal .78s cubic-bezier(.18,.9,.25,1.15) forwards;
+}
+.opening-animation .collection-card:nth-child(2) { animation-delay: .16s; }
+.opening-animation .collection-card:nth-child(3) { animation-delay: .32s; }
+
+@keyframes cardReveal {
+  0% { opacity: 0; transform: translateY(24px) scale(.86) rotateY(70deg); filter: brightness(.65); }
+  60% { opacity: 1; transform: translateY(-8px) scale(1.04) rotateY(-8deg); filter: brightness(1.25); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotateY(0); filter: brightness(1); }
+}
+
+.collection-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.new-card {
+  box-shadow: 0 0 36px rgba(255,230,150,.24), 0 18px 46px rgba(0,0,0,.32);
+}
+
+.new-card::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.20), transparent 65%);
+  animation: newCardSweep 1.5s ease-out .25s forwards;
+}
+
+@keyframes newCardSweep {
+  from { transform: translateX(-35%) rotate(10deg); }
+  to { transform: translateX(35%) rotate(10deg); }
+}
+
+.new-badge, .duplicate-badge {
+  position: absolute;
+  top: 12px;
+  z-index: 3;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.new-badge {
+  left: 12px;
+  color: #171005;
+  background: linear-gradient(135deg, #fff4b4, #d9b45f);
+  box-shadow: 0 0 20px rgba(217,180,95,.35);
+}
+
+.duplicate-badge {
+  right: 12px;
+  color: var(--gold-soft);
+  border: 1px solid rgba(217,180,95,.38);
+  background: rgba(0,0,0,.45);
+}
+
+.rarity-rates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rarity-dot {
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(217,180,95,.22);
+  background: rgba(255,255,255,.035);
+  font-size: .85rem;
+  color: rgba(248,241,223,.78);
+}
+
+.rarity-dot.rarity-commune { border-color: rgba(248,241,223,.25); }
+.rarity-dot.rarity-rare { border-color: rgba(137,196,131,.55); }
+.rarity-dot.rarity-epique { border-color: rgba(179,140,255,.55); }
+.rarity-dot.rarity-legendaire { border-color: rgba(255,230,150,.75); color: var(--gold-soft); }
+
+.booster-opening {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(217,180,95,.22);
+  background: radial-gradient(circle at 50% 0%, rgba(217,180,95,.12), transparent 45%), rgba(0,0,0,.16);
+}

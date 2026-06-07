@@ -1147,6 +1147,47 @@ const COLLECTION_CARDS = [
   { id: 'nous', title: 'Nous deux', rarity: 'legendaire', emoji: '❤️', text: "Une carte rare, à remplacer par une vraie photo." }
 ];
 
+
+
+const RARITY_WEIGHTS = [
+  { rarity: 'commune', weight: 40 },
+  { rarity: 'rare', weight: 30 },
+  { rarity: 'epique', weight: 20 },
+  { rarity: 'legendaire', weight: 10 }
+];
+
+function todayKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function collectionCounts(state) {
+  const counts = {};
+  (state.collection || []).forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+  return counts;
+}
+
+function weightedRandomCard() {
+  const total = RARITY_WEIGHTS.reduce((sum, item) => sum + item.weight, 0);
+  let roll = Math.random() * total;
+  let chosen = RARITY_WEIGHTS[0].rarity;
+  for (const item of RARITY_WEIGHTS) {
+    if (roll < item.weight) { chosen = item.rarity; break; }
+    roll -= item.weight;
+  }
+  const pool = COLLECTION_CARDS.filter(card => card.rarity === chosen);
+  const source = pool.length ? pool : COLLECTION_CARDS;
+  return source[Math.floor(Math.random() * source.length)];
+}
+
+function drawCards(count) {
+  return Array.from({ length: count }, () => weightedRandomCard());
+}
+
+function packLabel(type) {
+  return type === 'daily' ? 'Carte du jour' : type === 'mini' ? 'Mini booster' : 'Grand booster';
+}
+
 const ROOM_THEMES = {
   refuge: { label: 'Refuge Doré', tone: 220 }, rose: { label: 'Rose Noire', tone: 196 }, parc: { label: 'Parc des Premiers Secrets', tone: 174 },
   aube: { label: 'Aube Royale', tone: 262 }, joker: { label: 'Le Joker', tone: 146 }, minuit: { label: 'Après Minuit', tone: 116 },
@@ -1168,7 +1209,7 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, collection: [], openedBoosters: [] };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null };
 }
 
 function loadState() {
@@ -1180,8 +1221,10 @@ function loadState() {
     state.hints = state.hints || {};
     state.completed = state.completed || [];
     state.boosters = Number(state.boosters || 0);
+    state.miniBoosters = Number(state.miniBoosters || 0);
     state.collection = state.collection || [];
     state.openedBoosters = state.openedBoosters || [];
+    state.lastDailyBooster = state.lastDailyBooster || null;
     return state;
   } catch {
     return defaultState();
@@ -1275,7 +1318,7 @@ function renderRoom(ticket) {
   const completed = total && solved.length >= total;
 
   let html = `<p class="eyebrow">Porte déverrouillée</p><h2>${ticket.title}</h2><p>${ticket.teaser}</p>`;
-  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button id="ambienceBtn" onclick="toggleAmbience('${ticket.theme || ''}')">Activer l’ambiance sonore</button><span class="theme-chip">Ambiance visuelle : ${ticket.title}</span></div></div>`;
+  if (ticket.intro) html += `<div class="room-intro">${ticket.intro}<div class="room-tools"><button id="ambienceBtn" onclick="toggleAmbience('${ticket.theme || ''}')">Jouer une note d’ambiance</button><span class="theme-chip">Ambiance visuelle : ${ticket.title}</span></div></div>`;
 
   if (!total) {
     html += `<blockquote>Cette porte est encore en préparation. Le ticket est bien débloqué, mais son mystère complet arrivera plus tard.</blockquote>`;
@@ -1302,7 +1345,6 @@ function renderRoom(ticket) {
   if (completed) {
     if (!state.completed.includes(ticket.id)) {
       state.completed.push(ticket.id);
-      state.boosters = Number(state.boosters || 0) + 1;
       saveState(state);
       updateBoosterBadge();
     }
@@ -1352,9 +1394,19 @@ window.checkAnswer = function(ticketId, index) {
   const validAnswers = ticket.riddles[index].answers || [];
 
   if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
-    if (!state.answers[ticketId].includes(index)) state.answers[ticketId].push(index);
+    const wasAlreadySolved = state.answers[ticketId].includes(index);
+    if (!wasAlreadySolved) {
+      state.answers[ticketId].push(index);
+      const isFinalRiddle = index === (ticket.riddles.length - 1);
+      if (isFinalRiddle) {
+        state.boosters = Number(state.boosters || 0) + 1;
+      } else {
+        state.miniBoosters = Number(state.miniBoosters || 0) + 1;
+      }
+    }
     saveState(state);
     renderRoom(ticket);
+    updateBoosterBadge();
     triggerGoldBurst();
     window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' });
   } else {
@@ -1401,7 +1453,8 @@ function roman(num) {
 function updateBoosterBadge() {
   const state = loadState();
   const badge = document.getElementById('boosterCount');
-  if (badge) badge.textContent = state.boosters ? ` (${state.boosters})` : '';
+  const totalPacks = Number(state.boosters || 0) + Number(state.miniBoosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
+  if (badge) badge.textContent = totalPacks ? ` (${totalPacks})` : '';
 }
 
 function rarityLabel(rarity) {
@@ -1409,16 +1462,17 @@ function rarityLabel(rarity) {
 }
 
 function getNextCards(count = 3) {
-  const state = loadState();
-  const owned = new Set(state.collection || []);
-  const available = COLLECTION_CARDS.filter(card => !owned.has(card.id));
-  const source = available.length ? available : COLLECTION_CARDS;
-  const start = (state.openedBoosters || []).length * count;
-  return Array.from({ length: count }, (_, i) => source[(start + i) % source.length]);
+  return drawCards(count);
 }
 
-function cardHtml(card, locked = false) {
-  return `<article class="collection-card rarity-${card.rarity} ${locked ? 'locked-card' : ''}">
+function cardHtml(card, options = {}) {
+  const locked = !!options.locked;
+  const isNew = !!options.isNew;
+  const count = Number(options.count || 0);
+  const extraClass = `${locked ? 'locked-card' : ''} ${isNew ? 'new-card' : ''}`;
+  return `<article class="collection-card rarity-${card.rarity} ${extraClass}">
+    ${isNew ? '<div class="new-badge">NOUVEAU</div>' : ''}
+    ${!locked && count > 1 ? `<div class="duplicate-badge">x${count}</div>` : ''}
     <div class="card-art">${locked ? '🔒' : card.emoji}</div>
     <div class="card-rarity">${locked ? 'Inconnue' : rarityLabel(card.rarity)}</div>
     <h3>${locked ? 'Carte non découverte' : card.title}</h3>
@@ -1426,51 +1480,92 @@ function cardHtml(card, locked = false) {
   </article>`;
 }
 
-function renderBoosters(lastCards = []) {
+function rarityRatesHtml() {
+  return `<div class="rarity-rates">
+    <span class="rarity-dot rarity-commune">Commune 40%</span>
+    <span class="rarity-dot rarity-rare">Rare 30%</span>
+    <span class="rarity-dot rarity-epique">Épique 20%</span>
+    <span class="rarity-dot rarity-legendaire">Légendaire 10%</span>
+  </div>`;
+}
+
+function renderBoosters(lastCards = [], lastType = '') {
   const state = loadState();
   const box = document.getElementById('boosterArea');
   if (!box) return;
-  const canOpen = Number(state.boosters || 0) > 0;
+  const canOpenBig = Number(state.boosters || 0) > 0;
+  const canOpenMini = Number(state.miniBoosters || 0) > 0;
+  const canDaily = state.lastDailyBooster !== todayKey();
   const adminTools = document.body.classList.contains('admin-enabled') ? `
     <div class="booster-admin-tools">
       <strong>Admin boosters</strong>
-      <button onclick="adminAddBooster()">Ajouter 1 booster</button>
-      <button onclick="adminAddBoosters(5)">Ajouter 5 boosters</button>
+      <button onclick="adminAddMiniBooster()">Ajouter 1 mini booster</button>
+      <button onclick="adminAddBooster()">Ajouter 1 grand booster</button>
+      <button onclick="adminAddBoosters(5)">Ajouter 5 grands boosters</button>
       <button onclick="adminRepairBoosters()">Réparer boosters manquants</button>
     </div>` : '';
   box.innerHTML = `
     <div class="booster-summary">
-      <p class="lead">Paquets disponibles : <strong>${state.boosters || 0}</strong></p>
-      <p>Chaque porte terminée ajoute un booster. Un booster contient trois cartes-souvenirs temporaires, à remplacer plus tard par vos vraies photos.</p>
-      <button class="primary" ${canOpen ? '' : 'disabled'} onclick="openBooster()">Ouvrir un booster</button>
+      <p class="lead">Mini boosters : <strong>${state.miniBoosters || 0}</strong> · Grands boosters : <strong>${state.boosters || 0}</strong></p>
+      <p>Chaque énigme résolue donne un mini booster d’une carte. La dernière énigme d’une porte donne un grand booster de trois cartes. Une carte gratuite peut aussi être récupérée une fois par jour.</p>
+      ${rarityRatesHtml()}
     </div>
     ${adminTools}
-    <div class="booster-pack ${canOpen ? 'ready' : ''}" ${canOpen ? 'onclick="openBooster()"' : ''}><span>🎁</span><strong>Booster souvenir</strong><small>${canOpen ? 'Clique pour l’ouvrir' : 'Aucun booster disponible'}</small></div>
-    <div class="booster-results">${lastCards.map(card => cardHtml(card)).join('')}</div>`;
+    <div class="booster-actions-grid">
+      <div class="booster-pack ${canDaily ? 'ready daily-pack' : ''}" ${canDaily ? 'onclick="openDailyCard()"' : ''}><span>☀️</span><strong>Carte du jour</strong><small>${canDaily ? '1 carte gratuite à récupérer' : 'Déjà récupérée aujourd’hui'}</small></div>
+      <div class="booster-pack ${canOpenMini ? 'ready mini-pack' : ''}" ${canOpenMini ? 'onclick="openMiniBooster()"' : ''}><span>✉️</span><strong>Mini booster</strong><small>${canOpenMini ? 'Ouvre 1 carte' : 'Aucun mini booster'}</small></div>
+      <div class="booster-pack ${canOpenBig ? 'ready big-pack' : ''}" ${canOpenBig ? 'onclick="openBooster()"' : ''}><span>🎁</span><strong>Grand booster</strong><small>${canOpenBig ? 'Ouvre 3 cartes' : 'Aucun grand booster'}</small></div>
+    </div>
+    ${lastCards.length ? `<div class="booster-opening"><p class="eyebrow">${packLabel(lastType)} ouvert</p><div class="booster-results opening-animation">${lastCards.map(card => cardHtml(card, { isNew: card.isNew })).join('')}</div></div>` : ''}`;
   updateBoosterBadge();
 }
 
-window.openBooster = function() {
+function addCardsToCollection(cards) {
   const state = loadState();
-  if (!state.boosters) return;
-  const cards = getNextCards(3);
-  state.boosters -= 1;
+  const countsBefore = collectionCounts(state);
+  const results = cards.map(card => ({ ...card, isNew: !countsBefore[card.id] }));
+  results.forEach(card => state.collection.push(card.id));
   state.openedBoosters.push(Date.now());
-  cards.forEach(card => { if (!state.collection.includes(card.id)) state.collection.push(card.id); });
   saveState(state);
-  renderBoosters(cards);
+  return results;
+}
+
+function openCardPack(count, type) {
+  const state = loadState();
+  if (type === 'daily') {
+    if (state.lastDailyBooster === todayKey()) return;
+    state.lastDailyBooster = todayKey();
+    saveState(state);
+  } else if (type === 'mini') {
+    if (!state.miniBoosters) return;
+    state.miniBoosters -= 1;
+    saveState(state);
+  } else {
+    if (!state.boosters) return;
+    state.boosters -= 1;
+    saveState(state);
+  }
+  const results = addCardsToCollection(getNextCards(count));
+  renderBoosters(results, type);
   renderCollection();
   triggerGoldBurst();
-};
+}
+
+window.openDailyCard = function() { openCardPack(1, 'daily'); };
+window.openMiniBooster = function() { openCardPack(1, 'mini'); };
+window.openBooster = function() { openCardPack(3, 'big'); };
 
 function renderCollection() {
   const state = loadState();
   const grid = document.getElementById('collectionGrid');
   const stats = document.getElementById('collectionStats');
   if (!grid) return;
-  const owned = new Set(state.collection || []);
-  if (stats) stats.innerHTML = `<strong>${owned.size}</strong> / ${COLLECTION_CARDS.length} cartes découvertes`;
-  grid.innerHTML = COLLECTION_CARDS.map(card => owned.has(card.id) ? cardHtml(card) : cardHtml(card, true)).join('');
+  const counts = collectionCounts(state);
+  const ownedIds = Object.keys(counts);
+  const totalCards = (state.collection || []).length;
+  const duplicates = Math.max(0, totalCards - ownedIds.length);
+  if (stats) stats.innerHTML = `<strong>${ownedIds.length}</strong> / ${COLLECTION_CARDS.length} cartes découvertes · <strong>${duplicates}</strong> doublon(s)`;
+  grid.innerHTML = COLLECTION_CARDS.map(card => counts[card.id] ? cardHtml(card, { count: counts[card.id] }) : cardHtml(card, { locked: true })).join('');
   updateBoosterBadge();
 }
 
@@ -1479,7 +1574,7 @@ function renderChronicles() {
   if (!el) return;
   el.innerHTML = `
     <article class="chronicle"><h3>Le commencement</h3><p>Certains souvenirs commencent doucement, puis prennent plus de place qu’on ne l’imaginait.</p></article>
-    <article class="chronicle"><h3>Les tickets d’or</h3><p>Tu n’avais pas seulement une enveloppe entre les mains. Tu avais une année entière de petites portes à ouvrir.</p></article>
+    <article class="chronicle"><h3>Les tickets d’or</h3><p>Tu n’avais pas seulement une enveloppe entre les mains. Tu avais une collection de portes à ouvrir, chacune à son moment.</p></article>
     <article class="chronicle"><h3>Les mots réconfortants</h3><p>Parfois, les réponses ne se trouvent pas dans une énigme, mais dans un endroit préparé pour te faire du bien.</p></article>`;
 }
 
@@ -1494,62 +1589,43 @@ function applyRoomTheme(ticket) {
 }
 
 let ambienceCtx = null;
-let ambienceOsc = null;
-let ambienceGain = null;
 let currentAmbience = null;
 
 window.toggleAmbience = async function(theme) {
   const btn = document.getElementById('ambienceBtn');
-  if (currentAmbience === theme && ambienceCtx) {
-    stopAmbience();
-    if (btn) btn.textContent = 'Activer l’ambiance sonore';
-    return;
-  }
-  stopAmbience();
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) {
       if (btn) btn.textContent = 'Son non compatible';
       return;
     }
-    ambienceCtx = new AudioContext();
-    if (ambienceCtx.state === 'suspended') await ambienceCtx.resume();
+    const ctx = new AudioContext();
+    if (ctx.state === 'suspended') await ctx.resume();
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.045, ctx.currentTime + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.75);
+    gain.connect(ctx.destination);
 
-    ambienceOsc = ambienceCtx.createOscillator();
-    const lfo = ambienceCtx.createOscillator();
-    const lfoGain = ambienceCtx.createGain();
-    ambienceGain = ambienceCtx.createGain();
-    const filter = ambienceCtx.createBiquadFilter();
-
-    ambienceOsc.type = theme === 'joker' || theme === 'masque' ? 'triangle' : 'sine';
-    ambienceOsc.frequency.value = (ROOM_THEMES[theme]?.tone || 180);
-    lfo.type = 'sine';
-    lfo.frequency.value = 0.22;
-    lfoGain.gain.value = 9;
-    lfo.connect(lfoGain);
-    lfoGain.connect(ambienceOsc.frequency);
-
-    filter.type = 'lowpass';
-    filter.frequency.value = 900;
-    ambienceGain.gain.value = 0.065;
-
-    ambienceOsc.connect(filter);
-    filter.connect(ambienceGain);
-    ambienceGain.connect(ambienceCtx.destination);
-    ambienceOsc.start();
-    lfo.start();
-    ambienceOsc._lfo = lfo;
+    const freqs = theme === 'aube' ? [392, 523, 659] : theme === 'minuit' ? [220, 277, 330] : theme === 'rose' ? [330, 392, 494] : [262, 330, 392];
+    freqs.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      osc.start(ctx.currentTime + i * 0.08);
+      osc.stop(ctx.currentTime + 0.72 + i * 0.04);
+    });
     currentAmbience = theme;
-    if (btn) btn.textContent = 'Couper l’ambiance sonore';
+    if (btn) btn.textContent = 'Note d’ambiance jouée';
+    setTimeout(() => { if (btn) btn.textContent = 'Jouer une note d’ambiance'; }, 1200);
+    setTimeout(() => ctx.close(), 1200);
   } catch (e) {
     if (btn) btn.textContent = 'Son bloqué par le navigateur';
   }
 };
 function stopAmbience() {
-  try { if (ambienceOsc && ambienceOsc._lfo) ambienceOsc._lfo.stop(); } catch(e) {}
-  try { if (ambienceOsc) ambienceOsc.stop(); } catch(e) {}
-  try { if (ambienceCtx) ambienceCtx.close(); } catch(e) {}
-  ambienceCtx = null; ambienceOsc = null; ambienceGain = null; currentAmbience = null;
+  currentAmbience = null;
 }
 
 function resetTicket(ticketId) {
@@ -1578,6 +1654,14 @@ window.resetRefugeDore = function() {
 };
 
 
+window.adminAddMiniBooster = function() {
+  const state = loadState();
+  state.miniBoosters = Number(state.miniBoosters || 0) + 1;
+  saveState(state);
+  updateBoosterBadge();
+  renderBoosters();
+};
+
 window.adminAddBooster = function() {
   const state = loadState();
   state.boosters = Number(state.boosters || 0) + 1;
@@ -1596,10 +1680,16 @@ window.adminAddBoosters = function(count) {
 
 window.adminRepairBoosters = function() {
   const state = loadState();
+  let solvedNonFinal = 0;
+  tickets.forEach(t => {
+    const solved = state.answers[t.id] || [];
+    solved.forEach(index => { if (index < (t.riddles || []).length - 1) solvedNonFinal += 1; });
+  });
   const completed = (state.completed || []).length;
-  const alreadyOpened = (state.openedBoosters || []).length;
-  const shouldHaveAvailable = Math.max(0, completed - alreadyOpened);
-  if (Number(state.boosters || 0) < shouldHaveAvailable) state.boosters = shouldHaveAvailable;
+  const opened = (state.openedBoosters || []).length;
+  const shouldHaveAtLeast = Math.max(0, solvedNonFinal + completed - opened);
+  const current = Number(state.miniBoosters || 0) + Number(state.boosters || 0);
+  if (current < shouldHaveAtLeast) state.miniBoosters = Number(state.miniBoosters || 0) + (shouldHaveAtLeast - current);
   saveState(state);
   updateBoosterBadge();
   renderBoosters();
@@ -1616,7 +1706,8 @@ function ensureAdminPanel() {
       <button id="unlockAllDoorsBtn">Débloquer toutes les portes</button>
       <button id="lockAllDoorsBtn">Verrouiller toutes les portes</button>
       <button id="resetAllProgressBtn">Tout réinitialiser</button>
-      <button id="addBoosterBtn">+1 booster</button>
+      <button id="addMiniBoosterBtn">+1 mini booster</button>
+      <button id="addBoosterBtn">+1 grand booster</button>
       <button id="addFiveBoostersBtn">+5 boosters</button>
       <button id="repairBoostersBtn">Réparer boosters</button>
     </div>
@@ -1645,7 +1736,8 @@ function ensureAdminPanel() {
     localStorage.removeItem(STORAGE_KEY);
     location.reload();
   });
-  document.getElementById('addBoosterBtn')?.addEventListener('click', () => { adminAddBooster(); alert('Un booster a été ajouté.'); });
+  document.getElementById('addMiniBoosterBtn')?.addEventListener('click', () => { adminAddMiniBooster(); alert('Un mini booster a été ajouté.'); });
+  document.getElementById('addBoosterBtn')?.addEventListener('click', () => { adminAddBooster(); alert('Un grand booster a été ajouté.'); });
   document.getElementById('addFiveBoostersBtn')?.addEventListener('click', () => { adminAddBoosters(5); alert('Cinq boosters ont été ajoutés.'); });
   document.getElementById('repairBoostersBtn')?.addEventListener('click', () => { adminRepairBoosters(); alert('Boosters réparés selon les portes terminées.'); });
 }
