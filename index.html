@@ -17,6 +17,8 @@
       <button data-view="memories">Souvenirs</button>
       <button data-view="boosters">Boosters<span id="boosterCount"></span></button>
       <button data-view="collection">Collection</button>
+      <button data-view="progression">Progression</button>
+      <button data-view="journal">Journal</button>
       <button data-view="chronicles">Chroniques</button>
     </nav>
   </header>
@@ -82,6 +84,23 @@
       <h2>Collection</h2>
       <p id="collectionStats" class="lead"></p>
       <div id="collectionGrid" class="collection-grid"></div>
+    </section>
+
+    <section id="progression" class="view card">
+      <p class="eyebrow">Tableau de bord</p>
+      <h2>Progression du Bal</h2>
+      <div id="progressionBoard"></div>
+      <div id="badgeWall" class="badge-wall"></div>
+      <div class="save-tools">
+        <button class="secondary" onclick="exportProgress()">Exporter ma progression</button>
+        <label class="import-label">Importer une progression<input type="file" accept="application/json" onchange="importProgress(event)"></label>
+      </div>
+    </section>
+
+    <section id="journal" class="view card">
+      <p class="eyebrow">Journal du Bal</p>
+      <h2>Historique des récompenses</h2>
+      <div id="journalList" class="journal-list"></div>
     </section>
 
     <section id="chronicles" class="view card">

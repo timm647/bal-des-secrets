@@ -1156,6 +1156,61 @@ const RARITY_WEIGHTS = [
   { rarity: 'legendaire', weight: 10 }
 ];
 
+
+function formatDateTime(ts) {
+  try {
+    return new Date(ts).toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+  } catch { return ''; }
+}
+
+function logEvent(state, title, text, type = 'info') {
+  state.journal = state.journal || [];
+  state.journal.unshift({ ts: Date.now(), title, text, type });
+  state.journal = state.journal.slice(0, 80);
+}
+
+const BADGE_DEFINITIONS = [
+  { id: 'first-door', icon: '🚪', title: 'Première porte', text: 'Tu as terminé une première porte du Bal.' },
+  { id: 'rose-secret', icon: '🌹', title: 'Message vivant', text: 'La Rose Noire a livré son secret.' },
+  { id: 'five-riddles', icon: '🧩', title: 'Esprit d’enquête', text: 'Tu as résolu 5 énigmes.' },
+  { id: 'three-doors', icon: '🎭', title: 'Invitée du Bal', text: 'Tu as terminé 3 portes.' },
+  { id: 'first-card', icon: '📸', title: 'Première carte', text: 'Tu as obtenu ta première carte souvenir.' },
+  { id: 'ten-cards', icon: '🃏', title: 'Collectionneuse', text: 'Tu as obtenu 10 cartes.' },
+  { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.' }
+];
+
+function solvedRiddleCount(state) {
+  return Object.values(state.answers || {}).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
+}
+
+function awardBadges(state) {
+  state.badges = state.badges || [];
+  const counts = collectionCounts(state);
+  const ownedCards = Object.keys(counts);
+  const unlocked = [];
+  const hasLegendary = ownedCards.some(id => (COLLECTION_CARDS.find(c => c.id === id) || {}).rarity === 'legendaire');
+  const checks = {
+    'first-door': (state.completed || []).length >= 1,
+    'rose-secret': (state.completed || []).includes(2),
+    'five-riddles': solvedRiddleCount(state) >= 5,
+    'three-doors': (state.completed || []).length >= 3,
+    'first-card': (state.collection || []).length >= 1,
+    'ten-cards': (state.collection || []).length >= 10,
+    'legendary-card': hasLegendary
+  };
+  Object.entries(checks).forEach(([id, ok]) => {
+    if (ok && !state.badges.includes(id)) {
+      state.badges.push(id);
+      const badge = BADGE_DEFINITIONS.find(b => b.id === id);
+      if (badge) {
+        logEvent(state, `Badge débloqué : ${badge.title}`, badge.text, 'badge');
+        unlocked.push(badge);
+      }
+    }
+  });
+  return unlocked;
+}
+
 function todayKey() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -1209,7 +1264,7 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null, journal: [], badges: [] };
 }
 
 function loadState() {
@@ -1225,6 +1280,8 @@ function loadState() {
     state.collection = state.collection || [];
     state.openedBoosters = state.openedBoosters || [];
     state.lastDailyBooster = state.lastDailyBooster || null;
+    state.journal = state.journal || [];
+    state.badges = state.badges || [];
     return state;
   } catch {
     return defaultState();
@@ -1254,6 +1311,8 @@ function showView(id) {
   if (id === 'memories') renderMemories();
   if (id === 'boosters') renderBoosters();
   if (id === 'collection') renderCollection();
+  if (id === 'progression') renderProgression();
+  if (id === 'journal') renderJournal();
   if (id === 'chronicles') renderChronicles();
   updateBoosterBadge();
 }
@@ -1349,6 +1408,9 @@ function renderRoom(ticket) {
       updateBoosterBadge();
     }
     html += ticket.reveal || `<blockquote>Révélation : ce mystère te mène vers ton cadeau — ${ticket.gift}.</blockquote>`;
+    if (ticket.id === 2) {
+      html += `<div class="secret-message-card"><p class="eyebrow">Message débloqué</p><h3>Un mot après la Rose Noire</h3><p>Cette porte ne cachait pas seulement des fleurs. Elle cachait aussi une façon de te rappeler que certaines attentions sont pensées longtemps avant d’être offertes.</p><p class="secret-signature">— Un message gardé pour toi</p></div>`;
+    }
   }
 
   room.innerHTML = html;
@@ -1400,11 +1462,15 @@ window.checkAnswer = function(ticketId, index) {
       state.answers[ticketId].push(index);
       const isFinalRiddle = index === (ticket.riddles.length - 1);
       state.miniBoosters = Number(state.miniBoosters || 0) + 1;
+      logEvent(state, 'Mini booster gagné', `${ticket.title} — ${ticket.riddles[index].title || 'Énigme résolue'}`, 'booster');
       earnedMessages.push('Tu as gagné un mini booster. Clique sur Récupérer pour l’ouvrir dans l’onglet Boosters.');
       if (isFinalRiddle) {
         state.boosters = Number(state.boosters || 0) + 1;
+        logEvent(state, 'Grand booster gagné', `${ticket.title} terminée — 3 cartes t’attendent.`, 'booster');
         earnedMessages.push('Tu as aussi gagné un grand booster de 3 cartes.');
       }
+      const badges = awardBadges(state);
+      if (badges.length) earnedMessages.push(`Badge débloqué : ${badges.map(b => b.title).join(', ')}.`);
     }
     saveState(state);
     renderRoom(ticket);
@@ -1505,6 +1571,7 @@ function cardHtml(card, options = {}) {
   return `<article class="collection-card rarity-${card.rarity} ${extraClass}">
     ${isNew ? '<div class="new-badge">NOUVEAU</div>' : ''}
     ${!locked && count > 1 ? `<div class="duplicate-badge">x${count}</div>` : ''}
+    <div class="card-number">#${String(card.number || COLLECTION_CARDS.findIndex(c => c.id === card.id) + 1).padStart(2, '0')}</div>
     <div class="card-art">${locked ? '🔒' : card.emoji}</div>
     <div class="card-rarity">${locked ? 'Inconnue' : rarityLabel(card.rarity)}</div>
     <h3>${locked ? 'Carte non découverte' : card.title}</h3>
@@ -1556,8 +1623,12 @@ function addCardsToCollection(cards) {
   const state = loadState();
   const countsBefore = collectionCounts(state);
   const results = cards.map(card => ({ ...card, isNew: !countsBefore[card.id] }));
-  results.forEach(card => state.collection.push(card.id));
+  results.forEach(card => {
+    state.collection.push(card.id);
+    logEvent(state, card.isNew ? 'Nouvelle carte' : 'Doublon obtenu', `${card.title} — ${rarityLabel(card.rarity)}`, card.isNew ? 'card-new' : 'card-duplicate');
+  });
   state.openedBoosters.push(Date.now());
+  awardBadges(state);
   saveState(state);
   return results;
 }
@@ -1600,10 +1671,88 @@ function renderCollection() {
   const ownedIds = Object.keys(counts);
   const totalCards = (state.collection || []).length;
   const duplicates = Math.max(0, totalCards - ownedIds.length);
-  if (stats) stats.innerHTML = `<strong>${ownedIds.length}</strong> / ${COLLECTION_CARDS.length} cartes découvertes · <strong>${duplicates}</strong> doublon(s)`;
-  grid.innerHTML = COLLECTION_CARDS.map(card => counts[card.id] ? cardHtml(card, { count: counts[card.id] }) : cardHtml(card, { locked: true })).join('');
+  const rarityOwned = ['commune','rare','epique','legendaire'].map(r => {
+    const total = COLLECTION_CARDS.filter(c => c.rarity === r).length;
+    const owned = COLLECTION_CARDS.filter(c => c.rarity === r && counts[c.id]).length;
+    return `<span>${rarityLabel(r)} : <strong>${owned}/${total}</strong></span>`;
+  }).join(' · ');
+  if (stats) stats.innerHTML = `<strong>${ownedIds.length}</strong> / ${COLLECTION_CARDS.length} cartes découvertes · <strong>${duplicates}</strong> doublon(s)<br><small>${rarityOwned}</small>`;
+  grid.innerHTML = COLLECTION_CARDS.map((card, i) => counts[card.id] ? cardHtml({...card, number: i + 1}, { count: counts[card.id] }) : cardHtml({...card, number: i + 1}, { locked: true })).join('');
   updateBoosterBadge();
 }
+
+function renderProgression() {
+  const state = loadState();
+  awardBadges(state);
+  saveState(state);
+  const board = document.getElementById('progressionBoard');
+  const wall = document.getElementById('badgeWall');
+  if (!board || !wall) return;
+  const counts = collectionCounts(state);
+  const completed = (state.completed || []).length;
+  const unlocked = (state.unlocked || []).length;
+  const solved = solvedRiddleCount(state);
+  const totalRiddles = tickets.reduce((sum, t) => sum + (t.riddles || []).length, 0);
+  const ownedCards = Object.keys(counts).length;
+  const totalCards = COLLECTION_CARDS.length;
+  const duplicates = Math.max(0, (state.collection || []).length - ownedCards);
+  const boostersWaiting = Number(state.miniBoosters || 0) + Number(state.boosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
+  board.innerHTML = `
+    <div class="progress-grid">
+      <article><span>Portes ouvertes</span><strong>${unlocked}/12</strong></article>
+      <article><span>Portes terminées</span><strong>${completed}/12</strong></article>
+      <article><span>Énigmes résolues</span><strong>${solved}/${totalRiddles}</strong></article>
+      <article><span>Cartes découvertes</span><strong>${ownedCards}/${totalCards}</strong></article>
+      <article><span>Doublons</span><strong>${duplicates}</strong></article>
+      <article><span>Boosters à ouvrir</span><strong>${boostersWaiting}</strong></article>
+    </div>`;
+  wall.innerHTML = BADGE_DEFINITIONS.map(b => {
+    const earned = (state.badges || []).includes(b.id);
+    return `<article class="progress-badge ${earned ? 'earned' : 'locked'}"><div>${earned ? b.icon : '🔒'}</div><h3>${b.title}</h3><p>${earned ? b.text : 'Badge encore verrouillé.'}</p></article>`;
+  }).join('');
+}
+
+function renderJournal() {
+  const state = loadState();
+  const el = document.getElementById('journalList');
+  if (!el) return;
+  const journal = state.journal || [];
+  el.innerHTML = journal.length ? journal.map(item => `<article class="journal-item journal-${item.type || 'info'}"><span>${formatDateTime(item.ts)}</span><h3>${item.title}</h3><p>${item.text}</p></article>`).join('') : '<p>Aucun événement pour le moment. Les boosters, badges et cartes apparaîtront ici.</p>';
+}
+
+window.exportProgress = function() {
+  const state = loadState();
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `bal-des-secrets-progression-${todayKey()}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+
+window.importProgress = function(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const imported = JSON.parse(reader.result);
+      const merged = { ...defaultState(), ...imported };
+      saveState(merged);
+      alert('Progression importée.');
+      renderProgression();
+      renderCollection();
+      renderBoosters();
+      renderMemories();
+    } catch {
+      alert('Impossible d’importer ce fichier.');
+    }
+  };
+  reader.readAsText(file);
+};
 
 function renderChronicles() {
   const el = document.getElementById('chroniclesList');
