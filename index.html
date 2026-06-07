@@ -16,14 +16,14 @@
       <button data-view="code">Entrer un code</button>
       <button data-view="doors">Portes</button>
       <div class="nav-group">
-        <button type="button">Collections <span id="boosterCount"></span></button>
+        <button type="button" class="nav-parent">Collections <span id="boosterCount" class="nav-count"></span></button>
         <div class="nav-submenu">
           <button data-view="boosters">Boosters</button>
           <button data-view="collection">Album</button>
         </div>
       </div>
       <div class="nav-group">
-        <button type="button">Progression</button>
+        <button type="button" class="nav-parent">Progression</button>
         <div class="nav-submenu">
           <button data-view="progression">Vue globale</button>
           <button data-view="journal">Journal</button>
@@ -101,6 +101,7 @@
       <p class="eyebrow">Tableau de bord</p>
       <h2>Progression du Bal</h2>
       <div id="progressionBoard"></div>
+      <p class="progress-help">Les badges verrouillés indiquent maintenant clairement leur objectif. Ils se débloquent automatiquement quand l’objectif est atteint.</p>
       <div id="badgeWall" class="badge-wall"></div>
       <div class="save-tools">
         <button class="secondary" onclick="exportProgress()">Exporter ma progression</button>

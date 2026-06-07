@@ -1171,11 +1171,16 @@ function logEvent(state, title, text, type = 'info') {
 
 const BADGE_DEFINITIONS = [
   { id: 'first-door', icon: '🚪', title: 'Première porte', text: 'Tu as terminé une première porte du Bal.', objective: 'Termine n’importe quelle porte complète.' },
-  { id: 'rose-secret', icon: '🌹', title: 'Message vivant', text: 'La Rose Noire a livré son secret.', objective: 'Termine entièrement la porte La Rose Noire.' },
-  { id: 'five-riddles', icon: '🧩', title: 'Esprit d’enquête', text: 'Tu as résolu 5 énigmes.', objective: 'Résous 5 énigmes au total.' },
   { id: 'three-doors', icon: '🎭', title: 'Invitée du Bal', text: 'Tu as terminé 3 portes.', objective: 'Termine 3 portes complètes.' },
+  { id: 'five-doors', icon: '🏛️', title: 'Exploratrice', text: 'Tu as terminé 5 portes.', objective: 'Termine 5 portes complètes.' },
+  { id: 'ten-doors', icon: '👑', title: 'Presque au bout du Bal', text: 'Tu as terminé 10 portes.', objective: 'Termine 10 portes complètes.' },
+  { id: 'five-riddles', icon: '🧩', title: 'Esprit d’enquête', text: 'Tu as résolu 5 énigmes.', objective: 'Résous 5 énigmes au total.' },
+  { id: 'twenty-five-riddles', icon: '🔎', title: 'Regard attentif', text: 'Tu as résolu 25 énigmes.', objective: 'Résous 25 énigmes au total.' },
+  { id: 'all-riddles', icon: '🌟', title: 'Toutes les clés', text: 'Tu as résolu les 55 énigmes des 11 portes.', objective: 'Résous les 55 énigmes des 11 portes.' },
   { id: 'first-card', icon: '📸', title: 'Première carte', text: 'Tu as obtenu ta première carte souvenir.', objective: 'Ouvre un booster et obtiens ta première carte.' },
-  { id: 'ten-cards', icon: '🃏', title: 'Collectionneuse', text: 'Tu as obtenu 10 cartes.', objective: 'Obtiens 10 cartes au total, doublons compris.' },
+  { id: 'ten-cards', icon: '🃏', title: 'Début de collection', text: 'Tu as obtenu 10 cartes.', objective: 'Obtiens 10 cartes au total, doublons compris.' },
+  { id: 'twenty-cards', icon: '📚', title: 'Album vivant', text: 'Tu as obtenu 20 cartes.', objective: 'Obtiens 20 cartes au total, doublons compris.' },
+  { id: 'thirty-cards', icon: '💫', title: 'Collection dorée', text: 'Tu as obtenu 30 cartes.', objective: 'Obtiens 30 cartes au total, doublons compris.' },
   { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.', objective: 'Obtiens au moins une carte légendaire dans un booster.' }
 ];
 
@@ -1189,13 +1194,21 @@ function awardBadges(state) {
   const ownedCards = Object.keys(counts);
   const unlocked = [];
   const hasLegendary = ownedCards.some(id => (COLLECTION_CARDS.find(c => c.id === id) || {}).rarity === 'legendaire');
+  const completedDoors = (state.completed || []).filter(id => id <= 11).length;
+  const solved = solvedRiddleCount(state);
+  const totalCardsOwned = (state.collection || []).length;
   const checks = {
-    'first-door': (state.completed || []).length >= 1,
-    'rose-secret': (state.completed || []).includes(2),
-    'five-riddles': solvedRiddleCount(state) >= 5,
-    'three-doors': (state.completed || []).length >= 3,
-    'first-card': (state.collection || []).length >= 1,
-    'ten-cards': (state.collection || []).length >= 10,
+    'first-door': completedDoors >= 1,
+    'three-doors': completedDoors >= 3,
+    'five-doors': completedDoors >= 5,
+    'ten-doors': completedDoors >= 10,
+    'five-riddles': solved >= 5,
+    'twenty-five-riddles': solved >= 25,
+    'all-riddles': solved >= 55,
+    'first-card': totalCardsOwned >= 1,
+    'ten-cards': totalCardsOwned >= 10,
+    'twenty-cards': totalCardsOwned >= 20,
+    'thirty-cards': totalCardsOwned >= 30,
     'legendary-card': hasLegendary
   };
   Object.entries(checks).forEach(([id, ok]) => {
@@ -1264,7 +1277,7 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null, journal: [], badges: [] };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, answerTexts: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null, journal: [], badges: [] };
 }
 
 function loadState() {
@@ -1273,6 +1286,7 @@ function loadState() {
     state.unlocked = state.unlocked || [];
     state.lastUnlockMonth = state.lastUnlockMonth || null;
     state.answers = state.answers || {};
+    state.answerTexts = state.answerTexts || {};
     state.hints = state.hints || {};
     state.completed = state.completed || [];
     state.boosters = Number(state.boosters || 0);
@@ -1304,6 +1318,7 @@ function daysUntilNextMonth() {
 }
 
 function showView(id) {
+  document.querySelectorAll('.nav-group.open').forEach(g => g.classList.remove('open'));
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
@@ -1319,6 +1334,22 @@ function showView(id) {
 
 document.querySelectorAll('[data-view]').forEach(btn => {
   btn.addEventListener('click', () => showView(btn.dataset.view));
+});
+
+document.querySelectorAll('.nav-group > button').forEach(btn => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const group = btn.closest('.nav-group');
+    const wasOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group.open').forEach(g => g.classList.remove('open'));
+    if (!wasOpen) group.classList.add('open');
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.nav-group')) {
+    document.querySelectorAll('.nav-group.open').forEach(g => g.classList.remove('open'));
+  }
 });
 
 function findTicket(code) {
@@ -1392,12 +1423,12 @@ function renderRoom(ticket) {
     const maxHints = (r.hints || []).length;
     const hintsHtml = isUnlocked && !isSolved && maxHints ? renderHints(ticket.id, index, r.hints, hintsShown) : '';
 
-    html += `<div class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
+    html += `<div id="room-step-${ticket.id}-${index}" class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
       <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
       ${isUnlocked && !isSolved ? `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}
-      ${isSolved ? `<p class="message success">✓ Résolue — ${r.success || 'bien joué.'}</p>` : ''}
+      ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
     </div>`;
   });
 
@@ -1414,6 +1445,12 @@ function renderRoom(ticket) {
   }
 
   room.innerHTML = html;
+}
+
+function getSolvedAnswerText(state, ticketId, index, riddle) {
+  const saved = (((state.answerTexts || {})[ticketId] || {})[index]);
+  const fallback = (riddle.answers || [])[0] || 'réponse validée';
+  return String(saved || fallback).trim();
 }
 
 function getHintCount(ticketId, index) {
@@ -1454,6 +1491,7 @@ window.checkAnswer = function(ticketId, index) {
   const state = loadState();
   state.answers[ticketId] = state.answers[ticketId] || [];
   const validAnswers = ticket.riddles[index].answers || [];
+  const submittedAnswer = input.value;
 
   if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
@@ -1461,6 +1499,8 @@ window.checkAnswer = function(ticketId, index) {
     let rewardType = 'mini';
     if (!wasAlreadySolved) {
       state.answers[ticketId].push(index);
+      state.answerTexts[ticketId] = state.answerTexts[ticketId] || {};
+      state.answerTexts[ticketId][index] = submittedAnswer;
       const isFinalRiddle = index === (ticket.riddles.length - 1);
       state.miniBoosters = Number(state.miniBoosters || 0) + 1;
       logEvent(state, 'Énigme résolue', `${ticket.title} — ${ticket.riddles[index].title || 'Énigme résolue'}`, 'riddle');
@@ -1478,9 +1518,8 @@ window.checkAnswer = function(ticketId, index) {
     saveState(state);
     renderRoom(ticket);
     updateBoosterBadge();
-    triggerGoldBurst();
+    triggerLocalGoldBurst(ticketId, index);
     if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'), rewardType);
-    window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' });
   } else {
     input.value = '';
     input.placeholder = 'Ce n’est pas encore ça...';
@@ -1525,10 +1564,9 @@ window.claimBoosterReward = function() {
 window.openRewardNow = function() {
   const overlay = document.getElementById('boosterRewardOverlay');
   if (overlay) overlay.classList.remove('show');
-  showView('boosters');
   setTimeout(() => {
-    if (pendingRewardType === 'big') openBooster();
-    else openMiniBooster();
+    if (pendingRewardType === 'big') openCardPack(3, 'big', { inline: true });
+    else openCardPack(1, 'mini', { inline: true });
   }, 120);
 };
 
@@ -1557,7 +1595,6 @@ window.openTicketFromMemory = function(ticketId) {
   if (!ticket) return;
   renderRoom(ticket);
   showView('room');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 function roman(num) {
@@ -1569,7 +1606,7 @@ function updateBoosterBadge() {
   const state = loadState();
   const badge = document.getElementById('boosterCount');
   const totalPacks = Number(state.boosters || 0) + Number(state.miniBoosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
-  if (badge) badge.textContent = totalPacks ? ` (${totalPacks})` : '';
+  if (badge) { badge.textContent = totalPacks ? String(totalPacks) : ''; badge.classList.toggle('visible', !!totalPacks); }
 }
 
 function rarityLabel(rarity) {
@@ -1649,7 +1686,7 @@ function addCardsToCollection(cards) {
   return results;
 }
 
-function openCardPack(count, type) {
+function openCardPack(count, type, options = {}) {
   const state = loadState();
   if (type === 'daily') {
     if (state.lastDailyBooster === todayKey()) return;
@@ -1665,14 +1702,54 @@ function openCardPack(count, type) {
     saveState(state);
   }
   const results = addCardsToCollection(getNextCards(count));
-  renderBoosters(results, type);
+  if (document.getElementById('boosters')?.classList.contains('active')) renderBoosters(results, type);
+  else renderBoosters();
   renderCollection();
-  triggerGoldBurst();
-  setTimeout(() => {
-    const opening = document.querySelector('.booster-opening');
-    if (opening) opening.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 80);
+  updateBoosterBadge();
+  showPackOpeningOverlay(results, type);
 }
+
+function showPackOpeningOverlay(cards, type) {
+  let overlay = document.getElementById('packOpeningOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'packOpeningOverlay';
+    overlay.className = 'pack-opening-overlay';
+    document.body.appendChild(overlay);
+  }
+  overlay.innerHTML = `
+    <div class="pack-opening-modal ${type === 'big' ? 'big-opening' : ''}">
+      <p class="eyebrow">${packLabel(type)} ouvert</p>
+      <h3>${cards.length > 1 ? 'Tes cartes sont arrivées' : 'Ta carte est arrivée'}</h3>
+      <div class="booster-results inline-opening-animation">
+        ${cards.map(card => cardHtml(card, { isNew: card.isNew })).join('')}
+      </div>
+      <p class="pack-flight-note">Les cartes ont été ajoutées à ton album.</p>
+      <div class="reward-actions">
+        <button class="secondary" onclick="closePackOpening()">Continuer</button>
+        <button class="primary" onclick="goToAlbumFromOpening()">Voir l’album</button>
+      </div>
+    </div>`;
+  overlay.classList.remove('show', 'fly-away');
+  void overlay.offsetWidth;
+  overlay.classList.add('show');
+}
+
+window.closePackOpening = function() {
+  const overlay = document.getElementById('packOpeningOverlay');
+  if (!overlay) return;
+  overlay.classList.add('fly-away');
+  setTimeout(() => overlay.classList.remove('show', 'fly-away'), 720);
+};
+
+window.goToAlbumFromOpening = function() {
+  const overlay = document.getElementById('packOpeningOverlay');
+  if (overlay) overlay.classList.add('fly-away');
+  setTimeout(() => {
+    if (overlay) overlay.classList.remove('show', 'fly-away');
+    showView('collection');
+  }, 720);
+};
 
 window.openDailyCard = function() { openCardPack(1, 'daily'); };
 window.openMiniBooster = function() { openCardPack(1, 'mini'); };
@@ -2047,6 +2124,22 @@ function setupMasqueradeDecor() {
     mask.setAttribute('aria-hidden', 'true');
     document.body.appendChild(mask);
   }
+}
+
+function triggerLocalGoldBurst(ticketId, index) {
+  const step = document.getElementById(`room-step-${ticketId}-${index}`);
+  if (!step) return;
+  const burst = document.createElement('div');
+  burst.className = 'local-gold-burst';
+  for (let i = 0; i < 24; i++) {
+    const piece = document.createElement('span');
+    piece.style.setProperty('--x', `${8 + Math.random() * 84}%`);
+    piece.style.setProperty('--delay', `${Math.random() * 130}ms`);
+    piece.style.setProperty('--drift', `${(Math.random() - 0.5) * 70}px`);
+    burst.appendChild(piece);
+  }
+  step.appendChild(burst);
+  setTimeout(() => burst.remove(), 1100);
 }
 
 function triggerGoldBurst() {
