@@ -10,15 +10,25 @@
   <div class="gold-noise"></div>
   <header class="topbar">
     <div class="brand">Le Bal des Secrets</div>
-    <nav>
+    <nav class="main-nav">
       <button data-view="home">Accueil</button>
       <button data-view="rules">Règles</button>
       <button data-view="code">Entrer un code</button>
-      <button data-view="memories">Souvenirs</button>
-      <button data-view="boosters">Boosters<span id="boosterCount"></span></button>
-      <button data-view="collection">Collection</button>
-      <button data-view="progression">Progression</button>
-      <button data-view="journal">Journal</button>
+      <button data-view="doors">Portes</button>
+      <div class="nav-group">
+        <button type="button">Collections <span id="boosterCount"></span></button>
+        <div class="nav-submenu">
+          <button data-view="boosters">Boosters</button>
+          <button data-view="collection">Album</button>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button">Progression</button>
+        <div class="nav-submenu">
+          <button data-view="progression">Vue globale</button>
+          <button data-view="journal">Journal</button>
+        </div>
+      </div>
       <button data-view="chronicles">Chroniques</button>
     </nav>
   </header>
@@ -67,9 +77,10 @@
 
     <section id="room" class="view card room"></section>
 
-    <section id="memories" class="view card">
-      <p class="eyebrow">Archives</p>
-      <h2>Souvenirs débloqués</h2>
+    <section id="doors" class="view card">
+      <p class="eyebrow">Portes du Bal</p>
+      <h2>Les portes</h2>
+      <p>Chaque porte a besoin de sa clé : le code inscrit sur un ticket d’or. Une fois ouverte, elle te mène vers des énigmes, puis vers un souvenir ou une surprise préparée pour toi.</p>
       <div id="memoryList" class="memory-list"></div>
     </section>
 
@@ -99,7 +110,7 @@
 
     <section id="journal" class="view card">
       <p class="eyebrow">Journal du Bal</p>
-      <h2>Historique des récompenses</h2>
+      <h2>Historique des épreuves</h2>
       <div id="journalList" class="journal-list"></div>
     </section>
 

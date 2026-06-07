@@ -1170,13 +1170,13 @@ function logEvent(state, title, text, type = 'info') {
 }
 
 const BADGE_DEFINITIONS = [
-  { id: 'first-door', icon: '🚪', title: 'Première porte', text: 'Tu as terminé une première porte du Bal.' },
-  { id: 'rose-secret', icon: '🌹', title: 'Message vivant', text: 'La Rose Noire a livré son secret.' },
-  { id: 'five-riddles', icon: '🧩', title: 'Esprit d’enquête', text: 'Tu as résolu 5 énigmes.' },
-  { id: 'three-doors', icon: '🎭', title: 'Invitée du Bal', text: 'Tu as terminé 3 portes.' },
-  { id: 'first-card', icon: '📸', title: 'Première carte', text: 'Tu as obtenu ta première carte souvenir.' },
-  { id: 'ten-cards', icon: '🃏', title: 'Collectionneuse', text: 'Tu as obtenu 10 cartes.' },
-  { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.' }
+  { id: 'first-door', icon: '🚪', title: 'Première porte', text: 'Tu as terminé une première porte du Bal.', objective: 'Termine n’importe quelle porte complète.' },
+  { id: 'rose-secret', icon: '🌹', title: 'Message vivant', text: 'La Rose Noire a livré son secret.', objective: 'Termine entièrement la porte La Rose Noire.' },
+  { id: 'five-riddles', icon: '🧩', title: 'Esprit d’enquête', text: 'Tu as résolu 5 énigmes.', objective: 'Résous 5 énigmes au total.' },
+  { id: 'three-doors', icon: '🎭', title: 'Invitée du Bal', text: 'Tu as terminé 3 portes.', objective: 'Termine 3 portes complètes.' },
+  { id: 'first-card', icon: '📸', title: 'Première carte', text: 'Tu as obtenu ta première carte souvenir.', objective: 'Ouvre un booster et obtiens ta première carte.' },
+  { id: 'ten-cards', icon: '🃏', title: 'Collectionneuse', text: 'Tu as obtenu 10 cartes.', objective: 'Obtiens 10 cartes au total, doublons compris.' },
+  { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.', objective: 'Obtiens au moins une carte légendaire dans un booster.' }
 ];
 
 function solvedRiddleCount(state) {
@@ -1308,7 +1308,7 @@ function showView(id) {
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
   if (id !== 'room') clearRoomTheme();
-  if (id === 'memories') renderMemories();
+  if (id === 'doors') renderMemories();
   if (id === 'boosters') renderBoosters();
   if (id === 'collection') renderCollection();
   if (id === 'progression') renderProgression();
@@ -1458,16 +1458,19 @@ window.checkAnswer = function(ticketId, index) {
   if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
     let earnedMessages = [];
+    let rewardType = 'mini';
     if (!wasAlreadySolved) {
       state.answers[ticketId].push(index);
       const isFinalRiddle = index === (ticket.riddles.length - 1);
       state.miniBoosters = Number(state.miniBoosters || 0) + 1;
-      logEvent(state, 'Mini booster gagné', `${ticket.title} — ${ticket.riddles[index].title || 'Énigme résolue'}`, 'booster');
-      earnedMessages.push('Tu as gagné un mini booster. Clique sur Récupérer pour l’ouvrir dans l’onglet Boosters.');
+      logEvent(state, 'Énigme résolue', `${ticket.title} — ${ticket.riddles[index].title || 'Énigme résolue'}`, 'riddle');
+      earnedMessages.push('Tu as gagné un mini booster.');
       if (isFinalRiddle) {
         state.boosters = Number(state.boosters || 0) + 1;
-        logEvent(state, 'Grand booster gagné', `${ticket.title} terminée — 3 cartes t’attendent.`, 'booster');
+        if (!state.completed.includes(ticket.id)) state.completed.push(ticket.id);
+        logEvent(state, 'Porte terminée', `${ticket.title} — grand booster débloqué.`, 'door');
         earnedMessages.push('Tu as aussi gagné un grand booster de 3 cartes.');
+        rewardType = 'big';
       }
       const badges = awardBadges(state);
       if (badges.length) earnedMessages.push(`Badge débloqué : ${badges.map(b => b.title).join(', ')}.`);
@@ -1476,7 +1479,7 @@ window.checkAnswer = function(ticketId, index) {
     renderRoom(ticket);
     updateBoosterBadge();
     triggerGoldBurst();
-    if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'));
+    if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'), rewardType);
     window.scrollTo({ top: document.getElementById('room').offsetTop - 80, behavior: 'smooth' });
   } else {
     input.value = '';
@@ -1486,7 +1489,9 @@ window.checkAnswer = function(ticketId, index) {
   }
 };
 
-function showBoosterToast(message) {
+let pendingRewardType = 'mini';
+function showBoosterToast(message, rewardType = 'mini') {
+  pendingRewardType = rewardType;
   let overlay = document.getElementById('boosterRewardOverlay');
   if (!overlay) {
     overlay = document.createElement('div');
@@ -1500,7 +1505,11 @@ function showBoosterToast(message) {
       <div class="reward-icon">✦</div>
       <h3>Récompense gagnée</h3>
       <p>${message}</p>
-      <button class="primary" onclick="claimBoosterReward()">Récupérer</button>
+      <div class="reward-actions">
+        <button class="secondary" onclick="claimBoosterReward()">Récupérer</button>
+        <button class="primary" onclick="openRewardNow()">Ouvrir maintenant</button>
+      </div>
+      <small>“Récupérer” garde le booster pour plus tard, sans quitter la porte.</small>
     </div>
   `;
   overlay.classList.remove('show');
@@ -1511,8 +1520,16 @@ function showBoosterToast(message) {
 window.claimBoosterReward = function() {
   const overlay = document.getElementById('boosterRewardOverlay');
   if (overlay) overlay.classList.remove('show');
+};
+
+window.openRewardNow = function() {
+  const overlay = document.getElementById('boosterRewardOverlay');
+  if (overlay) overlay.classList.remove('show');
   showView('boosters');
-  window.scrollTo({ top: document.getElementById('boosters')?.offsetTop || 0, behavior: 'smooth' });
+  setTimeout(() => {
+    if (pendingRewardType === 'big') openBooster();
+    else openMiniBooster();
+  }, 120);
 };
 
 function renderMemories() {
@@ -1527,7 +1544,7 @@ function renderMemories() {
     return `<div class="memory-item ${done ? 'completed' : ''}">
       <div>
         <strong>${open ? '✓' : '🔒'} ${open ? t.title : 'Porte inconnue'}</strong><br>
-        <span class="${open ? '' : 'locked-text'}">${open ? (done && t.memory ? t.memory : t.teaser) : 'Aucun souvenir débloqué pour le moment.'}</span>
+        <span class="${open ? '' : 'locked-text'}">${open ? (done && t.memory ? t.memory : t.teaser) : 'Cette porte attend encore sa clé.'}</span>
         ${open && progress ? `<small class="memory-progress">${progress}</small>` : ''}
       </div>
       ${open ? `<button onclick="openTicketFromMemory(${t.id})">${done ? 'Revoir' : 'Continuer'}</button>` : ''}
@@ -1625,7 +1642,6 @@ function addCardsToCollection(cards) {
   const results = cards.map(card => ({ ...card, isNew: !countsBefore[card.id] }));
   results.forEach(card => {
     state.collection.push(card.id);
-    logEvent(state, card.isNew ? 'Nouvelle carte' : 'Doublon obtenu', `${card.title} — ${rarityLabel(card.rarity)}`, card.isNew ? 'card-new' : 'card-duplicate');
   });
   state.openedBoosters.push(Date.now());
   awardBadges(state);
@@ -1689,18 +1705,20 @@ function renderProgression() {
   const wall = document.getElementById('badgeWall');
   if (!board || !wall) return;
   const counts = collectionCounts(state);
-  const completed = (state.completed || []).length;
-  const unlocked = (state.unlocked || []).length;
-  const solved = solvedRiddleCount(state);
-  const totalRiddles = tickets.reduce((sum, t) => sum + (t.riddles || []).length, 0);
+  const progressTickets = tickets.filter(t => t.id <= 11);
+  const progressIds = progressTickets.map(t => t.id);
+  const completed = (state.completed || []).filter(id => progressIds.includes(id)).length;
+  const unlocked = (state.unlocked || []).filter(id => progressIds.includes(id)).length;
+  const solved = progressTickets.reduce((sum, t) => sum + ((state.answers[t.id] || []).length), 0);
+  const totalRiddles = progressTickets.reduce((sum, t) => sum + (t.riddles || []).length, 0);
   const ownedCards = Object.keys(counts).length;
   const totalCards = COLLECTION_CARDS.length;
   const duplicates = Math.max(0, (state.collection || []).length - ownedCards);
   const boostersWaiting = Number(state.miniBoosters || 0) + Number(state.boosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
   board.innerHTML = `
     <div class="progress-grid">
-      <article><span>Portes ouvertes</span><strong>${unlocked}/12</strong></article>
-      <article><span>Portes terminées</span><strong>${completed}/12</strong></article>
+      <article><span>Portes ouvertes</span><strong>${unlocked}/11</strong></article>
+      <article><span>Portes terminées</span><strong>${completed}/11</strong></article>
       <article><span>Énigmes résolues</span><strong>${solved}/${totalRiddles}</strong></article>
       <article><span>Cartes découvertes</span><strong>${ownedCards}/${totalCards}</strong></article>
       <article><span>Doublons</span><strong>${duplicates}</strong></article>
@@ -1708,7 +1726,7 @@ function renderProgression() {
     </div>`;
   wall.innerHTML = BADGE_DEFINITIONS.map(b => {
     const earned = (state.badges || []).includes(b.id);
-    return `<article class="progress-badge ${earned ? 'earned' : 'locked'}"><div>${earned ? b.icon : '🔒'}</div><h3>${b.title}</h3><p>${earned ? b.text : 'Badge encore verrouillé.'}</p></article>`;
+    return `<article class="progress-badge ${earned ? 'earned' : 'locked'}"><div>${earned ? b.icon : '🔒'}</div><h3>${b.title}</h3><p>${earned ? b.text : b.objective}</p></article>`;
   }).join('');
 }
 
@@ -1716,8 +1734,8 @@ function renderJournal() {
   const state = loadState();
   const el = document.getElementById('journalList');
   if (!el) return;
-  const journal = state.journal || [];
-  el.innerHTML = journal.length ? journal.map(item => `<article class="journal-item journal-${item.type || 'info'}"><span>${formatDateTime(item.ts)}</span><h3>${item.title}</h3><p>${item.text}</p></article>`).join('') : '<p>Aucun événement pour le moment. Les boosters, badges et cartes apparaîtront ici.</p>';
+  const journal = (state.journal || []).filter(item => ['riddle','door'].includes(item.type));
+  el.innerHTML = journal.length ? journal.map(item => `<article class="journal-item journal-${item.type || 'info'}"><span>${formatDateTime(item.ts)}</span><h3>${item.title}</h3><p>${item.text}</p></article>`).join('') : '<p>Aucune épreuve enregistrée pour le moment. Les énigmes résolues et portes terminées apparaîtront ici.</p>';
 }
 
 window.exportProgress = function() {
@@ -1880,6 +1898,50 @@ window.adminRepairBoosters = function() {
   renderBoosters();
 };
 
+
+window.adminCompleteDoor = function(ticketId) {
+  const state = loadState();
+  const ticket = tickets.find(t => t.id === ticketId);
+  if (!ticket) return;
+  if (!state.unlocked.includes(ticketId)) state.unlocked.push(ticketId);
+  state.answers[ticketId] = (ticket.riddles || []).map((_, i) => i);
+  if (!state.completed.includes(ticketId)) state.completed.push(ticketId);
+  awardBadges(state);
+  saveState(state);
+  renderMemories(); renderProgression(); updateBoosterBadge();
+};
+
+window.adminResetDoor = function(ticketId) {
+  resetTicket(ticketId);
+  renderMemories(); renderProgression(); updateBoosterBadge();
+};
+
+window.adminToggleBadge = function(badgeId) {
+  const state = loadState();
+  state.badges = state.badges || [];
+  if (state.badges.includes(badgeId)) state.badges = state.badges.filter(id => id !== badgeId);
+  else state.badges.push(badgeId);
+  saveState(state);
+  renderProgression();
+};
+
+window.adminGiveCard = function() {
+  const state = loadState();
+  const card = weightedRandomCard();
+  state.collection.push(card.id);
+  awardBadges(state);
+  saveState(state);
+  renderCollection(); renderProgression();
+};
+
+window.adminResetCollection = function() {
+  const state = loadState();
+  state.collection = [];
+  state.openedBoosters = [];
+  saveState(state);
+  renderCollection(); renderProgression();
+};
+
 function ensureAdminPanel() {
   if (document.getElementById('dynamicAdminPanel')) return;
   const panel = document.createElement('section');
@@ -1895,9 +1957,16 @@ function ensureAdminPanel() {
       <button id="addBoosterBtn">+1 grand booster</button>
       <button id="addFiveBoostersBtn">+5 boosters</button>
       <button id="repairBoostersBtn">Réparer boosters</button>
+      <button onclick="adminGiveCard()">+1 carte aléatoire</button>
+      <button onclick="adminResetCollection()">Reset collection</button>
     </div>
+    <p class="admin-note">Portes : ouvrir / terminer / réinitialiser</p>
     <div class="admin-door-grid">
-      ${tickets.map(t => `<button onclick="adminUnlockDoor(${t.id})">Porte ${t.id}</button>`).join('')}
+      ${tickets.map(t => `<div class="admin-door-tools"><strong>Porte ${t.id}</strong><button onclick="adminUnlockDoor(${t.id})">Ouvrir</button><button onclick="adminCompleteDoor(${t.id})">Terminer</button><button onclick="adminResetDoor(${t.id})">Reset</button></div>`).join('')}
+    </div>
+    <p class="admin-note">Badges : cliquer pour ajouter / retirer</p>
+    <div class="admin-badge-grid">
+      ${BADGE_DEFINITIONS.map(b => `<button onclick="adminToggleBadge('${b.id}')">${b.icon} ${b.title}</button>`).join('')}
     </div>`;
   document.body.appendChild(panel);
   document.getElementById('unlockAllDoorsBtn')?.addEventListener('click', () => {
