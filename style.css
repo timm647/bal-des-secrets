@@ -889,3 +889,94 @@ body.theme-minuit .gold-noise { opacity: .06; }
 @media (max-width: 650px) {
   .booster-toast { left: 16px; right: 16px; bottom: 16px; }
 }
+
+/* V21 — récompense centrée + ouverture de boosters plus lisible */
+.booster-reward-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: none;
+  place-items: center;
+  padding: 22px;
+  background: rgba(0,0,0,.58);
+  backdrop-filter: blur(5px);
+}
+.booster-reward-overlay.show {
+  display: grid;
+  animation: rewardOverlayIn .22s ease forwards;
+}
+.booster-reward-modal {
+  width: min(430px, 92vw);
+  min-height: 285px;
+  text-align: center;
+  padding: 30px 26px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,230,150,.62);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,230,150,.24), transparent 42%),
+    linear-gradient(145deg, rgba(23,18,8,.98), rgba(8,7,10,.96));
+  box-shadow: 0 30px 90px rgba(0,0,0,.62), 0 0 46px rgba(217,180,95,.18), inset 0 0 80px rgba(217,180,95,.08);
+  animation: rewardModalPop .42s cubic-bezier(.18,.9,.25,1.15) forwards;
+}
+.reward-icon {
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  color: #171005;
+  font-size: 2.3rem;
+  background: linear-gradient(135deg, #fff4b4, #d9b45f, #8d6827);
+  box-shadow: 0 0 32px rgba(217,180,95,.45);
+}
+.booster-reward-modal h3 {
+  margin: 8px 0 10px;
+  color: var(--gold-soft);
+  font-size: clamp(1.7rem, 5vw, 2.35rem);
+  font-weight: 400;
+}
+.booster-reward-modal p {
+  margin: 0 auto 22px;
+  max-width: 330px;
+  color: rgba(248,241,223,.9);
+}
+@keyframes rewardOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rewardModalPop {
+  0% { opacity: 0; transform: translateY(18px) scale(.86); }
+  68% { opacity: 1; transform: translateY(-4px) scale(1.035); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.booster-opening {
+  scroll-margin: 120px;
+  animation: openingGlow .65s ease both;
+}
+.booster-opening .booster-results {
+  transform-origin: center;
+  animation: resultsZoomFocus 1.25s cubic-bezier(.18,.9,.25,1.12) .12s both;
+}
+.opening-animation .collection-card {
+  animation-name: cardRevealZoom;
+  animation-duration: .95s;
+}
+@keyframes resultsZoomFocus {
+  0% { transform: scale(.88); filter: brightness(.9); }
+  38% { transform: scale(1.08); filter: brightness(1.24); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+@keyframes openingGlow {
+  from { box-shadow: 0 0 0 rgba(217,180,95,0); }
+  to { box-shadow: 0 0 40px rgba(217,180,95,.10); }
+}
+@keyframes cardRevealZoom {
+  0% { opacity: 0; transform: translateY(28px) scale(.72) rotateY(80deg); filter: brightness(.55); }
+  55% { opacity: 1; transform: translateY(-10px) scale(1.12) rotateY(-8deg); filter: brightness(1.32); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotateY(0); filter: brightness(1); }
+}
+
+/* Ancien toast désactivé : remplacé par le cadre central */
+.booster-toast { display: none !important; }

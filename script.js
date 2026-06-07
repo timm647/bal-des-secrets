@@ -1400,10 +1400,10 @@ window.checkAnswer = function(ticketId, index) {
       state.answers[ticketId].push(index);
       const isFinalRiddle = index === (ticket.riddles.length - 1);
       state.miniBoosters = Number(state.miniBoosters || 0) + 1;
-      earnedMessages.push('Mini booster gagné ! Il t’attend dans l’onglet Boosters.');
+      earnedMessages.push('Tu as gagné un mini booster. Clique sur Récupérer pour l’ouvrir dans l’onglet Boosters.');
       if (isFinalRiddle) {
         state.boosters = Number(state.boosters || 0) + 1;
-        earnedMessages.push('Grand booster gagné ! 3 cartes t’attendent dans l’onglet Boosters.');
+        earnedMessages.push('Tu as aussi gagné un grand booster de 3 cartes.');
       }
     }
     saveState(state);
@@ -1421,20 +1421,33 @@ window.checkAnswer = function(ticketId, index) {
 };
 
 function showBoosterToast(message) {
-  let toast = document.getElementById('boosterToast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'boosterToast';
-    toast.className = 'booster-toast';
-    document.body.appendChild(toast);
+  let overlay = document.getElementById('boosterRewardOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'boosterRewardOverlay';
+    overlay.className = 'booster-reward-overlay';
+    document.body.appendChild(overlay);
   }
-  toast.innerHTML = `<span>✦</span><p>${message}</p>`;
-  toast.classList.remove('show');
-  void toast.offsetWidth;
-  toast.classList.add('show');
-  clearTimeout(window.__boosterToastTimer);
-  window.__boosterToastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
+
+  overlay.innerHTML = `
+    <div class="booster-reward-modal" role="dialog" aria-modal="true" aria-label="Récompense gagnée">
+      <div class="reward-icon">✦</div>
+      <h3>Récompense gagnée</h3>
+      <p>${message}</p>
+      <button class="primary" onclick="claimBoosterReward()">Récupérer</button>
+    </div>
+  `;
+  overlay.classList.remove('show');
+  void overlay.offsetWidth;
+  overlay.classList.add('show');
 }
+
+window.claimBoosterReward = function() {
+  const overlay = document.getElementById('boosterRewardOverlay');
+  if (overlay) overlay.classList.remove('show');
+  showView('boosters');
+  window.scrollTo({ top: document.getElementById('boosters')?.offsetTop || 0, behavior: 'smooth' });
+};
 
 function renderMemories() {
   const state = loadState();
@@ -1568,6 +1581,10 @@ function openCardPack(count, type) {
   renderBoosters(results, type);
   renderCollection();
   triggerGoldBurst();
+  setTimeout(() => {
+    const opening = document.querySelector('.booster-opening');
+    if (opening) opening.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 80);
 }
 
 window.openDailyCard = function() { openCardPack(1, 'daily'); };
