@@ -1181,7 +1181,9 @@ const BADGE_DEFINITIONS = [
   { id: 'ten-cards', icon: '🃏', title: 'Début de collection', text: 'Tu as obtenu 10 cartes.', objective: 'Obtiens 10 cartes au total, doublons compris.' },
   { id: 'twenty-cards', icon: '📚', title: 'Album vivant', text: 'Tu as obtenu 20 cartes.', objective: 'Obtiens 20 cartes au total, doublons compris.' },
   { id: 'thirty-cards', icon: '💫', title: 'Collection dorée', text: 'Tu as obtenu 30 cartes.', objective: 'Obtiens 30 cartes au total, doublons compris.' },
-  { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.', objective: 'Obtiens au moins une carte légendaire dans un booster.' }
+  { id: 'legendary-card', icon: '✨', title: 'Instant légendaire', text: 'Tu as trouvé une carte légendaire.', objective: 'Obtiens au moins une carte légendaire dans un booster.' },
+  { id: 'secret-logos', icon: '🕵️', title: 'Chasseuse de secrets', text: 'Tu as retrouvé les 5 logos cachés du site.', objective: 'Trouve les 5 logos cachés dans le site.' },
+  { id: 'all-badges', icon: '🏆', title: 'Staff complète', text: 'Tu as terminé tous les objectifs du Bal.', objective: 'Débloque tous les autres badges pour compléter la staff.' }
 ];
 
 function solvedRiddleCount(state) {
@@ -1197,6 +1199,7 @@ function awardBadges(state) {
   const completedDoors = (state.completed || []).filter(id => id <= 11).length;
   const solved = solvedRiddleCount(state);
   const totalCardsOwned = (state.collection || []).length;
+  const foundLogos = (state.secretLogos || []).length;
   const checks = {
     'first-door': completedDoors >= 1,
     'three-doors': completedDoors >= 3,
@@ -1209,8 +1212,10 @@ function awardBadges(state) {
     'ten-cards': totalCardsOwned >= 10,
     'twenty-cards': totalCardsOwned >= 20,
     'thirty-cards': totalCardsOwned >= 30,
-    'legendary-card': hasLegendary
+    'legendary-card': hasLegendary,
+    'secret-logos': foundLogos >= 5
   };
+  checks['all-badges'] = BADGE_DEFINITIONS.filter(b => b.id !== 'all-badges').every(b => checks[b.id] || state.badges.includes(b.id));
   Object.entries(checks).forEach(([id, ok]) => {
     if (ok && !state.badges.includes(id)) {
       state.badges.push(id);
@@ -1277,7 +1282,7 @@ function normalize(value) {
 }
 
 function defaultState() {
-  return { unlocked: [], lastUnlockMonth: null, answers: {}, answerTexts: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null, journal: [], badges: [] };
+  return { unlocked: [], lastUnlockMonth: null, answers: {}, answerTexts: {}, hints: {}, completed: [], boosters: 0, miniBoosters: 0, collection: [], openedBoosters: [], lastDailyBooster: null, journal: [], badges: [], claimedBadgeRewards: [], secretLogos: [] };
 }
 
 function loadState() {
@@ -1296,6 +1301,8 @@ function loadState() {
     state.lastDailyBooster = state.lastDailyBooster || null;
     state.journal = state.journal || [];
     state.badges = state.badges || [];
+    state.claimedBadgeRewards = state.claimedBadgeRewards || [];
+    state.secretLogos = state.secretLogos || [];
     return state;
   } catch {
     return defaultState();
@@ -1318,6 +1325,7 @@ function daysUntilNextMonth() {
 }
 
 function showView(id) {
+  document.body.dataset.currentView = id;
   document.querySelectorAll('.nav-group.open').forEach(g => g.classList.remove('open'));
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(id);
@@ -1329,7 +1337,10 @@ function showView(id) {
   if (id === 'progression') renderProgression();
   if (id === 'journal') renderJournal();
   if (id === 'chronicles') renderChronicles();
+  if (id === 'finalRoom') renderFinalRoom();
+  if (id === 'code') renderCodeRecap();
   updateBoosterBadge();
+  updateHiddenLogos();
 }
 
 document.querySelectorAll('[data-view]').forEach(btn => {
@@ -1511,6 +1522,7 @@ window.checkAnswer = function(ticketId, index) {
         logEvent(state, 'Porte terminée', `${ticket.title} — grand booster débloqué.`, 'door');
         earnedMessages.push('Tu as aussi gagné un grand booster de 3 cartes.');
         rewardType = 'big';
+        pendingRevealTicketId = ticket.id;
       }
       const badges = awardBadges(state);
       if (badges.length) earnedMessages.push(`Badge débloqué : ${badges.map(b => b.title).join(', ')}.`);
@@ -1529,6 +1541,7 @@ window.checkAnswer = function(ticketId, index) {
 };
 
 let pendingRewardType = 'mini';
+let pendingRevealTicketId = null;
 function showBoosterToast(message, rewardType = 'mini') {
   pendingRewardType = rewardType;
   let overlay = document.getElementById('boosterRewardOverlay');
@@ -1559,6 +1572,7 @@ function showBoosterToast(message, rewardType = 'mini') {
 window.claimBoosterReward = function() {
   const overlay = document.getElementById('boosterRewardOverlay');
   if (overlay) overlay.classList.remove('show');
+  scrollToPendingReveal();
 };
 
 window.openRewardNow = function() {
@@ -1567,6 +1581,7 @@ window.openRewardNow = function() {
   setTimeout(() => {
     if (pendingRewardType === 'big') openCardPack(3, 'big', { inline: true });
     else openCardPack(1, 'mini', { inline: true });
+    setTimeout(scrollToPendingReveal, 900);
   }, 120);
 };
 
@@ -1605,7 +1620,7 @@ function roman(num) {
 function updateBoosterBadge() {
   const state = loadState();
   const badge = document.getElementById('boosterCount');
-  const totalPacks = Number(state.boosters || 0) + Number(state.miniBoosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
+  const totalPacks = Number(state.boosters || 0) + Number(state.miniBoosters || 0);
   if (badge) { badge.textContent = totalPacks ? String(totalPacks) : ''; badge.classList.toggle('visible', !!totalPacks); }
 }
 
@@ -1791,7 +1806,7 @@ function renderProgression() {
   const ownedCards = Object.keys(counts).length;
   const totalCards = COLLECTION_CARDS.length;
   const duplicates = Math.max(0, (state.collection || []).length - ownedCards);
-  const boostersWaiting = Number(state.miniBoosters || 0) + Number(state.boosters || 0) + (state.lastDailyBooster === todayKey() ? 0 : 1);
+  const boostersOpened = (state.openedBoosters || []).length;
   board.innerHTML = `
     <div class="progress-grid">
       <article><span>Portes ouvertes</span><strong>${unlocked}/11</strong></article>
@@ -1799,11 +1814,13 @@ function renderProgression() {
       <article><span>Énigmes résolues</span><strong>${solved}/${totalRiddles}</strong></article>
       <article><span>Cartes découvertes</span><strong>${ownedCards}/${totalCards}</strong></article>
       <article><span>Doublons</span><strong>${duplicates}</strong></article>
-      <article><span>Boosters à ouvrir</span><strong>${boostersWaiting}</strong></article>
+      <article><span>Boosters ouverts</span><strong>${boostersOpened}</strong></article>
     </div>`;
   wall.innerHTML = BADGE_DEFINITIONS.map(b => {
     const earned = (state.badges || []).includes(b.id);
-    return `<article class="progress-badge ${earned ? 'earned' : 'locked'}"><div>${earned ? b.icon : '🔒'}</div><h3>${b.title}</h3><p>${earned ? b.text : b.objective}</p></article>`;
+    const claimed = (state.claimedBadgeRewards || []).includes(b.id);
+    const reward = earned && !claimed ? `<button class="badge-claim-btn" onclick="claimBadgeReward('${b.id}')">Récupérer la récompense du badge</button>` : earned ? `<small class="badge-claimed">Récompense récupérée</small>` : '';
+    return `<article class="progress-badge ${earned ? 'earned' : 'locked'}"><div>${earned ? b.icon : '🔒'}</div><h3>${b.title}</h3><p>${earned ? b.text : b.objective}</p>${reward}</article>`;
   }).join('');
 }
 
@@ -1853,7 +1870,7 @@ function renderChronicles() {
   const el = document.getElementById('chroniclesList');
   if (!el) return;
   el.innerHTML = `
-    <article class="chronicle"><h3>Le commencement</h3><p>Certains souvenirs commencent doucement, puis prennent plus de place qu’on ne l’imaginait.</p></article>
+    <article class="chronicle"><h3>Notre commencement</h3><p>Certains souvenirs commencent doucement, puis prennent plus de place qu’on ne l’imaginait.</p></article>
     <article class="chronicle"><h3>Les tickets d’or</h3><p>Tu n’avais pas seulement une enveloppe entre les mains. Tu avais une collection de portes à ouvrir, chacune à son moment.</p></article>
     <article class="chronicle"><h3>Les mots réconfortants</h3><p>Parfois, les réponses ne se trouvent pas dans une énigme, mais dans un endroit préparé pour te faire du bien.</p></article>`;
 }
@@ -2078,6 +2095,127 @@ window.adminUnlockDoor = function(ticketId) {
   if (ticket) { renderRoom(ticket); showView('room'); }
 };
 
+
+
+function showSimpleToast(message) {
+  let overlay = document.getElementById('simpleRewardOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'simpleRewardOverlay';
+    overlay.className = 'booster-reward-overlay';
+    document.body.appendChild(overlay);
+  }
+  overlay.innerHTML = `<div class="booster-reward-modal"><div class="reward-icon">✦</div><h3>Secret trouvé</h3><p>${message}</p><div class="reward-actions"><button class="primary" onclick="document.getElementById('simpleRewardOverlay').classList.remove('show')">Continuer</button></div></div>`;
+  overlay.classList.remove('show');
+  void overlay.offsetWidth;
+  overlay.classList.add('show');
+}
+
+function renderCodeRecap() {
+  const el = document.getElementById('codeRecap');
+  if (!el) return;
+  const state = loadState();
+  const rows = tickets.filter(t => t.id <= 11).map(t => {
+    const open = (state.unlocked || []).includes(t.id);
+    return `<tr class="${open ? 'open' : 'locked'}"><td>${open ? '✓' : '🔒'}</td><td>${open ? t.title : 'Porte inconnue'}</td><td>${open ? t.code : '••••••••'}</td></tr>`;
+  }).join('');
+  el.innerHTML = `<h3>Récapitulatif des clés découvertes</h3><p>Les portes encore verrouillées restent masquées pour ne pas dévoiler les prochains secrets.</p><table class="code-table"><thead><tr><th></th><th>Porte</th><th>Code</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function scrollToPendingReveal() {
+  if (!pendingRevealTicketId) return;
+  const reveal = document.querySelector('#room .reveal-card, #room .secret-message-card');
+  pendingRevealTicketId = null;
+  if (reveal && document.getElementById('room')?.classList.contains('active')) {
+    setTimeout(() => reveal.scrollIntoView({ behavior: 'smooth', block: 'center' }), 250);
+  }
+}
+
+window.scrollToTop = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+window.claimBadgeReward = function(badgeId) {
+  const state = loadState();
+  if (!(state.badges || []).includes(badgeId)) return;
+  state.claimedBadgeRewards = state.claimedBadgeRewards || [];
+  if (state.claimedBadgeRewards.includes(badgeId)) return;
+  state.claimedBadgeRewards.push(badgeId);
+  state.boosters = Number(state.boosters || 0) + 1;
+  const badge = BADGE_DEFINITIONS.find(b => b.id === badgeId);
+  logEvent(state, 'Récompense de badge récupérée', `${badge ? badge.title : 'Badge'} — grand booster ajouté.`, 'badge');
+  saveState(state);
+  renderProgression();
+  updateBoosterBadge();
+  showBoosterToast('Récompense du badge récupérée : tu as gagné un grand booster.', 'big');
+};
+
+function renderFinalRoom() {
+  const el = document.getElementById('finalRoomContent');
+  if (!el) return;
+  const state = loadState();
+  awardBadges(state);
+  saveState(state);
+  const allEarned = BADGE_DEFINITIONS.every(b => (state.badges || []).includes(b.id));
+  const list = BADGE_DEFINITIONS.map(b => {
+    const earned = (state.badges || []).includes(b.id);
+    return `<li class="${earned ? 'done' : 'missing'}"><span>${earned ? '✓' : '🔒'}</span><strong>${b.title}</strong><small>${earned ? b.text : b.objective}</small></li>`;
+  }).join('');
+  el.innerHTML = allEarned ? `
+    <div class="final-room-open"><div class="stamp">OUVERT</div><h3>La dernière salle est prête.</h3><p>Tu as complété tous les objectifs du Bal. Cette zone accueillera le message final, la lettre, la vidéo ou la surprise de fin.</p><p class="secret-signature">Le Dernier Masque peut maintenant tomber.</p></div>
+    <ul class="final-badge-list">${list}</ul>` : `
+    <div class="final-room-locked"><div class="final-lock">🎭</div><h3>La dernière salle est encore scellée.</h3><p>Pour l’ouvrir, il faut obtenir tous les badges du Bal.</p></div>
+    <ul class="final-badge-list">${list}</ul>`;
+}
+
+function setupHiddenLogos() {
+  if (document.querySelector('.secret-logo')) return;
+  const spots = [
+    { id: 'home', view: 'home', top: '22%', left: '7%' },
+    { id: 'rules', view: 'rules', top: '14%', right: '8%' },
+    { id: 'doors', view: 'doors', bottom: '18%', left: '5%' },
+    { id: 'collection', view: 'collection', top: '18%', right: '5%' },
+    { id: 'progression', view: 'progression', bottom: '14%', right: '8%' }
+  ];
+  spots.forEach(spot => {
+    const btn = document.createElement('button');
+    btn.className = 'secret-logo';
+    btn.dataset.logoId = spot.id;
+    btn.dataset.view = spot.view;
+    btn.title = 'Logo caché';
+    btn.textContent = '✦';
+    Object.entries(spot).forEach(([k,v]) => { if (!['id','view'].includes(k)) btn.style[k] = v; });
+    btn.addEventListener('click', () => collectSecretLogo(spot.id));
+    document.body.appendChild(btn);
+  });
+  updateHiddenLogos();
+}
+
+function updateHiddenLogos() {
+  const state = loadState();
+  document.querySelectorAll('.secret-logo').forEach(btn => {
+    const found = (state.secretLogos || []).includes(btn.dataset.logoId);
+    const active = document.body.dataset.currentView === btn.dataset.view;
+    btn.classList.toggle('found', found);
+    btn.classList.toggle('visible-for-view', active && !found);
+  });
+}
+
+function collectSecretLogo(id) {
+  const state = loadState();
+  state.secretLogos = state.secretLogos || [];
+  if (!state.secretLogos.includes(id)) {
+    state.secretLogos.push(id);
+    const before = [...(state.badges || [])];
+    const badges = awardBadges(state);
+    logEvent(state, 'Logo caché trouvé', `${state.secretLogos.length}/5 logos retrouvés.`, 'riddle');
+    saveState(state);
+    updateHiddenLogos();
+    renderProgression();
+    showSimpleToast(`Logo caché trouvé : ${state.secretLogos.length}/5.<br>${badges.length ? 'Un nouveau badge est disponible dans Progression.' : ''}`);
+  }
+}
+
 function setupAdmin() {
   const params = new URLSearchParams(window.location.search);
   const enabled = params.get('admin') === '1';
@@ -2160,5 +2298,7 @@ function triggerGoldBurst() {
   setTimeout(() => burst.remove(), 1100);
 }
 
+document.body.dataset.currentView = document.querySelector('.view.active')?.id || 'home';
 setupMasqueradeDecor();
+setupHiddenLogos();
 updateBoosterBadge();

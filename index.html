@@ -29,7 +29,8 @@
           <button data-view="journal">Journal</button>
         </div>
       </div>
-      <button data-view="chronicles">Chroniques</button>
+      <button data-view="finalRoom">Dernière Salle</button>
+      <button data-view="chronicles">Notre Histoire</button>
     </nav>
   </header>
 
@@ -73,6 +74,7 @@
         <button class="primary" id="unlockBtn">Déverrouiller</button>
       </div>
       <p id="message" class="message"></p>
+      <div id="codeRecap" class="code-recap"></div>
     </section>
 
     <section id="room" class="view card room"></section>
@@ -115,13 +117,22 @@
       <div id="journalList" class="journal-list"></div>
     </section>
 
+    <section id="finalRoom" class="view card">
+      <p class="eyebrow">Dernière Salle</p>
+      <h2>Le Dernier Masque</h2>
+      <p>Cette salle finale ne s’ouvrira que lorsque tous les objectifs du Bal auront été accomplis.</p>
+      <div id="finalRoomContent"></div>
+    </section>
+
     <section id="chronicles" class="view card">
-      <p class="eyebrow">Notes d’histoire</p>
-      <h2>Chroniques</h2>
-      <p>De petits textes à compléter plus tard avec vos vrais souvenirs.</p>
+      <p class="eyebrow">Notre histoire</p>
+      <h2>Notre Histoire</h2>
+      <p>Un espace à compléter plus tard avec vos vrais souvenirs, vos dates, vos sorties et les petits détails qui comptent.</p>
       <div id="chroniclesList" class="chronicles-list"></div>
     </section>
   </main>
+
+  <button id="backToTopBtn" class="back-to-top" onclick="scrollToTop()">↑</button>
 
   <footer>
     <span>Créé pour Julie — 18 ans</span>
