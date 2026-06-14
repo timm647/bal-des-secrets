@@ -8,6 +8,18 @@
 </head>
 <body>
   <div class="gold-noise"></div>
+<div id="welcomeOverlay" class="welcome-overlay">
+  <div class="welcome-card">
+    <h2>✨ Tu l’as trouvé.</h2>
+    <p><strong>Julie,</strong></p>
+    <p>J’espère que cette soirée d’anniversaire t’a plu.</p>
+    <p>Entre les surprises, les cadeaux et les moments partagés, cette journée marque une étape importante : tes 18 ans.</p>
+    <p>Mais une partie de ton cadeau reste encore à découvrir.</p>
+    <p>Derrière ces portes se cachent des surprises qui t’accompagneront tout au long de l’année.</p>
+    <p>Bienvenue dans le Bal des Secrets.</p>
+    <button id="enterBalBtn" class="primary">Entrer dans le Bal ✨</button>
+  </div>
+</div>
   <header class="topbar">
     <div class="topbar-left">
       <div class="brand">Le Bal des Secrets</div>
@@ -39,10 +51,10 @@
 
   <main>
     <section id="home" class="view active hero">
-      <p class="eyebrow">Le moment est venu</p>
+      <p class="eyebrow">Le moment est venu, Julie</p>
       <h1>Le Bal des Secrets</h1>
       <p class="lead">Si tu es arrivée jusqu’ici, alors tu peux maintenant ouvrir l’enveloppe.</p>
-      <p>À l’intérieur, tu trouveras des tickets d’or. Garde-les près de toi : chacun d’eux est une clé, mais aucune porte ne s’ouvre par hasard.</p>
+      <p>À l’intérieur, tu trouveras des tickets d’or. Garde-les près de toi : chacun d’eux est une clé, mais aucune porte ne s’ouvre par hasard.</p><p><em>Aujourd’hui, tu célèbres tes 18 ans. Cette aventure a été imaginée spécialement pour toi.</em></p>
       <p>Choisis un ticket, lis son code, puis entre-le ici lorsque tu veux commencer une nouvelle porte du Bal.</p>
       <p>Parfois, les réponses seront sur ce site. Parfois, elles attendront dans un détail, un souvenir, ou quelque chose préparé pour toi.</p>
       <div class="actions">
@@ -149,5 +161,15 @@
   </footer>
 
   <script src="script.js"></script>
-</body>
+<script>
+const enterBtn=document.getElementById('enterBalBtn');
+if(enterBtn){
+ enterBtn.addEventListener('click',()=>{
+   const ov=document.getElementById('welcomeOverlay');
+   ov.style.opacity='0';
+   ov.style.transition='opacity .5s ease';
+   setTimeout(()=>ov.remove(),500);
+ });
+}
+</script></body>
 </html>
