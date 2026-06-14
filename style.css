@@ -1724,3 +1724,21 @@ opacity:.18;
 from{transform:translateY(0);}
 to{transform:translateY(-140px);}
 }
+
+#welcomeOverlay{
+position:fixed !important;
+inset:0 !important;
+z-index:99999 !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+background:rgba(0,0,0,.82) !important;
+backdrop-filter:blur(12px) !important;
+}
+.welcome-card{
+max-width:700px;
+width:min(90vw,700px);
+}
+body.modal-open{
+overflow:hidden;
+}

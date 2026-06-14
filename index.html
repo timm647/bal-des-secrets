@@ -161,15 +161,30 @@
   </footer>
 
   <script src="script.js"></script>
+
 <script>
-const enterBtn=document.getElementById('enterBalBtn');
-if(enterBtn){
- enterBtn.addEventListener('click',()=>{
-   const ov=document.getElementById('welcomeOverlay');
-   ov.style.opacity='0';
-   ov.style.transition='opacity .5s ease';
-   setTimeout(()=>ov.remove(),500);
- });
-}
+(function(){
+ const overlay=document.getElementById('welcomeOverlay');
+ const btn=document.getElementById('enterBalBtn');
+
+ if(localStorage.getItem('welcomeSeen')==='true'){
+   if(overlay) overlay.remove();
+ }else{
+   document.body.classList.add('modal-open');
+ }
+
+ if(btn){
+   btn.addEventListener('click',function(){
+      localStorage.setItem('welcomeSeen','true');
+      overlay.style.transition='opacity .6s ease';
+      overlay.style.opacity='0';
+      setTimeout(function(){
+        overlay.remove();
+        document.body.classList.remove('modal-open');
+      },600);
+   });
+ }
+})();
 </script></body>
+
 </html>
