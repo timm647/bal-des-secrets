@@ -55,7 +55,216 @@ const tickets = [
       {
         "type": "hidden-ending",
         "title": "Épreuve I — Au bord des phrases",
-        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p><strong>Sélectionne la bonne silhouette puis clique sur « Valider ».</strong></p>",
+        "q": "<p class=\"instruction\">Pour trouver certains indices, il faut savoir regarder. Les détails racontent parfois plus que le reste.</p><div class=\"cipher-text ending-cipher\"><p>Il y a des objets qu’on garde plus longtemps que prévu, parfois toujours.</p><p>On les croit parfois inutiles, jusqu’au moment où ils comptent encore.</p><p>Certains souvenirs reviennent surtout quand tombe la nuit.</p><p>Ce qui rassure le plus ne fait pas toujours beaucoup de bruit doucement.</p><p>Une simple présence peut parfois faire plus qu’un discours et rassure.</p><p>Les choses les plus petites peuvent porter un morceau d’enfance.</p><p>On ne sait pas toujours expliquer pourquoi elles deviennent un souvenir.</p><p>Mais quand elles restent, c’est souvent qu’elles protègent un secret.</p><p>Et parfois, ce qui paraît enfantin devient simplement essentiel.</p></div><p><strong>Quel est ce mot ?</strong></p>",
+        "answers": [
+          "tendresse"
+        ],
+        "hints": [
+          "Les phrases ne sont pas seulement là pour être lues dans leur ensemble.",
+          "Certaines réponses se trouvent là où une phrase s’arrête.",
+          "Observe les mots qui arrivent juste avant chaque point.",
+          "Prends la première lettre de chaque mot placé juste avant un point."
+        ],
+        "success": "Le premier mot est trouvé. Ici, tout commence par la tendresse."
+      },
+      {
+        "type": "rebus",
+        "title": "Épreuve II — Le rébus du silence",
+        "q": "<p class=\"instruction\">Deux images. Un seul mot à entendre.</p><div class=\"rebus-card image-rebus\"><figure class=\"rebus-image-card\"><img src=\"assets/roi-k.jpg\" alt=\"Carte roi K\" /></figure><span class=\"rebus-plus\">+</span><figure class=\"rebus-image-card\"><img src=\"assets/lin.jpg\" alt=\"Tissu de lin\" /></figure></div><p><strong>Quel mot se cache derrière ce rébus ?</strong></p>",
+        "answers": [
+          "calin",
+          "câlin"
+        ],
+        "hints": [
+          "Les deux images ne doivent pas être lues comme de simples objets.",
+          "La première image représente surtout un symbole inscrit sur la carte.",
+          "La seconde image montre une matière que l’on retrouve dans certains vêtements, comme des chemises ou des pantalons.",
+          "Assemble le son de la lettre de la carte avec le nom de la matière."
+        ],
+        "success": "Oui. Un câlin ne dit rien, mais il peut rassurer beaucoup."
+      },
+      {
+        "type": "concept",
+        "title": "Épreuve III — Ce que l’on cherche",
+        "q": "<p>Je ne suis ni une personne, ni un lieu.</p><p>Pourtant, beaucoup me cherchent.</p><p>Certains me trouvent dans une présence.</p><p>D’autres dans une habitude.</p><p>D’autres encore dans quelque chose qu’ils gardent depuis longtemps.</p><p>On peut avoir besoin de moi après une mauvaise nouvelle, un moment difficile, ou simplement lorsqu’on a envie de quelque chose qui fait du bien.</p><p><strong>Que suis-je ?</strong></p>",
+        "answers": [
+          "reconfort",
+          "réconfort"
+        ],
+        "hints": [
+          "La réponse ne peut pas se voir ni se toucher.",
+          "Elle se ressent plus qu’elle ne se possède.",
+          "Elle est proche du calme, de l’apaisement et de la sécurité.",
+          "On la cherche souvent quand on a besoin d’aller mieux."
+        ],
+        "success": "Exact. Le réconfort peut parfois tenir dans très peu de choses."
+      },
+      {
+        "type": "personal",
+        "title": "Épreuve IV — Ce qui reste",
+        "q": "<p>Un objet peut rester dans une chambre pendant des années.</p><p>Pour quelqu’un d’autre, il ne vaut presque rien.</p><p>Pour toi, il peut rappeler une époque, une présence, une habitude ou un moment.</p><p>Ce n’est donc pas seulement l’objet qui compte.</p><p>C’est le lien invisible qui s’est créé avec lui.</p><p><strong>Quel mot décrit ce lien ?</strong></p>",
+        "answers": [
+          "attachement"
+        ],
+        "hints": [
+          "La réponse n’est pas un objet.",
+          "Elle peut exister entre une personne et un objet.",
+          "Elle peut aussi exister entre deux personnes.",
+          "Elle décrit un lien émotionnel que l’on crée avec quelque chose ou quelqu’un."
+        ],
+        "success": "Oui. Certains objets restent parce qu’on s’y attache."
+      },
+      {
+        "type": "final",
+        "title": "Épreuve V — Le vrai nom du refuge",
+        "q": "<p>Certaines personnes l’oublient.</p><p>D’autres le retrouvent des années plus tard.</p><p>Il ne possède aucune valeur particulière.</p><p>Pourtant peu accepteraient qu’on le jette sans leur demander.</p><p>Il accompagne souvent les premiers rêves.</p><p>Et parfois même quelques rêves d’adulte.</p><p><strong>Qui est-il ?</strong></p>",
+        "answers": [
+          "doudou"
+        ],
+        "hints": [
+          "La réponse est un objet.",
+          "Beaucoup en ont possédé un durant l’enfance.",
+          "Certains le conservent même en grandissant.",
+          "Il est souvent associé au sommeil, à la douceur et au réconfort."
+        ],
+        "success": "Tu as trouvé le vrai nom du Refuge Doré."
+      }
+    ],
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Refuge Doré cachait un doudou.</h3><p>Pas seulement une peluche : un petit refuge à garder près de toi, pour les jours où un simple câlin vaut plus qu’un grand discours.</p></div>",
+    "memory": "Le Refuge Doré — un souvenir doux, gardé pour toi.",
+    "theme": "refuge"
+  },
+  {
+    "id": 2,
+    "code": "ROSE-NOIRE",
+    "title": "La Rose Noire",
+    "gift": "Fleurs",
+    "teaser": "Une porte faite pour comprendre comment un message peut exister sans être écrit clairement.",
+    "intro": "<p>Cette porte ne commence pas par le cadeau. Elle commence par une idée : certaines attentions parlent sans utiliser beaucoup de mots.</p>",
+    "riddles": [
+      {
+        "type": "deduction",
+        "title": "Épreuve I — Les quatre messagers",
+        "q": "<p>Quatre messagers veulent porter une attention jusqu’à toi.</p><ul><li>Le papier garde les mots, mais demande qu’on le lise.</li><li>Le parfum laisse une trace, mais disparaît trop vite.</li><li>La lumière révèle, mais ne reste pas entre les mains.</li><li>Le végétal ne parle pas, mais peut transmettre quelque chose par sa présence.</li></ul><p>Cette porte cherche le messager qui peut être offert, gardé un moment, puis devenir souvenir.</p><p><strong>Quel messager choisis-tu ?</strong></p>",
+        "answers": [
+          "vegetal",
+          "végétal"
+        ],
+        "hints": [
+          "Ce n’est pas un objet fabriqué.",
+          "Il peut vivre, changer, puis faner.",
+          "On peut l’offrir sans écrire une phrase.",
+          "La réponse désigne ce qui pousse."
+        ],
+        "success": "Tu as choisi le messager vivant."
+      },
+      {
+        "type": "caesar",
+        "title": "Épreuve II — Les lettres trop avancées",
+        "q": "<p>Un mot devrait t’indiquer ce qu’il y a derrière un geste préparé pour toi.</p><p>Mais ses lettres semblent avoir trop avancé :</p><div class=\"cipher-text\"><strong>DWWHQWLRQ</strong></div><p><strong>Quel mot devait apparaître ?</strong></p>",
+        "answers": [
+          "attention"
+        ],
+        "hints": [
+          "Le mot n’est pas mélangé : toutes les lettres ont bougé de la même manière.",
+          "Pense à un ancien chef romain souvent associé à une couronne de laurier.",
+          "Les lettres semblent être parties trop loin dans l’alphabet.",
+          "Pour retrouver le mot, recule chaque lettre de trois positions."
+        ],
+        "success": "Oui : l’attention est retrouvée."
+      },
+      {
+        "type": "logic",
+        "title": "Épreuve III — Pourquoi ce geste ?",
+        "q": "<p>Deux gestes peuvent se ressembler de l’extérieur.</p><p>Pourtant, l’un peut être fait au hasard, l’autre parce qu’il a été pensé pour toi.</p><p>Ce n’est pas ce qu’on tient dans la main qui change.</p><p>C’est la raison silencieuse derrière le geste.</p><p><strong>Quel mot désigne cette raison ?</strong></p>",
+        "answers": [
+          "intention"
+        ],
+        "hints": [
+          "Ce mot ne désigne pas un objet.",
+          "Il répond à la question : “pourquoi ?”.",
+          "Il existe avant même que le geste soit fait.",
+          "Il commence par INT."
+        ],
+        "success": "Oui : l’intention donne du sens au geste."
+      },
+      {
+        "type": "morse",
+        "title": "Épreuve IV — Points et traits",
+        "q": "<p>Un petit message a été laissé comme une suite de battements.</p><div class=\"cipher-text\"><strong>.-. ..- -... .- -.</strong></div><p>Ce mot ne désigne pas le cadeau. Il désigne ce qui peut l’accompagner.</p><p><strong>Quel mot entends-tu derrière ces signes ?</strong></p>",
+        "answers": [
+          "ruban"
+        ],
+        "hints": [
+          "Ce message n’utilise presque rien : seulement deux signes différents.",
+          "Ces signes peuvent se lire comme des battements courts et longs.",
+          "Ce système servait à transmettre des messages à distance.",
+          "C’est du Morse : traduis les points et les traits en lettres."
+        ],
+        "success": "Oui : un ruban peut accompagner le message sans être le message."
+      },
+      {
+        "type": "final",
+        "title": "Épreuve V — Le message sans phrase",
+        "q": "<p>Tu as retrouvé un messager vivant, une attention, une intention et un ruban.</p><p>Il reste à nommer ce qui peut porter tout cela à la fois.</p><p>On ne l’offre pas pour son utilité.</p><p>On l’offre parce qu’il y a quelque chose à dire sans forcément le prononcer.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "answers": [
+          "fleurs",
+          "fleur"
+        ],
+        "hints": [
+          "La réponse désigne un cadeau vivant.",
+          "Il peut être accompagné d’un ruban.",
+          "Il peut faner, mais le geste reste.",
+          "On peut l’offrir en bouquet."
+        ],
+        "success": "Tu as trouvé le secret de la Rose Noire."
+      }
+    ],
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
+    "memory": "La Rose Noire — un message vivant, pensé pour toi.",
+    "theme": "rose"
+  },
+  {
+    "id": 3,
+    "code": "10-AVRIL",
+    "title": "Le Parc des Premiers Secrets",
+    "gift": "Date avec toi",
+    "teaser": "Chaque souvenir ouvre la porte au prochain.",
+    "intro": "<p>Chaque histoire commence par un détail auquel on ne prête pas forcément attention.</p><p>Un regard, quelques mots, un lieu, un instant.</p><p>Les souvenirs les plus précieux ne sont pas toujours les plus spectaculaires.</p><p>Parfois, ils commencent simplement par un rayon de soleil.</p>",
+    "riddles": [
+      {
+        "type": "memory",
+        "title": "Épreuve I — Le début de l’histoire",
+        "q": "<p>Avant même notre première conversation, je me trouvais entre toi et quelque chose qui t’éblouissait.</p><p>Sans le vouloir, c’est peut-être ce qui a lancé toute cette histoire.</p><p><strong>Quel était cet élément ?</strong></p>",
+        "answers": ["soleil"],
+        "hints": [
+          "Tout s’est passé au lycée.",
+          "Je me trouvais devant toi.",
+          "Tu voulais que je me décale.",
+          "Cet élément brillait très fort.",
+          "Réponse : soleil."
+        ],
+        "success": "C’est bien ça. Parfois, les plus belles histoires commencent grâce à un simple rayon de soleil."
+      },
+      {
+        "type": "timeline",
+        "title": "Épreuve II — Les souvenirs dans le bon ordre",
+        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Replace les souvenirs dans les emplacements ci-dessous, puis clique sur « Valider l’ordre ».</strong></p>",
+        "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
+        "answers": ["Cinéma|Parc d’Isle|Feu d’artifice du 14 juillet|Paris"],
+        "hints": [
+          "Le premier élément est une activité en intérieur.",
+          "Le deuxième a eu lieu juste après.",
+          "Paris n’est pas le dernier souvenir.",
+          "Le feu d’artifice est le plus récent.",
+          "Cinéma → Parc d’Isle → Paris → Feu d’artifice."
+        ],
+        "success": "Les souvenirs retrouvent leur place."
+      },
+      {
+        "type": "monuments",
+        "title": "Épreuve III — Paris",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».</p><p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"></div><p><strong>Sélectionne la bonne silhouette puis clique sur « Valider ».</strong></p>",
         "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
           "Ce n’est pas une cathédrale.",
@@ -1296,26 +1505,7 @@ function renderAnswerInput(ticket, r, index){
 
 if(r.type === "monuments"){
     return `
-      <div class="monument-grid" id="monuments-${index}">
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')">
-          <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')">
-          <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')">
-          <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')">
-          <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
-        </button>
-      </div>
-      <input type="hidden" id="answer-${index}">
-      <div class="monument-feedback" id="monument-feedback-${index}"></div>
-      <div class="answer-row">
-        <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
-      </div>
-    `;
+      `;
   }
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
