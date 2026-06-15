@@ -39,7 +39,7 @@ window.selectMonument = function(ticketId, index, value){
     if(feedback) feedback.textContent = '';
     completeRiddle(ticketId, index);
   } else {
-    if(feedback) feedback.textContent = "Ce n'est pas le bon monument.";
+    if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
   }
 }
 
@@ -264,7 +264,7 @@ const tickets = [
       {
         "type": "monuments",
         "title": "Épreuve III — Paris",
-        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"><img src=\"assets/monuments/arc-triomphe.png\" alt=\"Arc de Triomphe\"><img src=\"assets/monuments/notre-dame.png\" alt=\"Notre-Dame\"><img src=\"assets/monuments/sacre-coeur.png\" alt=\"Sacré-Cœur\"><img src=\"assets/monuments/tour-eiffel.png\" alt=\"Tour Eiffel\"></div><p><strong>Quel monument dois-tu choisir ? Écris son nom.</strong></p>",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».</p><p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"></div><p><strong>Sélectionne la bonne silhouette puis clique sur « Valider ».</strong></p>",
         "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
           "Ce n’est pas une cathédrale.",
@@ -1505,40 +1505,7 @@ function renderAnswerInput(ticket, r, index){
 
 if(r.type === "monuments"){
     return `
-      <div class="monument-grid" id="monuments-${index}">
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')">
-          <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')">
-          <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')">
-          <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')">
-          <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
-        </button>
-      </div>
-      <input type="hidden" id="answer-${index}">
-      <div class="monument-feedback" id="monument-feedback-${index}"></div>
-      <div class="answer-row">
-        <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
-      </div>
-    `;
-  }
-
-  if(r.type === "timeline"){
-    const items = [...(r.timeline || [])].sort(()=>Math.random()-0.5);
-    return `
-      <div class="timeline-board" id="timeline-${index}">
-        <div class="timeline-slots">
-          ${[1,2,3,4].map(i=>`<div class="timeline-slot" data-index="${index}" ondragover="event.preventDefault()" ondrop="dropTimeline(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
-        </div>
-        <div class="timeline-cards">
-          ${items.map(item=>`<div class="timeline-card" draggable="true" ondragstart="dragTimeline(event)" data-value="${item}">${item}</div>`).join('')}
-        </div>
-        <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button></div>
-      </div>`;
+      `;
   }
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
@@ -1670,7 +1637,7 @@ window.checkAnswer = function(ticketId, index) {
   } else {
     if (ticket.riddles[index].type === 'monuments') {
       const feedback = document.getElementById(`monument-feedback-${index}`);
-      if(feedback) feedback.textContent = "Ce n'est pas le bon monument.";
+      if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
     } else if (input) {
       input.value = '';
       input.placeholder = 'Ce n’est pas encore ça...';
