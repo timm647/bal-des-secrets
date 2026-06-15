@@ -1505,7 +1505,26 @@ function renderAnswerInput(ticket, r, index){
 
 if(r.type === "monuments"){
     return `
-      `;
+      <div class="monument-grid" id="monuments-${index}">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')">
+          <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
+        </button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')">
+          <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
+        </button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')">
+          <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
+        </button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')">
+          <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
+        </button>
+      </div>
+      <input type="hidden" id="answer-${index}">
+      <div class="monument-feedback" id="monument-feedback-${index}"></div>
+      <div class="answer-row">
+        <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
+      </div>
+    `;
   }
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
