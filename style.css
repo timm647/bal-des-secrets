@@ -1799,7 +1799,7 @@ opacity:.08 !important;
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:0;
+  z-index:2;
   overflow:hidden;
 }
 
@@ -1824,4 +1824,19 @@ opacity:.08 !important;
 
 @media (max-width:768px){
   .gold-particles{display:none;}
+}
+
+
+/* Contenu au-dessus des paillettes */
+header,
+main,
+section,
+nav,
+.modal,
+.popup,
+.welcome-overlay,
+.room-grid,
+.container{
+  position:relative;
+  z-index:3;
 }
