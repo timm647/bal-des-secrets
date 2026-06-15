@@ -1,4 +1,21 @@
 
+function showInlineMessage(text, type='error'){
+  let box = document.getElementById('inline-message');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'inline-message';
+    document.body.appendChild(box);
+  }
+  box.className = `inline-message ${type}`;
+  box.textContent = text;
+  box.classList.add('visible');
+  clearTimeout(window._inlineMessageTimer);
+  window._inlineMessageTimer = setTimeout(()=>{
+    box.classList.remove('visible');
+  }, 2500);
+}
+
+
 window.chooseMonument = function(index, btn, value){
   document.querySelectorAll(`#monuments-${index} .monument-choice`).forEach(el=>el.classList.remove('selected'));
   btn.classList.add('selected');
@@ -1445,7 +1462,7 @@ function renderRoom(ticket) {
 
     html += `<div id="room-step-${ticket.id}-${index}" class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
-      <div class="riddle-content">${isUnlocked ? ((r.type === 'fill-blanks' || r.type === 'monuments') ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      <div class="riddle-content">${isUnlocked ? ((r.type === 'fill-blanks') ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
       ${isUnlocked && !isSolved ? renderAnswerInput(ticket, r, index) : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
@@ -1651,13 +1668,17 @@ window.checkAnswer = function(ticketId, index) {
     triggerLocalGoldBurst(ticketId, index);
     if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'), rewardType);
   } else {
-    if (input) {
+    if (ticket.riddles[index].type === 'monuments') {
+      const feedback = document.getElementById(`monument-feedback-${index}`);
+      if(feedback) feedback.textContent = "Ce n'est pas le bon monument.";
+    } else if (input) {
       input.value = '';
       input.placeholder = 'Ce n’est pas encore ça...';
       input.classList.add('shake');
       setTimeout(() => input.classList.remove('shake'), 350);
+      showInlineMessage('Ce n’est pas encore la bonne réponse.', 'error');
     } else {
-      alert('Ce n’est pas encore le bon ordre.');
+      showInlineMessage('Ce n’est pas encore le bon ordre.', 'error');
     }
   }
 };
