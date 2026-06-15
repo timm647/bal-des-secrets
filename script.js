@@ -1,3 +1,13 @@
+
+window.selectMonument = function(index, value){
+  const input = document.getElementById(`answer-${index}`);
+  if(input){
+    input.value = value;
+    const btn = input.parentElement.querySelector('button');
+    if(btn) btn.click();
+  }
+}
+
 const tickets = [
   {
     "id": 1,
@@ -206,7 +216,7 @@ const tickets = [
         "title": "Épreuve II — Les souvenirs dans le bon ordre",
         "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Replace les souvenirs dans les emplacements ci-dessous, puis clique sur « Valider l’ordre ».</strong></p>",
         "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
-        "answers": ["Cinéma|Parc d’Isle|Paris|Feu d’artifice du 14 juillet"],
+        "answers": ["Cinéma|Parc d’Isle|Feu d’artifice du 14 juillet|Paris"],
         "hints": [
           "Le premier élément est une activité en intérieur.",
           "Le deuxième a eu lieu juste après.",
@@ -232,10 +242,10 @@ const tickets = [
       },
       {
         "type": "fill-blanks",
-        "choices": ["Lycée","Cinéma","Parc d’Isle","Paris","Willow"],
+        "choices": ["Fenêtre","Instagram","22 avril 2025","Willow","Natation"],
         "title": "Épreuve IV — Complète notre histoire",
-        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, nous étions au même <strong>______</strong>.</p><p>Ensuite, nous avons partagé notre premier <strong>______</strong>.</p><p>Juste après, nous avons continué cette journée au <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Replace les mots dans les bons emplacements, puis clique sur « Valider ».</strong></p>",
-        "answers": ["Lycée|Cinéma|Parc d’Isle"],
+        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, tu as tapé contre une <strong>______</strong>.</p><p>Quelques jours plus tard, tu m’as ajouté sur <strong>______</strong>.</p><p>Depuis le <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Replace les mots dans les bons emplacements, puis clique sur « Valider ».</strong></p>",
+        "answers": ["Fenêtre|Instagram|22 avril 2025"],
         "hints": [
           "Tout a commencé pendant les cours.",
           "Votre premier rendez-vous s’est déroulé devant un écran.",
@@ -1447,9 +1457,9 @@ function renderAnswerInput(ticket, r, index){
     const shuffled = [...words].sort(()=>Math.random()-0.5);
     return `
       <div class="fill-story" id="fill-${index}">
-        <p>Avant même notre première conversation, nous étions au même <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
-        <p>Ensuite, nous avons partagé notre premier <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
-        <p>Juste après, nous avons continué cette journée au <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Avant même notre première conversation, tu as tapé contre une <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Quelques jours plus tard, tu m’as ajouté sur <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
         <div class="fill-cards">
           ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
         </div>
