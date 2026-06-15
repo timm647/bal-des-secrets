@@ -1,4 +1,14 @@
 
+window.chooseMonument = function(index, btn, value){
+  document.querySelectorAll(`#monuments-${index} .monument-choice`).forEach(el=>el.classList.remove('selected'));
+  btn.classList.add('selected');
+  const input = document.getElementById(`answer-${index}`);
+  if(input) input.value = value;
+  const feedback = document.getElementById(`monument-feedback-${index}`);
+  if(feedback) feedback.textContent = '';
+}
+
+
 window.selectMonument = function(ticketId, index, value){
   const ticket = tickets.find(t => t.id === ticketId);
   if(!ticket) return;
@@ -1435,7 +1445,7 @@ function renderRoom(ticket) {
 
     html += `<div id="room-step-${ticket.id}-${index}" class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
-      <div class="riddle-content">${isUnlocked ? (r.type === 'fill-blanks' ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      <div class="riddle-content">${isUnlocked ? ((r.type === 'fill-blanks' || r.type === 'monuments') ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
       ${isUnlocked && !isSolved ? renderAnswerInput(ticket, r, index) : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
@@ -1478,21 +1488,25 @@ function renderAnswerInput(ticket, r, index){
 
 if(r.type === "monuments"){
     return `
-      <div class="monument-grid">
-        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Arc de Triomphe')">
+      <div class="monument-grid" id="monuments-${index}">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')">
           <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
         </button>
-        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Notre-Dame')">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')">
           <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
         </button>
-        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Sacré-Cœur')">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')">
           <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
         </button>
-        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Tour Eiffel')">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')">
           <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
         </button>
       </div>
+      <input type="hidden" id="answer-${index}">
       <div class="monument-feedback" id="monument-feedback-${index}"></div>
+      <div class="answer-row">
+        <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
+      </div>
     `;
   }
 

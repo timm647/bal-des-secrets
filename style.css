@@ -1915,3 +1915,9 @@ nav,
   color:#d4af37;
   margin-top:12px;
 }
+
+.monument-choice.selected{
+  border-color:#d4af37;
+  box-shadow:0 0 18px rgba(212,175,55,.35);
+  transform:scale(1.03);
+}
