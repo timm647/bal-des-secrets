@@ -1742,3 +1742,53 @@ width:min(90vw,700px);
 body.modal-open{
 overflow:hidden;
 }
+
+/* Paillettes discrètes */
+.gold-noise::after{
+background-size:220px 220px !important;
+opacity:.08 !important;
+}
+
+/* Optimisation mobile générale */
+@media (max-width:768px){
+  .welcome-card{
+    padding:24px !important;
+    border-radius:20px !important;
+  }
+
+  .welcome-card p{
+    line-height:1.55;
+  }
+
+  .hero::before{
+    font-size:120px !important;
+    right:2%;
+  }
+
+  /* Cartes / boosters */
+  .cards,
+  .booster-cards,
+  .reward-cards,
+  .collection-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+
+  .card,
+  .reward-card{
+    max-width:100% !important;
+  }
+
+  /* Textes d'énigmes */
+  .riddle,
+  .enigma,
+  .modal-content,
+  .door-content{
+    font-size:0.95rem !important;
+    line-height:1.6 !important;
+  }
+
+  button{
+    min-height:44px;
+  }
+}

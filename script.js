@@ -184,107 +184,87 @@ const tickets = [
     "code": "10-AVRIL",
     "title": "Le Parc des Premiers Secrets",
     "gift": "Date avec toi",
-    "teaser": "Un souvenir, un endroit, puis une nouvelle journée à créer ensemble.",
-    "intro": "<p>Cette porte commence dans le passé, mais elle ne s’y enferme pas. Elle utilise un souvenir pour ouvrir un nouveau moment à deux.</p>",
+    "teaser": "Chaque souvenir ouvre la porte au prochain.",
+    "intro": "<p>Chaque histoire commence par un détail auquel on ne prête pas forcément attention.</p><p>Un regard, quelques mots, un lieu, un instant.</p><p>Les souvenirs les plus précieux ne sont pas toujours les plus spectaculaires.</p><p>Parfois, ils commencent simplement par un rayon de soleil.</p>",
     "riddles": [
       {
         "type": "memory",
-        "title": "Épreuve I — Deux nombres gardés",
-        "q": "<p>Deux nombres ont été laissés comme une trace :</p><div class=\"date-fragments\"><span>10</span><span>04</span></div><p>Ce ne sont pas eux qui sont importants.</p><p>Ils protègent un souvenir très court, mais impossible à remplacer.</p><p><strong>Quel souvenir se cache derrière cette date ?</strong></p>",
-        "answers": [
-          "premierbisou",
-          "premierbaiser",
-          "bisou",
-          "baiser"
-        ],
+        "title": "Épreuve I — Le début de l’histoire",
+        "q": "<p>Avant même notre première conversation, je me trouvais entre toi et quelque chose qui t’éblouissait.</p><p>Sans le vouloir, c’est peut-être ce qui a lancé toute cette histoire.</p><p><strong>Quel était cet élément ?</strong></p>",
+        "answers": ["soleil"],
         "hints": [
-          "La réponse n’est pas “10 avril”.",
-          "Les nombres donnent le jour, mais pas le souvenir.",
-          "Ce souvenir a duré seulement quelques secondes.",
-          "C’est la première fois que nos lèvres se sont rejointes."
+          "Tout s’est passé au lycée.",
+          "Je me trouvais devant toi.",
+          "Tu voulais que je me décale.",
+          "Cet élément brillait très fort.",
+          "Réponse : soleil."
         ],
-        "success": "Oui : le 10 avril protégeait notre premier bisou."
+        "success": "C’est bien ça. Parfois, les plus belles histoires commencent grâce à un simple rayon de soleil."
       },
       {
-        "type": "place",
-        "title": "Épreuve II — Le témoin discret",
-        "q": "<p>Ce n’était pas une maison.</p><p>Ce n’était pas une rue.</p><p>C’était un endroit assez grand pour marcher et assez calme pour s’arrêter.</p><p>Ce jour-là, il est devenu le témoin discret d’un commencement.</p><p><strong>Quel lieu était-ce ?</strong></p>",
-        "answers": [
-          "parcdisle",
-          "parcdisles",
-          "parcd isle",
-          "parc d isle",
-          "parc d'isle",
-          "parcde lisle",
-          "parc de lisle",
-          "parc de l isle",
-          "parcisle"
-        ],
+        "type": "timeline",
+        "title": "Épreuve II — Les souvenirs dans le bon ordre",
+        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><p><strong>Replace ces moments du plus ancien au plus récent.</strong></p>",
+        "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
+        "answers": ["cinema|parcdisle|paris|feudartifice"],
         "hints": [
-          "Ce lieu n’était pas important pour tout le monde, seulement pour nous.",
-          "On pouvait y marcher sans chercher une destination précise.",
-          "Son nom évoque presque quelque chose entouré d’eau.",
-          "Il se trouve à Saint-Quentin."
+          "Le premier élément est une activité en intérieur.",
+          "Le deuxième a eu lieu juste après.",
+          "Paris n’est pas le dernier souvenir.",
+          "Le feu d’artifice est le plus récent.",
+          "Cinéma → Parc d’Isle → Paris → Feu d’artifice."
         ],
-        "success": "Tu as retrouvé le lieu."
+        "success": "Les souvenirs retrouvent leur place."
       },
       {
-        "type": "emotion",
-        "title": "Épreuve III — Ce qui reste après",
-        "q": "<p>Un instant peut passer vite.</p><p>Puis il revient plus tard, sans prévenir.</p><p>Il peut être raconté, gardé, ou simplement ressenti en silence.</p><p>Ce n’est plus le moment lui-même, mais ce qu’il laisse derrière lui.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "souvenir"
-        ],
+        "type": "monuments",
+        "title": "Épreuve III — Paris",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p><strong>Sélectionne le monument concerné.</strong></p>",
+        "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
-          "Ce mot naît après l’événement.",
-          "Il peut rester même quand le lieu change.",
-          "On peut le raconter ou le garder pour soi.",
-          "Il commence par S."
+          "Ce n’est pas une cathédrale.",
+          "Ce n’est pas un arc.",
+          "On la voit dans de nombreux films.",
+          "C’est le symbole le plus connu de Paris.",
+          "Réponse : Tour Eiffel."
         ],
-        "success": "Oui : un souvenir."
+        "success": "Tu l’as reconnue."
       },
       {
-        "type": "promise",
-        "title": "Épreuve IV — Ce qui n’est pas encore arrivé",
-        "q": "<p>Le passé ne suffit pas toujours.</p><p>Quand un souvenir compte, on peut avoir envie d’en créer un autre.</p><p>Ce mot désigne quelque chose que l’on prépare sans l’avoir encore vécu.</p><p><strong>Quel mot complète cette idée ?</strong></p>",
-        "answers": [
-          "projet",
-          "promesse"
-        ],
+        "type": "fill-blanks",
+        "title": "Épreuve IV — Complète notre histoire",
+        "q": "<p>Avant même notre première conversation, nous étions au même ______.</p><p>Ensuite, nous avons partagé notre premier ______.</p><p>Juste après, nous avons continué cette journée au ______.</p>",
+        "answers": ["lycee","cinema","parcdisle"],
         "hints": [
-          "La réponse n’est pas un souvenir.",
-          "Elle concerne quelque chose à venir.",
-          "Elle peut se préparer à l’avance.",
-          "On peut parler d’un projet ou d’une promesse."
+          "Tout a commencé pendant les cours.",
+          "Votre premier rendez-vous s’est déroulé devant un écran.",
+          "Vous avez continué cette journée à l’extérieur.",
+          "Le dernier lieu est un parc.",
+          "Réponses : lycée → cinéma → parc d’Isle."
         ],
-        "success": "Oui : quelque chose à préparer."
+        "success": "Les meilleurs souvenirs racontent toujours une histoire."
       },
       {
         "type": "final",
         "title": "Épreuve V — Le temps offert",
-        "q": "<p>Tu as retrouvé le souvenir, le lieu, ce qu’il a laissé, puis l’idée d’un moment à venir.</p><p>Cette porte ne cache pas un objet.</p><p>Elle cache du temps pour marcher, rire, parler, manger, découvrir et se retrouver.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "date",
-          "rendezvous",
-          "rendez-vous"
-        ],
+        "q": "<p>Je ne suis pas un lieu.</p><p>Je ne suis pas un objet.</p><p>Pourtant, je crée souvent les meilleurs souvenirs.</p><p>On me prépare parfois longtemps à l’avance.</p><p>À deux, je prends encore plus de valeur.</p><p><strong>Qui suis-je ?</strong></p>",
+        "answers": ["date"],
         "hints": [
-          "La réponse n’est pas matérielle.",
-          "Elle se vit à deux.",
-          "Elle peut durer plusieurs heures.",
-          "On pourrait aussi appeler ça un rendez-vous."
+          "La réponse ne s’achète pas vraiment.",
+          "Elle se partage.",
+          "Elle se prépare parfois plusieurs jours à l’avance.",
+          "Elle permet de créer des souvenirs.",
+          "Réponse : date."
         ],
-        "success": "Tu as trouvé : une date, un moment rien qu’à nous."
+        "success": "🎁 Cadeau révélé : Une date avec moi."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Parc des Premiers Secrets cachait une date avec moi.</h3><p>Une journée préparée pour nous, pour créer un nouveau souvenir à partir du premier.</p></div>",
-    "memory": "Le Parc des Premiers Secrets — du premier bisou vers une nouvelle date.",
     "theme": "parc"
   },
   {
     "id": 4,
     "code": "AUBE-ROYALE",
-    "title": "L’Aube Royale",
+    
     "gift": "Petit-déjeuner",
     "teaser": "Une porte qui commence avant que la journée ne décide vraiment de commencer.",
     "intro": "<p>Cette porte parle du début d’une journée, mais elle ne doit pas donner le cadeau trop vite.</p>",
