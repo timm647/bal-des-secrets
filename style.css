@@ -1862,3 +1862,10 @@ nav,
  background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.35)
 }
 .timeline-card:active{cursor:grabbing}
+
+.fill-slots{display:grid;gap:12px;margin:18px 0}
+.fill-slot{min-height:58px;border:2px dashed rgba(212,175,55,.35);border-radius:14px;padding:10px;display:flex;align-items:center;gap:12px}
+.fill-slot span{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(212,175,55,.18);color:#d4af37;font-weight:700}
+.fill-cards{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.fill-card{padding:12px 16px;border-radius:12px;cursor:grab;background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.35)}
+.fill-feedback{min-height:22px;text-align:center;color:#d4af37}

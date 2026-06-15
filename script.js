@@ -232,9 +232,10 @@ const tickets = [
       },
       {
         "type": "fill-blanks",
+        "choices": ["Lycée","Cinéma","Parc d’Isle","Paris","Willow"],
         "title": "Épreuve IV — Complète notre histoire",
-        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, nous étions au même <strong>______</strong>.</p><p>Ensuite, nous avons partagé notre premier <strong>______</strong>.</p><p>Juste après, nous avons continué cette journée au <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Écris les trois réponses dans l’ordre, séparées par des virgules.</strong></p>",
-        "answers": ["lycee, cinema, parc disle","lycee cinema parc disle","lycee,cinema,parcdisle"],
+        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, nous étions au même <strong>______</strong>.</p><p>Ensuite, nous avons partagé notre premier <strong>______</strong>.</p><p>Juste après, nous avons continué cette journée au <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Replace les mots dans les bons emplacements, puis clique sur « Valider ».</strong></p>",
+        "answers": ["Lycée|Cinéma|Parc d’Isle"],
         "hints": [
           "Tout a commencé pendant les cours.",
           "Votre premier rendez-vous s’est déroulé devant un écran.",
@@ -1440,7 +1441,24 @@ function renderRoom(ticket) {
 
 
 function renderAnswerInput(ticket, r, index){
-  if(r.type === "timeline"){
+  
+  if(r.type === "fill-blanks"){
+    const words = r.choices || ["Lycée","Cinéma","Parc d’Isle","Paris","Willow"];
+    const shuffled = [...words].sort(()=>Math.random()-0.5);
+    return `
+      <div class="fill-board" id="fill-${index}">
+        <div class="fill-slots">
+          ${[1,2,3].map(i=>`<div class="fill-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
+        </div>
+        <div class="fill-cards">
+          ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
+        </div>
+        <div class="fill-feedback" id="fill-feedback-${index}"></div>
+        <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
+      </div>`;
+  }
+
+if(r.type === "timeline"){
     const items = [...(r.timeline || [])].sort(()=>Math.random()-0.5);
     return `
       <div class="timeline-board" id="timeline-${index}">
@@ -1471,6 +1489,10 @@ window.dropTimeline = function(ev, index, pos){
 }
 
 function getSubmittedAnswer(riddle, index){
+  if(riddle.type === "fill-blanks"){
+    const slots=[...document.querySelectorAll(`#fill-${index} .fill-slot`)];
+    return slots.map(s=>s.querySelector(`.fill-card`)?.dataset.value||``).join(`|`);
+  }
   if(riddle.type === "timeline"){
     const slots = [...document.querySelectorAll(`#timeline-${index} .timeline-slot`)];
     return slots.map(s => s.querySelector('.timeline-card')?.dataset.value || '').join('|');
