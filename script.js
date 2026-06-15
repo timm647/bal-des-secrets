@@ -1418,7 +1418,7 @@ function renderRoom(ticket) {
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
       <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
-      ${isUnlocked && !isSolved ? `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>` : ''}
+      ${isUnlocked && !isSolved ? renderRiddleInput(ticket, r, index) : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
     </div>`;
   });
@@ -1476,15 +1476,58 @@ window.revealHint = function(ticketId, index) {
   renderRoom(ticket);
 };
 
+
+function renderRiddleInput(ticket, r, index){
+  if(r.type==="timeline"){
+    const items=[...(r.timeline||[])].sort(()=>Math.random()-0.5);
+    return `<div class="timeline-builder" id="timeline-${index}">
+      ${items.map(i=>`<button type="button" class="timeline-item" onclick="toggleTimelineItem(${index}, this)">${i}</button>`).join('')}
+      <div class="timeline-result" id="timeline-result-${index}"></div>
+      <button class="clear-btn" onclick="clearTimeline(${index})">Effacer</button>
+      <button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button>
+    </div>`;
+  }
+  if(r.type==="monuments"){
+    return `<div class="answer-row"><input id="answer-${index}" placeholder="Nom du monument"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
+  }
+  if(r.type==="fill-blanks"){
+    return `<div class="fill-choices" data-index="${index}">
+      ${["lycée","cinéma","parc d’Isle","Paris","Willow"].map(w=>`<button type="button" onclick="pickWord(${index}, '${w}')">${w}</button>`).join('')}
+      <div id="fill-result-${index}" class="timeline-result"></div>
+      <button class="clear-btn" onclick="clearFill(${index})">Effacer</button>
+      <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
+    </div>`;
+  }
+  return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
+}
+
+window._timeline={}; window._fill={};
+window.toggleTimelineItem=function(index,el){
+  _timeline[index]=_timeline[index]||[];
+  if(_timeline[index].includes(el.innerText)) return;
+  _timeline[index].push(el.innerText);
+  document.getElementById(`timeline-result-${index}`).innerText=_timeline[index].join(' → ');
+}
+window.clearTimeline=function(index){ _timeline[index]=[]; document.getElementById(`timeline-result-${index}`).innerText=''; }
+window.pickWord=function(index,w){ _fill[index]=_fill[index]||[]; if(_fill[index].length<3 && !_fill[index].includes(w)){ _fill[index].push(w); document.getElementById(`fill-result-${index}`).innerText=_fill[index].join(' • ');} }
+window.clearFill=function(index){ _fill[index]=[]; document.getElementById(`fill-result-${index}`).innerText=''; }
+function getRiddleValue(r,index){
+ if(r.type==="timeline") return (_timeline[index]||[]).join(',');
+ if(r.type==="fill-blanks") return (_fill[index]||[]).join(',');
+ const input=document.getElementById(`answer-${index}`);
+ return input?input.value:'';
+}
+
+
 window.checkAnswer = function(ticketId, index) {
   const ticket = tickets.find(t => t.id === ticketId);
   const input = document.getElementById(`answer-${index}`);
   const state = loadState();
   state.answers[ticketId] = state.answers[ticketId] || [];
   const validAnswers = ticket.riddles[index].answers || [];
-  const submittedAnswer = input.value;
+  const submittedAnswer = getRiddleValue(ticket.riddles[index], index);
 
-  if (validAnswers.some(answer => normalize(input.value) === normalize(answer))) {
+  if (validAnswers.some(answer => normalize(submittedAnswer) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
     let earnedMessages = [];
     let rewardType = 'mini';
