@@ -1417,7 +1417,7 @@ function renderRoom(ticket) {
 
     html += `<div id="room-step-${ticket.id}-${index}" class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
-      <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      <div class="riddle-content">${isUnlocked ? (r.type === 'fill-blanks' ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
       ${isUnlocked && !isSolved ? renderAnswerInput(ticket, r, index) : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
@@ -1486,6 +1486,28 @@ window.dropTimeline = function(ev, index, pos){
     document.querySelector(`#timeline-${index} .timeline-cards`).appendChild(slot.querySelector('.timeline-card'));
   }
   slot.appendChild(_draggedTimeline);
+}
+
+
+window._draggedFill = null;
+
+window.dragFill = function(ev){
+  window._draggedFill = ev.target;
+}
+
+window.dropFill = function(ev,index){
+  ev.preventDefault();
+  const slot = ev.currentTarget;
+
+  if(slot.querySelector('.fill-card')){
+    document.querySelector(`#fill-${index} .fill-cards`).appendChild(
+      slot.querySelector('.fill-card')
+    );
+  }
+
+  if(window._draggedFill){
+    slot.appendChild(window._draggedFill);
+  }
 }
 
 function getSubmittedAnswer(riddle, index){

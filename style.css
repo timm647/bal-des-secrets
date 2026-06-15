@@ -1884,3 +1884,18 @@ nav,
  justify-content:center;
 }
 .inline-slot .fill-card{margin:0}
+
+.inline-slot{
+  transition:all .25s ease;
+}
+
+.inline-slot:has(.fill-card),
+.inline-slot.filled{
+  border-color:#d4af37;
+  background:rgba(212,175,55,.12);
+}
+
+.fill-card{
+  user-select:none;
+  -webkit-user-drag:element;
+}
