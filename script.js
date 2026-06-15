@@ -302,7 +302,7 @@ const tickets = [
           "Elle permet de créer des souvenirs.",
           "Réponse : date."
         ],
-        "success": "🎁 Cadeau révélé : Une date avec moi."
+        "success": "💛 Tu as débloqué une journée rien que pour nous. J’espère que tu es prête, parce qu’une nouvelle aventure nous attend très bientôt…"
       }
     ],
     "theme": "parc"
