@@ -204,9 +204,9 @@ const tickets = [
       {
         "type": "timeline",
         "title": "Épreuve II — Les souvenirs dans le bon ordre",
-        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><p><strong>Replace ces moments du plus ancien au plus récent.</strong></p>",
+        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Écris les lieux dans le bon ordre, séparés par des virgules.</strong><br><em>Exemple : A, B, C</em></p>",
         "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
-        "answers": ["cinema|parcdisle|paris|feudartifice"],
+        "answers": ["cinema, parc disle, paris, feu dartifice du 14 juillet","cinema parc disle paris feu dartifice","cinema,parcdisle,paris,feudartifice"],
         "hints": [
           "Le premier élément est une activité en intérieur.",
           "Le deuxième a eu lieu juste après.",
@@ -219,7 +219,7 @@ const tickets = [
       {
         "type": "monuments",
         "title": "Épreuve III — Paris",
-        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p><strong>Sélectionne le monument concerné.</strong></p>",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"><img src=\"assets/monuments/arc-triomphe.png\" alt=\"Arc de Triomphe\"><img src=\"assets/monuments/notre-dame.png\" alt=\"Notre-Dame\"><img src=\"assets/monuments/sacre-coeur.png\" alt=\"Sacré-Cœur\"><img src=\"assets/monuments/tour-eiffel.png\" alt=\"Tour Eiffel\"></div><p><strong>Quel monument dois-tu choisir ? Écris son nom.</strong></p>",
         "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
           "Ce n’est pas une cathédrale.",
@@ -233,8 +233,8 @@ const tickets = [
       {
         "type": "fill-blanks",
         "title": "Épreuve IV — Complète notre histoire",
-        "q": "<p>Avant même notre première conversation, nous étions au même ______.</p><p>Ensuite, nous avons partagé notre premier ______.</p><p>Juste après, nous avons continué cette journée au ______.</p>",
-        "answers": ["lycee","cinema","parcdisle"],
+        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, nous étions au même <strong>______</strong>.</p><p>Ensuite, nous avons partagé notre premier <strong>______</strong>.</p><p>Juste après, nous avons continué cette journée au <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Écris les trois réponses dans l’ordre, séparées par des virgules.</strong></p>",
+        "answers": ["lycee, cinema, parc disle","lycee cinema parc disle","lycee,cinema,parcdisle"],
         "hints": [
           "Tout a commencé pendant les cours.",
           "Votre premier rendez-vous s’est déroulé devant un écran.",
