@@ -1792,3 +1792,36 @@ opacity:.08 !important;
     min-height:44px;
   }
 }
+
+
+/* --- Paillettes dorées --- */
+.gold-particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.gold-particles span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:rgba(214,175,72,.75);
+  box-shadow:0 0 8px rgba(214,175,72,.45);
+  animation:floatGold var(--duration) linear infinite;
+  animation-delay:var(--delay);
+  left:var(--left);
+  top:110%;
+}
+
+@keyframes floatGold{
+  from{transform:translateY(0) scale(.8);opacity:0;}
+  10%,90%{opacity:.55;}
+  to{transform:translateY(-120vh) translateX(var(--drift)) scale(1.2);opacity:0;}
+}
+
+@media (max-width:768px){
+  .gold-particles{display:none;}
+}

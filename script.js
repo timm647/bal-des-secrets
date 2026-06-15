@@ -2282,3 +2282,22 @@ document.body.dataset.currentView = document.querySelector('.view.active')?.id |
 setupMasqueradeDecor();
 setupHiddenLogos();
 updateBoosterBadge();
+
+function createAmbientParticles(){
+  if(window.innerWidth <= 768) return;
+  const layer = document.createElement('div');
+  layer.className = 'gold-particles';
+  layer.setAttribute('aria-hidden','true');
+
+  for(let i=0;i<16;i++){
+    const p = document.createElement('span');
+    p.style.setProperty('--left', `${Math.random()*100}%`);
+    p.style.setProperty('--delay', `${Math.random()*-18}s`);
+    p.style.setProperty('--duration', `${14 + Math.random()*10}s`);
+    p.style.setProperty('--drift', `${(Math.random()-.5)*80}px`);
+    layer.appendChild(p);
+  }
+  document.body.prepend(layer);
+}
+
+createAmbientParticles();
