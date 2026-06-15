@@ -1555,10 +1555,14 @@ window.checkAnswer = function(ticketId, index) {
     triggerLocalGoldBurst(ticketId, index);
     if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'), rewardType);
   } else {
-    input.value = '';
-    input.placeholder = 'Ce n’est pas encore ça...';
-    input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 350);
+    if (input) {
+      input.value = '';
+      input.placeholder = 'Ce n’est pas encore ça...';
+      input.classList.add('shake');
+      setTimeout(() => input.classList.remove('shake'), 350);
+    } else {
+      alert('Ce n’est pas encore le bon ordre.');
+    }
   }
 };
 
