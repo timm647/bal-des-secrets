@@ -264,7 +264,7 @@ const tickets = [
       {
         "type": "monuments",
         "title": "Épreuve III — Paris",
-        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».</p><p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"></div><p><strong>Sélectionne la bonne silhouette puis clique sur « Valider ».</strong></p>",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».",
         "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
           "Ce n’est pas une cathédrale.",
