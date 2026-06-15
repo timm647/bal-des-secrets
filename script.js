@@ -221,7 +221,7 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
-    "memory": "La Rose Noire — un message vivant, pensé pour toi.",
+    
     "theme": "rose"
   },
   {
@@ -302,9 +302,10 @@ const tickets = [
           "Elle permet de créer des souvenirs.",
           "Réponse : date."
         ],
-        "success": "💛 Tu as débloqué une journée rien que pour nous. J’espère que tu es prête, parce qu’une nouvelle aventure nous attend très bientôt…"
+        "success": "Tu as trouvé le secret du Parc des Premiers Secrets."
       }
     ],
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Parc des Premiers Secrets cachait une journée rien que pour nous.</h3><p>Prépare-toi pour une nouvelle aventure à deux. Une journée spéciale t’attend bientôt… et j’ai hâte de la partager avec toi. 💛</p></div>",
     "theme": "parc"
   },
   {
