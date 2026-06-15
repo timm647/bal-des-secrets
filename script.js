@@ -1446,10 +1446,10 @@ function renderAnswerInput(ticket, r, index){
     const words = r.choices || ["Lycée","Cinéma","Parc d’Isle","Paris","Willow"];
     const shuffled = [...words].sort(()=>Math.random()-0.5);
     return `
-      <div class="fill-board" id="fill-${index}">
-        <div class="fill-slots">
-          ${[1,2,3].map(i=>`<div class="fill-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
-        </div>
+      <div class="fill-story" id="fill-${index}">
+        <p>Avant même notre première conversation, nous étions au même <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Ensuite, nous avons partagé notre premier <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Juste après, nous avons continué cette journée au <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
         <div class="fill-cards">
           ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
         </div>
@@ -1490,7 +1490,7 @@ window.dropTimeline = function(ev, index, pos){
 
 function getSubmittedAnswer(riddle, index){
   if(riddle.type === "fill-blanks"){
-    const slots=[...document.querySelectorAll(`#fill-${index} .fill-slot`)];
+    const slots=[...document.querySelectorAll(`#fill-${index} .inline-slot`)];
     return slots.map(s=>s.querySelector(`.fill-card`)?.dataset.value||``).join(`|`);
   }
   if(riddle.type === "timeline"){

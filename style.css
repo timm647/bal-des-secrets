@@ -1869,3 +1869,18 @@ nav,
 .fill-cards{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
 .fill-card{padding:12px 16px;border-radius:12px;cursor:grab;background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.35)}
 .fill-feedback{min-height:22px;text-align:center;color:#d4af37}
+
+.fill-story p{line-height:1.9;margin:18px 0}
+.inline-slot{
+ display:inline-flex;
+ vertical-align:middle;
+ min-width:130px;
+ min-height:42px;
+ padding:6px 10px;
+ margin:0 6px;
+ border:2px dashed rgba(212,175,55,.35);
+ border-radius:10px;
+ align-items:center;
+ justify-content:center;
+}
+.inline-slot .fill-card{margin:0}
