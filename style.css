@@ -1899,3 +1899,19 @@ nav,
   user-select:none;
   -webkit-user-drag:element;
 }
+
+.monument-choice{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(212,175,55,.3);
+  border-radius:16px;
+  padding:16px;
+  cursor:pointer;
+  transition:transform .2s ease;
+}
+.monument-choice:hover{transform:scale(1.03)}
+.monument-feedback{
+  min-height:24px;
+  text-align:center;
+  color:#d4af37;
+  margin-top:12px;
+}

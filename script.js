@@ -1,10 +1,18 @@
 
-window.selectMonument = function(index, value){
-  const input = document.getElementById(`answer-${index}`);
-  if(input){
-    input.value = value;
-    const btn = input.parentElement.querySelector('button');
-    if(btn) btn.click();
+window.selectMonument = function(ticketId, index, value){
+  const ticket = tickets.find(t => t.id === ticketId);
+  if(!ticket) return;
+
+  const riddle = ticket.riddles[index];
+  const validAnswers = riddle.answers || [];
+
+  const feedback = document.getElementById(`monument-feedback-${index}`);
+
+  if(validAnswers.some(answer => normalize(answer) === normalize(value))){
+    if(feedback) feedback.textContent = '';
+    completeRiddle(ticketId, index);
+  } else {
+    if(feedback) feedback.textContent = "Ce n'est pas le bon monument.";
   }
 }
 
@@ -1468,7 +1476,27 @@ function renderAnswerInput(ticket, r, index){
       </div>`;
   }
 
-if(r.type === "timeline"){
+if(r.type === "monuments"){
+    return `
+      <div class="monument-grid">
+        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Arc de Triomphe')">
+          <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
+        </button>
+        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Notre-Dame')">
+          <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
+        </button>
+        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Sacré-Cœur')">
+          <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
+        </button>
+        <button class="monument-choice" onclick="selectMonument(${ticket.id}, ${index}, 'Tour Eiffel')">
+          <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
+        </button>
+      </div>
+      <div class="monument-feedback" id="monument-feedback-${index}"></div>
+    `;
+  }
+
+  if(r.type === "timeline"){
     const items = [...(r.timeline || [])].sort(()=>Math.random()-0.5);
     return `
       <div class="timeline-board" id="timeline-${index}">
