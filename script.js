@@ -1486,46 +1486,50 @@ function renderRoom(ticket) {
 
 
 function renderAnswerInput(ticket, r, index){
-  
+
+  if(r.type === "timeline"){
+    const items = [...(r.timeline || [])].sort(()=>Math.random()-0.5);
+    return `
+      <div class="timeline-board" id="timeline-${index}">
+        <div class="timeline-slots">
+          ${[1,2,3,4].map(i=>`<div class="timeline-slot" ondragover="event.preventDefault()" ondrop="dropTimeline(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
+        </div>
+        <div class="timeline-cards">
+          ${items.map(item=>`<div class="timeline-card" draggable="true" ondragstart="dragTimeline(event)" data-value="${item}">${item}</div>`).join('')}
+        </div>
+        <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button></div>
+      </div>`;
+  }
+
   if(r.type === "fill-blanks"){
-    const words = r.choices || ["Lycée","Cinéma","Parc d’Isle","Paris","Willow"];
+    const words = r.choices || [];
     const shuffled = [...words].sort(()=>Math.random()-0.5);
     return `
       <div class="fill-story" id="fill-${index}">
         <p>Avant même notre première conversation, tu as tapé contre une <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
         <p>Quelques jours plus tard, tu m’as ajouté sur <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
-        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>, notre histoire continue de s'écrire.</p>
         <div class="fill-cards">
           ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
         </div>
-        <div class="fill-feedback" id="fill-feedback-${index}"></div>
         <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
       </div>`;
   }
 
-if(r.type === "monuments"){
+  if(r.type === "monuments"){
     return `
       <div class="monument-grid" id="monuments-${index}">
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')">
-          <img src="assets/monuments/arc-triomphe.png" alt="Arc de Triomphe">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')">
-          <img src="assets/monuments/notre-dame.png" alt="Notre-Dame">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')">
-          <img src="assets/monuments/sacre-coeur.png" alt="Sacré-Cœur">
-        </button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')">
-          <img src="assets/monuments/tour-eiffel.png" alt="Tour Eiffel">
-        </button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')"><img src="assets/monuments/arc-triomphe.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')"><img src="assets/monuments/notre-dame.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')"><img src="assets/monuments/sacre-coeur.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')"><img src="assets/monuments/tour-eiffel.png"></button>
       </div>
       <input type="hidden" id="answer-${index}">
       <div class="monument-feedback" id="monument-feedback-${index}"></div>
-      <div class="answer-row">
-        <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
-      </div>
+      <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
     `;
   }
+
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
 
