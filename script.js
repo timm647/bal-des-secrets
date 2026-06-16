@@ -1,4 +1,47 @@
-const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+function showInlineMessage(text, type='error'){
+  let box = document.getElementById('inline-message');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'inline-message';
+    document.body.appendChild(box);
+  }
+  box.className = `inline-message ${type}`;
+  box.textContent = text;
+  box.classList.add('visible');
+  clearTimeout(window._inlineMessageTimer);
+  window._inlineMessageTimer = setTimeout(()=>{
+    box.classList.remove('visible');
+  }, 2500);
+}
+
+
+window.chooseMonument = function(index, btn, value){
+  document.querySelectorAll(`#monuments-${index} .monument-choice`).forEach(el=>el.classList.remove('selected'));
+  btn.classList.add('selected');
+  const input = document.getElementById(`answer-${index}`);
+  if(input) input.value = value;
+  const feedback = document.getElementById(`monument-feedback-${index}`);
+  if(feedback) feedback.textContent = '';
+}
+
+
+window.selectMonument = function(ticketId, index, value){
+  const ticket = tickets.find(t => t.id === ticketId);
+  if(!ticket) return;
+
+  const riddle = ticket.riddles[index];
+  const validAnswers = riddle.answers || [];
+
+  const feedback = document.getElementById(`monument-feedback-${index}`);
+
+  if(validAnswers.some(answer => normalize(answer) === normalize(value))){
+    if(feedback) feedback.textContent = '';
+    completeRiddle(ticketId, index);
+  } else {
+    if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
+  }
+}
 
 const tickets = [
   {
@@ -178,7 +221,7 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
-    "memory": "La Rose Noire — un message vivant, pensé pour toi.",
+    
     "theme": "rose"
   },
   {
@@ -206,9 +249,9 @@ const tickets = [
       {
         "type": "timeline",
         "title": "Épreuve II — Les souvenirs dans le bon ordre",
-        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Écris les lieux dans le bon ordre, séparés par des virgules.</strong><br><em>Exemple : A, B, C</em></p>",
+        "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Replace les souvenirs dans les emplacements ci-dessous, puis clique sur « Valider l’ordre ».</strong></p>",
         "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
-        "answers": ["cinema, parc disle, paris, feu dartifice du 14 juillet","cinema parc disle paris feu dartifice","cinema,parcdisle,paris,feudartifice"],
+        "answers": ["Cinéma|Parc d’Isle|Feu d’artifice du 14 juillet|Paris"],
         "hints": [
           "Le premier élément est une activité en intérieur.",
           "Le deuxième a eu lieu juste après.",
@@ -221,7 +264,7 @@ const tickets = [
       {
         "type": "monuments",
         "title": "Épreuve III — Paris",
-        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><div class=\"monument-grid\"><img src=\"assets/monuments/arc-triomphe.png\" alt=\"Arc de Triomphe\"><img src=\"assets/monuments/notre-dame.png\" alt=\"Notre-Dame\"><img src=\"assets/monuments/sacre-coeur.png\" alt=\"Sacré-Cœur\"><img src=\"assets/monuments/tour-eiffel.png\" alt=\"Tour Eiffel\"></div><p><strong>Quel monument dois-tu choisir ? Écris son nom.</strong></p>",
+        "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».",
         "answers": ["toureiffel","tour eiffel","tour-eiffel"],
         "hints": [
           "Ce n’est pas une cathédrale.",
@@ -234,9 +277,10 @@ const tickets = [
       },
       {
         "type": "fill-blanks",
+        "choices": ["Fenêtre","Instagram","22 avril 2025","Willow","Natation"],
         "title": "Épreuve IV — Complète notre histoire",
-        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, nous étions au même <strong>______</strong>.</p><p>Ensuite, nous avons partagé notre premier <strong>______</strong>.</p><p>Juste après, nous avons continué cette journée au <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Écris les trois réponses dans l’ordre, séparées par des virgules.</strong></p>",
-        "answers": ["lycee, cinema, parc disle","lycee cinema parc disle","lycee,cinema,parcdisle"],
+        "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, tu as tapé contre une <strong>______</strong>.</p><p>Quelques jours plus tard, tu m’as ajouté sur <strong>______</strong>.</p><p>Depuis le <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Replace les mots dans les bons emplacements, puis clique sur « Valider ».</strong></p>",
+        "answers": ["Fenêtre|Instagram|22 avril 2025"],
         "hints": [
           "Tout a commencé pendant les cours.",
           "Votre premier rendez-vous s’est déroulé devant un écran.",
@@ -258,9 +302,10 @@ const tickets = [
           "Elle permet de créer des souvenirs.",
           "Réponse : date."
         ],
-        "success": "🎁 Cadeau révélé : Une date avec moi."
+        "success": "Tu as trouvé le secret du Parc des Premiers Secrets."
       }
     ],
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Parc des Premiers Secrets cachait une journée rien que pour nous.</h3><p>Prépare-toi pour une nouvelle aventure à deux. Une journée spéciale t’attend bientôt… et j’ai hâte de la partager avec toi. 💛</p></div>",
     "theme": "parc"
   },
   {
@@ -1418,9 +1463,9 @@ function renderRoom(ticket) {
 
     html += `<div id="room-step-${ticket.id}-${index}" class="room-step ${isUnlocked ? '' : 'locked'} ${isSolved ? 'solved' : ''}">
       <h3>${r.title || `Épreuve ${index + 1}`}</h3>
-      <div class="riddle-content">${isUnlocked ? r.q : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
+      <div class="riddle-content">${isUnlocked ? ((r.type === 'fill-blanks') ? '' : r.q) : '<p>Cette épreuve est encore verrouillée.</p>'}</div>
       ${hintsHtml}
-      ${isUnlocked && !isSolved ? renderRiddleInput(ticket, r, index) : ''}
+      ${isUnlocked && !isSolved ? renderAnswerInput(ticket, r, index) : ''}
       ${isSolved ? `<p class="message success">✓ Résolue — Réponse trouvée : <strong>${getSolvedAnswerText(state, ticket.id, index, r)}</strong></p><p class="solved-note">${r.success || 'Bien joué.'}</p>` : ''}
     </div>`;
   });
@@ -1439,6 +1484,105 @@ function renderRoom(ticket) {
 
   room.innerHTML = html;
 }
+
+
+function renderAnswerInput(ticket, r, index){
+
+  if(r.type === "timeline"){
+    const items = [...(r.timeline || [])].sort(()=>Math.random()-0.5);
+    return `
+      <div class="timeline-board" id="timeline-${index}">
+        <div class="timeline-slots">
+          ${[1,2,3,4].map(i=>`<div class="timeline-slot" ondragover="event.preventDefault()" ondrop="dropTimeline(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
+        </div>
+        <div class="timeline-cards">
+          ${items.map(item=>`<div class="timeline-card" draggable="true" ondragstart="dragTimeline(event)" data-value="${item}">${item}</div>`).join('')}
+        </div>
+        <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button></div>
+      </div>`;
+  }
+
+  if(r.type === "fill-blanks"){
+    const words = r.choices || [];
+    const shuffled = [...words].sort(()=>Math.random()-0.5);
+    return `
+      <div class="fill-story" id="fill-${index}">
+        <p>Avant même notre première conversation, tu as tapé contre une <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Quelques jours plus tard, tu m’as ajouté sur <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
+        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>, notre histoire continue de s'écrire.</p>
+        <div class="fill-cards">
+          ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
+        </div>
+        <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
+      </div>`;
+  }
+
+  if(r.type === "monuments"){
+    return `
+      <div class="monument-grid" id="monuments-${index}">
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')"><img src="assets/monuments/arc-triomphe.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')"><img src="assets/monuments/notre-dame.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')"><img src="assets/monuments/sacre-coeur.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')"><img src="assets/monuments/tour-eiffel.png"></button>
+      </div>
+      <input type="hidden" id="answer-${index}">
+      <div class="monument-feedback" id="monument-feedback-${index}"></div>
+      <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
+    `;
+  }
+
+  return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
+}
+
+window._draggedTimeline = null;
+window.dragTimeline = function(ev){
+  _draggedTimeline = ev.target;
+}
+
+window.dropTimeline = function(ev, index, pos){
+  ev.preventDefault();
+  const slot = ev.currentTarget;
+  if(slot.querySelector('.timeline-card')){
+    document.querySelector(`#timeline-${index} .timeline-cards`).appendChild(slot.querySelector('.timeline-card'));
+  }
+  slot.appendChild(_draggedTimeline);
+}
+
+
+window._draggedFill = null;
+
+window.dragFill = function(ev){
+  window._draggedFill = ev.target;
+}
+
+window.dropFill = function(ev,index){
+  ev.preventDefault();
+  const slot = ev.currentTarget;
+
+  if(slot.querySelector('.fill-card')){
+    document.querySelector(`#fill-${index} .fill-cards`).appendChild(
+      slot.querySelector('.fill-card')
+    );
+  }
+
+  if(window._draggedFill){
+    slot.appendChild(window._draggedFill);
+  }
+}
+
+function getSubmittedAnswer(riddle, index){
+  if(riddle.type === "fill-blanks"){
+    const slots=[...document.querySelectorAll(`#fill-${index} .inline-slot`)];
+    return slots.map(s=>s.querySelector(`.fill-card`)?.dataset.value||``).join(`|`);
+  }
+  if(riddle.type === "timeline"){
+    const slots = [...document.querySelectorAll(`#timeline-${index} .timeline-slot`)];
+    return slots.map(s => s.querySelector('.timeline-card')?.dataset.value || '').join('|');
+  }
+  const input = document.getElementById(`answer-${index}`);
+  return input ? input.value : '';
+}
+
 
 function getSolvedAnswerText(state, ticketId, index, riddle) {
   const saved = (((state.answerTexts || {})[ticketId] || {})[index]);
@@ -1478,56 +1622,13 @@ window.revealHint = function(ticketId, index) {
   renderRoom(ticket);
 };
 
-
-function renderRiddleInput(ticket, r, index){
-  if(r.type==="timeline"){
-    const items=[...(r.timeline||[])].sort(()=>Math.random()-0.5);
-    return `<div class="timeline-builder" id="timeline-${index}">
-      ${items.map(i=>`<button type="button" class="timeline-item" onclick="toggleTimelineItem(${index}, this)">${i}</button>`).join('')}
-      <div class="timeline-result" id="timeline-result-${index}"></div>
-      <button class="clear-btn" onclick="clearTimeline(${index})">Effacer</button>
-      <button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button>
-    </div>`;
-  }
-  if(r.type==="monuments"){
-    return `<div class="answer-row"><input id="answer-${index}" placeholder="Nom du monument"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
-  }
-  if(r.type==="fill-blanks"){
-    return `<div class="fill-choices" data-index="${index}">
-      ${["lycée","cinéma","parc d’Isle","Paris","Willow"].map(w=>`<button type="button" onclick="pickWord(${index}, '${w}')">${w}</button>`).join('')}
-      <div id="fill-result-${index}" class="timeline-result"></div>
-      <button class="clear-btn" onclick="clearFill(${index})">Effacer</button>
-      <button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button>
-    </div>`;
-  }
-  return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
-}
-
-window._timeline={}; window._fill={};
-window.toggleTimelineItem=function(index,el){
-  _timeline[index]=_timeline[index]||[];
-  if(_timeline[index].includes(el.innerText)) return;
-  _timeline[index].push(el.innerText);
-  document.getElementById(`timeline-result-${index}`).innerText=_timeline[index].join(' → ');
-}
-window.clearTimeline=function(index){ _timeline[index]=[]; document.getElementById(`timeline-result-${index}`).innerText=''; }
-window.pickWord=function(index,w){ _fill[index]=_fill[index]||[]; if(_fill[index].length<3 && !_fill[index].includes(w)){ _fill[index].push(w); document.getElementById(`fill-result-${index}`).innerText=_fill[index].join(' • ');} }
-window.clearFill=function(index){ _fill[index]=[]; document.getElementById(`fill-result-${index}`).innerText=''; }
-function getRiddleValue(r,index){
- if(r.type==="timeline") return (_timeline[index]||[]).join(',');
- if(r.type==="fill-blanks") return (_fill[index]||[]).join(',');
- const input=document.getElementById(`answer-${index}`);
- return input?input.value:'';
-}
-
-
 window.checkAnswer = function(ticketId, index) {
   const ticket = tickets.find(t => t.id === ticketId);
   const input = document.getElementById(`answer-${index}`);
   const state = loadState();
   state.answers[ticketId] = state.answers[ticketId] || [];
   const validAnswers = ticket.riddles[index].answers || [];
-  const submittedAnswer = getRiddleValue(ticket.riddles[index], index);
+  const submittedAnswer = getSubmittedAnswer(ticket.riddles[index], index);
 
   if (validAnswers.some(answer => normalize(submittedAnswer) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
@@ -1558,10 +1659,18 @@ window.checkAnswer = function(ticketId, index) {
     triggerLocalGoldBurst(ticketId, index);
     if (earnedMessages.length) showBoosterToast(earnedMessages.join('<br>'), rewardType);
   } else {
-    input.value = '';
-    input.placeholder = 'Ce n’est pas encore ça...';
-    input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 350);
+    if (ticket.riddles[index].type === 'monuments') {
+      const feedback = document.getElementById(`monument-feedback-${index}`);
+      if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
+    } else if (input) {
+      input.value = '';
+      input.placeholder = 'Ce n’est pas encore ça...';
+      input.classList.add('shake');
+      setTimeout(() => input.classList.remove('shake'), 350);
+      showInlineMessage('Ce n’est pas encore la bonne réponse.', 'error');
+    } else {
+      showInlineMessage('Ce n’est pas encore le bon ordre.', 'error');
+    }
   }
 };
 
