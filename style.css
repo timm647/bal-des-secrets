@@ -1850,19 +1850,19 @@ nav,
 .timeline-item,.fill-choices button,.clear-btn{padding:10px 14px;border-radius:12px;border:1px solid rgba(212,175,55,.35);background:rgba(255,255,255,.05);color:inherit}
 .timeline-result{min-height:24px;padding:10px;border:1px dashed rgba(212,175,55,.4);border-radius:12px}
 
-.monument-choice{
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
+.monument-choice,
+.timeline-slot,
+.inline-slot{
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
+
 .monument-choice img{
   pointer-events:none;
 }
+
 .selected-card{
   border-color:#d4af37 !important;
   box-shadow:0 0 16px rgba(212,175,55,.35);
   transform:scale(1.03);
-}
-.timeline-slot,
-.inline-slot{
-  touch-action:manipulation;
 }

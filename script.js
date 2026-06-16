@@ -1,25 +1,4 @@
-
-window._mobileSelectedCard = null;
-
-function selectMobileCard(card){
-  document.querySelectorAll('.selected-card').forEach(el=>el.classList.remove('selected-card'));
-  window._mobileSelectedCard = card;
-  card.classList.add('selected-card');
-}
-
-function placeMobileCard(slot){
-  if(!window._mobileSelectedCard) return;
-
-  const existing = slot.querySelector('.timeline-card, .fill-card');
-  if(existing){
-    existing.parentNode.appendChild(window._mobileSelectedCard);
-  } else {
-    slot.appendChild(window._mobileSelectedCard);
-  }
-
-  window._mobileSelectedCard.classList.remove('selected-card');
-  window._mobileSelectedCard = null;
-}
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 const tickets = [
   {
