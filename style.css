@@ -1942,3 +1942,21 @@ nav,
  opacity:1;
  transform:translateX(-50%) translateY(0);
 }
+
+
+.monument-choice,
+.timeline-slot,
+.inline-slot{
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.monument-choice img{
+  pointer-events:none;
+}
+
+.selected-card{
+  border-color:#d4af37 !important;
+  box-shadow:0 0 16px rgba(212,175,55,.35);
+  transform:scale(1.03);
+}

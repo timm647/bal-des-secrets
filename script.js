@@ -1,4 +1,29 @@
 
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+window._mobileSelectedCard = null;
+
+function selectMobileCard(card){
+  if(!isTouchDevice) return;
+  document.querySelectorAll('.selected-card').forEach(el => el.classList.remove('selected-card'));
+  window._mobileSelectedCard = card;
+  card.classList.add('selected-card');
+}
+
+function placeMobileCard(slot){
+  if(!isTouchDevice || !window._mobileSelectedCard) return;
+
+  const existing = slot.querySelector('.timeline-card, .fill-card');
+  if(existing){
+    existing.parentNode.appendChild(window._mobileSelectedCard);
+  } else {
+    slot.appendChild(window._mobileSelectedCard);
+  }
+
+  window._mobileSelectedCard.classList.remove('selected-card');
+  window._mobileSelectedCard = null;
+}
+
+
 function showInlineMessage(text, type='error'){
   let box = document.getElementById('inline-message');
   if(!box){
@@ -1493,10 +1518,10 @@ function renderAnswerInput(ticket, r, index){
     return `
       <div class="timeline-board" id="timeline-${index}">
         <div class="timeline-slots">
-          ${[1,2,3,4].map(i=>`<div class="timeline-slot" ondragover="event.preventDefault()" ondrop="dropTimeline(event, ${index}, ${i-1})"><span>${i}</span></div>`).join('')}
+          ${[1,2,3,4].map(i=>`<div class="timeline-slot" ondragover="event.preventDefault()" ondrop="dropTimeline(event, ${index}, ${i-1})" ontouchend="placeMobileCard(this)"><span>${i}</span></div>`).join('')}
         </div>
         <div class="timeline-cards">
-          ${items.map(item=>`<div class="timeline-card" draggable="true" ondragstart="dragTimeline(event)" data-value="${item}">${item}</div>`).join('')}
+          ${items.map(item=>`<div class="timeline-card" draggable="true" ondragstart="dragTimeline(event)" ontouchstart="selectMobileCard(this)" data-value="${item}">${item}</div>`).join('')}
         </div>
         <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider l'ordre</button></div>
       </div>`;
@@ -1507,11 +1532,11 @@ function renderAnswerInput(ticket, r, index){
     const shuffled = [...words].sort(()=>Math.random()-0.5);
     return `
       <div class="fill-story" id="fill-${index}">
-        <p>Avant même notre première conversation, tu as tapé contre une <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
-        <p>Quelques jours plus tard, tu m’as ajouté sur <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>.</p>
-        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})"></span>, notre histoire continue de s'écrire.</p>
+        <p>Avant même notre première conversation, tu as tapé contre une <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})" ontouchend="placeMobileCard(this)"></span>.</p>
+        <p>Quelques jours plus tard, tu m’as ajouté sur <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})" ontouchend="placeMobileCard(this)"></span>.</p>
+        <p>Depuis le <span class="inline-slot" ondragover="event.preventDefault()" ondrop="dropFill(event, ${index})" ontouchend="placeMobileCard(this)"></span>, notre histoire continue de s'écrire.</p>
         <div class="fill-cards">
-          ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" data-value="${item}">${item}</div>`).join('')}
+          ${shuffled.map(item=>`<div class="fill-card" draggable="true" ondragstart="dragFill(event)" ontouchstart="selectMobileCard(this)" data-value="${item}">${item}</div>`).join('')}
         </div>
         <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
       </div>`;
@@ -1520,10 +1545,10 @@ function renderAnswerInput(ticket, r, index){
   if(r.type === "monuments"){
     return `
       <div class="monument-grid" id="monuments-${index}">
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')"><img src="assets/monuments/arc-triomphe.png"></button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')"><img src="assets/monuments/notre-dame.png"></button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')"><img src="assets/monuments/sacre-coeur.png"></button>
-        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')"><img src="assets/monuments/tour-eiffel.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Arc de Triomphe')" ontouchend="chooseMonument(${index}, this, 'Arc de Triomphe')"><img src="assets/monuments/arc-triomphe.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Notre-Dame')" ontouchend="chooseMonument(${index}, this, 'Notre-Dame')"><img src="assets/monuments/notre-dame.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Sacré-Cœur')" ontouchend="chooseMonument(${index}, this, 'Sacré-Cœur')"><img src="assets/monuments/sacre-coeur.png"></button>
+        <button class="monument-choice" onclick="chooseMonument(${index}, this, 'Tour Eiffel')" ontouchend="chooseMonument(${index}, this, 'Tour Eiffel')"><img src="assets/monuments/tour-eiffel.png"></button>
       </div>
       <input type="hidden" id="answer-${index}">
       <div class="monument-feedback" id="monument-feedback-${index}"></div>
