@@ -1,4 +1,29 @@
 
+window.restoreBreakfast=function(index){
+ const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
+ if(!saved.length) return;
+
+ const result = document.getElementById(`breakfast-result-${index}`);
+ if(result){
+   result.innerHTML = `<h4>Ton petit-déjeuner idéal :</h4><ul>${saved.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+ }
+
+ const hidden = document.getElementById(`answer-${index}`);
+ if(!hidden) return;
+
+ const container = hidden.parentElement.querySelector('.breakfast-grid');
+ if(!container) return;
+
+ container.querySelectorAll('.breakfast-item').forEach(btn=>{
+   if(saved.includes(btn.dataset.value)){
+     btn.classList.add('active');
+   }
+ });
+
+ hidden.value='VALID';
+}
+
+
 window.toggleBreakfast=function(index,btn){
  const container = btn.closest('.breakfast-grid');
  const active = [...container.querySelectorAll('.breakfast-item.active')];
@@ -486,6 +511,18 @@ const tickets = [
           "MEMORY_DONE"
         ],
         "success": "Memory réussi. Tu as retrouvé tous les souvenirs du matin parfait. 🃏"
+      },
+      {
+        "type": "text",
+        "title": "Épreuve V — Le dernier indice",
+        "q": "<p>Je peux être sucré ou salé.</p><p>Certains me prennent rapidement, d'autres aiment prendre leur temps.</p><p>Je marque le début d'une nouvelle journée.</p><p><strong>Qui suis-je ?</strong></p>",
+        "answers": [
+          "petit-déjeuner",
+          "petit déjeuner",
+          "petitdejeuner",
+          "petit-dejeuner"
+        ],
+        "success": "✨ Exactement ! Le plus beau des réveils commence souvent autour d’une bonne table."
       }
     ],
     "reveal": "<div class='reveal-card'><div class='stamp'>DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée tout en douceur. 💛</p></div>",
@@ -1607,6 +1644,7 @@ function renderAnswerInput(ticket, r, index){
 
   if(r.type === "breakfast"){
     const opts=(r.options||[]).map(o=>`<button class="breakfast-item" onclick="toggleBreakfast(${index}, this)" data-value="${o}">${o}</button>`).join('');
+    setTimeout(()=>restoreBreakfast(index),50);
     return `<div class="breakfast-grid">${opts}</div><input type="hidden" id="answer-${index}"><div class="breakfast-note" id="breakfast-note-${index}"></div><div class="breakfast-result" id="breakfast-result-${index}"></div><div class="answer-row"><button onclick="validateBreakfast(${index})">Valider</button></div>`;
   }
 
@@ -2294,6 +2332,7 @@ function ensureAdminPanel() {
       <button id="repairBoostersBtn">Réparer boosters</button>
       <button onclick="adminGiveCard()">+1 carte aléatoire</button>
       <button onclick="adminResetCollection()">Reset collection</button>
+      <button onclick="resetWelcomePopup()">✨ Revoir le message d’accueil</button>
     </div>
     <p class="admin-note">Portes : ouvrir / terminer / réinitialiser</p>
     <div class="admin-door-grid">
@@ -2563,13 +2602,24 @@ function createAmbientParticles(){
 
 createAmbientParticles();
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
-  if(saved.length){
-    setTimeout(()=>{
-      document.querySelectorAll('[id^="breakfast-result-"]').forEach(el=>{
-        el.innerHTML = `<h4>Ton petit-déjeuner idéal :</h4><ul>${saved.map(i => `<li>${i}</li>`).join('')}</ul>`;
-      });
-    },800);
+},800);
   }
 });
+
+
+function resetWelcomePopup() {
+  // clés utilisées selon les versions du projet
+  [
+    'welcomeSeen',
+    'introSeen',
+    'hasSeenIntro',
+    'arrivalPopupSeen',
+    'onboardingSeen'
+  ].forEach(k => localStorage.removeItem(k));
+
+  // si le message d'accueil dépend d'un état vide, on ne touche pas à la progression
+  sessionStorage.clear();
+
+  alert("Le message d'accueil sera réaffiché au prochain chargement s'il utilise l'une de ces clés.");
+  location.reload();
+}
