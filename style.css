@@ -1969,3 +1969,13 @@ nav,
 .memory-card{aspect-ratio:1;font-size:2rem}
 .memory-card.found{border-color:#d4af37;background:#2b2210}
 @media(max-width:768px){.memory-grid{grid-template-columns:repeat(3,1fr)}}
+
+.breakfast-result{
+  margin-top:16px;
+  padding:16px;
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:14px;
+  background:rgba(212,175,55,.08);
+}
+.breakfast-result h4{margin:0 0 10px 0}
+.breakfast-result ul{margin:0;padding-left:18px}

@@ -23,6 +23,12 @@ window.validateBreakfast=function(index){
  }
 
  localStorage.setItem('petitDejeunerIdeal', JSON.stringify(selected));
+
+ const result = document.getElementById(`breakfast-result-${index}`);
+ if(result){
+   result.innerHTML = `<h4>Ton petit-déjeuner idéal :</h4><ul>${selected.map(i => `<li>${i}</li>`).join('')}</ul>`;
+ }
+
  hidden.value='VALID';
  checkAnswer(currentTicketId,index);
 }
@@ -457,12 +463,13 @@ const tickets = [
           "Jus de pomme",
           "Lait",
           "Œufs",
-          "Jambon"
+          "Jambon",
+          "Fromage"
         ],
         "answers": [
           "VALID"
         ],
-        "success": "Tes choix ont été soigneusement notés pour plus tard… ✨"
+        "success": "Épreuve validée. Tes choix ont été soigneusement notés pour plus tard… ✨"
       },
       {
         "type": "memory",
@@ -478,7 +485,7 @@ const tickets = [
         "answers": [
           "MEMORY_DONE"
         ],
-        "success": "Tu as retrouvé tous les souvenirs du matin parfait."
+        "success": "Memory réussi. Tu as retrouvé tous les souvenirs du matin parfait. 🃏"
       }
     ],
     "reveal": "<div class='reveal-card'><div class='stamp'>DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée tout en douceur. 💛</p></div>",
@@ -1600,7 +1607,7 @@ function renderAnswerInput(ticket, r, index){
 
   if(r.type === "breakfast"){
     const opts=(r.options||[]).map(o=>`<button class="breakfast-item" onclick="toggleBreakfast(${index}, this)" data-value="${o}">${o}</button>`).join('');
-    return `<div class="breakfast-grid">${opts}</div><input type="hidden" id="answer-${index}"><div class="breakfast-note" id="breakfast-note-${index}"></div><div class="answer-row"><button onclick="validateBreakfast(${index})">Valider</button></div>`;
+    return `<div class="breakfast-grid">${opts}</div><input type="hidden" id="answer-${index}"><div class="breakfast-note" id="breakfast-note-${index}"></div><div class="breakfast-result" id="breakfast-result-${index}"></div><div class="answer-row"><button onclick="validateBreakfast(${index})">Valider</button></div>`;
   }
 
   if(r.type === "memory"){
@@ -2555,3 +2562,14 @@ function createAmbientParticles(){
 }
 
 createAmbientParticles();
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
+  if(saved.length){
+    setTimeout(()=>{
+      document.querySelectorAll('[id^="breakfast-result-"]').forEach(el=>{
+        el.innerHTML = `<h4>Ton petit-déjeuner idéal :</h4><ul>${saved.map(i => `<li>${i}</li>`).join('')}</ul>`;
+      });
+    },800);
+  }
+});
