@@ -1735,8 +1735,26 @@ function getSubmittedAnswer(riddle, index){
 
 
 function getSolvedAnswerText(state, ticketId, index, riddle) {
+  if (riddle?.type === 'breakfast') {
+    const items = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
+
+    if (items.length) {
+      return 'Ton petit-déjeuner idéal : ' + items.join(', ');
+    }
+
+    return 'Épreuve validée';
+  }
+
+  if (riddle?.type === 'memory') {
+    return 'Memory réussi';
+  }
+
   const saved = (((state.answerTexts || {})[ticketId] || {})[index]);
   const fallback = (riddle.answers || [])[0] || 'réponse validée';
+
+  if (saved === 'VALID') return 'Épreuve validée';
+  if (saved === 'MEMORY_DONE') return 'Memory réussi';
+
   return String(saved || fallback).trim();
 }
 
