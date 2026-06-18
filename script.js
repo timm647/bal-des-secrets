@@ -27,27 +27,9 @@ function formatSolvedAnswer(riddle, answer){
 
 
 window.restoreBreakfast=function(index){
- const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
- if(!saved.length) return;
-
- const result = document.getElementById(`breakfast-result-${index}`);
- if(result){
-   result.innerHTML = `<h4>Ton petit-déjeuner idéal :</h4><ul>${saved.map(i=>`<li>${i}</li>`).join('')}</ul>`;
- }
-
- const hidden = document.getElementById(`answer-${index}`);
- if(!hidden) return;
-
- const container = hidden.parentElement.querySelector('.breakfast-grid');
- if(!container) return;
-
- container.querySelectorAll('.breakfast-item').forEach(btn=>{
-   if(saved.includes(btn.dataset.value)){
-     btn.classList.add('active');
-   }
- });
-
- hidden.value='VALID';
+  // Les choix sont conservés dans localStorage mais ne sont plus affichés
+  // automatiquement avant la validation de l'épreuve.
+  return;
 }
 
 
@@ -1671,7 +1653,6 @@ function renderAnswerInput(ticket, r, index){
 
   if(r.type === "breakfast"){
     const opts=(r.options||[]).map(o=>`<button class="breakfast-item" onclick="toggleBreakfast(${index}, this)" data-value="${o}">${o}</button>`).join('');
-    setTimeout(()=>restoreBreakfast(index),50);
     return `<div class="breakfast-grid">${opts}</div><input type="hidden" id="answer-${index}"><div class="breakfast-note" id="breakfast-note-${index}"></div><div class="breakfast-result" id="breakfast-result-${index}"></div><div class="answer-row"><button onclick="validateBreakfast(${index})">Valider</button></div>`;
   }
 
