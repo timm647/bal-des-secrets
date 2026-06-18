@@ -1,14 +1,29 @@
 
 window.toggleBreakfast=function(index,btn){
- const active=[...document.querySelectorAll(`#riddle-${index} .breakfast-item.active`)];
- if(!btn.classList.contains('active') && active.length>=4){ return; }
+ const container = btn.closest('.breakfast-grid');
+ const active = [...container.querySelectorAll('.breakfast-item.active')];
+
+ if(!btn.classList.contains('active') && active.length>=4){
+   return;
+ }
+
  btn.classList.toggle('active');
 }
+
 window.validateBreakfast=function(index){
- const selected=[...document.querySelectorAll(`#riddle-${index} .breakfast-item.active`)].map(b=>b.dataset.value);
- if(selected.length!==4){ showInlineMessage('Choisis exactement 4 éléments.'); return; }
+ const hidden = document.getElementById(`answer-${index}`);
+ const container = hidden.parentElement.querySelector('.breakfast-grid');
+
+ const selected = [...container.querySelectorAll('.breakfast-item.active')]
+   .map(b => b.dataset.value);
+
+ if(selected.length!==4){
+   showInlineMessage('Choisis exactement 4 éléments.');
+   return;
+ }
+
  localStorage.setItem('petitDejeunerIdeal', JSON.stringify(selected));
- document.getElementById(`answer-${index}`).value='VALID';
+ hidden.value='VALID';
  checkAnswer(currentTicketId,index);
 }
 
@@ -415,11 +430,11 @@ const tickets = [
         "timeline": [
           "👀 Ouvrir les yeux",
           "😘 Faire un bisou à l’amour de sa vie",
-          "🐱 Aller voir Willow",
-          "☀️ Se lever"
+          "☀️ Se lever",
+          "🐱 Aller voir Willow"
         ],
         "answers": [
-          "👀 Ouvrir les yeux|😘 Faire un bisou à l’amour de sa vie|🐱 Aller voir Willow|☀️ Se lever"
+          "👀 Ouvrir les yeux|😘 Faire un bisou à l’amour de sa vie|☀️ Se lever|🐱 Aller voir Willow"
         ],
         "success": "Voilà un réveil parfait."
       },
@@ -428,17 +443,21 @@ const tickets = [
         "title": "Épreuve III — Ton petit-déjeuner idéal",
         "q": "<p>Choisis exactement 4 éléments.</p>",
         "options": [
-          "🥐 Croissant",
-          "🥞 Pancakes",
-          "🍓 Fruits frais",
-          "🍞 Pain grillé",
-          "🧈 Confiture",
-          "☕ Café",
-          "🍫 Chocolat chaud",
-          "🫖 Thé",
-          "🧃 Jus d’orange",
-          "🍳 Œufs",
-          "🥓 Jambon"
+          "Croissant",
+          "Pain au chocolat",
+          "Pancakes",
+          "Fruits frais",
+          "Pain grillé",
+          "Confiture",
+          "Céréales",
+          "Café",
+          "Chocolat chaud",
+          "Thé",
+          "Jus d’orange",
+          "Jus de pomme",
+          "Lait",
+          "Œufs",
+          "Jambon"
         ],
         "answers": [
           "VALID"
