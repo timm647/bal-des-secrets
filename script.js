@@ -1,4 +1,31 @@
 
+function formatSolvedAnswer(riddle, answer){
+  if(riddle?.type === "breakfast"){
+    const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
+    if(saved.length){
+      return 'Ton petit-déjeuner idéal :<br><ul>' +
+        saved.map(i => `<li>${i}</li>`).join('') +
+        '</ul>';
+    }
+    return 'Épreuve validée';
+  }
+
+  if(riddle?.type === "memory"){
+    return 'Memory réussi';
+  }
+
+  if(answer === 'VALID'){
+    return 'Épreuve validée';
+  }
+
+  if(answer === 'MEMORY_DONE'){
+    return 'Memory réussi';
+  }
+
+  return `${formatSolvedAnswer(riddle, answer)}`;
+}
+
+
 window.restoreBreakfast=function(index){
  const saved = JSON.parse(localStorage.getItem('petitDejeunerIdeal') || '[]');
  if(!saved.length) return;
