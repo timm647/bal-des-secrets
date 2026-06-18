@@ -2602,11 +2602,6 @@ function createAmbientParticles(){
 
 createAmbientParticles();
 
-},800);
-  }
-});
-
-
 function resetWelcomePopup() {
   // clés utilisées selon les versions du projet
   [
