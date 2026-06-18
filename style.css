@@ -1979,3 +1979,7 @@ nav,
 }
 .breakfast-result h4{margin:0 0 10px 0}
 .breakfast-result ul{margin:0;padding-left:18px}
+
+.admin-floating-grid button{
+  min-height:44px;
+}
