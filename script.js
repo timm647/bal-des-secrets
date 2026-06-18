@@ -542,100 +542,62 @@ const tickets = [
   {
     "id": 5,
     "code": "JOKER-18",
-    "title": "Le Joker",
-    "gift": "Une envie à réaliser",
-    "teaser": "Une porte qui ne promet pas un objet précis, mais une liberté à utiliser au bon moment.",
-    "intro": "<p>Cette porte doit être comprise avant d’être utilisée. Elle cache une possibilité, pas un objet.</p>",
+    "title": "Après Minuit",
+    "gift": "Pyjama",
+    "teaser": "Une salle plus douce qu'elle n'y paraît...",
+    "intro": "Quand le monde ralentit, certains secrets se révèlent.",
     "riddles": [
       {
-        "type": "concept",
-        "title": "Épreuve I — Le cas à part",
-        "q": "<p>Dans une règle, tout semble prévu.</p><p>La plupart des choses suivent le même chemin, sans surprise.</p><p>Mais parfois, un cas existe à côté : il n’annule pas la règle, il la rend simplement moins ordinaire.</p><p>Cette porte commence par cette idée de cas rare, différent, presque impossible à classer.</p><p><strong>Quel mot désigne ce cas à part ?</strong></p>",
+        "type": "text",
+        "title": "Épreuve I — Les lettres endormies",
+        "q": "<p>Les lettres se sont mélangées avant d'aller dormir.</p><p><strong>T R O N O F C</strong></p>",
         "answers": [
-          "exception"
+          "confort"
         ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle désigne ce qui ne rentre pas complètement dans la règle générale.",
-          "C’est un cas particulier.",
-          "Le mot commence par EX."
-        ],
-        "success": "Oui : une exception ouvre cette porte."
+        "success": "Le confort accompagne les plus belles nuits."
       },
       {
-        "type": "choice",
-        "title": "Épreuve II — La décision",
-        "q": "<p>Cette porte ne choisit pas à ta place.</p><p>Elle attend que tu décides ce qui te ferait plaisir.</p><p>Le mot cherché désigne le fait de sélectionner une possibilité parmi plusieurs.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "type": "text",
+        "title": "Épreuve II — Le clavier oublié",
+        "q": "<p>Un ancien appareil peut t'aider à déchiffrer cette suite de chiffres.</p><p><strong>73767</strong></p><p><em>Indice : avant les écrans tactiles, chaque touche cachait plusieurs lettres.</em></p>",
         "answers": [
-          "choix"
+          "repos"
         ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle dépend de toi.",
-          "Il peut y en avoir plusieurs, mais tu en gardes un.",
-          "Le mot commence par CH."
-        ],
-        "success": "Oui : le choix t’appartient."
+        "success": "Le repos est essentiel après une longue journée."
       },
       {
-        "type": "value",
-        "title": "Épreuve III — Ce qui compte parce que c’est rare",
-        "q": "<p>Si quelque chose arrive tous les jours, on finit parfois par moins le remarquer.</p><p>Mais quand cela n’arrive qu’une seule fois, ou presque jamais, l’attention change.</p><p>Ce mot décrit ce qui n’a pas de double exact, ce qui ne se répète pas simplement.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "type": "text",
+        "title": "Épreuve III — Le rébus du soir",
+        "q": "<p>Assemble ces deux éléments pour former un mot.</p><div class='rebus-row'><img src='assets/rebus-sceau.png' class='rebus-img'><span class='rebus-plus'>+</span><img src='assets/rebus-mail.png' class='rebus-img'></div>",
         "answers": [
-          "unique"
+          "sommeil"
         ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle parle de rareté.",
-          "Elle veut dire : pas comme les autres, pas répété.",
-          "Le mot commence par U."
-        ],
-        "success": "Oui : ce pouvoir compte parce qu’il est unique."
+        "success": "Le sommeil cache bien des rêves."
       },
       {
-        "type": "limit",
-        "title": "Épreuve IV — Une seule utilisation",
-        "q": "<p>Si cette possibilité revenait tous les jours, elle perdrait sa valeur.</p><p>Elle compte parce qu’elle demande un moment choisi.</p><p>Elle n’est pas faite pour remplacer toutes les autres surprises.</p><p><strong>Combien de fois peut-elle être utilisée ?</strong></p>",
+        "type": "text",
+        "title": "Épreuve IV — Le reflet de la nuit",
+        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>Quel mot se cache dans ce message ?</p><div class='mirror-clue'>LA NUIT LAISSE PLACE AUX REVES</div>",
         "answers": [
-          "unefois",
-          "1fois",
-          "une seule fois",
-          "1"
+          "reves",
+          "rêves"
         ],
-        "hints": [
-          "La réponse est une limite.",
-          "Elle empêche que le pouvoir devienne banal.",
-          "Ce n’est pas “toujours”.",
-          "C’est l’inverse de plusieurs fois."
-        ],
-        "success": "Oui : une seule fois."
+        "success": "Les rêves accompagnent les nuits les plus douces."
       },
       {
         "type": "final",
-        "title": "Épreuve V — Ce que tu pourras demander",
-        "q": "<p>Tu as trouvé l’exception, le choix, ce qui est unique, puis la limite d’une seule utilisation.</p><p>Cette porte ne cache pas un objet déjà choisi.</p><p>Elle cache une possibilité : le jour où tu voudras vraiment quelque chose, tu pourras me le demander.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "title": "Épreuve V — La surprise de nuit",
+        "q": "<p>Je suis doux et confortable.</p><p>On m'enfile avant de dormir.</p><p>Je suis souvent associé aux soirées cocooning.</p><p><strong>Qui suis-je ?</strong></p>",
         "answers": [
-          "envie",
-          "souhait",
-          "voeu",
-          "vœu",
-          "enviearealiser",
-          "envie à réaliser",
-          "souhaitarealiser",
-          "souhait à réaliser"
+          "pyjama",
+          "le pyjama"
         ],
-        "hints": [
-          "Ce n’est pas un objet précis.",
-          "C’est quelque chose qui viendra de toi.",
-          "Cela pourra être petit, grand, raisonnable ou un peu capricieux.",
-          "Tu peux répondre simplement : envie ou souhait."
-        ],
-        "success": "Tu as trouvé : une envie que tu pourras choisir."
+        "success": "Tu as trouvé le cadeau caché."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Joker cachait une envie à réaliser.</h3><p>Une carte spéciale : tu la joueras une seule fois, quand tu voudras vraiment que je réalise une envie pour toi.</p></div>",
+    "reveal": "<div class='reward-card'><h3>🎁 DÉCOUVERT</h3><p><strong>Après Minuit cachait un pyjama.</strong></p><p>De quoi rendre tes soirées encore plus douces et confortables. 🌙</p></div>",
     "memory": "Le Joker — une envie que tu pourras choisir toi-même.",
-    "theme": "joker"
+    "theme": "nuit"
   },
   {
     "id": 6,

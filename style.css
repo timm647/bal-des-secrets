@@ -1983,3 +1983,34 @@ nav,
 .admin-floating-grid button{
   min-height:44px;
 }
+
+.mirror-clue{
+ display:inline-block;
+ transform:scaleX(-1) rotate(-6deg);
+ font-size:2rem;
+ letter-spacing:.08em;
+ margin:20px auto;
+ font-weight:700;
+}
+.rebus-row{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:16px;
+ flex-wrap:wrap;
+ margin:20px 0;
+}
+.rebus-img{
+ max-width:120px;
+ width:30vw;
+ max-height:120px;
+ object-fit:contain;
+}
+.rebus-plus{
+ font-size:2rem;
+ font-weight:700;
+}
+@media (max-width:600px){
+ .mirror-clue{font-size:1.4rem;}
+ .rebus-img{max-width:90px;}
+}
