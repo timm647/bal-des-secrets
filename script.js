@@ -1,4 +1,40 @@
 
+window.toggleBreakfast=function(index,btn){
+ const active=[...document.querySelectorAll(`#riddle-${index} .breakfast-item.active`)];
+ if(!btn.classList.contains('active') && active.length>=4){ return; }
+ btn.classList.toggle('active');
+}
+window.validateBreakfast=function(index){
+ const selected=[...document.querySelectorAll(`#riddle-${index} .breakfast-item.active`)].map(b=>b.dataset.value);
+ if(selected.length!==4){ showInlineMessage('Choisis exactement 4 éléments.'); return; }
+ localStorage.setItem('petitDejeunerIdeal', JSON.stringify(selected));
+ document.getElementById(`answer-${index}`).value='VALID';
+ checkAnswer(currentTicketId,index);
+}
+
+window._memory={};
+window.flipMemory=function(index,btn){
+ if(btn.classList.contains('found')||btn.classList.contains('open')) return;
+ const state=window._memory[index]||{open:[],found:0,lock:false};
+ if(state.lock) return;
+ btn.classList.add('open'); btn.innerHTML=`<span>${btn.dataset.value}</span>`; state.open.push(btn);
+ if(state.open.length===2){
+   state.lock=true;
+   const [a,b]=state.open;
+   if(a.dataset.value===b.dataset.value){
+      a.classList.add('found'); b.classList.add('found');
+      state.found++;
+      state.open=[]; state.lock=false;
+      if(state.found===5){ document.getElementById(`answer-${index}`).value='MEMORY_DONE'; checkAnswer(currentTicketId,index); }
+   } else {
+      setTimeout(()=>{a.classList.remove('open');b.classList.remove('open');a.innerHTML='<span>❓</span>';b.innerHTML='<span>❓</span>';state.open=[];state.lock=false;},900);
+   }
+ }
+ window._memory[index]=state;
+}
+
+var currentTicketId=null;
+
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 window._mobileSelectedCard = null;
 
@@ -246,7 +282,6 @@ const tickets = [
       }
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>La Rose Noire cachait des fleurs.</h3><p>Des fleurs choisies pour te transmettre un message sans avoir besoin de trop en dire.</p></div>",
-    
     "theme": "rose"
   },
   {
@@ -261,7 +296,9 @@ const tickets = [
         "type": "memory",
         "title": "Épreuve I — Le début de l’histoire",
         "q": "<p>Avant même notre première conversation, je me trouvais entre toi et quelque chose qui t’éblouissait.</p><p>Sans le vouloir, c’est peut-être ce qui a lancé toute cette histoire.</p><p><strong>Quel était cet élément ?</strong></p>",
-        "answers": ["soleil"],
+        "answers": [
+          "soleil"
+        ],
         "hints": [
           "Tout s’est passé au lycée.",
           "Je me trouvais devant toi.",
@@ -275,8 +312,15 @@ const tickets = [
         "type": "timeline",
         "title": "Épreuve II — Les souvenirs dans le bon ordre",
         "q": "<p>Certains souvenirs prennent tout leur sens lorsqu’on les remet dans le bon ordre.</p><ol class=\"timeline-list\"><li>Cinéma</li><li>Parc d’Isle</li><li>Paris</li><li>Feu d’artifice du 14 juillet</li></ol><p><strong>Replace les souvenirs dans les emplacements ci-dessous, puis clique sur « Valider l’ordre ».</strong></p>",
-        "timeline": ["Cinéma","Parc d’Isle","Paris","Feu d’artifice du 14 juillet"],
-        "answers": ["Cinéma|Parc d’Isle|Feu d’artifice du 14 juillet|Paris"],
+        "timeline": [
+          "Cinéma",
+          "Parc d’Isle",
+          "Paris",
+          "Feu d’artifice du 14 juillet"
+        ],
+        "answers": [
+          "Cinéma|Parc d’Isle|Feu d’artifice du 14 juillet|Paris"
+        ],
         "hints": [
           "Le premier élément est une activité en intérieur.",
           "Le deuxième a eu lieu juste après.",
@@ -290,7 +334,11 @@ const tickets = [
         "type": "monuments",
         "title": "Épreuve III — Paris",
         "q": "<p>Lors de notre voyage à Paris, il y avait un monument que tu n’avais encore jamais vu en vrai.</p><p>Pourtant, tu le connaissais déjà depuis longtemps.</p><p>Sélectionne la bonne silhouette puis clique sur « Valider ».",
-        "answers": ["toureiffel","tour eiffel","tour-eiffel"],
+        "answers": [
+          "toureiffel",
+          "tour eiffel",
+          "tour-eiffel"
+        ],
         "hints": [
           "Ce n’est pas une cathédrale.",
           "Ce n’est pas un arc.",
@@ -302,10 +350,18 @@ const tickets = [
       },
       {
         "type": "fill-blanks",
-        "choices": ["Fenêtre","Instagram","22 avril 2025","Willow","Natation"],
+        "choices": [
+          "Fenêtre",
+          "Instagram",
+          "22 avril 2025",
+          "Willow",
+          "Natation"
+        ],
         "title": "Épreuve IV — Complète notre histoire",
         "q": "<p>Complète notre histoire.</p><p>Avant même notre première conversation, tu as tapé contre une <strong>______</strong>.</p><p>Quelques jours plus tard, tu m’as ajouté sur <strong>______</strong>.</p><p>Depuis le <strong>______</strong>.</p><p>Mots proposés : <span class=\"keyword\">lycée</span> · <span class=\"keyword\">cinéma</span> · <span class=\"keyword\">parc d’Isle</span> · <span class=\"keyword\">Paris</span> · <span class=\"keyword\">Willow</span></p><p><strong>Replace les mots dans les bons emplacements, puis clique sur « Valider ».</strong></p>",
-        "answers": ["Fenêtre|Instagram|22 avril 2025"],
+        "answers": [
+          "Fenêtre|Instagram|22 avril 2025"
+        ],
         "hints": [
           "Tout a commencé pendant les cours.",
           "Votre premier rendez-vous s’est déroulé devant un écran.",
@@ -319,7 +375,9 @@ const tickets = [
         "type": "final",
         "title": "Épreuve V — Le temps offert",
         "q": "<p>Je ne suis pas un lieu.</p><p>Je ne suis pas un objet.</p><p>Pourtant, je crée souvent les meilleurs souvenirs.</p><p>On me prépare parfois longtemps à l’avance.</p><p>À deux, je prends encore plus de valeur.</p><p><strong>Qui suis-je ?</strong></p>",
-        "answers": ["date"],
+        "answers": [
+          "date"
+        ],
         "hints": [
           "La réponse ne s’achète pas vraiment.",
           "Elle se partage.",
@@ -336,99 +394,78 @@ const tickets = [
   {
     "id": 4,
     "code": "AUBE-ROYALE",
-    
     "gift": "Petit-déjeuner",
     "teaser": "Une porte qui commence avant que la journée ne décide vraiment de commencer.",
     "intro": "<p>Cette porte parle du début d’une journée, mais elle ne doit pas donner le cadeau trop vite.</p>",
     "riddles": [
       {
-        "type": "binary",
+        "type": "text",
         "title": "Épreuve I — Les lumières allumées",
-        "q": "<p>Une suite de 0 et de 1 a été laissée dans l’obscurité.</p><div class=\"cipher-text\"><strong>01010010 01000101 01010110 01000101 01001001 01001100</strong></div><p>Elle nomme le moment où la journée te reprend doucement.</p><p><strong>Quel mot se cache ici ?</strong></p>",
+        "q": "<p>Décrypte ce code binaire :</p><div class='cipher-text'><strong>01010010 01000101 01010110 01000101 01001001 01001100</strong></div>",
         "answers": [
           "reveil",
           "réveil"
         ],
-        "hints": [
-          "Ce n’est pas un calcul.",
-          "Chaque groupe représente une lettre.",
-          "C’est un codage informatique très simple.",
-          "Traduis le binaire en texte."
-        ],
-        "success": "Le réveil est trouvé."
+        "success": "Le jour peut commencer."
       },
       {
-        "type": "order",
-        "title": "Épreuve II — Remettre le matin en ordre",
-        "q": "<p>Ces fragments sont dans le désordre :</p><div class=\"logic-grid\"><span>ouvrir les yeux</span><span>sortir du lit</span><span>s’installer</span><span>commencer doucement</span></div><p>Le mot cherché désigne une habitude qui revient, presque comme une petite cérémonie.</p><p><strong>Quel mot correspond à cette suite ?</strong></p>",
+        "type": "timeline",
+        "title": "Épreuve II — Le rituel du matin",
+        "q": "<p>Remets ces moments dans le bon ordre.</p>",
+        "timeline": [
+          "👀 Ouvrir les yeux",
+          "😘 Faire un bisou à l’amour de sa vie",
+          "🐱 Aller voir Willow",
+          "☀️ Se lever"
+        ],
         "answers": [
-          "rituel",
-          "routine"
+          "👀 Ouvrir les yeux|😘 Faire un bisou à l’amour de sa vie|🐱 Aller voir Willow|☀️ Se lever"
         ],
-        "hints": [
-          "Ce n’est pas un objet.",
-          "C’est une répétition rassurante.",
-          "On peut en avoir un le matin.",
-          "Le mot commence par R."
-        ],
-        "success": "Oui : un rituel, ou une routine douce du matin."
+        "success": "Voilà un réveil parfait."
       },
       {
-        "type": "deduction",
-        "title": "Épreuve III — Ce qui précède",
-        "q": "<p>Je ne suis pas le repas.</p><p>Je ne suis pas non plus la personne qui le sert.</p><p>Pourtant, sans moi, le moment arrive moins naturellement.</p><p>Je commence souvent avant que tu sois là : choisir, disposer, prévoir, rendre les choses prêtes.</p><p><strong>Que suis-je ?</strong></p>",
+        "type": "breakfast",
+        "title": "Épreuve III — Ton petit-déjeuner idéal",
+        "q": "<p>Choisis exactement 4 éléments.</p>",
+        "options": [
+          "🥐 Croissant",
+          "🥞 Pancakes",
+          "🍓 Fruits frais",
+          "🍞 Pain grillé",
+          "🧈 Confiture",
+          "☕ Café",
+          "🍫 Chocolat chaud",
+          "🫖 Thé",
+          "🧃 Jus d’orange",
+          "🍳 Œufs",
+          "🥓 Jambon"
+        ],
         "answers": [
-          "preparation",
-          "préparation",
-          "mise en place",
-          "miseenplace",
-          "installation"
+          "VALID"
         ],
-        "hints": [
-          "Ce n’est pas un objet.",
-          "C’est une action faite avant le moment attendu.",
-          "Elle consiste à rendre quelque chose prêt.",
-          "On peut dire : une préparation."
-        ],
-        "success": "Oui : la préparation rend le moment possible."
+        "success": "Tes choix ont été soigneusement notés pour plus tard… ✨"
       },
       {
-        "type": "taste",
-        "title": "Épreuve IV — Le petit plaisir",
-        "q": "<p>Ce mot n’est pas obligatoire pour vivre.</p><p>Mais il rend un moment plus agréable.</p><p>Il peut être sucré, salé, chaud, froid, choisi pour toi.</p><p>Il transforme un simple début de journée en attention.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "type": "memory",
+        "title": "Épreuve IV — Le matin parfait",
+        "q": "<p>Retrouve les 5 paires du matin parfait.</p>",
+        "pairs": [
+          "☕",
+          "🥐",
+          "🍓",
+          "🐱",
+          "⏰"
+        ],
         "answers": [
-          "gourmandise"
+          "MEMORY_DONE"
         ],
-        "hints": [
-          "Ce mot parle de plaisir.",
-          "Il est souvent lié à ce qu’on mange.",
-          "Ce n’est pas nécessaire, mais ça fait du bien.",
-          "Il commence par G."
-        ],
-        "success": "Oui : la gourmandise."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Le matin servi",
-        "q": "<p>Tu as retrouvé le réveil, le rituel, la préparation et la gourmandise.</p><p>Il reste à nommer le moment complet que cette porte prépare.</p><p>Ce n’est pas juste de la nourriture.</p><p>C’est un début de journée pensé pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "petitdejeuner",
-          "petitdéjeuner",
-          "petit dej",
-          "petitdej"
-        ],
-        "hints": [
-          "La réponse est un moment du matin.",
-          "Il peut se préparer sur un plateau.",
-          "Il arrive avant que la journée commence vraiment.",
-          "On l’appelle souvent “petit dej”."
-        ],
-        "success": "Tu as trouvé l’Aube Royale."
+        "success": "Tu as retrouvé tous les souvenirs du matin parfait."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée doucement.</p></div>",
+    "reveal": "<div class='reveal-card'><div class='stamp'>DÉCOUVERT</div><h3>L’Aube Royale cachait un petit-déjeuner.</h3><p>Un matin préparé pour toi, avec de quoi commencer la journée tout en douceur. 💛</p></div>",
     "memory": "L’Aube Royale — un matin préparé pour toi.",
-    "theme": "aube"
+    "theme": "aube",
+    "title": "L’Aube Royale"
   },
   {
     "id": 5,
@@ -1462,7 +1499,7 @@ codeInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') unlockBtn.click();
 });
 
-function renderRoom(ticket) {
+function renderRoom(ticket) { currentTicketId=ticket.id;
   applyRoomTheme(ticket);
   const state = loadState();
   const room = document.getElementById('room');
@@ -1542,6 +1579,16 @@ function renderAnswerInput(ticket, r, index){
       </div>`;
   }
 
+  if(r.type === "breakfast"){
+    const opts=(r.options||[]).map(o=>`<button class="breakfast-item" onclick="toggleBreakfast(${index}, this)" data-value="${o}">${o}</button>`).join('');
+    return `<div class="breakfast-grid">${opts}</div><input type="hidden" id="answer-${index}"><div class="breakfast-note" id="breakfast-note-${index}"></div><div class="answer-row"><button onclick="validateBreakfast(${index})">Valider</button></div>`;
+  }
+
+  if(r.type === "memory"){
+    const cards=[...(r.pairs||[]),...(r.pairs||[])].sort(()=>Math.random()-0.5);
+    return `<div class="memory-grid" id="memory-${index}">${cards.map(c=>`<button class="memory-card" data-value="${c}" onclick="flipMemory(${index}, this)"><span>❓</span></button>`).join('')}</div><input type="hidden" id="answer-${index}">`;
+  }
+
   if(r.type === "monuments"){
     return `
       <div class="monument-grid" id="monuments-${index}">
@@ -1600,6 +1647,12 @@ function getSubmittedAnswer(riddle, index){
     const slots=[...document.querySelectorAll(`#fill-${index} .inline-slot`)];
     return slots.map(s=>s.querySelector(`.fill-card`)?.dataset.value||``).join(`|`);
   }
+  if(riddle.type === "breakfast"){
+    return document.getElementById(`answer-${index}`)?.value || '';
+  }
+  if(riddle.type === "memory"){
+    return document.getElementById(`answer-${index}`)?.value || '';
+  }
   if(riddle.type === "timeline"){
     const slots = [...document.querySelectorAll(`#timeline-${index} .timeline-slot`)];
     return slots.map(s => s.querySelector('.timeline-card')?.dataset.value || '').join('|');
@@ -1654,6 +1707,9 @@ window.checkAnswer = function(ticketId, index) {
   state.answers[ticketId] = state.answers[ticketId] || [];
   const validAnswers = ticket.riddles[index].answers || [];
   const submittedAnswer = getSubmittedAnswer(ticket.riddles[index], index);
+  const currentRiddle = ticket.riddles[index];
+  if(currentRiddle.type==="breakfast" && submittedAnswer==="VALID"){ validAnswers.push("VALID"); }
+  if(currentRiddle.type==="memory" && submittedAnswer==="MEMORY_DONE"){ validAnswers.push("MEMORY_DONE"); }
 
   if (validAnswers.some(answer => normalize(submittedAnswer) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);

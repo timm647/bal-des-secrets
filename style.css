@@ -1960,3 +1960,12 @@ nav,
   box-shadow:0 0 16px rgba(212,175,55,.35);
   transform:scale(1.03);
 }
+
+.breakfast-grid,.memory-grid{display:grid;gap:12px;margin:16px 0}
+.breakfast-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.breakfast-item,.memory-card{padding:14px;border:2px solid rgba(212,175,55,.3);border-radius:14px;background:#111;color:#fff}
+.breakfast-item.active{border-color:#d4af37;transform:scale(1.03)}
+.memory-grid{grid-template-columns:repeat(5,1fr)}
+.memory-card{aspect-ratio:1;font-size:2rem}
+.memory-card.found{border-color:#d4af37;background:#2b2210}
+@media(max-width:768px){.memory-grid{grid-template-columns:repeat(3,1fr)}}
