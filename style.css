@@ -2000,7 +2000,7 @@ nav,
  flex-wrap:wrap;
  margin:20px 0;
 }
-.rebus-img{background:#fff;border-radius:12px;padding:8px;
+.rebus-img{
  max-width:120px;
  width:30vw;
  max-height:120px;
@@ -2012,5 +2012,5 @@ nav,
 }
 @media (max-width:600px){
  .mirror-clue{font-size:1.4rem;}
- .rebus-img{background:#fff;border-radius:12px;padding:8px;max-width:90px;}
+ .rebus-img{max-width:90px;}
 }

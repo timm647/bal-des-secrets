@@ -595,7 +595,9 @@ const tickets = [
         "success": "Tu as trouvé le cadeau caché."
       }
     ],
-    "reveal": "<div class='reward-card'><h3>🎁 DÉCOUVERT</h3><p><strong>Après Minuit cachait un pyjama.</strong></p><p>De quoi rendre tes soirées encore plus douces et confortables. 🌙</p></div>",
+    "reveal": "<div class='reward-card'><h3>🎁 DÉCOUVERT</h3><p><strong>🏷️ DÉCOUVERT
+
+Après Minuit cachait un pyjama.</strong></p><p>De quoi rendre tes soirées encore plus douces et confortables. 🌙</p></div>",
     "memory": "Le Pyjama — Un pyjama confortable pour accompagner tes soirées et tes nuits. 🌙.",
     "theme": "nuit"
   },
