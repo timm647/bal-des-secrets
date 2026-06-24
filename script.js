@@ -577,7 +577,7 @@ const tickets = [
       {
         "type": "text",
         "title": "Épreuve IV — Le reflet de la nuit",
-        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>Quel mot se cache dans ce message ?</p><div class='mirror-clue'>LA NUIT LAISSE PLACE AUX REVES</div>",
+        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>De quoi parle cette phrase ?</p><div class='mirror-clue'>LES PLUS BEAUX NE SE RACONTENT PAS, ILS SE VIVENT LES YEUX FERMÉS</div>",
         "answers": [
           "reves",
           "rêves"
