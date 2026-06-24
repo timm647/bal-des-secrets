@@ -584,7 +584,7 @@ footer {
 .theme-rose { --gold: #d06a7c; --gold-soft: #ffd0d8; background: radial-gradient(circle at 20% 10%, rgba(120, 0, 25,.26), transparent 30%), linear-gradient(135deg,#080507,#16070d,#050505) !important; }
 .theme-parc { --gold: #89c483; --gold-soft: #d8ffd2; background: radial-gradient(circle at 20% 10%, rgba(92,150,86,.22), transparent 28%), linear-gradient(135deg,#040807,#0d1f17,#050505) !important; }
 .theme-aube { --gold: #f0bd72; --gold-soft: #ffe4b8; background: radial-gradient(circle at 70% 5%, rgba(240,189,114,.22), transparent 34%), linear-gradient(135deg,#061125,#17233a,#070607) !important; }
-.theme-joker { --gold: #b38cff; --gold-soft: #eadcff; background: radial-gradient(circle at 80% 20%, rgba(120,70,190,.24), transparent 32%), linear-gradient(135deg,#070607,#160b23,#050505) !important; }
+.theme-pyjama { --gold: #b38cff; --gold-soft: #eadcff; background: radial-gradient(circle at 80% 20%, rgba(120,70,190,.24), transparent 32%), linear-gradient(135deg,#070607,#160b23,#050505) !important; }
 .theme-minuit { --gold: #8fa7ff; --gold-soft: #d9e1ff; background: radial-gradient(circle at 10% 12%, rgba(70,90,180,.24), transparent 34%), linear-gradient(135deg,#02040d,#080c24,#050505) !important; }
 .theme-chapitre { --gold: #c7a16d; --gold-soft: #ffe4bd; background: radial-gradient(circle at 15% 10%, rgba(155,100,44,.18), transparent 28%), linear-gradient(135deg,#090604,#1a120c,#050505) !important; }
 .theme-festin { --gold: #e0a15f; --gold-soft: #ffdfb2; background: radial-gradient(circle at 22% 12%, rgba(180,95,40,.20), transparent 28%), linear-gradient(135deg,#0b0704,#211308,#050505) !important; }
@@ -667,7 +667,7 @@ body[class*="theme-"] button:hover {
 body.theme-rose .gold-noise { opacity: .09; }
 body.theme-parc .gold-noise { opacity: .10; }
 body.theme-aube .gold-noise { opacity: .12; }
-body.theme-joker .gold-noise { opacity: .08; }
+body.theme-pyjama .gold-noise { opacity: .08; }
 body.theme-minuit .gold-noise { opacity: .06; }
 
 .booster-admin-tools {

@@ -577,7 +577,7 @@ const tickets = [
       {
         "type": "text",
         "title": "Épreuve IV — Le reflet de la nuit",
-        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>De quoi parle cette phrase ?</p><div class='mirror-clue'>LES PLUS BEAUX NE SE RACONTENT PAS, ILS SE VIVENT LES YEUX FERMÉS</div>",
+        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>Quel mot se cache dans ce message ?</p><div class='mirror-clue'>LA NUIT LAISSE PLACE AUX REVES</div>",
         "answers": [
           "reves",
           "rêves"
@@ -596,7 +596,7 @@ const tickets = [
       }
     ],
     "reveal": "<div class='reward-card'><h3>🎁 DÉCOUVERT</h3><p><strong>Après Minuit cachait un pyjama.</strong></p><p>De quoi rendre tes soirées encore plus douces et confortables. 🌙</p></div>",
-    "memory": "Le Joker — une envie que tu pourras choisir toi-même.",
+    "memory": "Le Pyjama — Un pyjama confortable pour accompagner tes soirées et tes nuits. 🌙.",
     "theme": "nuit"
   },
   {
@@ -1386,7 +1386,7 @@ function packLabel(type) {
 
 const ROOM_THEMES = {
   refuge: { label: 'Refuge Doré', tone: 220 }, rose: { label: 'Rose Noire', tone: 196 }, parc: { label: 'Parc des Premiers Secrets', tone: 174 },
-  aube: { label: 'Aube Royale', tone: 262 }, joker: { label: 'Le Joker', tone: 146 }, minuit: { label: 'Après Minuit', tone: 116 },
+  aube: { label: 'Aube Royale', tone: 262 }, pyjama: { label: 'Le Pyjama', tone: 146 }, minuit: { label: 'Après Minuit', tone: 116 },
   chapitre: { label: 'Chapitre XII', tone: 185 }, festin: { label: 'Festin Doré', tone: 246 }, fil: { label: 'Fil Doré', tone: 208 },
   monde: { label: 'Petit Monde', tone: 164 }, jardin: { label: 'Jardin Secret', tone: 132 }, masque: { label: 'Dernier Masque', tone: 98 }
 };
