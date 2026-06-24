@@ -558,8 +558,8 @@ const tickets = [
       },
       {
         "type": "text",
-        "title": "Épreuve II — Le clavier oublié",
-        "q": "<p>Un ancien appareil peut t'aider à déchiffrer cette suite de chiffres.</p><p><strong>73767</strong></p><p><em>Indice : avant les écrans tactiles, chaque touche cachait plusieurs lettres.</em></p>",
+        "title": "Épreuve II — Les lettres de la nuit",
+        "q": "<p>Les lettres se sont mélangées avant de s'endormir.</p><p><strong>S O P R E</strong></p>",
         "answers": [
           "repos"
         ],
@@ -577,7 +577,7 @@ const tickets = [
       {
         "type": "text",
         "title": "Épreuve IV — Le reflet de la nuit",
-        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>Quel mot se cache dans ce message ?</p><div class='mirror-clue'>LA NUIT LAISSE PLACE AUX REVES</div>",
+        "q": "<p>Certains secrets ne se révèlent qu'à travers leur reflet.</p><p>De quoi parle cette phrase ?</p><div class='mirror-clue'>LES PLUS BEAUX NE SE RACONTENT PAS, ILS SE VIVENT LES YEUX FERMÉS</div>",
         "answers": [
           "reves",
           "rêves"
