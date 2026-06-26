@@ -611,19 +611,7 @@ const tickets = [
     {
       "type": "text",
       "title": "Épreuve I — Le message caché",
-      "q": "<p>Parfois, le plus beau des messages ne se lit pas comme les autres.</p>
-
-<p>
-Sans un regard attentif, certaines choses passent inaperçues.<br>
-Écouter son intuition est parfois la meilleure décision.<br>
-Derrière les apparences se cache souvent la vérité.<br>
-Un détail peut changer toute une histoire.<br>
-Chaque ligne possède sa propre importance.<br>
-Tout est déjà sous tes yeux.<br>
-Il suffit simplement d'observer autrement.<br>
-Ouvre ton esprit avant de répondre.<br>
-Ne laisse aucun indice de côté.
-</p>
+      "q": ""q": "<p>Parfois, le plus beau des messages ne se lit pas comme les autres.</p><p>Sans un regard attentif, certaines choses passent inaperçues.<br>Écouter son intuition est parfois la meilleure décision.<br>Derrière les apparences se cache souvent la vérité.<br>Un détail peut changer toute une histoire.<br>Chaque ligne possède sa propre importance.<br>Tout est déjà sous tes yeux.<br>Il suffit simplement d'observer autrement.<br>Ouvre ton esprit avant de répondre.<br>Ne laisse aucun indice de côté.</p>",
 
       "answers": [
         "séduction",
