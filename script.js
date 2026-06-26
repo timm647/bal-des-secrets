@@ -600,28 +600,52 @@ const tickets = [
     "theme": "nuit"
   },
   {
-    "id": 6,
-    "code": "Jardin-Rouge",
-    "title": "Jardin Rouge",
-    "gift": "ARCHIVE",
-    "teaser": "Une porte douce, intime et élégante, pensée pour la nuit sans tout révéler trop vite.",
-    "intro": "<p>Cette porte avance dans une ambiance de nuit, de confort et de confiance.</p>",
-    "riddles": [
-      {
-        "type": "observation",
-        "title": "Épreuve I — Quand le jour se retire",
-        "q": "<p>Je ne suis pas le titre de cette porte.</p><p>Je suis ce qui arrive quand le bruit retombe, quand la lumière baisse, quand le monde paraît plus calme.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "nuit"
-        ],
-        "hints": [
-          "La réponse est un moment.",
-          "Elle vient après le soir.",
-          "On y associe souvent le silence et le sommeil.",
-          "Le mot commence par N."
-        ],
-        "success": "La nuit ouvre la porte."
-      },
+  "id": 6,
+  "code": "JARDIN-ROUGE",
+  "title": "Jardin Rouge",
+  "gift": "Lingerie",
+  "teaser": "Certaines choses ne se découvrent qu'avec attention. Cette porte parle de confiance, d'élégance et de passion.",
+  "intro": "<p>Les apparences sont parfois trompeuses. Observe, réfléchis, puis laisse-toi guider jusqu'au cadeau caché.</p>",
+
+  "riddles": [
+    {
+      "type": "text",
+      "title": "Épreuve I — Le message caché",
+      "q": "<p>Parfois, le plus beau des messages ne se lit pas comme les autres.</p><br><p><strong>S</strong>ans un regard attentif, certaines choses passent inaperçues.<br><strong>É</strong>couter son intuition est parfois la meilleure décision.<br><strong>D</strong>errière les apparences se cache souvent la vérité.<br><strong>U</strong>n détail peut changer toute une histoire.<br><strong>C</strong>haque ligne possède sa propre importance.<br><strong>T</strong>out est déjà sous tes yeux.<br><strong>I</strong>l suffit simplement d'observer autrement.<br><strong>O</strong>uvre ton esprit avant de répondre.<br><strong>N</strong>e laisse aucun indice de côté.</p>",
+
+      "answers": [
+        "séduction",
+        "seduction"
+      ],
+
+      "hints": [
+        "Relis le texte autrement.",
+        "Toutes les lettres n'ont pas la même importance.",
+        "Observe le début de chaque ligne.",
+        "Lis les premières lettres."
+      ],
+
+      "success": "Exact. Certains messages se cachent à la vue de tous."
+    },
+
+    {
+      "type": "text",
+      "title": "Épreuve II — Les nuances",
+      "q": "<p><strong>Toutes les couleurs racontent une histoire... mais une seule révèle un mot.</strong></p><p>Le texte coloré sera ajouté ici avec les différentes nuances de rouge.</p><p>Une seule nuance permettra de lire le mot caché.</p>",
+
+      "answers": [
+        "passion"
+      ],
+
+      "hints": [
+        "N'observe pas seulement les lettres.",
+        "Les couleurs ont de l'importance.",
+        "Une seule nuance forme un vrai mot.",
+        "Le mot est un sentiment."
+      ],
+
+      "success": "Tu as trouvé le mot caché."
+    },
       {
         "type": "texture",
         "title": "Épreuve II — Ce qui se ressent",
