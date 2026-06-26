@@ -2014,3 +2014,155 @@ nav,
  .mirror-clue{font-size:1.4rem;}
  .rebus-img{background:#fff;border-radius:12px;padding:8px;max-width:90px;}
 }
+
+
+/* Salles 6 et 7 */
+.acrostic-poem{
+  display:grid;
+  gap:8px;
+  margin:18px 0;
+  padding:16px;
+  border:1px solid rgba(212,175,55,.24);
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+}
+.acrostic-poem p{margin:0;line-height:1.55;}
+.acrostic-poem strong{color:#f1d890;margin-right:4px;}
+.red-shade-riddle{
+  margin:18px 0;
+  padding:18px;
+  border-radius:14px;
+  border:1px solid rgba(190,45,52,.35);
+  background:rgba(70,8,16,.28);
+  font-size:1.55rem;
+  line-height:1.9;
+  letter-spacing:.08em;
+  word-break:break-word;
+}
+.red-a{color:#ff4d5d;text-shadow:0 0 10px rgba(255,77,93,.28);}
+.red-b{color:#c7333f;}
+.red-c{color:#e06a65;}
+.red-d{color:#99252f;}
+.difference-scenes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.diff-scene{
+  min-height:260px;
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(212,175,55,.28);
+  background:linear-gradient(160deg, rgba(54,18,28,.88), rgba(17,13,20,.95));
+  padding:14px;
+}
+.scene-title{display:block;color:#f1d890;font-weight:700;margin-bottom:10px;}
+.diff-scene div:not(.scene-title){
+  position:relative;
+  margin:8px 0;
+  padding:8px 10px;
+  border-radius:10px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  font-size:.9rem;
+}
+.diff-scene.variant{background:linear-gradient(160deg, rgba(65,16,34,.9), rgba(21,13,20,.96));}
+.difference-options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+.difference-option{
+  border:1px solid rgba(212,175,55,.28);
+  background:rgba(255,255,255,.05);
+}
+.difference-option.selected{
+  border-color:#f1d890;
+  background:rgba(212,175,55,.18);
+  box-shadow:0 0 14px rgba(212,175,55,.22);
+}
+.difference-feedback,.maze-feedback,.trap-feedback{min-height:24px;color:#f1d890;text-align:center;}
+.logic-clues{
+  display:grid;
+  gap:8px;
+  margin:16px 0;
+}
+.logic-clues p{
+  margin:0;
+  padding:10px 12px;
+  border-left:3px solid rgba(212,175,55,.5);
+  background:rgba(255,255,255,.045);
+  border-radius:8px;
+}
+.triangle-puzzle{
+  display:flex;
+  justify-content:center;
+  margin:18px 0;
+  color:#f1d890;
+}
+.triangle-puzzle svg{
+  width:min(100%,320px);
+  height:auto;
+  border:1px solid rgba(212,175,55,.24);
+  border-radius:14px;
+  padding:12px;
+  background:rgba(255,255,255,.035);
+}
+.triangle-puzzle line{stroke:currentColor;stroke-width:2;}
+.maze-board{
+  --cell:56px;
+  display:grid;
+  grid-template-columns:repeat(var(--maze-size), var(--cell));
+  justify-content:center;
+  gap:7px;
+  margin:18px auto;
+}
+.maze-cell{
+  width:var(--cell);
+  aspect-ratio:1;
+  min-height:0;
+  padding:0;
+  border-radius:10px;
+  font-size:.72rem;
+  border:1px solid rgba(212,175,55,.28);
+  background:rgba(255,255,255,.06);
+  color:#f8f1df;
+}
+.maze-cell.wall{background:rgba(0,0,0,.45);border-color:rgba(255,255,255,.08);}
+.maze-cell.start,.maze-cell.end{font-weight:700;color:#111;background:#f1d890;}
+.maze-cell.visited{background:rgba(212,175,55,.24);}
+.maze-cell.active{box-shadow:0 0 0 3px rgba(241,216,144,.32),0 0 18px rgba(241,216,144,.3);}
+.trap-card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:18px 0;
+}
+.trap-card{
+  aspect-ratio:1.1;
+  min-height:74px;
+  padding:10px;
+  border:1px solid rgba(212,175,55,.3);
+  background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+}
+.trap-card.flipped{
+  border-color:#f1d890;
+  background:rgba(212,175,55,.18);
+}
+.trap-card.trap-hit{
+  border-color:#e15b64;
+  background:rgba(160,30,45,.28);
+  animation:shake .32s ease;
+}
+@media(max-width:700px){
+  .difference-scenes{grid-template-columns:1fr;}
+  .diff-scene{min-height:210px;}
+  .red-shade-riddle{font-size:1.25rem;letter-spacing:.05em;}
+  .maze-board{--cell:min(15.5vw,52px);gap:6px;}
+  .trap-card-grid{gap:8px;}
+  .trap-card{min-height:64px;font-size:.86rem;}
+  .difference-options{grid-template-columns:repeat(2,minmax(0,1fr));}
+}

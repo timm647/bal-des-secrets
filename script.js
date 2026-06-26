@@ -600,101 +600,137 @@ const tickets = [
     "theme": "nuit"
   },
   {
-    "id": 106,
-    "code": "APRÈS-MINUIT",
-    "title": "Après Minuit",
-    "gift": "ARCHIVE",
-    "teaser": "Une porte douce, intime et élégante, pensée pour la nuit sans tout révéler trop vite.",
-    "intro": "<p>Cette porte avance dans une ambiance de nuit, de confort et de confiance.</p>",
+    "id": 6,
+    "code": "JARDIN-ROUGE",
+    "title": "Le Salon Rouge",
+    "gift": "Lingerie",
+    "teaser": "Une porte d'élégance et de détails, où les messages se cachent plus qu'ils ne se déclarent.",
+    "intro": "<p>Cette salle avance doucement, entre observation, confiance et regard attentif.</p><p>Rien n'est posé trop franchement : il faut lire autrement, distinguer les nuances, puis garder le fil.</p>",
+    "riddles": [
+      {"type":"text","title":"Épreuve I — Le message vertical","q":"<p>Parfois, le plus beau des messages ne se lit pas comme les autres.</p><div class="acrostic-poem"><p><strong>S</strong>ous les lumières basses, un détail devient plus précieux.</p><p><strong>É</strong>légante sans faire de bruit, la vérité attend son angle.</p><p><strong>D</strong>ans chaque phrase, quelque chose choisit sa place.</p><p><strong>U</strong>n regard patient remarque ce que les autres traversent.</p><p><strong>C</strong>ertains indices préfèrent rester au bord du texte.</p><p><strong>T</strong>out n'a pas besoin d'être annoncé pour exister.</p><p><strong>I</strong>l suffit parfois de suivre une ligne plus secrète.</p><p><strong>O</strong>n trouve alors le mot que la salle retenait.</p><p><strong>N</strong>e cherche pas le plus visible, cherche le plus fidèle.</p></div><p><strong>Quel mot se cache ici ?</strong></p>","answers":["seduction","séduction"],"hints":["Le texte a une colonne discrète.","Toutes les phrases participent.","Observe le bord gauche.","Le mot commence par S."],"success":"Tu as trouvé la séduction sans qu'elle ait besoin de se nommer trop fort."},
+      {"type":"text","title":"Épreuve II — La nuance juste","q":"<p>Tout est rouge, mais tout ne dit pas la même chose.</p><p>Une seule nuance porte un vrai mot. Les autres te laisseront des lettres sans promesse.</p><div class="red-shade-riddle" aria-label="Texte composé de plusieurs nuances de rouge"><span class="red-b">R</span><span class="red-a">P</span><span class="red-c">M</span><span class="red-d">V</span><span class="red-b">Q</span><span class="red-a">A</span><span class="red-c">T</span><span class="red-d">N</span><span class="red-b">E</span><span class="red-a">S</span><span class="red-c">L</span><span class="red-d">U</span><span class="red-b">A</span><span class="red-a">S</span><span class="red-c">O</span><span class="red-d">R</span><span class="red-b">D</span><span class="red-a">I</span><span class="red-c">F</span><span class="red-d">C</span><span class="red-b">S</span><span class="red-a">O</span><span class="red-c">E</span><span class="red-d">K</span><span class="red-b">T</span><span class="red-a">N</span><span class="red-c">B</span><span class="red-d">G</span></div><p><strong>Quel mot la bonne nuance révèle-t-elle ?</strong></p>","answers":["passion"],"hints":["Ne lis pas seulement les lettres dans l'ordre général.","Certaines lettres ont exactement la même nuance.","Une nuance forme un mot lisible; les autres non.","Le mot commence par P."],"success":"La bonne nuance révélait PASSION."},
+      {"type":"text","title":"Épreuve III — Les nombres du lien","q":"<p>A vaut 1, B vaut 2, et ainsi de suite.</p><div class="cipher-text"><strong>3 - 15 - 14 - 6 - 9 - 1 - 14 - 3 - 5</strong></div><p><strong>Quel mot obtient-on ?</strong></p>","answers":["confiance"],"hints":["Chaque nombre désigne une lettre.","15 correspond à O.","Le mot est une condition importante dans cette salle.","Le mot commence par C."],"success":"La confiance est le fil qui rend cette porte possible."},
+      {"type":"differences","title":"Épreuve IV — Les six détails","q":"<p>Deux scènes se ressemblent presque. Sous les images, sélectionne uniquement les six éléments réellement différents.</p><div class="difference-scenes"><div class="diff-scene"><span class="scene-title">Scène A</span><div class="wall-art">portrait</div><div class="vase">bouquet haut</div><div class="jewel">bracelet doré</div><div class="ribbon">nœud simple</div><div class="candle">bougie allumée</div><div class="lace-line">ruban fin</div></div><div class="diff-scene variant"><span class="scene-title">Scène B</span><div class="wall-art">paysage</div><div class="vase">bouquet rond</div><div class="jewel">bracelet perlé</div><div class="ribbon">nœud double</div><div class="candle">bougie éteinte</div><div class="lace-line">ruban large</div></div></div>","answers":["VALID"],"correct":["Tableau","Bouquet","Bracelet","Nœud","Bougie","Ruban"],"options":["Tableau","Bouquet","Bracelet","Nœud","Bougie","Ruban","Miroir","Rideau","Coussin","Parfum","Livre","Tapis"],"hints":["Il y a exactement six réponses.","Les différences sont visibles dans les deux cadres.","Certains éléments de la liste sont là pour détourner ton regard.","Regarde les objets nommés dans les scènes."],"success":"Les six différences sont repérées."},
+      {"type":"final","title":"Épreuve V — Ce qui se devine","q":"<p>Je suis faite pour être portée, mais pas pour être montrée à tout le monde.</p><p>Je peux être délicate, élégante, choisie avec soin.</p><p>Je parle autant de confiance que de beauté.</p><p><strong>Quel cadeau se cache ici ?</strong></p>","answers":["lingerie","la lingerie"],"hints":["C'est quelque chose à porter.","Ce n'est pas un vêtement public comme un t-shirt.","La salle entière tourne autour de l'élégance intime.","Le mot commence par L."],"success":"Tu as trouvé le cadeau caché."}
+    ],
+    "reveal": "<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Salon Rouge cachait de la lingerie.</h3><p>Un cadeau choisi avec douceur, élégance et confiance, seulement pour toi.</p></div>",
+    "memory": "Le Salon Rouge — de la lingerie choisie avec élégance et confiance.",
+    "theme": "jardin"
+  },
+  {
+    "id": 7,
+    "code": "PETIT-MONDE",
+    "title": "Le Petit Monde",
+    "gift": "Figurine",
+    "teaser": "Une porte miniature, mais pas légère : elle demande logique, patience et un peu de sang-froid.",
+    "intro": "<p>Cette salle parle d'un petit objet gagné une première fois dans le vrai monde, au bruit sec d'un tir de fête foraine.</p><p>Ici, il faudra retrouver ce souvenir autrement.</p>",
+    "riddles": [
+      {"type":"text","title":"Épreuve I — Les boîtes du stand","q":"<p>Quatre boîtes sont alignées derrière le comptoir : <strong>Opale</strong>, <strong>Rubis</strong>, <strong>Ivoire</strong> et <strong>Azur</strong>.</p><div class="logic-clues"><p>La boîte contenant la figurine n'est pas à une extrémité.</p><p>Rubis est plus près d'Azur que d'Opale.</p><p>Ivoire n'est pas voisine de la boîte vide qui porte une étiquette rouge.</p><p>La boîte gagnante touche exactement une boîte vide.</p><p>Azur est à droite d'Ivoire, mais pas juste à côté d'elle.</p><p>Opale n'est pas entre deux boîtes.</p></div><p>Ordre des boîtes : <strong>Opale — Ivoire — Rubis — Azur</strong>.</p><p><strong>Quelle boîte contient la figurine ?</strong></p>","answers":["rubis"],"hints":["Utilise l'ordre donné, pas un ordre à inventer.","La gagnante n'est pas au bord.","Elle doit avoir exactement une voisine vide.","Dans cet ordre, une seule boîte centrale tient jusqu'au bout."],"success":"Rubis était la boîte gagnante."},
+      {"type":"text","title":"Épreuve II — Triangles de vitrine","q":"<p>Compte tous les triangles de la figure, les petits comme ceux formés par plusieurs zones.</p><div class="triangle-puzzle"><svg viewBox="0 0 220 170" role="img" aria-label="Figure composée de triangles"><polygon points="110,10 20,155 200,155" fill="none" stroke="currentColor" stroke-width="3"/><line x1="110" y1="10" x2="110" y2="155"/><line x1="65" y1="82" x2="155" y2="82"/><line x1="20" y1="155" x2="155" y2="82"/><line x1="200" y1="155" x2="65" y2="82"/><line x1="65" y1="82" x2="110" y2="155"/><line x1="155" y1="82" x2="110" y2="155"/></svg></div><p><strong>Combien de triangles vois-tu ?</strong></p>","answers":["18","dix huit","dix-huit"],"hints":["Il ne faut pas compter seulement les petites cases.","Certains grands triangles utilisent plusieurs traits.","Sépare gauche, droite, centre, puis recombine.","Le nombre est entre 15 et 20."],"success":"Exact : il y en a 18."},
+      {"type":"maze","title":"Épreuve III — Le chemin du stand","q":"<p>Rejoins la sortie sans traverser les cases fermées.</p><p>Sur téléphone, touche simplement les cases voisines.</p>","answers":["VALID"],"maze":["S..#.","##.#.","...#.",".###.","....E"],"hints":["Tu ne peux avancer que vers une case voisine.","Les cases sombres sont fermées.","Si tu te trompes, reviens vers le chemin déjà ouvert.","Le passage descend surtout par la droite."],"success":"Le labyrinthe est franchi."},
+      {"type":"trap-cards","title":"Épreuve IV — Huit chances et un piège","q":"<p>Retourne les huit bonnes cartes. Une seule carte est mauvaise : si tu la touches, tout se mélange et il faut recommencer.</p>","answers":["VALID"],"cards":["Stand","Cible","Jeton","Vitrine","Lot","Ruban","Étagère","Souvenir"],"trap":"Fausse piste","hints":["Il faut mémoriser les cartes sûres.","La mauvaise carte change de place après une erreur.","Retourne les cartes avec méthode.","Il faut en réussir huit d'affilée."],"success":"Les huit bonnes cartes sont retournées."},
+      {"type":"final","title":"Épreuve V — Le lot de fête foraine","q":"<p>Tu l'avais déjà gagnée une fois à la fête foraine, après un tir à la carabine.</p><p>Petite par la taille, mais assez marquante pour devenir un souvenir.</p><p>Cette fois, elle ne tombe pas d'un stand : elle se débloque ici.</p><p><strong>Quel cadeau se cache ici ?</strong></p>","answers":["figurine","la figurine"],"hints":["C'est un petit objet.","Tu en avais gagné une à la fête foraine.","Elle peut représenter un personnage ou un petit monde.","Le mot commence par F."],"success":"Tu as trouvé le Petit Monde."}
+    ],
+    "reveal": "<div class="reveal-card"><div class="stamp">DÉCOUVERT</div><h3>Le Petit Monde cachait une figurine.</h3><p>Un petit souvenir à garder, clin d'œil à celle gagnée à la fête foraine.</p></div>",
+    "memory": "Le Petit Monde — une figurine qui rappelle le tir à la carabine de la fête foraine.",
+    "theme": "monde"
+  },
+  {
+    "id": 8,
+    "code": "JARDIN-SECRET-FUTUR",
+    "title": "Le Jardin Secret",
+    "gift": "Vibromasseur",
+    "teaser": "Une porte plus discrète, pensée autour de confiance, pudeur et complicité.",
+    "intro": "<p>Cette porte reste élégante. Elle ne cherche pas à tout dire trop vite : elle avance par confiance.</p>",
     "riddles": [
       {
-        "type": "observation",
-        "title": "Épreuve I — Quand le jour se retire",
-        "q": "<p>Je ne suis pas le titre de cette porte.</p><p>Je suis ce qui arrive quand le bruit retombe, quand la lumière baisse, quand le monde paraît plus calme.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "nuit"
-        ],
-        "hints": [
-          "La réponse est un moment.",
-          "Elle vient après le soir.",
-          "On y associe souvent le silence et le sommeil.",
-          "Le mot commence par N."
-        ],
-        "success": "La nuit ouvre la porte."
-      },
-      {
-        "type": "texture",
-        "title": "Épreuve II — Ce qui se ressent",
-        "q": "<p>Ce mot ne désigne pas le vêtement.</p><p>Il désigne la sensation que l’on cherche quand quelque chose touche la peau sans gêner.</p><p>Il peut exister dans un tissu, dans une voix, dans un geste.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "douceur"
-        ],
-        "hints": [
-          "La réponse n’est pas une matière précise.",
-          "Elle se ressent plus qu’elle ne se voit.",
-          "Elle peut être physique ou émotionnelle.",
-          "Elle commence par D."
-        ],
-        "success": "Oui : la douceur."
-      },
-      {
-        "type": "deduction",
-        "title": "Épreuve III — Ce qui met à l’aise",
-        "q": "<p>Un bel objet peut être inconfortable.</p><p>Un objet simple peut devenir précieux s’il te laisse respirer, bouger, dormir, te sentir bien.</p><p>Ce mot désigne cette sensation d’être à l’aise.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "confort"
-        ],
-        "hints": [
-          "Ce n’est pas le style.",
-          "Il peut compter autant que l’apparence.",
-          "On le cherche souvent pour dormir.",
-          "Le mot commence par C."
-        ],
-        "success": "Oui : le confort."
-      },
-      {
         "type": "trust",
-        "title": "Épreuve IV — Ce qui ne se montre pas à tout le monde",
-        "q": "<p>Cette porte ne parle pas seulement d’apparence.</p><p>Elle parle d’un espace où l’on peut être soi, sans regard extérieur.</p><p>Un espace de confiance, de proximité, et de pudeur choisie.</p><p><strong>Quel mot résume cela ?</strong></p>",
+        "title": "Épreuve I — La condition",
+        "q": "<p>Sans moi, cette porte n’aurait pas sa place.</p><p>Je ne suis pas un objet.</p><p>Je permets de recevoir une surprise sans malaise, parce qu’elle vient de quelqu’un en qui tu peux croire.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "confiance"
+        ],
+        "hints": [
+          "La réponse n’est pas matérielle.",
+          "Elle se construit avec le temps.",
+          "Elle rend possible les surprises plus personnelles.",
+          "Le mot commence par CONF."
+        ],
+        "success": "Oui : la confiance."
+      },
+      {
+        "type": "boundary",
+        "title": "Épreuve II — Ce qui t’appartient",
+        "q": "<p>Tout ne se partage pas avec tout le monde.</p><p>Certains espaces, certaines pensées, certains moments restent à toi.</p><p>Ce mot désigne ce qui est personnel et protégé.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
           "intimite",
           "intimité"
         ],
         "hints": [
           "La réponse n’est pas un objet.",
-          "Elle demande de la confiance.",
-          "Elle ne se partage pas avec tout le monde.",
+          "Elle parle de quelque chose de personnel.",
+          "Elle demande du respect.",
           "Le mot commence par INT."
         ],
         "success": "Oui : l’intimité."
       },
       {
-        "type": "final",
-        "title": "Épreuve V — La surprise de nuit",
-        "q": "<p>Tu as trouvé la nuit, la douceur, le confort et l’intimité.</p><p>Cette porte cache quelque chose à porter, pensé pour toi, pour les moments calmes ou plus précieux.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "type": "discretion",
+        "title": "Épreuve III — Le voile",
+        "q": "<p>Ce mot ne cache pas par honte.</p><p>Il cache parce que certaines choses gagnent à rester délicates.</p><p>Il évite d’être trop direct, trop visible, trop brutal.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
         "answers": [
-          "pyjama",
-          "lingerie",
-          "pyjama lingerie",
-          "pyjamaetlingerie",
-          "pyjama lingerie"
+          "pudeur"
         ],
         "hints": [
-          "C’est quelque chose à porter.",
-          "C’est lié aux moments plus calmes ou à la nuit.",
-          "Cela peut être confortable, élégant ou intime.",
-          "La réponse peut être “pyjama” ou “lingerie”."
+          "La réponse est liée à la délicatesse.",
+          "Elle protège ce qui est intime.",
+          "Elle évite d’en dire trop.",
+          "Le mot commence par P."
         ],
-        "success": "Tu as trouvé Après Minuit."
+        "success": "Oui : la pudeur."
+      },
+      {
+        "type": "complicity",
+        "title": "Épreuve IV — À deux seulement",
+        "q": "<p>Ce mot existe quand un geste ou une blague n’a pas besoin d’être expliqué aux autres.</p><p>Il appartient à deux personnes qui se comprennent.</p><p>Il rend certaines choses plus simples, parce qu’il y a déjà un lien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "complicite",
+          "complicité"
+        ],
+        "hints": [
+          "Ce mot parle d’un lien.",
+          "Il peut exister dans un couple.",
+          "Il permet de se comprendre avec peu de mots.",
+          "Le mot commence par COMP."
+        ],
+        "success": "Oui : la complicité."
+      },
+      {
+        "type": "final",
+        "title": "Épreuve V — Le cadeau discret",
+        "q": "<p>Tu as trouvé confiance, intimité, pudeur et complicité.</p><p>Cette porte cache un cadeau plus personnel que les autres.</p><p>Il n’est pas fait pour être expliqué à tout le monde.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "answers": [
+          "cadeauintime",
+          "cadeau intime",
+          "sextoy",
+          "jouet intime"
+        ],
+        "hints": [
+          "La réponse n’est pas un cadeau public.",
+          "Il appartient au domaine intime.",
+          "Il demande confiance et pudeur.",
+          "On peut l’appeler un cadeau intime."
+        ],
+        "success": "Tu as trouvé le Jardin Secret."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait un pyjama / de la lingerie.</h3><p>Un cadeau pensé pour toi, entre confort, douceur et élégance.</p></div>",
-    "memory": "Après Minuit — une surprise à porter, pensée pour tes moments à toi.",
-    "theme": "minuit"
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau discret, pensé avec confiance et respect, seulement pour toi.</p></div>",
+    "memory": "Le Jardin Secret — une porte intime, pensée avec respect.",
+    "theme": "jardin"
   },
   {
-    "id": 7,
-    "code": "CHAPITRE-XII",
+    "id": 9,
+    "code": "CHAPITRE-XII-FUTUR",
     "title": "Chapitre XII",
     "gift": "Livre au choix",
     "teaser": "Une porte pour ouvrir une histoire qui ne sera pas imposée, mais choisie par toi.",
@@ -783,8 +819,101 @@ const tickets = [
     "theme": "chapitre"
   },
   {
-    "id": 8,
-    "code": "FESTIN-DORÉ",
+    "id": 10,
+    "code": "FIL-DORÉ-FUTUR",
+    "title": "Le Fil Doré",
+    "gift": "Tee-shirts",
+    "teaser": "Une porte à porter, pensée pour ton style sans dévoiler trop vite le cadeau.",
+    "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
+    "riddles": [
+      {
+        "type": "material",
+        "title": "Épreuve I — La base douce",
+        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
+        "answers": [
+          "coton"
+        ],
+        "hints": [
+          "La réponse est une matière.",
+          "On la retrouve dans beaucoup de vêtements.",
+          "Elle est souvent douce et simple.",
+          "Le mot commence par C."
+        ],
+        "success": "Le coton est trouvé."
+      },
+      {
+        "type": "shape",
+        "title": "Épreuve II — Ce qui tombe juste",
+        "q": "<p>Deux vêtements peuvent être faits de la même matière.</p><p>Pourtant l’un peut aller parfaitement, l’autre non.</p><p>Ce mot parle de la manière dont quelque chose se pose sur toi.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "coupe"
+        ],
+        "hints": [
+          "Ce n’est pas la couleur.",
+          "Ce n’est pas la matière.",
+          "Cela change la forme portée.",
+          "On parle de la coupe d’un vêtement."
+        ],
+        "success": "Oui : la coupe."
+      },
+      {
+        "type": "choice",
+        "title": "Épreuve III — L’accord",
+        "q": "<p>Il ne suffit pas qu’un vêtement existe.</p><p>Il faut qu’il te corresponde.</p><p>Ce mot peut parler d’une ambiance, d’une couleur, d’une façon de s’habiller.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "style"
+        ],
+        "hints": [
+          "La réponse n’est pas un objet.",
+          "Elle parle de ce qui te correspond.",
+          "Elle peut être personnel.",
+          "Le mot commence par ST."
+        ],
+        "success": "Oui : le style."
+      },
+      {
+        "type": "code",
+        "title": "Épreuve IV — Trois lettres courantes",
+        "q": "<p>Un vêtement peut parfois se résumer à une courte indication.</p><div class=\"choice-line\"><span>S</span><span>M</span><span>L</span><span>XL</span></div><p>Ce n’est pas le cadeau. C’est ce qu’il faut connaître pour qu’il tombe bien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
+        "answers": [
+          "taille"
+        ],
+        "hints": [
+          "Ce n’est pas une couleur.",
+          "Cela aide à choisir le bon vêtement.",
+          "S, M et L sont des exemples.",
+          "Le mot commence par T."
+        ],
+        "success": "Oui : la taille."
+      },
+      {
+        "type": "final",
+        "title": "Épreuve V — Ce que tu porteras",
+        "q": "<p>Tu as trouvé le coton, la coupe, le style et la taille.</p><p>Cette porte cache quelque chose à porter, simple mais choisi pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+        "answers": [
+          "teeshirt",
+          "tee shirt",
+          "tshirt",
+          "t shirt",
+          "tee-shirts",
+          "t-shirts"
+        ],
+        "hints": [
+          "C’est un vêtement.",
+          "Il peut être en coton.",
+          "Il se choisit avec une taille.",
+          "Le mot commence souvent par T."
+        ],
+        "success": "Tu as trouvé le Fil Doré."
+      }
+    ],
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements choisis pour toi, pour ton style et ton confort.</p></div>",
+    "memory": "Le Fil Doré — des tee-shirts pensés pour toi.",
+    "theme": "fil"
+  },
+  {
+    "id": 11,
+    "code": "FESTIN-DORÉ-FUTUR",
     "title": "Le Festin Doré",
     "gift": "Pack nourriture",
     "teaser": "Une porte gourmande, faite de petites envies choisies pour toi.",
@@ -882,282 +1011,6 @@ const tickets = [
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Festin Doré cachait un pack nourriture.</h3><p>Un petit panier rempli de choses que tu aimes, préparé pour tes envies.</p></div>",
     "memory": "Le Festin Doré — un panier de petites envies pour toi.",
     "theme": "festin"
-  },
-  {
-    "id": 9,
-    "code": "FIL-DORÉ",
-    "title": "Le Fil Doré",
-    "gift": "Tee-shirts",
-    "teaser": "Une porte à porter, pensée pour ton style sans dévoiler trop vite le cadeau.",
-    "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
-    "riddles": [
-      {
-        "type": "material",
-        "title": "Épreuve I — La base douce",
-        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
-        "answers": [
-          "coton"
-        ],
-        "hints": [
-          "La réponse est une matière.",
-          "On la retrouve dans beaucoup de vêtements.",
-          "Elle est souvent douce et simple.",
-          "Le mot commence par C."
-        ],
-        "success": "Le coton est trouvé."
-      },
-      {
-        "type": "shape",
-        "title": "Épreuve II — Ce qui tombe juste",
-        "q": "<p>Deux vêtements peuvent être faits de la même matière.</p><p>Pourtant l’un peut aller parfaitement, l’autre non.</p><p>Ce mot parle de la manière dont quelque chose se pose sur toi.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "coupe"
-        ],
-        "hints": [
-          "Ce n’est pas la couleur.",
-          "Ce n’est pas la matière.",
-          "Cela change la forme portée.",
-          "On parle de la coupe d’un vêtement."
-        ],
-        "success": "Oui : la coupe."
-      },
-      {
-        "type": "choice",
-        "title": "Épreuve III — L’accord",
-        "q": "<p>Il ne suffit pas qu’un vêtement existe.</p><p>Il faut qu’il te corresponde.</p><p>Ce mot peut parler d’une ambiance, d’une couleur, d’une façon de s’habiller.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "style"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle parle de ce qui te correspond.",
-          "Elle peut être personnel.",
-          "Le mot commence par ST."
-        ],
-        "success": "Oui : le style."
-      },
-      {
-        "type": "code",
-        "title": "Épreuve IV — Trois lettres courantes",
-        "q": "<p>Un vêtement peut parfois se résumer à une courte indication.</p><div class=\"choice-line\"><span>S</span><span>M</span><span>L</span><span>XL</span></div><p>Ce n’est pas le cadeau. C’est ce qu’il faut connaître pour qu’il tombe bien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "taille"
-        ],
-        "hints": [
-          "Ce n’est pas une couleur.",
-          "Cela aide à choisir le bon vêtement.",
-          "S, M et L sont des exemples.",
-          "Le mot commence par T."
-        ],
-        "success": "Oui : la taille."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Ce que tu porteras",
-        "q": "<p>Tu as trouvé le coton, la coupe, le style et la taille.</p><p>Cette porte cache quelque chose à porter, simple mais choisi pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "teeshirt",
-          "tee shirt",
-          "tshirt",
-          "t shirt",
-          "tee-shirts",
-          "t-shirts"
-        ],
-        "hints": [
-          "C’est un vêtement.",
-          "Il peut être en coton.",
-          "Il se choisit avec une taille.",
-          "Le mot commence souvent par T."
-        ],
-        "success": "Tu as trouvé le Fil Doré."
-      }
-    ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements choisis pour toi, pour ton style et ton confort.</p></div>",
-    "memory": "Le Fil Doré — des tee-shirts pensés pour toi.",
-    "theme": "fil"
-  },
-  {
-    "id": 10,
-    "code": "PETIT-MONDE",
-    "title": "Le Petit Monde",
-    "gift": "Figurines",
-    "teaser": "Une porte miniature, construite autour de petits personnages et d’univers à collectionner.",
-    "intro": "<p>Cette porte parle de choses petites par la taille, mais pas forcément petites par l’attachement.</p>",
-    "riddles": [
-      {
-        "type": "scale",
-        "title": "Épreuve I — Changer d’échelle",
-        "q": "<p>Je ne suis pas moins important parce que je suis petit.</p><p>Je reprends une forme plus grande, mais réduite.</p><p>Je peux tenir dans une main tout en représentant un univers.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "miniature"
-        ],
-        "hints": [
-          "La réponse parle de taille.",
-          "Elle désigne une version réduite.",
-          "Elle peut représenter quelque chose de plus grand.",
-          "Le mot commence par MINI."
-        ],
-        "success": "La miniature est trouvée."
-      },
-      {
-        "type": "identity",
-        "title": "Épreuve II — Celui qui habite l’univers",
-        "q": "<p>Dans une histoire, il peut avoir une apparence, un caractère, un rôle.</p><p>Il n’est pas forcément réel, mais on peut s’y attacher.</p><p><strong>Quel mot désigne cet être d’histoire ?</strong></p>",
-        "answers": [
-          "personnage"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "On peut le trouver dans des films, livres ou univers.",
-          "Il peut être représenté en petit.",
-          "Le mot commence par P."
-        ],
-        "success": "Oui : un personnage."
-      },
-      {
-        "type": "collection",
-        "title": "Épreuve III — Quand un seul ne suffit pas",
-        "q": "<p>Un objet peut exister seul.</p><p>Mais parfois, ce qui devient amusant, c’est d’en avoir plusieurs qui se répondent.</p><p>Chaque nouveau morceau complète l’ensemble.</p><p><strong>Quel mot désigne cet ensemble ?</strong></p>",
-        "answers": [
-          "collection"
-        ],
-        "hints": [
-          "La réponse parle de plusieurs objets.",
-          "Elle grandit avec le temps.",
-          "Chaque élément peut être différent.",
-          "Le mot commence par C."
-        ],
-        "success": "Oui : une collection."
-      },
-      {
-        "type": "theme",
-        "title": "Épreuve IV — Le monde autour",
-        "q": "<p>Sommeil, yoga, animaux, personnages, couleurs…</p><p>Ce mot désigne l’idée commune qui rassemble plusieurs éléments.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "theme",
-          "thème"
-        ],
-        "hints": [
-          "Ce n’est pas un objet.",
-          "Il rassemble plusieurs éléments sous une même idée.",
-          "Il peut changer d’une série à l’autre.",
-          "Le mot commence par TH."
-        ],
-        "success": "Oui : le thème."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Les petits habitants",
-        "q": "<p>Tu as trouvé miniature, personnage, collection et thème.</p><p>Cette porte cache de petits objets qui représentent des univers ou des personnages.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "figurines",
-          "figurine"
-        ],
-        "hints": [
-          "La réponse désigne de petits objets.",
-          "Ils peuvent former une collection.",
-          "Ils représentent souvent des personnages.",
-          "Le mot commence par F."
-        ],
-        "success": "Tu as trouvé le Petit Monde."
-      }
-    ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son univers.</p></div>",
-    "memory": "Le Petit Monde — de petites figurines choisies pour toi.",
-    "theme": "monde"
-  },
-  {
-    "id": 11,
-    "code": "JARDIN-SECRET",
-    "title": "Le Jardin Secret",
-    "gift": "Cadeau intime",
-    "teaser": "Une porte plus discrète, pensée autour de confiance, pudeur et complicité.",
-    "intro": "<p>Cette porte reste élégante. Elle ne cherche pas à tout dire trop vite : elle avance par confiance.</p>",
-    "riddles": [
-      {
-        "type": "trust",
-        "title": "Épreuve I — La condition",
-        "q": "<p>Sans moi, cette porte n’aurait pas sa place.</p><p>Je ne suis pas un objet.</p><p>Je permets de recevoir une surprise sans malaise, parce qu’elle vient de quelqu’un en qui tu peux croire.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "confiance"
-        ],
-        "hints": [
-          "La réponse n’est pas matérielle.",
-          "Elle se construit avec le temps.",
-          "Elle rend possible les surprises plus personnelles.",
-          "Le mot commence par CONF."
-        ],
-        "success": "Oui : la confiance."
-      },
-      {
-        "type": "boundary",
-        "title": "Épreuve II — Ce qui t’appartient",
-        "q": "<p>Tout ne se partage pas avec tout le monde.</p><p>Certains espaces, certaines pensées, certains moments restent à toi.</p><p>Ce mot désigne ce qui est personnel et protégé.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "intimite",
-          "intimité"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle parle de quelque chose de personnel.",
-          "Elle demande du respect.",
-          "Le mot commence par INT."
-        ],
-        "success": "Oui : l’intimité."
-      },
-      {
-        "type": "discretion",
-        "title": "Épreuve III — Le voile",
-        "q": "<p>Ce mot ne cache pas par honte.</p><p>Il cache parce que certaines choses gagnent à rester délicates.</p><p>Il évite d’être trop direct, trop visible, trop brutal.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "pudeur"
-        ],
-        "hints": [
-          "La réponse est liée à la délicatesse.",
-          "Elle protège ce qui est intime.",
-          "Elle évite d’en dire trop.",
-          "Le mot commence par P."
-        ],
-        "success": "Oui : la pudeur."
-      },
-      {
-        "type": "complicity",
-        "title": "Épreuve IV — À deux seulement",
-        "q": "<p>Ce mot existe quand un geste ou une blague n’a pas besoin d’être expliqué aux autres.</p><p>Il appartient à deux personnes qui se comprennent.</p><p>Il rend certaines choses plus simples, parce qu’il y a déjà un lien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "complicite",
-          "complicité"
-        ],
-        "hints": [
-          "Ce mot parle d’un lien.",
-          "Il peut exister dans un couple.",
-          "Il permet de se comprendre avec peu de mots.",
-          "Le mot commence par COMP."
-        ],
-        "success": "Oui : la complicité."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Le cadeau discret",
-        "q": "<p>Tu as trouvé confiance, intimité, pudeur et complicité.</p><p>Cette porte cache un cadeau plus personnel que les autres.</p><p>Il n’est pas fait pour être expliqué à tout le monde.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "cadeauintime",
-          "cadeau intime",
-          "sextoy",
-          "jouet intime"
-        ],
-        "hints": [
-          "La réponse n’est pas un cadeau public.",
-          "Il appartient au domaine intime.",
-          "Il demande confiance et pudeur.",
-          "On peut l’appeler un cadeau intime."
-        ],
-        "success": "Tu as trouvé le Jardin Secret."
-      }
-    ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau discret, pensé avec confiance et respect, seulement pour toi.</p></div>",
-    "memory": "Le Jardin Secret — une porte intime, pensée avec respect.",
-    "theme": "jardin"
   },
   {
     "id": 12,
@@ -1623,6 +1476,28 @@ function renderAnswerInput(ticket, r, index){
     return `<div class="memory-grid" id="memory-${index}">${cards.map(c=>`<button class="memory-card" data-value="${c}" onclick="flipMemory(${index}, this)"><span>❓</span></button>`).join('')}</div><input type="hidden" id="answer-${index}">`;
   }
 
+  if(r.type === "differences"){
+    const opts = (r.options || []).map(o => {
+      const safe = String(o).replace(/\'/g, "\\'");
+      return `<button class="difference-option" onclick="toggleDifference(${ticket.id}, ${index}, this, '${safe}')" data-value="${o}">${o}</button>`;
+    }).join('');
+    return `<div class="difference-options" id="differences-${index}">${opts}</div><input type="hidden" id="answer-${index}"><p class="difference-feedback" id="difference-feedback-${index}"></p>`;
+  }
+
+  if(r.type === "maze"){
+    const rows = r.maze || [];
+    const cells = rows.map((row, y) => row.split('').map((cell, x) => {
+      const cls = cell === '#' ? 'wall' : cell === 'S' ? 'start active' : cell === 'E' ? 'end' : 'path';
+      const label = cell === 'S' ? 'Départ' : cell === 'E' ? 'Sortie' : cell === '#' ? '' : '·';
+      return `<button class="maze-cell ${cls}" onclick="stepMaze(${ticket.id}, ${index}, ${x}, ${y})" data-x="${x}" data-y="${y}" ${cell === '#' ? 'disabled' : ''}>${label}</button>`;
+    }).join('')).join('');
+    return `<div class="maze-board" id="maze-${index}" style="--maze-size:${rows[0]?.length || 5}">${cells}</div><input type="hidden" id="answer-${index}"><p class="maze-feedback" id="maze-feedback-${index}">Départ sélectionné.</p>`;
+  }
+
+  if(r.type === "trap-cards"){
+    const cards = [...(r.cards || []).map(text => ({ text, trap:false })), { text: r.trap || 'Piège', trap:true }].sort(() => Math.random() - 0.5);
+    return `<div class="trap-card-grid" id="trap-cards-${index}">${cards.map(card => `<button class="trap-card" onclick="flipTrapCard(${ticket.id}, ${index}, this, ${card.trap})" data-card="${card.text}"><span>?</span></button>`).join('')}</div><input type="hidden" id="answer-${index}"><p class="trap-feedback" id="trap-feedback-${index}">0 / 8 cartes sûres.</p>`;
+  }
   if(r.type === "monuments"){
     return `
       <div class="monument-grid" id="monuments-${index}">
@@ -1685,6 +1560,9 @@ function getSubmittedAnswer(riddle, index){
     return document.getElementById(`answer-${index}`)?.value || '';
   }
   if(riddle.type === "memory"){
+    return document.getElementById(`answer-${index}`)?.value || '';
+  }
+  if(["differences", "maze", "trap-cards"].includes(riddle.type)){
     return document.getElementById(`answer-${index}`)?.value || '';
   }
   if(riddle.type === "timeline"){
@@ -1752,6 +1630,71 @@ window.revealHint = function(ticketId, index) {
   renderRoom(ticket);
 };
 
+window.toggleDifference = function(ticketId, index, btn, value){
+  const ticket = tickets.find(t => t.id === ticketId);
+  const riddle = ticket?.riddles?.[index];
+  if(!riddle) return;
+  const wrap = document.getElementById(`differences-${index}`);
+  const feedback = document.getElementById(`difference-feedback-${index}`);
+  btn.classList.toggle("selected");
+  const selected = [...wrap.querySelectorAll(".difference-option.selected")].map(b => b.dataset.value);
+  if(selected.length > 6){
+    btn.classList.remove("selected");
+    if(feedback) feedback.textContent = "Six éléments seulement.";
+    return;
+  }
+  const correct = riddle.correct || [];
+  const ok = selected.length === correct.length && correct.every(item => selected.includes(item));
+  if(feedback) feedback.textContent = `${selected.length} / ${correct.length} éléments sélectionnés`;
+  if(ok){
+    document.getElementById(`answer-${index}`).value = "VALID";
+    checkAnswer(ticketId, index);
+  }
+};
+
+window.stepMaze = function(ticketId, index, x, y){
+  const board = document.getElementById(`maze-${index}`);
+  const feedback = document.getElementById(`maze-feedback-${index}`);
+  const active = board.querySelector(".maze-cell.active");
+  const ax = Number(active?.dataset.x || 0);
+  const ay = Number(active?.dataset.y || 0);
+  const next = board.querySelector(`.maze-cell[data-x="${x}"][data-y="${y}"]`);
+  if(!next || next.classList.contains("wall")) return;
+  const near = Math.abs(ax - x) + Math.abs(ay - y) === 1;
+  if(!near){
+    if(feedback) feedback.textContent = "Avance case par case.";
+    return;
+  }
+  active?.classList.remove("active");
+  next.classList.add("active", "visited");
+  if(next.classList.contains("end")){
+    document.getElementById(`answer-${index}`).value = "VALID";
+    checkAnswer(ticketId, index);
+  } else if(feedback) {
+    feedback.textContent = "Continue.";
+  }
+};
+
+window.flipTrapCard = function(ticketId, index, btn, isTrap){
+  const ticket = tickets.find(t => t.id === ticketId);
+  const board = document.getElementById(`trap-cards-${index}`);
+  const feedback = document.getElementById(`trap-feedback-${index}`);
+  if(btn.classList.contains("flipped")) return;
+  if(isTrap){
+    btn.classList.add("trap-hit");
+    if(feedback) feedback.textContent = "Mauvaise carte. Tout se mélange...";
+    setTimeout(() => renderRoom(ticket), 650);
+    return;
+  }
+  btn.classList.add("flipped");
+  btn.innerHTML = `<span>${btn.dataset.card}</span>`;
+  const count = board.querySelectorAll(".trap-card.flipped").length;
+  if(feedback) feedback.textContent = `${count} / 8 cartes sûres.`;
+  if(count >= 8){
+    document.getElementById(`answer-${index}`).value = "VALID";
+    checkAnswer(ticketId, index);
+  }
+};
 window.checkAnswer = function(ticketId, index) {
   const ticket = tickets.find(t => t.id === ticketId);
   const input = document.getElementById(`answer-${index}`);
@@ -1762,6 +1705,7 @@ window.checkAnswer = function(ticketId, index) {
   const currentRiddle = ticket.riddles[index];
   if(currentRiddle.type==="breakfast" && submittedAnswer==="VALID"){ validAnswers.push("VALID"); }
   if(currentRiddle.type==="memory" && submittedAnswer==="MEMORY_DONE"){ validAnswers.push("MEMORY_DONE"); }
+  if(["differences", "maze", "trap-cards"].includes(currentRiddle.type) && submittedAnswer==="VALID"){ validAnswers.push("VALID"); }
 
   if (validAnswers.some(answer => normalize(submittedAnswer) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
