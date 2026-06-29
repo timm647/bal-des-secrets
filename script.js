@@ -627,25 +627,6 @@ const tickets = [
 
       "success": "Exact. Certains messages se cachent à la vue de tous."
     },
-
-    {
-      "type": "text",
-      "title": "Épreuve II — Les nuances",
-      "q": "<p><strong>Toutes les couleurs racontent une histoire... mais une seule révèle un mot.</strong></p><p>Le texte coloré sera ajouté ici avec les différentes nuances de rouge.</p><p>Une seule nuance permettra de lire le mot caché.</p>",
-
-      "answers": [
-        "passion"
-      ],
-
-      "hints": [
-        "N'observe pas seulement les lettres.",
-        "Les couleurs ont de l'importance.",
-        "Une seule nuance forme un vrai mot.",
-        "Le mot est un sentiment."
-      ],
-
-      "success": "Tu as trouvé le mot caché."
-    },
       {
   "type": "text",
   "title": "Épreuve II — Les nuances",
