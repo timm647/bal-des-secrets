@@ -664,20 +664,22 @@ const tickets = [
   "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
       {
-        "type": "trust",
-        "title": "Épreuve IV — Ce qui ne se montre pas à tout le monde",
-        "q": "<p>Cette porte ne parle pas seulement d’apparence.</p><p>Elle parle d’un espace où l’on peut être soi, sans regard extérieur.</p><p>Un espace de confiance, de proximité, et de pudeur choisie.</p><p><strong>Quel mot résume cela ?</strong></p>",
-        "answers": [
-          "intimite",
-          "intimité"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle demande de la confiance.",
-          "Elle ne se partage pas avec tout le monde.",
-          "Le mot commence par INT."
-        ],
-        "success": "Oui : l’intimité."
+  "type": "differences",
+  "title": "Épreuve IV — Les détails oubliés",
+  "q": "<p>Deux images semblent identiques… Pourtant, six détails ont changé.</p><p>Trouve les 6 différences.</p>",
+
+  "leftImage": "assets/salle6-gauche.webp",
+  "rightImage": "assets/salle6-droite.webp",
+
+  "target": 6,
+
+  "differences": [
+    "fleur",
+    "culotte",
+    "parfum",
+    "tableau",
+    "bijou",
+    "boite
       },
       {
         "type": "final",
