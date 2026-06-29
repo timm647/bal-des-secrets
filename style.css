@@ -2031,11 +2031,13 @@ nav,
     gap:8px;
 }
 
-/* Bonne nuance (PASSION) */
-.n1 { color:#B30000; }
+.nuance-grid span{
+    font-weight:600;
+    transition:0.2s;
+}
 
-/* Fausses nuances */
+.n1 { color:#B71C1C; }   /* PASSION */
 .n2 { color:#C62828; }
-.n3 { color:#D84343; }
-.n4 { color:#E35D5D; }
-.n5 { color:#F07A7A; }
+.n3 { color:#D32F2F; }
+.n4 { color:#E53935; }
+.n5 { color:#EF5350; }
