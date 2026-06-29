@@ -2014,8 +2014,25 @@ nav,
  .mirror-clue{font-size:1.4rem;}
  .rebus-img{background:#fff;border-radius:12px;padding:8px;max-width:90px;}
 }
+.nuance-grid{
+    display:grid;
+    gap:6px;
+    margin-top:20px;
+    font-size:26px;
+    text-align:center;
+    line-height:1.8;
+    font-family:monospace;
+    user-select:none;
+}
+
+.nuance-grid div{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+}
+
 .n1{color:#bf2b2b;}
-.n2{color:#c02c2c;}
-.n3{color:#be2d2d;}
-.n4{color:#c12a2a;}
-.n5{color:#bd2c2c;}
+.n2{color:#c12d2d;}
+.n3{color:#be2c2c;}
+.n4{color:#c02b2b;}
+.n5{color:#bd2d2d;}
