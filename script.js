@@ -664,23 +664,23 @@ const tickets = [
   "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
       {
-  "type": "differences",
+  "type": "text",
   "title": "Épreuve IV — Les détails oubliés",
-  "q": "<p>Deux images semblent identiques… Pourtant, six détails ont changé.</p><p>Trouve les 6 différences.</p>",
+  "q": "<p><strong>Deux images semblent parfaitement identiques...</strong></p><p>Pourtant, six détails ont été modifiés.</p><p><strong>Trouve les 6 différences pour poursuivre.</strong></p><div class='difference-board'><img src='assets/salle6-gauche.jpg' class='difference-image' alt='Image 1'><img src='assets/salle6-droite.jpg' class='difference-image' alt='Image 2'></div><p><strong>Différences à trouver :</strong></p><ul class='difference-list'><li>☐ Fleur</li><li>☐ Culotte</li><li>☐ Parfum</li><li>☐ Tableau</li><li>☐ Bijou</li><li>☐ Boîte</li></ul><p><em>Lorsque tu penses avoir trouvé les six différences, entre le mot <strong>observation</strong> pour valider cette épreuve.</em></p>",
 
-  "leftImage": "assets/salle6-gauche.webp",
-  "rightImage": "assets/salle6-droite.webp",
+  "answers": [
+    "observation"
+  ],
 
-  "target": 6,
+  "hints": [
+    "Observe les deux images côte à côte.",
+    "Ne te concentre pas uniquement sur les objets principaux.",
+    "Une différence est située près du parfum.",
+    "Il y a exactement six différences."
+  ],
 
-  "differences": [
-    "fleur",
-    "culotte",
-    "parfum",
-    "tableau",
-    "bijou",
-    "boite
-      },
+  "success": "Excellent ! Tu n'as laissé passer aucun détail."
+},
       {
         "type": "final",
         "title": "Épreuve V — La surprise de nuit",
