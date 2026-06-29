@@ -646,19 +646,22 @@ const tickets = [
   "success": "Bravo ! Tu as découvert le mot PASSION."
 },
       {
-        "type": "deduction",
-        "title": "Épreuve III — Ce qui met à l’aise",
-        "q": "<p>Un bel objet peut être inconfortable.</p><p>Un objet simple peut devenir précieux s’il te laisse respirer, bouger, dormir, te sentir bien.</p><p>Ce mot désigne cette sensation d’être à l’aise.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "confort"
-        ],
-        "hints": [
-          "Ce n’est pas le style.",
-          "Il peut compter autant que l’apparence.",
-          "On le cherche souvent pour dormir.",
-          "Le mot commence par C."
-        ],
-        "success": "Oui : le confort."
+  "type": "text",
+  "title": "Épreuve III — Le code secret",
+  "q": "<p>Chaque lettre possède une valeur dans l'alphabet.</p><p>A = 1, B = 2, C = 3... jusqu'à Z = 26.</p><br><p><strong>3 - 15 - 14 - 6 - 9 - 1 - 14 - 3 - 5</strong></p><br><p>Quel mot obtiens-tu ?</p>",
+
+  "answers": [
+    "confiance"
+  ],
+
+  "hints": [
+    "A vaut 1.",
+    "Continue l'alphabet jusqu'à Z = 26.",
+    "Chaque nombre correspond à une lettre.",
+    "Le mot désigne ce qui est indispensable dans une relation."
+  ],
+
+  "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
       {
         "type": "trust",
