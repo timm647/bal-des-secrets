@@ -630,17 +630,17 @@ const tickets = [
       {
   "type": "text",
   "title": "Épreuve II — Les nuances",
-  "q": "<p><strong>Toutes les couleurs racontent une histoire... mais une seule révèle un véritable mot.</strong></p><p>Observe attentivement les nuances présentes dans le texte.</p><p>Une seule famille de couleurs permet de former un mot français.</p><br><div class='nuance-text'><span class='n1'>P</span>e<span class='n3'>T</span>r<span class='n2'>L</span>f<span class='n1'>A</span>o<span class='n4'>Q</span>i<span class='n5'>V</span>l<span class='n2'>M</span>e<span class='n1'>S</span>u<span class='n3'>R</span>r<span class='n5'>K</span>s<span class='n4'>X</span>e<span class='n1'>S</span>o<span class='n2'>B</span>n<span class='n3'>Y</span>t<span class='n1'>I</span>d<span class='n5'>J</span>a<span class='n4'>N</span>n<span class='n2'>F</span>s<span class='n1'>O</span>u<span class='n3'>C</span>n<span class='n5'>H</span>e<span class='n4'>D</span>s<span class='n1'>N</span>.</div>",
+  "q": "<p><strong>Parfois, les émotions apparaissent sans prévenir.</strong></p><p>Observe attentivement le texte ci-dessous. Toutes les lettres semblent rouges, mais plusieurs nuances sont cachées. Une seule nuance permet de découvrir un véritable mot.</p><br><div class='nuance-text'>Par<span class='n3'>f</span>ois les é<span class='n2'>m</span>otions naissent <span class='n1'>P</span>arfois lorsqu'un regard croise le tien.<br>Il suffit quelquefois d'un instant pour que tout change, même sans un mot.<br>Certains souvenirs restent gravés longtemps tandis que d'autres disparaissent.<br>Les gestes sincères valent souvent davantage que les plus longues paroles.<br>Chaque instant peut cacher une émotion inattendue <span class='n1'>A</span>u détour d'un sourire.<br>Les histoires les plus fortes ne commencent pas toujours comme on l'imagine.<br>Le cœur comprend parfois ce que les mots n'expliquent pas <span class='n1'>S</span>ans bruit.<br>Les silences peuvent être plus précieux que de longues conversations <span class='n1'>S</span>ouvent.<br>La confiance grandit avec le temps et rend chaque moment plus précieux <span class='n1'>I</span>ci.<br>Certains liens deviennent plus forts à mesure que les jours passent <span class='n1'>O</span>ui.<br>Et parfois il suffit simplement d'ouvrir les yeux pour comprendre <span class='n1'>N</span>aturellement.</div>",
 
   "answers": [
     "passion"
   ],
 
   "hints": [
-    "Les lettres importantes n'ont pas toutes la même couleur.",
+    "Toutes les lettres ne possèdent pas exactement la même nuance.",
     "Choisis une nuance et lis uniquement ses lettres.",
-    "Les autres nuances forment des suites sans signification.",
-    "Le mot décrit un sentiment."
+    "Les autres nuances ne forment aucun mot.",
+    "Le mot recherché décrit un sentiment."
   ],
 
   "success": "Exact. Une seule nuance révélait le mot PASSION."
