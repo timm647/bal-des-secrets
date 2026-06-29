@@ -2031,8 +2031,11 @@ nav,
     gap:8px;
 }
 
-.n1{color:#bf2b2b;}
-.n2{color:#c12d2d;}
-.n3{color:#be2c2c;}
-.n4{color:#c02b2b;}
-.n5{color:#bd2d2d;}
+/* Bonne nuance (PASSION) */
+.n1 { color:#B30000; }
+
+/* Fausses nuances */
+.n2 { color:#C62828; }
+.n3 { color:#D84343; }
+.n4 { color:#E35D5D; }
+.n5 { color:#F07A7A; }
