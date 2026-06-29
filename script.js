@@ -648,7 +648,7 @@ const tickets = [
       {
   "type": "text",
   "title": "Épreuve III — Le code secret",
-  "q": "<p>Chaque lettre possède une valeur dans l'alphabet.</p><p>A = 1, B = 2, C = 3... jusqu'à Z = 26.</p><br><p><strong>3 - 15 - 14 - 6 - 9 - 1 - 14 - 3 - 5</strong></p><br><p>Quel mot obtiens-tu ?</p>",
+  "q": "<p>Chaque lettre possède une valeur dans l'alphabet.<br><p><strong>3 - 15 - 14 - 6 - 9 - 1 - 14 - 3 - 5</strong></p><br><p>Quel mot obtiens-tu ?</p>",
 
   "answers": [
     "confiance"
