@@ -663,20 +663,35 @@ const tickets = [
 
   "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
-     {
-  "type": "text",
+    {
+  "type": "differences",
   "title": "Épreuve IV — Les détails oubliés",
-  "q": "<p>Test</p>",
+
+  "q": "<p><strong>Deux images semblent identiques...</strong></p><p>Trouve les <strong>6 différences</strong> pour poursuivre.</p>",
+
+  "image1": "assets/salle6-gauche.png",
+  "image2": "assets/salle6-droite.png",
+
+  "differences": [
+    { "x": 11.5, "y": 16.5, "r": 5 },
+    { "x": 61.5, "y": 11.5, "r": 5 },
+    { "x": 62.5, "y": 66.0, "r": 5 },
+    { "x": 31.5, "y": 38.5, "r": 4 },
+    { "x": 92.0, "y": 77.5, "r": 4 },
+    { "x": 84.5, "y": 93.5, "r": 4 }
+  ],
 
   "answers": [
-    "test"
+    "VALID"
   ],
 
   "hints": [
-    "Test"
+    "Observe les deux images attentivement.",
+    "Il y a exactement six différences.",
+    "Certaines sont très discrètes."
   ],
 
-  "success": "Test réussi."
+  "success": "Toutes les différences ont été trouvées."
 },
       {
         "type": "final",
@@ -1646,6 +1661,49 @@ function renderAnswerInput(ticket, r, index){
       <div class="answer-row"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>
     `;
   }
+
+  if(r.type==="differences"){
+
+    return `
+        <div class="difference-game">
+
+            <div class="difference-counter">
+                <span id="diff-count-${index}">0</span> / ${r.differences.length}
+            </div>
+
+            <div class="difference-board">
+
+                <div class="difference-image-container">
+
+                    <img
+                        src="${r.image1}"
+                        class="difference-image"
+                        draggable="false">
+
+                </div>
+
+                <div
+                    class="difference-image-container"
+                    id="difference-container-${index}">
+
+                    <img
+                        src="${r.image2}"
+                        class="difference-image"
+                        draggable="false">
+
+                </div>
+
+            </div>
+
+            <input
+                id="answer-${index}"
+                type="hidden"
+                value="">
+
+        </div>
+    `;
+
+}
 
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
