@@ -663,27 +663,18 @@ const tickets = [
 
   "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
-   {
+ {
   "type": "text",
   "title": "Épreuve IV — Les détails oubliés",
-  "q": "<p><strong>Deux images semblent parfaitement identiques...</strong></p>
-        <p>Pourtant, six détails ont été modifiés.</p>
-        <div class='difference-board'>
-          <img src='assets/salle6-gauche.png' class='difference-image'>
-          <img src='assets/salle6-droite.png' class='difference-image'>
-        </div>
-        <p><strong>Trouve les 6 différences puis entre le mot <em>observation</em>.</strong></p>",
-
+  "q": "<p><strong>Deux images semblent parfaitement identiques...</strong></p><p>Pourtant, six détails ont été modifiés.</p><div class='difference-board'><img src='assets/salle6-gauche.png' class='difference-image' alt='Image gauche'><img src='assets/salle6-droite.png' class='difference-image' alt='Image droite'></div><p><strong>Trouve les 6 différences puis entre le mot <em>observation</em>.</strong></p>",
   "answers": [
     "observation"
   ],
-
   "hints": [
     "Observe attentivement les deux images.",
     "Il y a exactement six différences.",
     "Quand tu les as toutes trouvées, entre le mot demandé."
   ],
-
   "success": "Excellent ! Tu n'as laissé passer aucun détail."
 },
       {
