@@ -663,35 +663,28 @@ const tickets = [
 
   "success": "Exact. Sans confiance, rien de durable ne peut se construire."
       },
-    {
-  "type": "differences",
+   {
+  "type": "text",
   "title": "Épreuve IV — Les détails oubliés",
-
-  "q": "<p><strong>Deux images semblent identiques...</strong></p><p>Trouve les <strong>6 différences</strong> pour poursuivre.</p>",
-
-  "image1": "assets/salle6-gauche.png",
-  "image2": "assets/salle6-droite.png",
-
-  "differences": [
-    { "x": 11.5, "y": 16.5, "r": 5 },
-    { "x": 61.5, "y": 11.5, "r": 5 },
-    { "x": 62.5, "y": 66.0, "r": 5 },
-    { "x": 31.5, "y": 38.5, "r": 4 },
-    { "x": 92.0, "y": 77.5, "r": 4 },
-    { "x": 84.5, "y": 93.5, "r": 4 }
-  ],
+  "q": "<p><strong>Deux images semblent parfaitement identiques...</strong></p>
+        <p>Pourtant, six détails ont été modifiés.</p>
+        <div class='difference-board'>
+          <img src='assets/salle6-gauche.png' class='difference-image'>
+          <img src='assets/salle6-droite.png' class='difference-image'>
+        </div>
+        <p><strong>Trouve les 6 différences puis entre le mot <em>observation</em>.</strong></p>",
 
   "answers": [
-    "VALID"
+    "observation"
   ],
 
   "hints": [
-    "Observe les deux images attentivement.",
+    "Observe attentivement les deux images.",
     "Il y a exactement six différences.",
-    "Certaines sont très discrètes."
+    "Quand tu les as toutes trouvées, entre le mot demandé."
   ],
 
-  "success": "Toutes les différences ont été trouvées."
+  "success": "Excellent ! Tu n'as laissé passer aucun détail."
 },
       {
         "type": "final",
