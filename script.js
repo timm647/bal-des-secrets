@@ -1826,14 +1826,15 @@ console.log("Réponse tapée :", submittedAnswer);
 console.log("Normalisée :", answer);
 
     const valid = [
-        "fleur",
-        "culotte",
-        "parfum",
-        "tableau",
-        "bijou",
-        "boite",
-        "boîte"
-    ];
+    "fleur",
+    "culotte",
+    "parfum",
+    "tableau",
+    "bijou",
+    "boite",
+    "boîte"
+].map(normalize);
+   console.log("Liste valide :", valid);
 
     if (!valid.includes(answer)) {
         showInlineMessage("❌ Ce n'est pas une différence.", "error");
