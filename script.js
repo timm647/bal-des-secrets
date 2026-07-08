@@ -795,59 +795,63 @@ const tickets = [
     "teaser": "Une porte gourmande, faite de petites envies choisies pour toi.",
     "intro": "<p>Cette porte ne parle pas d’un grand repas. Elle parle plutôt de petits plaisirs rassemblés.</p>",
     "riddles": [
+     {
+  "type": "text",
+  "title": "Épreuve I — Le buffet oublié",
+  "q": "<p>Un jour, nous sommes allés manger dans un restaurant à volonté.</p><p>Nous étions tellement pressés par notre séance de cinéma que nous n'avons presque pas profité du repas.</p><p><strong>Quel était le nom de ce restaurant ?</strong></p>",
+  "answers": [
+    "atlantis",
+    "restaurant atlantis"
+  ],
+  "hints": [
+    "C'était à Saint-Quentin.",
+    "C'était un restaurant à volonté.",
+    "Son nom évoque une cité légendaire engloutie.",
+    "Le nom commence par « A »."
+  ],
+  "success": "Exact ! Même si le repas a été écourté, ce moment reste un joli souvenir."
+},
       {
-        "type": "senses",
-        "title": "Épreuve I — Le premier sens",
-        "q": "<p>Je peux changer ton humeur avec presque rien.</p><p>Je peux être sucré, salé, doux, fort, réconfortant.</p><p>Je ne suis pas un aliment, mais ce que l’aliment laisse sur la langue.</p><p><strong>Que suis-je ?</strong></p>",
-        "answers": [
-          "gout",
-          "goût",
-          "saveur"
-        ],
-        "hints": [
-          "Ce n’est pas un objet.",
-          "On le découvre en mangeant.",
-          "Il peut être sucré ou salé.",
-          "On peut dire “goût” ou “saveur”."
-        ],
-        "success": "Le goût est trouvé."
-      },
-      {
-        "type": "personal",
-        "title": "Épreuve II — Le plat repère",
-        "q": "<p>Un indice personnel se cache dans cette porte.</p><p>Il ne donne pas le cadeau final, mais il rappelle une envie que tu aimes bien.</p><p>Ce plat mélange des pâtes, une sauce crémeuse et une envie simple.</p><p><strong>Quel plat est-ce ?</strong></p>",
-        "answers": [
-          "patescarbo",
-          "pâtescarbo",
-          "pates carbonara",
-          "pâtes carbonara",
-          "carbonara"
-        ],
-        "hints": [
-          "C’est un plat.",
-          "Il contient des pâtes.",
-          "Son nom est souvent raccourci.",
-          "Tu as déjà dit aimer les pâtes carbo."
-        ],
-        "success": "Oui : les pâtes carbo."
-      },
-      {
-        "type": "sorting",
-        "title": "Épreuve III — Rassembler sans cuisiner",
-        "q": "<p>Ce n’est pas un plat unique.</p><p>C’est plutôt une manière de réunir plusieurs petites choses au même endroit.</p><p>On peut y mettre du sucré, du salé, du simple, du réconfortant.</p><p><strong>Quel mot désigne ce rassemblement ?</strong></p>",
-        "answers": [
-          "assortiment",
-          "selection",
-          "sélection"
-        ],
-        "hints": [
-          "La réponse désigne plusieurs choses ensemble.",
-          "Ce n’est pas forcément cuisiné.",
-          "On y choisit ce qui va bien ensemble.",
-          "On peut dire “sélection”."
-        ],
-        "success": "Oui : une sélection."
-      },
+  "type": "text",
+  "title": "Épreuve II — La recette incomplète",
+  "q": "<p><strong>Notre recette préférée a perdu un ingrédient indispensable...</strong></p><p>🍝 Pâtes</p><p>🥓 Lardons</p><p>🥚 Œufs</p><p>❓ ??????</p><p><strong>Quel ingrédient manque ?</strong></p>",
+  "answers": [
+    "parmesan",
+    "parmigiano"
+  ],
+  "hints": [
+    "C'est un fromage.",
+    "Il est râpé sur les pâtes.",
+    "Son nom commence par « P ».",
+    "Sans lui, les carbonara ne sont pas les mêmes."
+  ],
+  "success": "Exact ! Une bonne recette ne serait jamais complète sans cet ingrédient."
+},
+     {
+  "type": "restaurant",
+  "title": "Épreuve II — Notre restaurant préféré",
+  "q": "<p><strong>Parmi ces établissements, lequel avons-nous fréquenté le plus souvent ensemble ?</strong></p><p>Choisis une réponse puis valide.</p>",
+
+  "answers": [
+    "McDonald's"
+  ],
+
+  "options": [
+    "McDonald's",
+    "Burger King",
+    "KFC",
+    "Restaurant chinois"
+  ],
+
+  "hints": [
+    "Ce n'est pas un buffet à volonté.",
+    "Nous y sommes allés plusieurs fois.",
+    "Son logo contient un grand M jaune.",
+    "On l'appelle souvent « McDo »."
+  ],
+
+  "success": "Exact ! C'est l'un des endroits où nous avons partagé plusieurs repas."
+},
       {
         "type": "real",
         "title": "Épreuve IV — Dans le vrai monde",
