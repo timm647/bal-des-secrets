@@ -737,21 +737,21 @@ const tickets = [
         ],
         "success": "Oui : l’auteur."
       },
-      {
-        "type": "sequence",
-        "title": "Épreuve III — Du plus grand au plus petit",
-        "q": "<p>Remets cette idée dans le bon sens :</p><div class=\"logic-grid\"><span>histoire</span><span>chapitre</span><span>page</span><span>ligne</span></div><p>Le mot cherché est l’étape qui se lit d’un seul regard, mais qui appartient à une page.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "ligne"
-        ],
-        "hints": [
-          "On descend vers quelque chose de plus petit.",
-          "Ce n’est pas toute la page.",
-          "C’est plus petit qu’un paragraphe.",
-          "On lit parfois entre elles."
-        ],
-        "success": "Oui : une ligne."
-      },
+     {
+  "type": "text",
+  "title": "Épreuve II — Les lettres mélangées",
+  "q": "<p>Les lettres d'un mot important se sont mélangées.</p><p><strong>T G R I U N E</strong></p><p>Remets-les dans le bon ordre.</p>",
+  "answers": [
+    "intrigue"
+  ],
+  "hints": [
+    "Ce mot est lié aux livres.",
+    "Il désigne le déroulement d'une histoire.",
+    "Sans elle, un roman serait bien moins captivant.",
+    "Le mot commence par « IN »."
+  ],
+  "success": "Exact. Une bonne intrigue donne envie de tourner les pages."
+},
       {
         "type": "choice",
         "title": "Épreuve IV — Ce qui t’appartient",
