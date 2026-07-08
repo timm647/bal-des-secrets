@@ -829,7 +829,7 @@ const tickets = [
 },
      {
   "type": "restaurant",
-  "title": "Épreuve II — Notre restaurant préféré",
+  "title": "Épreuve III — Notre restaurant préféré",
   "q": "<p><strong>Parmi ces établissements, lequel avons-nous fréquenté le plus souvent ensemble ?</strong></p><p>Choisis une réponse puis valide.</p>",
 
   "answers": [
@@ -1687,6 +1687,27 @@ function renderAnswerInput(ticket, r, index){
         </div>
     `;
 
+}
+  
+  if(r.type === "restaurant"){
+    return `
+        <div class="restaurant-grid" id="restaurant-${index}">
+            ${r.options.map(option => `
+                <button class="restaurant-choice"
+                        onclick="chooseRestaurant(${index}, this, '${option}')">
+                    ${option}
+                </button>
+            `).join('')}
+        </div>
+
+        <input type="hidden" id="answer-${index}">
+
+        <div class="answer-row">
+            <button onclick="checkAnswer(${ticket.id}, ${index})">
+                Valider
+            </button>
+        </div>
+    `;
 }
 
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
