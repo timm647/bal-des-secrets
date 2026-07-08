@@ -668,8 +668,8 @@ const tickets = [
   "title": "Épreuve IV — Les détails oubliés",
   "q": "<p><strong>Deux images semblent parfaitement identiques...</strong></p><p>Pourtant, six détails ont été modifiés.</p><div class='difference-board'><img src='assets/salle6-gauche.png' class='difference-image' alt='Image gauche'><img src='assets/salle6-droite.png' class='difference-image' alt='Image droite'></div><p><strong>Trouve les 6 différences puis entre le mot <em>observation</em>.</strong></p>",
   "answers": [
-    "observation"
-  ],
+  "VALID"
+],
   "hints": [
     "Observe attentivement les deux images.",
     "Il y a exactement six différences.",
@@ -1810,10 +1810,62 @@ window.checkAnswer = function(ticketId, index) {
   const state = loadState();
   state.answers[ticketId] = state.answers[ticketId] || [];
   const validAnswers = ticket.riddles[index].answers || [];
-  const submittedAnswer = getSubmittedAnswer(ticket.riddles[index], index);
+  let submittedAnswer = getSubmittedAnswer(ticket.riddles[index], index);
   const currentRiddle = ticket.riddles[index];
+  if (
+    currentRiddle.title === "Épreuve IV — Les détails oubliés" ||
+    currentRiddle.answers?.includes("fleur")
+) {
+
+    state.foundDifferences = state.foundDifferences || {};
+    const key = ticketId + "-" + index;
+
+    if (!state.foundDifferences[key]) {
+        state.foundDifferences[key] = [];
+    }
+
+    const answer = normalize(submittedAnswer);
+
+    const valid = [
+        "fleur",
+        "culotte",
+        "parfum",
+        "tableau",
+        "bijou",
+        "boite",
+        "boîte"
+    ];
+
+    if (!valid.includes(answer)) {
+        showInlineMessage("❌ Ce n'est pas une différence.", "error");
+        return;
+    }
+
+    if (state.foundDifferences[key].includes(answer)) {
+        showInlineMessage("⚠️ Déjà trouvée.", "error");
+        return;
+    }
+
+    state.foundDifferences[key].push(answer);
+    saveState(state);
+
+    showInlineMessage(
+        `✅ ${state.foundDifferences[key].length}/6 différences trouvées`,
+        "success"
+    );
+
+    if (state.foundDifferences[key].length < 6) {
+        input.value = "";
+        return;
+    }
+
+    submittedAnswer = "VALID";
+}
   if(currentRiddle.type==="breakfast" && submittedAnswer==="VALID"){ validAnswers.push("VALID"); }
   if(currentRiddle.type==="memory" && submittedAnswer==="MEMORY_DONE"){ validAnswers.push("MEMORY_DONE"); }
+  if(currentRiddle.answers?.includes("fleur") && submittedAnswer==="VALID"){
+    validAnswers.push("VALID");
+}
 
   if (validAnswers.some(answer => normalize(submittedAnswer) === normalize(answer))) {
     const wasAlreadySolved = state.answers[ticketId].includes(index);
