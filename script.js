@@ -141,6 +141,14 @@ window.chooseMonument = function(index, btn, value){
   if(feedback) feedback.textContent = '';
 }
 
+window.chooseRestaurant = function(index, btn, value){
+  document.querySelectorAll(`#restaurant-${index} .restaurant-choice`).forEach(el=>el.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  const input = document.getElementById(`answer-${index}`);
+  if(input) input.value = value;
+}
+
 
 window.selectMonument = function(ticketId, index, value){
   const ticket = tickets.find(t => t.id === ticketId);
