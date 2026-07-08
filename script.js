@@ -682,11 +682,7 @@ const tickets = [
         "title": "Épreuve V — La surprise de nuit",
         "q": "<p>Tu as trouvé la nuit, la douceur, le confort et l’intimité.</p><p>Cette porte cache quelque chose à porter, pensé pour toi, pour les moments calmes ou plus précieux.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
         "answers": [
-          "pyjama",
           "lingerie",
-          "pyjama lingerie",
-          "pyjamaetlingerie",
-          "pyjama lingerie"
         ],
         "hints": [
           "C’est quelque chose à porter.",
@@ -697,7 +693,7 @@ const tickets = [
         "success": "Tu as trouvé Après Minuit."
       }
     ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait un pyjama / de la lingerie.</h3><p>Un cadeau pensé pour toi, entre confort, douceur et élégance.</p></div>",
+    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Après Minuit cachait de la lingerie.</h3><p>Un cadeau pensé pour toi, entre confort, douceur et élégance.</p></div>",
     "memory": "Après Minuit — une surprise à porter, pensée pour tes moments à toi.",
     "theme": "minuit"
   },
