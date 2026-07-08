@@ -1812,10 +1812,7 @@ window.checkAnswer = function(ticketId, index) {
   const validAnswers = ticket.riddles[index].answers || [];
   let submittedAnswer = getSubmittedAnswer(ticket.riddles[index], index);
   const currentRiddle = ticket.riddles[index];
-  if (
-    currentRiddle.title === "Épreuve IV — Les détails oubliés" ||
-    currentRiddle.answers?.includes("fleur")
-) {
+ if (ticket.id === 6 && index === 3) {
 
     state.foundDifferences = state.foundDifferences || {};
     const key = ticketId + "-" + index;
