@@ -1825,6 +1825,8 @@ window.checkAnswer = function(ticketId, index) {
     }
 
     const answer = normalize(submittedAnswer);
+console.log("Réponse tapée :", submittedAnswer);
+console.log("Normalisée :", answer);
 
     const valid = [
         "fleur",
