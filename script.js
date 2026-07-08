@@ -1828,11 +1828,8 @@ console.log("Normalisée :", answer);
     const valid = [
     "fleur",
     "culotte",
-    "parfum",
     "tableau",
-    "bijou",
-    "boite",
-    "boîte"
+    "bougie"
 ].map(normalize);
    console.log("Liste valide :", valid);
 
@@ -1854,7 +1851,7 @@ console.log("Normalisée :", answer);
         "success"
     );
 
-    if (state.foundDifferences[key].length < 6) {
+    if (state.foundDifferences[key].length < 4) {
         input.value = "";
         return;
     }
