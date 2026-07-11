@@ -186,6 +186,26 @@ window.startMemory = function(index){
 
 }
 
+window.zoomLevels = {};
+
+window.zoomOut = function(index){
+
+    if(!window.zoomLevels[index]){
+        window.zoomLevels[index]=4;
+    }
+
+    const img=document.getElementById(`zoom-image-${index}`);
+
+    if(window.zoomLevels[index]>1){
+
+        window.zoomLevels[index]-=0.75;
+
+        img.style.transform=`scale(${window.zoomLevels[index]})`;
+
+    }
+
+}
+
 const tickets = [
   {
     "id": 1,
