@@ -1028,26 +1028,28 @@ const tickets = [
 
   "success": "Exact ! Tu as reconnu la rose."
 },
-      {
-        "type": "final",
-        "title": "Épreuve V — Ce que tu porteras",
-        "q": "<p>Tu as trouvé le coton, la coupe, le style et la taille.</p><p>Cette porte cache quelque chose à porter, simple mais choisi pour toi.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "teeshirt",
-          "tee shirt",
-          "tshirt",
-          "t shirt",
-          "tee-shirts",
-          "t-shirts"
-        ],
-        "hints": [
-          "C’est un vêtement.",
-          "Il peut être en coton.",
-          "Il se choisit avec une taille.",
-          "Le mot commence souvent par T."
-        ],
-        "success": "Tu as trouvé le Fil Doré."
-      }
+     {
+  "type": "final",
+  "title": "Épreuve V — Le Fil Doré",
+
+  "q": "<p>Avant de découvrir ce cadeau, je t'ai demandé une seule chose.</p><p>Tu as fermé les yeux et tu m'as fait confiance.</p><p>Quelques instants plus tard, je t'ai demandé de les rouvrir.</p><p><strong>Qu'est-ce que je t'ai fait essayer ce jour-là ?</strong></p>",
+
+  "answers": [
+    "t-shirt",
+    "tshirt",
+    "tee shirt",
+    "tee-shirt"
+  ],
+
+  "hints": [
+    "Tu l'as porté.",
+    "Ce n'était ni un bijou ni un parfum.",
+    "Je t'ai demandé de fermer les yeux juste avant.",
+    "C'était un t-shirt."
+  ],
+
+  "success": "Exact ! Derrière cette porte se cache le Fil Doré."
+},
     ],
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Fil Doré cachait des tee-shirts.</h3><p>Des vêtements choisis pour toi, pour ton style et ton confort.</p></div>",
     "memory": "Le Fil Doré — des tee-shirts pensés pour toi.",
