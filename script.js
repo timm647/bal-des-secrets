@@ -1522,6 +1522,13 @@ function unlockTicket(ticket) {
   const alreadyUnlocked = state.unlocked.includes(ticket.id);
   const thisMonth = currentMonthKey();
 
+  const today = new Date();
+
+if (!alreadyUnlocked && today.getDate() !== 7) {
+  setMessage("Cette porte ne peut être ouverte que le 7 de chaque mois.", "error");
+  return;
+}
+
   if (!alreadyUnlocked && state.lastUnlockMonth === thisMonth) {
     setMessage(`Cette porte est encore scellée. Tu as déjà ouvert un ticket ce mois-ci. Prochain mystère dans environ ${daysUntilNextMonth()} jour(s).`, 'error');
     return;
