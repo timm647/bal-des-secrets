@@ -2088,3 +2088,13 @@ nav,
     margin:15px auto 0;
     line-height:1.8;
 }
+
+.riddle-image{
+    display:block;
+    width:min(100%, 650px);
+    height:auto;
+    margin:20px auto;
+    border-radius:18px;
+    border:1px solid rgba(217,180,95,.25);
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+}
