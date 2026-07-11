@@ -860,22 +860,15 @@ const tickets = [
 
   "success": "Exact ! C'est l'un des endroits où nous avons partagé plusieurs repas."
 },
-      {
-        "type": "real",
-        "title": "Épreuve IV — Dans le vrai monde",
-        "q": "<p>Cette porte pourra sortir du site.</p><p>Le jour venu, un indice pourra se cacher directement parmi ce qui se mange.</p><p>Si tu vois une étiquette étrange, un mot sous un paquet, ou un détail doré, ne l’ignore pas.</p><p><strong>Quel mot décrit cette recherche ?</strong></p>",
-        "answers": [
-          "fouille",
-          "recherche"
-        ],
-        "hints": [
-          "La réponse n’est pas un aliment.",
-          "C’est une action.",
-          "Elle consiste à regarder attentivement.",
-          "On peut fouiller un panier."
-        ],
-        "success": "Oui : il faudra peut-être fouiller."
-      },
+     "title": "Épreuve IV — Le rébus gourmand",
+"q": "<p>Résous ce rébus.</p><div class='rebus-board'><img src='assets/rebus-lemans.png'><img src='assets/rebus-g.png'></div><p>Quel mot obtiens-tu ?</p>",
+"hints": [
+  "La première image représente une ville française.",
+  "Prononce les deux images à voix haute.",
+  "La réponse est liée à la nourriture."
+],
+"success": "Exact !"
+},
       {
         "type": "final",
         "title": "Épreuve V — Les petites envies réunies",
