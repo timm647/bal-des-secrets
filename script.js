@@ -1013,7 +1013,7 @@ const tickets = [
 
   "q": "Clique sur « Dézoomer » pour révéler progressivement l'image. Trouve ce qu'elle représente avant la révélation complète.",
 
-  "image": "assets/rose.png",
+  "image": "assets/rose.jpg",
 
   "answers": [
     "rose"
