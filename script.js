@@ -927,7 +927,7 @@ const tickets = [
     "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
     "riddles": [
       {
-  "type": "memory-photo"
+  "type": "memory-photo",
   "title": "Épreuve I — Le souvenir éclair",
 
   "q": "Tu vas voir une image pendant 5 secondes. Observe-la attentivement et mémorise le plus de détails possible. Une question te sera ensuite posée.",
