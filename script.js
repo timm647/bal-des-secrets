@@ -1723,11 +1723,11 @@ function renderAnswerInput(ticket, r, index){
         <p>${r.q}</p>
 
         <div class="zoom-wrapper">
-            <img
-                id="zoom-image-${index}"
-                src="${r.image}"
-                class="zoom-image"
-                style="transform:scale(4);">
+           <img
+    id="zoom-image-${index}"
+    src="${r.image}"
+    class="zoom-image"
+    style="transform:scale(4); transform-origin:center center;">
         </div>
 
         <div class="answer-row">
