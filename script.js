@@ -1698,6 +1698,38 @@ function renderAnswerInput(ticket, r, index){
     return `<div class="memory-grid" id="memory-${index}">${cards.map(c=>`<button class="memory-card" data-value="${c}" onclick="flipMemory(${index}, this)"><span>❓</span></button>`).join('')}</div><input type="hidden" id="answer-${index}">`;
   }
 
+  if(r.type === "zoom"){
+    return `
+        <p>${r.q}</p>
+
+        <div class="zoom-wrapper">
+            <img
+                id="zoom-image-${index}"
+                src="${r.image}"
+                class="zoom-image"
+                style="transform:scale(4);">
+        </div>
+
+        <div class="answer-row">
+            <button type="button" onclick="zoomOut(${index})">
+                🔍 Dézoomer
+            </button>
+        </div>
+
+        <input
+            type="text"
+            id="answer-${index}"
+            placeholder="Ta réponse...">
+
+        <div class="answer-row">
+            <button type="button"
+                onclick="checkAnswer(${ticket.id}, ${index})">
+                Valider
+            </button>
+        </div>
+    `;
+}
+
   if(r.type === "memory-photo"){
     return `
         <div id="memory-intro-${index}">
