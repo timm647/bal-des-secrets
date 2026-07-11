@@ -950,20 +950,24 @@ const tickets = [
   "success": "Excellent ! Tu as une très bonne mémoire."
 },
       {
-        "type": "shape",
-        "title": "Épreuve II — Ce qui tombe juste",
-        "q": "<p>Deux vêtements peuvent être faits de la même matière.</p><p>Pourtant l’un peut aller parfaitement, l’autre non.</p><p>Ce mot parle de la manière dont quelque chose se pose sur toi.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "coupe"
-        ],
-        "hints": [
-          "Ce n’est pas la couleur.",
-          "Ce n’est pas la matière.",
-          "Cela change la forme portée.",
-          "On parle de la coupe d’un vêtement."
-        ],
-        "success": "Oui : la coupe."
-      },
+  "type": "classic",
+  "title": "Épreuve II — Au-delà des apparences",
+
+  "q": "<p>Les apparences sont parfois trompeuses.</p><p>Observe cette image attentivement.</p><p>Si tu n'y vois rien, éloigne-toi légèrement de ton écran ou plisse doucement les yeux.</p><img src='assets/illusion-confiance.png' class='riddle-image'><p><strong>Quel mot apparaît ?</strong></p>",
+
+  "answers": [
+    "bonheur"
+  ],
+
+  "hints": [
+    "Le mot n'apparaît pas immédiatement.",
+    "Recule légèrement ou plisse les yeux.",
+    "C'est un mot important dans notre histoire.",
+    "Il commence par C."
+  ],
+
+  "success": "Exact ! Certaines choses ne se révèlent qu'à ceux qui regardent autrement."
+},
       {
         "type": "choice",
         "title": "Épreuve III — L’accord",
