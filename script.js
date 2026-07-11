@@ -1055,104 +1055,111 @@ const tickets = [
     "memory": "Le Fil Doré — des tee-shirts pensés pour toi.",
     "theme": "fil"
   },
-  {
-  "type": "classic",
-  "title": "Épreuve I — L'anagramme miniature",
+ {
+  id: 10,
+  title: "Le Petit Monde",
+  lockedTitle: "Le Petit Monde",
+  intro: "Les plus grands univers tiennent parfois dans les plus petites choses.",
+  riddles: [
+    {
+      "type": "classic",
+      "title": "Épreuve I — L'anagramme miniature",
 
-  "q": "<p>Ces fragments ont été mélangés.</p><div class='fragment-box'>AT &nbsp;&nbsp; MI &nbsp;&nbsp; TURE &nbsp;&nbsp; NI</div><p><strong>Quel mot retrouves-tu ?</strong></p>",
+      "q": "<p>Ces fragments ont été mélangés.</p><div class='fragment-box'>AT &nbsp;&nbsp; MI &nbsp;&nbsp; TURE &nbsp;&nbsp; NI</div><p><strong>Quel mot retrouves-tu ?</strong></p>",
 
-  "answers": [
-    "miniature"
+      "answers": [
+        "miniature"
+      ],
+
+      "hints": [
+        "Le mot décrit quelque chose de très petit.",
+        "Il est composé de 9 lettres.",
+        "Il commence par « Mini... ».",
+        "La réponse est « Miniature »."
+      ],
+
+      "success": "Exact ! Les plus beaux univers tiennent parfois dans un tout petit format."
+    },
+    {
+      "type": "classic",
+      "title": "Épreuve II — La charade",
+
+      "q": "<p>Mon premier est le contraire de <strong>grand</strong>.</p><p>Mon second désigne notre planète.</p><p><strong>Quel est mon tout ?</strong></p>",
+
+      "answers": [
+        "petit monde"
+      ],
+
+      "hints": [
+        "Mon premier est « petit ».",
+        "Mon second est « monde ».",
+        "C'est également le nom de cette salle.",
+        "La réponse est « Petit Monde »."
+      ],
+
+      "success": "Exact !"
+    },
+    {
+      "type": "classic",
+      "title": "Épreuve III — L'expression",
+
+      "q": "<p>Complète cette expression :</p><p><strong>Tout est dans le ________.</strong></p>",
+
+      "answers": [
+        "détail",
+        "detail"
+      ],
+
+      "hints": [
+        "Ce mot commence par D.",
+        "Il désigne une petite chose importante.",
+        "On dit souvent cette expression.",
+        "La réponse est « détail »."
+      ],
+
+      "success": "Exact ! Les plus belles choses se cachent souvent dans les détails."
+    },
+    {
+      "type": "classic",
+      "title": "Épreuve IV — La devinette",
+
+      "q": "<p>Je ne grandis jamais.</p><p>Je traverse les années sans changer.</p><p>Je garde une place sur une étagère, mais aussi dans les souvenirs.</p><p><strong>Qui suis-je ?</strong></p>",
+
+      "answers": [
+        "souvenir",
+        "un souvenir"
+      ],
+
+      "hints": [
+        "Ce n'est pas un objet précis.",
+        "On peut le conserver toute une vie.",
+        "Il est souvent associé aux moments heureux.",
+        "La réponse est « souvenir »."
+      ],
+
+      "success": "Exact ! Certains souvenirs restent gravés pour toujours."
+    },
+    {
+      "type": "final",
+      "title": "Épreuve V — Le Petit Monde",
+
+      "q": "<p>Cette dernière porte cache un univers réduit à une toute petite échelle.</p><p>Ces objets décorent souvent une chambre ou une étagère.</p><p><strong>Quel cadeau se cache derrière cette porte ?</strong></p>",
+
+      "answers": [
+        "figurine",
+        "figurines"
+      ],
+
+      "hints": [
+        "Ce n'est pas un vêtement.",
+        "Certaines représentent des personnages.",
+        "On les expose souvent sur une étagère.",
+        "Ce sont des figurines."
+      ],
+
+      "success": "Tu as découvert le Petit Monde."
+    }
   ],
-
-  "hints": [
-    "Le mot décrit quelque chose de très petit.",
-    "Il est composé de 9 lettres.",
-    "Il commence par « Mini... ».",
-    "La réponse est « Miniature »."
-  ],
-
-  "success": "Exact ! Les plus beaux univers tiennent parfois dans un tout petit format."
-},
-{
-  "type": "classic",
-  "title": "Épreuve II — La charade",
-
-  "q": "<p>Mon premier est le contraire de <strong>grand</strong>.</p><p>Mon second désigne notre planète.</p><p><strong>Quel est mon tout ?</strong></p>",
-
-  "answers": [
-    "petit monde"
-  ],
-
-  "hints": [
-    "Mon premier est « petit ».",
-    "Mon second est « monde ».",
-    "C'est également le nom de cette salle.",
-    "La réponse est « Petit Monde »."
-  ],
-
-  "success": "Exact !"
-},
-{
-  "type": "classic",
-  "title": "Épreuve III — L'expression",
-
-  "q": "<p>Complète cette expression :</p><p><strong>Tout est dans le ________.</strong></p>",
-
-  "answers": [
-    "détail",
-    "detail"
-  ],
-
-  "hints": [
-    "Ce mot commence par D.",
-    "Il désigne une petite chose importante.",
-    "On dit souvent cette expression.",
-    "La réponse est « détail »."
-  ],
-
-  "success": "Exact ! Les plus belles choses se cachent souvent dans les détails."
-},
-{
-  "type": "classic",
-  "title": "Épreuve IV — La devinette",
-
-  "q": "<p>Je ne grandis jamais.</p><p>Je traverse les années sans changer.</p><p>Je garde une place sur une étagère, mais aussi dans les souvenirs.</p><p><strong>Qui suis-je ?</strong></p>",
-
-  "answers": [
-    "souvenir",
-    "un souvenir"
-  ],
-
-  "hints": [
-    "Ce n'est pas un objet précis.",
-    "On peut le conserver toute une vie.",
-    "Il est souvent associé aux moments heureux.",
-    "La réponse est « souvenir »."
-  ],
-
-  "success": "Exact ! Certains souvenirs restent gravés pour toujours."
-},
-{
-  "type": "final",
-  "title": "Épreuve V — Le Petit Monde",
-
-  "q": "<p>Cette dernière porte cache un univers réduit à une toute petite échelle.</p><p>Ces objets décorent souvent une chambre ou une étagère.</p><p><strong>Quel cadeau se cache derrière cette porte ?</strong></p>",
-
-  "answers": [
-    "figurine",
-    "figurines"
-  ],
-
-  "hints": [
-    "Ce n'est pas un vêtement.",
-    "Certaines représentent des personnages.",
-    "On les expose souvent sur une étagère.",
-    "Ce sont des figurines."
-  ],
-
-  "success": "Tu as découvert le Petit Monde."
-},
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son univers.</p></div>",
     "memory": "Le Petit Monde — de petites figurines choisies pour toi.",
     "theme": "monde"
