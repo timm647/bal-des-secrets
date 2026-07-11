@@ -860,14 +860,19 @@ const tickets = [
 
   "success": "Exact ! C'est l'un des endroits où nous avons partagé plusieurs repas."
 },
-     "title": "Épreuve IV — Le rébus gourmand",
-"q": "<p>Résous ce rébus.</p><div class='rebus-board'><img src='assets/rebus-lemans.png'><img src='assets/rebus-g.png'></div><p>Quel mot obtiens-tu ?</p>",
-"hints": [
-  "La première image représente une ville française.",
-  "Prononce les deux images à voix haute.",
-  "La réponse est liée à la nourriture."
-],
-"success": "Exact !"
+    {
+  "type": "text",
+  "title": "Épreuve IV — Le rébus gourmand",
+  "q": "<p>Résous ce rébus.</p><div class='rebus-board'><img src='assets/rebus-lemans.png'><img src='assets/rebus-g.png'></div><p>Quel mot obtiens-tu ?</p>",
+  "answers": [
+    "manger"
+  ],
+  "hints": [
+    "La première image représente une ville française.",
+    "Prononce les deux images à voix haute.",
+    "La réponse est liée à la nourriture."
+  ],
+  "success": "Exact !"
 },
       {
         "type": "final",
