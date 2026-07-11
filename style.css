@@ -2098,3 +2098,16 @@ nav,
     border:1px solid rgba(217,180,95,.25);
     box-shadow:0 12px 35px rgba(0,0,0,.35);
 }
+
+.fragment-box{
+    margin:20px auto;
+    padding:18px;
+    border:2px solid var(--gold);
+    border-radius:14px;
+    text-align:center;
+    font-size:1.3rem;
+    font-weight:bold;
+    letter-spacing:3px;
+    background:rgba(255,255,255,.05);
+    max-width:500px;
+}
