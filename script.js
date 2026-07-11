@@ -934,11 +934,10 @@ const tickets = [
 
   "image": "assets/souvenir-eclair.png",
 
-  "question": "Combien de coussins étaient présents sur le lit ?",
+  "question": "De quelle forme est la lampe sur l'étagère ?",
 
   "answers": [
-    "3",
-    "trois"
+    "coeur",
   ],
 
   "hints": [
