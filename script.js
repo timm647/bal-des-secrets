@@ -883,7 +883,8 @@ const tickets = [
           "pack de nourriture",
           "paniergourmand",
           "panier gourmand",
-          "pack gourmand"
+          "pack gourmand",
+          "panier"
         ],
         "hints": [
           "Ce n’est pas un seul aliment.",
