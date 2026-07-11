@@ -1704,7 +1704,7 @@ function renderAnswerInput(ticket, r, index){
                 <button
                     type="button"
                     class="restaurant-choice"
-                    onclick="chooseRestaurant(${index}, this, '${option}'); return false;">
+                    onclick='chooseRestaurant(${index}, this, ${JSON.stringify(option)})'>
                     ${option}
                 </button>
             `).join('')}
