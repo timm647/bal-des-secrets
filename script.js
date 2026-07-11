@@ -1056,91 +1056,103 @@ const tickets = [
     "theme": "fil"
   },
   {
-    "id": 10,
-    "code": "PETIT-MONDE",
-    "title": "Le Petit Monde",
-    "gift": "Figurines",
-    "teaser": "Une porte miniature, construite autour de petits personnages et d’univers à collectionner.",
-    "intro": "<p>Cette porte parle de choses petites par la taille, mais pas forcément petites par l’attachement.</p>",
-    "riddles": [
-      {
-        "type": "scale",
-        "title": "Épreuve I — Changer d’échelle",
-        "q": "<p>Je ne suis pas moins important parce que je suis petit.</p><p>Je reprends une forme plus grande, mais réduite.</p><p>Je peux tenir dans une main tout en représentant un univers.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "miniature"
-        ],
-        "hints": [
-          "La réponse parle de taille.",
-          "Elle désigne une version réduite.",
-          "Elle peut représenter quelque chose de plus grand.",
-          "Le mot commence par MINI."
-        ],
-        "success": "La miniature est trouvée."
-      },
-      {
-        "type": "identity",
-        "title": "Épreuve II — Celui qui habite l’univers",
-        "q": "<p>Dans une histoire, il peut avoir une apparence, un caractère, un rôle.</p><p>Il n’est pas forcément réel, mais on peut s’y attacher.</p><p><strong>Quel mot désigne cet être d’histoire ?</strong></p>",
-        "answers": [
-          "personnage"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "On peut le trouver dans des films, livres ou univers.",
-          "Il peut être représenté en petit.",
-          "Le mot commence par P."
-        ],
-        "success": "Oui : un personnage."
-      },
-      {
-        "type": "collection",
-        "title": "Épreuve III — Quand un seul ne suffit pas",
-        "q": "<p>Un objet peut exister seul.</p><p>Mais parfois, ce qui devient amusant, c’est d’en avoir plusieurs qui se répondent.</p><p>Chaque nouveau morceau complète l’ensemble.</p><p><strong>Quel mot désigne cet ensemble ?</strong></p>",
-        "answers": [
-          "collection"
-        ],
-        "hints": [
-          "La réponse parle de plusieurs objets.",
-          "Elle grandit avec le temps.",
-          "Chaque élément peut être différent.",
-          "Le mot commence par C."
-        ],
-        "success": "Oui : une collection."
-      },
-      {
-        "type": "theme",
-        "title": "Épreuve IV — Le monde autour",
-        "q": "<p>Sommeil, yoga, animaux, personnages, couleurs…</p><p>Ce mot désigne l’idée commune qui rassemble plusieurs éléments.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "theme",
-          "thème"
-        ],
-        "hints": [
-          "Ce n’est pas un objet.",
-          "Il rassemble plusieurs éléments sous une même idée.",
-          "Il peut changer d’une série à l’autre.",
-          "Le mot commence par TH."
-        ],
-        "success": "Oui : le thème."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Les petits habitants",
-        "q": "<p>Tu as trouvé miniature, personnage, collection et thème.</p><p>Cette porte cache de petits objets qui représentent des univers ou des personnages.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "figurines",
-          "figurine"
-        ],
-        "hints": [
-          "La réponse désigne de petits objets.",
-          "Ils peuvent former une collection.",
-          "Ils représentent souvent des personnages.",
-          "Le mot commence par F."
-        ],
-        "success": "Tu as trouvé le Petit Monde."
-      }
-    ],
+  "type": "classic",
+  "title": "Épreuve I — L'anagramme miniature",
+
+  "q": "<p>Ces fragments ont été mélangés.</p><div class='fragment-box'>AT &nbsp;&nbsp; MI &nbsp;&nbsp; TURE &nbsp;&nbsp; NI</div><p><strong>Quel mot retrouves-tu ?</strong></p>",
+
+  "answers": [
+    "miniature"
+  ],
+
+  "hints": [
+    "Le mot décrit quelque chose de très petit.",
+    "Il est composé de 9 lettres.",
+    "Il commence par « Mini... ».",
+    "La réponse est « Miniature »."
+  ],
+
+  "success": "Exact ! Les plus beaux univers tiennent parfois dans un tout petit format."
+},
+{
+  "type": "classic",
+  "title": "Épreuve II — La charade",
+
+  "q": "<p>Mon premier est le contraire de <strong>grand</strong>.</p><p>Mon second désigne notre planète.</p><p><strong>Quel est mon tout ?</strong></p>",
+
+  "answers": [
+    "petit monde"
+  ],
+
+  "hints": [
+    "Mon premier est « petit ».",
+    "Mon second est « monde ».",
+    "C'est également le nom de cette salle.",
+    "La réponse est « Petit Monde »."
+  ],
+
+  "success": "Exact !"
+},
+{
+  "type": "classic",
+  "title": "Épreuve III — L'expression",
+
+  "q": "<p>Complète cette expression :</p><p><strong>Tout est dans le ________.</strong></p>",
+
+  "answers": [
+    "détail",
+    "detail"
+  ],
+
+  "hints": [
+    "Ce mot commence par D.",
+    "Il désigne une petite chose importante.",
+    "On dit souvent cette expression.",
+    "La réponse est « détail »."
+  ],
+
+  "success": "Exact ! Les plus belles choses se cachent souvent dans les détails."
+},
+{
+  "type": "classic",
+  "title": "Épreuve IV — La devinette",
+
+  "q": "<p>Je ne grandis jamais.</p><p>Je traverse les années sans changer.</p><p>Je garde une place sur une étagère, mais aussi dans les souvenirs.</p><p><strong>Qui suis-je ?</strong></p>",
+
+  "answers": [
+    "souvenir",
+    "un souvenir"
+  ],
+
+  "hints": [
+    "Ce n'est pas un objet précis.",
+    "On peut le conserver toute une vie.",
+    "Il est souvent associé aux moments heureux.",
+    "La réponse est « souvenir »."
+  ],
+
+  "success": "Exact ! Certains souvenirs restent gravés pour toujours."
+},
+{
+  "type": "final",
+  "title": "Épreuve V — Le Petit Monde",
+
+  "q": "<p>Cette dernière porte cache un univers réduit à une toute petite échelle.</p><p>Ces objets décorent souvent une chambre ou une étagère.</p><p><strong>Quel cadeau se cache derrière cette porte ?</strong></p>",
+
+  "answers": [
+    "figurine",
+    "figurines"
+  ],
+
+  "hints": [
+    "Ce n'est pas un vêtement.",
+    "Certaines représentent des personnages.",
+    "On les expose souvent sur une étagère.",
+    "Ce sont des figurines."
+  ],
+
+  "success": "Tu as découvert le Petit Monde."
+},
     "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Petit Monde cachait des figurines.</h3><p>De petits personnages à collectionner, chacun avec son univers.</p></div>",
     "memory": "Le Petit Monde — de petites figurines choisies pour toi.",
     "theme": "monde"
