@@ -1922,6 +1922,28 @@ nav,
   transform:scale(1.03);
 }
 
+.restaurant-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.restaurant-choice{
+    padding:14px;
+    border:2px solid #555;
+    border-radius:12px;
+    background:#222;
+    color:#fff;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.restaurant-choice.selected{
+    border:2px solid gold;
+    background:#d4af37;
+    color:#000;
+}
+
 .inline-message{
  position:fixed;
  top:24px;
