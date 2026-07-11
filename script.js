@@ -941,10 +941,10 @@ const tickets = [
   ],
 
   "hints": [
-    "Concentre-toi sur le lit.",
-    "Ce n'est pas 2.",
-    "Ce n'est pas 4.",
-    "Il y en avait trois."
+    "Concentre-toi sur l'arriére plan.",
+    "Ce n'est pas un rond.",
+    "Ce n'est pas à gauche.",
+    "c'est un forme symetrique."
   ],
 
   "success": "Excellent ! Tu as une très bonne mémoire."
