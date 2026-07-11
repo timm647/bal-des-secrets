@@ -927,7 +927,7 @@ const tickets = [
     "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
     "riddles": [
       {
-  "type": "memory",
+  "type": "memory-photo"
   "title": "Épreuve I — Le souvenir éclair",
 
   "q": "Tu vas voir une image pendant 5 secondes. Observe-la attentivement et mémorise le plus de détails possible. Une question te sera ensuite posée.",
@@ -1684,6 +1684,39 @@ function renderAnswerInput(ticket, r, index){
     const cards=[...(r.pairs||[]),...(r.pairs||[])].sort(()=>Math.random()-0.5);
     return `<div class="memory-grid" id="memory-${index}">${cards.map(c=>`<button class="memory-card" data-value="${c}" onclick="flipMemory(${index}, this)"><span>❓</span></button>`).join('')}</div><input type="hidden" id="answer-${index}">`;
   }
+
+  if(r.type === "memory-photo"){
+    return `
+        <div id="memory-intro-${index}">
+            <p>${r.q}</p>
+
+            <div class="answer-row">
+                <button type="button" onclick="startMemory(${index})">
+                    Commencer
+                </button>
+            </div>
+        </div>
+
+        <div id="memory-image-${index}" style="display:none;text-align:center;">
+            <img src="${r.image}" class="riddle-image">
+        </div>
+
+        <div id="memory-question-${index}" style="display:none;">
+            <p><strong>${r.question}</strong></p>
+
+            <input
+                type="text"
+                id="answer-${index}"
+                placeholder="Ta réponse...">
+
+            <div class="answer-row">
+                <button type="button" onclick="checkAnswer(${ticket.id}, ${index})">
+                    Valider
+                </button>
+            </div>
+        </div>
+    `;
+}
 
   if(r.type === "monuments"){
     return `
