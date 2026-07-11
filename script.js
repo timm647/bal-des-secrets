@@ -988,20 +988,26 @@ const tickets = [
   "success": "Exact ! Notre complicité est l'un de nos plus beaux secrets."
 },
       {
-        "type": "code",
-        "title": "Épreuve IV — Trois lettres courantes",
-        "q": "<p>Un vêtement peut parfois se résumer à une courte indication.</p><div class=\"choice-line\"><span>S</span><span>M</span><span>L</span><span>XL</span></div><p>Ce n’est pas le cadeau. C’est ce qu’il faut connaître pour qu’il tombe bien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "taille"
-        ],
-        "hints": [
-          "Ce n’est pas une couleur.",
-          "Cela aide à choisir le bon vêtement.",
-          "S, M et L sont des exemples.",
-          "Le mot commence par T."
-        ],
-        "success": "Oui : la taille."
-      },
+  "type": "zoom",
+  "title": "Épreuve IV — Le mystère se dévoile",
+
+  "q": "Clique sur « Dézoomer » pour révéler progressivement l'image. Trouve ce qu'elle représente avant la révélation complète.",
+
+  "image": "assets/rose.png",
+
+  "answers": [
+    "rose"
+  ],
+
+  "hints": [
+    "C'est une fleur.",
+    "Elle est souvent offerte.",
+    "Elle possède des pétales.",
+    "C'est une rose."
+  ],
+
+  "success": "Exact ! Tu as reconnu la rose."
+},
       {
         "type": "final",
         "title": "Épreuve V — Ce que tu porteras",
