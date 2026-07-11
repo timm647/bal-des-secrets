@@ -1697,12 +1697,14 @@ function renderAnswerInput(ticket, r, index){
 
 }
   
-  if(r.type === "restaurant"){
+ if(r.type === "restaurant"){
     return `
         <div class="restaurant-grid" id="restaurant-${index}">
             ${r.options.map(option => `
-                <button class="restaurant-choice"
-                        onclick="chooseRestaurant(${index}, this, '${option}')">
+                <button
+                    type="button"
+                    class="restaurant-choice"
+                    onclick="chooseRestaurant(${index}, this, '${option}'); return false;">
                     ${option}
                 </button>
             `).join('')}
@@ -1711,7 +1713,7 @@ function renderAnswerInput(ticket, r, index){
         <input type="hidden" id="answer-${index}">
 
         <div class="answer-row">
-            <button onclick="checkAnswer(${ticket.id}, ${index})">
+            <button type="button" onclick="checkAnswer(${ticket.id}, ${index})">
                 Valider
             </button>
         </div>
