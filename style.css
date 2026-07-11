@@ -590,7 +590,7 @@ footer {
 .theme-festin { --gold: #e0a15f; --gold-soft: #ffdfb2; background: radial-gradient(circle at 22% 12%, rgba(180,95,40,.20), transparent 28%), linear-gradient(135deg,#0b0704,#211308,#050505) !important; }
 .theme-fil { --gold: #d9d0b5; --gold-soft: #fff3d6; background: radial-gradient(circle at 20% 10%, rgba(220,220,200,.13), transparent 30%), linear-gradient(135deg,#060606,#141414,#050505) !important; }
 .theme-monde { --gold: #9fd0ff; --gold-soft: #ddf1ff; background: radial-gradient(circle at 50% 15%, rgba(80,140,200,.20), transparent 35%), linear-gradient(135deg,#05070c,#0c1828,#050505) !important; }
-.theme-jardin { --gold: #95d0a0; --gold-soft: #d9ffe0; background: radial-gradient(circle at 18% 10%, rgba(60,140,80,.20), transparent 35%), linear-gradient(135deg,#050806,#0d1a10,#050505) !important; }
+.theme-jardin{--gold:#d64562;--gold-soft:#ffd7df;background:radial-gradient(circle at 18% 10%,rgba(214,69,98,.22),transparent 35%),radial-gradient(circle at 82% 90%,rgba(120,20,45,.18),transparent 35%),linear-gradient(135deg,#120306,#2a0812,#070203)!important;}
 .theme-masque { --gold: #d9b45f; --gold-soft: #fff0ba; background: radial-gradient(circle at 50% 10%, rgba(217,180,95,.20), transparent 35%), linear-gradient(135deg,#020202,#111018,#050505) !important; }
 
 .booster-summary, .chronicle {
