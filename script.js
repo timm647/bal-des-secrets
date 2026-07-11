@@ -1752,6 +1752,39 @@ function renderAnswerInput(ticket, r, index){
     `;
 }
 
+  if(r.type === "memory"){
+    return `
+        <div id="memory-intro-${index}">
+            <p>${r.q}</p>
+
+            <div class="answer-row">
+                <button type="button" onclick="startMemory(${index})">
+                    Commencer
+                </button>
+            </div>
+        </div>
+
+        <div id="memory-image-${index}" style="display:none;text-align:center;">
+            <img src="${r.image}" class="riddle-image">
+        </div>
+
+        <div id="memory-question-${index}" style="display:none;">
+            <p><strong>${r.question}</strong></p>
+
+            <input
+                type="text"
+                id="answer-${index}"
+                placeholder="Ta réponse...">
+
+            <div class="answer-row">
+                <button type="button" onclick="checkAnswer(${ticket.id}, ${index})">
+                    Valider
+                </button>
+            </div>
+        </div>
+    `;
+}
+
   return `<div class="answer-row"><input id="answer-${index}" placeholder="Ta réponse"><button onclick="checkAnswer(${ticket.id}, ${index})">Valider</button></div>`;
 }
 
