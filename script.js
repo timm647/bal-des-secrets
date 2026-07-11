@@ -1083,98 +1083,109 @@ const tickets = [
     "theme": "monde"
   },
   {
-    "id": 11,
-    "code": "JARDIN-SECRET",
-    "title": "Le Jardin Secret",
-    "gift": "Cadeau intime",
-    "teaser": "Une porte plus discrète, pensée autour de confiance, pudeur et complicité.",
-    "intro": "<p>Cette porte reste élégante. Elle ne cherche pas à tout dire trop vite : elle avance par confiance.</p>",
-    "riddles": [
-      {
-        "type": "trust",
-        "title": "Épreuve I — La condition",
-        "q": "<p>Sans moi, cette porte n’aurait pas sa place.</p><p>Je ne suis pas un objet.</p><p>Je permets de recevoir une surprise sans malaise, parce qu’elle vient de quelqu’un en qui tu peux croire.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "confiance"
-        ],
-        "hints": [
-          "La réponse n’est pas matérielle.",
-          "Elle se construit avec le temps.",
-          "Elle rend possible les surprises plus personnelles.",
-          "Le mot commence par CONF."
-        ],
-        "success": "Oui : la confiance."
-      },
-      {
-        "type": "boundary",
-        "title": "Épreuve II — Ce qui t’appartient",
-        "q": "<p>Tout ne se partage pas avec tout le monde.</p><p>Certains espaces, certaines pensées, certains moments restent à toi.</p><p>Ce mot désigne ce qui est personnel et protégé.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "intimite",
-          "intimité"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle parle de quelque chose de personnel.",
-          "Elle demande du respect.",
-          "Le mot commence par INT."
-        ],
-        "success": "Oui : l’intimité."
-      },
-      {
-        "type": "discretion",
-        "title": "Épreuve III — Le voile",
-        "q": "<p>Ce mot ne cache pas par honte.</p><p>Il cache parce que certaines choses gagnent à rester délicates.</p><p>Il évite d’être trop direct, trop visible, trop brutal.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "pudeur"
-        ],
-        "hints": [
-          "La réponse est liée à la délicatesse.",
-          "Elle protège ce qui est intime.",
-          "Elle évite d’en dire trop.",
-          "Le mot commence par P."
-        ],
-        "success": "Oui : la pudeur."
-      },
-      {
-        "type": "complicity",
-        "title": "Épreuve IV — À deux seulement",
-        "q": "<p>Ce mot existe quand un geste ou une blague n’a pas besoin d’être expliqué aux autres.</p><p>Il appartient à deux personnes qui se comprennent.</p><p>Il rend certaines choses plus simples, parce qu’il y a déjà un lien.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "complicite",
-          "complicité"
-        ],
-        "hints": [
-          "Ce mot parle d’un lien.",
-          "Il peut exister dans un couple.",
-          "Il permet de se comprendre avec peu de mots.",
-          "Le mot commence par COMP."
-        ],
-        "success": "Oui : la complicité."
-      },
-      {
-        "type": "final",
-        "title": "Épreuve V — Le cadeau discret",
-        "q": "<p>Tu as trouvé confiance, intimité, pudeur et complicité.</p><p>Cette porte cache un cadeau plus personnel que les autres.</p><p>Il n’est pas fait pour être expliqué à tout le monde.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
-        "answers": [
-          "cadeauintime",
-          "cadeau intime",
-          "sextoy",
-          "jouet intime"
-        ],
-        "hints": [
-          "La réponse n’est pas un cadeau public.",
-          "Il appartient au domaine intime.",
-          "Il demande confiance et pudeur.",
-          "On peut l’appeler un cadeau intime."
-        ],
-        "success": "Tu as trouvé le Jardin Secret."
-      }
-    ],
-    "reveal": "<div class=\"reveal-card\"><div class=\"stamp\">DÉCOUVERT</div><h3>Le Jardin Secret cachait un cadeau intime.</h3><p>Un cadeau discret, pensé avec confiance et respect, seulement pour toi.</p></div>",
-    "memory": "Le Jardin Secret — une porte intime, pensée avec respect.",
-    "theme": "jardin"
-  },
+  "id": 11,
+  "title": "Les Secrets de Minuit",
+  "gift": "Objet intime",
+  "riddles": [
+
+    {
+      "type": "text",
+      "title": "Épreuve I — Les baisers cachés",
+      "q": "<p>Parfois, les plus beaux secrets se cachent sous nos yeux.</p><p>Observe attentivement l'image.</p><img src='assets/bisous-caches.png' class='riddle-image'><p><strong>Quel mot est dissimulé parmi les empreintes ?</strong></p>",
+      "answers": [
+        "confiance"
+      ],
+      "hints": [
+        "Regarde les empreintes dans leur ensemble.",
+        "Le mot est formé par les bisous.",
+        "C'est une valeur indispensable dans une relation.",
+        "Il commence par C."
+      ],
+      "success": "Exact. Les plus beaux secrets reposent sur la confiance."
+    },
+
+    {
+      "type": "text",
+      "title": "Épreuve II — La charade",
+      "q": "<p><strong>Mon premier</strong> est le contraire de brutal.</p><p><strong>Mon second</strong> partage les mêmes parents que moi.</p><p><strong>Mon tout</strong> accompagne les gestes les plus tendres.</p>",
+      "answers": [
+        "douceur"
+      ],
+      "hints": [
+        "Le premier est une qualité.",
+        "Le second est un membre de la famille.",
+        "Assemble les deux sons.",
+        "Le mot évoque la tendresse."
+      ],
+      "success": "Exact. Rien n'est plus précieux que la douceur."
+    },
+
+    {
+      "type": "text",
+      "title": "Épreuve III — Le souvenir gravé",
+      "q": "<p>Chaque histoire possède une date que l'on n'oublie jamais.</p><p><strong>Quelle est la date de notre toute première interaction ?</strong></p>",
+      "answers": [
+        "02042025",
+        "02/04/2025",
+        "2 avril 2025",
+        "02-04-2025"
+      ],
+      "hints": [
+        "Ce n'est pas un anniversaire.",
+        "Tout a commencé ce jour-là.",
+        "C'était le premier échange de regards.",
+        "Le mois est avril."
+      ],
+      "success": "Exact. Certains souvenirs restent gravés pour toujours."
+    },
+
+    {
+      "type": "restaurant",
+      "title": "Épreuve IV — Le bon chemin",
+      "q": "<p><img src='assets/labyrinthe-rose.png' class='riddle-image'></p><p><strong>Quel chemin mène jusqu'à la rose ?</strong></p>",
+      "answers": [
+        "B"
+      ],
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "hints": [
+        "Observe attentivement le labyrinthe.",
+        "Un seul chemin atteint la rose.",
+        "Ne te fie pas aux apparences.",
+        "La bonne réponse est une lettre."
+      ],
+      "success": "Bravo ! Tu as trouvé le bon chemin."
+    },
+
+    {
+      "type": "final",
+      "title": "Épreuve V — Les Secrets de Minuit",
+      "q": "<p>Tu as suivi les indices, retrouvé les souvenirs et ouvert cette dernière porte.</p><p>Elle cache un cadeau plus personnel, choisi avec confiance, complicité et tendresse.</p><p><strong>Quel cadeau se cache ici ?</strong></p>",
+      "answers": [
+        "objet intime",
+        "cadeau intime"
+      ],
+      "hints": [
+        "Ce n'est pas un vêtement.",
+        "Il est destiné uniquement à toi.",
+        "Il demande de la confiance.",
+        "C'est un objet intime."
+      ],
+      "success": "Tu as découvert Les Secrets de Minuit."
+    }
+
+  ],
+
+  "reveal": "<div class='reveal-card'><div class='stamp'>DÉCOUVERT</div><h3>Les Secrets de Minuit cachaient un objet intime.</h3><p>Un cadeau choisi avec confiance, tendresse et complicité, uniquement pour toi.</p></div>",
+
+  "memory": "Les Secrets de Minuit — certains cadeaux ne prennent tout leur sens qu'avec la confiance.",
+
+  "theme": "jardin"
+},
   {
     "id": 12,
     "code": "DERNIER-MASQUE",
