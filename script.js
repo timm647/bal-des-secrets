@@ -962,27 +962,31 @@ const tickets = [
   "hints": [
     "Le mot n'apparaît pas immédiatement.",
     "Recule légèrement ou plisse les yeux.",
-    "C'est un mot important dans notre histoire.",
-    "Il commence par C."
+    "C'est un beau mot.",
+    "Il commence par B."
   ],
 
   "success": "Exact ! Certaines choses ne se révèlent qu'à ceux qui regardent autrement."
 },
       {
-        "type": "choice",
-        "title": "Épreuve III — L’accord",
-        "q": "<p>Il ne suffit pas qu’un vêtement existe.</p><p>Il faut qu’il te corresponde.</p><p>Ce mot peut parler d’une ambiance, d’une couleur, d’une façon de s’habiller.</p><p><strong>Quel mot cherches-tu ?</strong></p>",
-        "answers": [
-          "style"
-        ],
-        "hints": [
-          "La réponse n’est pas un objet.",
-          "Elle parle de ce qui te correspond.",
-          "Elle peut être personnel.",
-          "Le mot commence par ST."
-        ],
-        "success": "Oui : le style."
-      },
+  "type": "classic",
+  "title": "Épreuve III — Les fragments perdus",
+
+  "q": "<p>Les fragments d'un mot ont été mélangés.</p><p>Réassemble-les mentalement.</p><div class='fragment-box'>MP &nbsp;&nbsp; CO &nbsp;&nbsp; LI &nbsp;&nbsp; CI &nbsp;&nbsp; TÉ</div><p><strong>Quel est ce mot ?</strong></p>",
+
+  "answers": [
+    "complicité"
+  ],
+
+  "hints": [
+    "Les fragments ne sont pas dans le bon ordre.",
+    "C'est un mot qui décrit parfaitement notre relation.",
+    "Il commence par « Com... ».",
+    "La réponse est « Complicité »."
+  ],
+
+  "success": "Exact ! Notre complicité est l'un de nos plus beaux secrets."
+},
       {
         "type": "code",
         "title": "Épreuve IV — Trois lettres courantes",
