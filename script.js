@@ -1057,6 +1057,7 @@ const tickets = [
   },
  {
   id: 10,
+  code: "MINIAT",
   title: "Le Petit Monde",
   lockedTitle: "Le Petit Monde",
   intro: "Les plus grands univers tiennent parfois dans les plus petites choses.",
@@ -1166,6 +1167,7 @@ const tickets = [
   },
   {
   "id": 11,
+  code: "MINUIT",
   "title": "Les Secrets de Minuit",
   "gift": "Objet intime",
   "riddles": [
