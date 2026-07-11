@@ -165,6 +165,21 @@ window.selectMonument = function(ticketId, index, value){
   } else {
     if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
   }
+
+  window.startMemory = function(index){
+
+    const intro = document.getElementById(`memory-intro-${index}`);
+    const image = document.getElementById(`memory-image-${index}`);
+    const question = document.getElementById(`memory-question-${index}`);
+
+    if(intro) intro.style.display = "none";
+    if(image) image.style.display = "block";
+
+    setTimeout(() => {
+        if(image) image.style.display = "none";
+        if(question) question.style.display = "block";
+    }, 5000);
+}
 }
 
 const tickets = [
