@@ -147,6 +147,20 @@ window.chooseRestaurant = function(index, btn, value){
 
   const input = document.getElementById(`answer-${index}`);
   if(input) input.value = value;
+
+  window.startMemory = function(index){
+
+    const intro = document.getElementById(`memory-intro-${index}`);
+    const image = document.getElementById(`memory-image-${index}`);
+    const question = document.getElementById(`memory-question-${index}`);
+
+    intro.style.display = "none";
+    image.style.display = "block";
+
+    setTimeout(() => {
+        image.style.display = "none";
+        question.style.display = "block";
+    }, 5000);
 }
 
 
@@ -923,20 +937,29 @@ const tickets = [
     "intro": "<p>Cette porte avance par matière, forme et choix, avant d’arriver à ce que tu pourras porter.</p>",
     "riddles": [
       {
-        "type": "material",
-        "title": "Épreuve I — La base douce",
-        "q": "<p>Je peux être tissé, lavé, porté.</p><p>Je ne suis pas le vêtement complet.</p><p>Je suis souvent choisi parce que je est agréable sur la peau.</p><p><strong>Que suis-je ?</strong></p>",
-        "answers": [
-          "coton"
-        ],
-        "hints": [
-          "La réponse est une matière.",
-          "On la retrouve dans beaucoup de vêtements.",
-          "Elle est souvent douce et simple.",
-          "Le mot commence par C."
-        ],
-        "success": "Le coton est trouvé."
-      },
+  "type": "memory",
+  "title": "Épreuve I — Le souvenir éclair",
+
+  "q": "Tu vas voir une image pendant 5 secondes. Observe-la attentivement et mémorise le plus de détails possible. Une question te sera ensuite posée.",
+
+  "image": "assets/souvenir-eclair.png",
+
+  "question": "Combien de coussins étaient présents sur le lit ?",
+
+  "answers": [
+    "3",
+    "trois"
+  ],
+
+  "hints": [
+    "Concentre-toi sur le lit.",
+    "Ce n'est pas 2.",
+    "Ce n'est pas 4.",
+    "Il y en avait trois."
+  ],
+
+  "success": "Excellent ! Tu as une très bonne mémoire."
+},
       {
         "type": "shape",
         "title": "Épreuve II — Ce qui tombe juste",
