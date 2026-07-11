@@ -840,16 +840,16 @@ const tickets = [
   "title": "Épreuve III — Notre restaurant préféré",
   "q": "<p><strong>Parmi ces établissements, lequel avons-nous fréquenté le plus souvent ensemble ?</strong></p><p>Choisis une réponse puis valide.</p>",
 
-  "answers": [
-    "McDonald's"
-  ],
+ "answers": [
+  "McDo"
+],
 
-  "options": [
-    "McDonald's",
-    "Burger King",
-    "KFC",
-    "Restaurant chinois"
-  ],
+"options": [
+  "McDo",
+  "Burger King",
+  "KFC",
+  "Restaurant chinois"
+],
 
   "hints": [
     "Ce n'est pas un buffet à volonté.",
