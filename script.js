@@ -142,45 +142,35 @@ window.chooseMonument = function(index, btn, value){
 }
 
 window.chooseRestaurant = function(index, btn, value){
-  document.querySelectorAll(`#restaurant-${index} .restaurant-choice`).forEach(el=>el.classList.remove('selected'));
-  btn.classList.add('selected');
+    document.querySelectorAll(`#restaurant-${index} .restaurant-choice`)
+        .forEach(el => el.classList.remove('selected'));
 
-  const input = document.getElementById(`answer-${index}`);
-  if(input) input.value = value;
+    btn.classList.add('selected');
 
-  window.startMemory = function(index){
-
-    const intro = document.getElementById(`memory-intro-${index}`);
-    const image = document.getElementById(`memory-image-${index}`);
-    const question = document.getElementById(`memory-question-${index}`);
-
-    intro.style.display = "none";
-    image.style.display = "block";
-
-    setTimeout(() => {
-        image.style.display = "none";
-        question.style.display = "block";
-    }, 5000);
+    const input = document.getElementById(`answer-${index}`);
+    if(input) input.value = value;
 }
 
 
 window.selectMonument = function(ticketId, index, value){
-  const ticket = tickets.find(t => t.id === ticketId);
-  if(!ticket) return;
+    const ticket = tickets.find(t => t.id === ticketId);
+    if(!ticket) return;
 
-  const riddle = ticket.riddles[index];
-  const validAnswers = riddle.answers || [];
+    const riddle = ticket.riddles[index];
+    const validAnswers = riddle.answers || [];
 
-  const feedback = document.getElementById(`monument-feedback-${index}`);
+    const feedback = document.getElementById(`monument-feedback-${index}`);
 
-  if(validAnswers.some(answer => normalize(answer) === normalize(value))){
-    if(feedback) feedback.textContent = '';
-    completeRiddle(ticketId, index);
-  } else {
-    if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
-  }
+    if(validAnswers.some(answer => normalize(answer) === normalize(value))){
+        if(feedback) feedback.textContent = '';
+        completeRiddle(ticketId, index);
+    }else{
+        if(feedback) feedback.textContent = "❌ Ce n'est pas le bon monument.";
+    }
+}
 
-  window.startMemory = function(index){
+
+window.startMemory = function(index){
 
     const intro = document.getElementById(`memory-intro-${index}`);
     const image = document.getElementById(`memory-image-${index}`);
@@ -193,7 +183,7 @@ window.selectMonument = function(ticketId, index, value){
         if(image) image.style.display = "none";
         if(question) question.style.display = "block";
     }, 5000);
-}
+
 }
 
 const tickets = [
