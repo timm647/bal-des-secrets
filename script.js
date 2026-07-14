@@ -1608,7 +1608,7 @@ function unlockTicket(ticket) {
 
   const today = new Date();
 
-if (!alreadyUnlocked && today.getDate() !== 7) {
+if (!alreadyUnlocked && today.getDate() !== 14) {
   setMessage("Cette porte ne peut être ouverte que le 7 de chaque mois.", "error");
   return;
 }
