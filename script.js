@@ -2239,7 +2239,13 @@ function cardHtml(card, options = {}) {
     ${isNew ? '<div class="new-badge">NOUVEAU</div>' : ''}
     ${!locked && count > 1 ? `<div class="duplicate-badge">x${count}</div>` : ''}
     <div class="card-number">#${String(card.number || COLLECTION_CARDS.findIndex(c => c.id === card.id) + 1).padStart(2, '0')}</div>
-    <div class="card-art">${locked ? '🔒' : card.emoji}</div>
+    <div class="card-art">
+  ${
+    locked
+      ? '🔒'
+      : `<img src="${card.image}" alt="${card.title}" class="collection-photo">`
+  }
+</div>
     <div class="card-rarity">${locked ? 'Inconnue' : rarityLabel(card.rarity)}</div>
     <h3>${locked ? 'Carte non découverte' : card.title}</h3>
     <p>${locked ? 'Cette carte attend encore dans un futur booster.' : card.text}</p>
