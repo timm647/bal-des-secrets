@@ -1384,10 +1384,10 @@ const COLLECTION_CARDS = [
 
 
 const RARITY_WEIGHTS = [
-  { rarity: 'commune', weight: 40 },
-  { rarity: 'rare', weight: 30 },
-  { rarity: 'epique', weight: 20 },
-  { rarity: 'legendaire', weight: 10 }
+  { rarity: 'commune', weight: 49 },
+  { rarity: 'rare', weight: 33 },
+  { rarity: 'epique', weight: 13 },
+  { rarity: 'legendaire', weight: 5 }
 ];
 
 
