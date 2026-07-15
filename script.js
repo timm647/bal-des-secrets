@@ -1491,7 +1491,6 @@ const COLLECTION_CARDS = [
   { id: 'card-120', title: 'Carte 120', rarity: 'legendaire', image: 'assets/cards/card-120.jpg', text: '' },
   { id: 'card-121', title: 'Carte 121', rarity: 'legendaire', image: 'assets/cards/card-121.jpg', text: '' }
 ];
-];
 
 
 
