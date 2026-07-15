@@ -2132,3 +2132,11 @@ nav,
     transform-origin:center center;
     transition:transform .5s ease;
 }
+
+.collection-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+}
